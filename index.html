@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pleko — Digital transformation, AI &amp; automation</title>
-  <meta name="description" content="pleko is a solo digital transformation studio helping small teams and freelancers automate and connect their workflows with AI. Founded by Alexandros Reïzos." />
+  <title>pleko — Transformación digital, IA y automatización</title>
+  <meta name="description" content="pleko es un estudio de transformación digital que ayuda a pequeños equipos y autónomos a automatizar y conectar sus flujos de trabajo con IA. Fundado por Alexandros Reïzos." />
 
   <!-- Open Graph: controls how this page looks when shared on LinkedIn, Slack, etc. -->
-  <meta property="og:title" content="pleko — Digital transformation, AI &amp; automation" />
-  <meta property="og:description" content="Digital transformation services to streamline, modernise & automate your workflows, infused by AI." />
+  <meta property="og:title" content="pleko — Transformación digital, IA y automatización" />
+  <meta property="og:description" content="Servicios de transformación digital para simplificar, modernizar y automatizar tus flujos de trabajo, con IA." />
   <meta property="og:image" content="pleko-logo.png" />
   <meta property="og:type" content="website" />
 
@@ -16,6 +16,16 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!--
+    Language versions of this page. hreflang tells search engines "these
+    are the same content in different languages" — helps Spanish-speaking
+    searchers land on this page and English-speaking searchers land on /en/.
+  -->
+  <link rel="alternate" hreflang="es" href="https://pleko.es/" />
+  <link rel="alternate" hreflang="en" href="https://pleko.es/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://pleko.es/" />
+
   <!--
     Fonts: the same pairing as the pleko brand —
     Inter for body text, Literata (a serif with a nice italic) for headings/wordmark.
@@ -35,7 +45,11 @@
       <a href="#top" class="brand">
         <img src="pleko-logo.png" alt="pleko" class="brand__logo" />
       </a>
-      <nav class="header-links" aria-label="Social links">
+      <nav class="header-links" aria-label="Enlaces">
+        <div class="lang-toggle" aria-label="Idioma">
+          <a href="/" aria-current="page">ES</a>
+          <a href="/en/">EN</a>
+        </div>
         <a href="https://github.com/areizos" target="_blank" rel="noopener">
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
           <span class="sr-only">GitHub</span>
@@ -51,21 +65,22 @@
       </nav>
     </div>
   </header>
+
   <main id="top">
 
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="wrap">
-        <p class="eyebrow">AI &amp; Automation · Digital Transformation</p>
+        <p class="eyebrow">IA y Automatización · Transformación Digital</p>
         <h1 class="hero__title">
-          Tame your digital chaos with <span class="hero__accent">pleκo</span>.
+          Doma el caos digital con <span class="hero__accent">pleκo</span>.
         </h1>
         <p class="hero__tagline">
-          Digital transformation services to streamline, modernise &amp; automate your workflows, infused by AI.
+          Servicios de transformación digital para simplificar, modernizar y automatizar tus flujos de trabajo, con IA.
         </p>
         <div class="hero__cta">
-          <a href="mailto:alex@pleko.es" class="btn btn--primary">Get in touch</a>
-          <a href="#services" class="btn btn--ghost">See how I can help →</a>
+          <a href="mailto:alex@pleko.es" class="btn btn--primary">Ponte en contacto</a>
+          <a href="#services" class="btn btn--ghost">Descubre cómo puedo ayudarte →</a>
         </div>
       </div>
     </section>
@@ -73,13 +88,13 @@
     <!-- ============ THE NAME ============ -->
     <section class="name-story">
       <div class="wrap">
-        <p class="section-label">01 — The name</p>
+        <p class="section-label">01 — El nombre</p>
         <div class="name-story__inner">
           <img src="pleko-logo.png" alt="pleko" class="name-story__logo" />
           <p class="name-story__text">
-            In ancient Greek, <strong>πλέκω</strong> (<em>pleko</em>) is a verb that means "to weave,"
-            or "to braid." It's the etymological root of English words that involve folding or
-            complex intertwining — words like <em>complex</em>, or <em>plexus</em>.
+            En griego antiguo, <strong>πλέκω</strong> (<em>pleko</em>) es un verbo que significa
+            «tejer» o «trenzar». Es la raíz etimológica de palabras como <em>complejo</em> o
+            <em>plexo</em>, que tienen que ver con entrelazar cosas distintas hasta formar algo único.
           </p>
         </div>
       </div>
@@ -88,56 +103,59 @@
     <!-- ============ FOUNDER ============ -->
     <section id="founder" class="about">
       <div class="wrap">
-        <p class="section-label">02 — Founder</p>
+        <p class="section-label">02 — Fundador</p>
         <p class="about__text">
-          pleko is founded and run by me, Alexandros Reïzos. After 15+ years in digital marketing,
-          I kept finding myself the one simplifying workflows and looking for more logical ways to
-          do things — then leaned all the way in when AI went mainstream, right as I'd become a
-          project manager.
+          pleko está fundado y dirigido por mí, Alexandros Reïzos. Después de más de 15 años en
+          marketing digital, siempre acababa siendo quien simplificaba los flujos de trabajo y
+          buscaba formas más lógicas de hacer las cosas — así que me metí de lleno cuando la IA
+          se volvió mainstream, justo cuando acababa de convertirme en project manager.
         </p>
         <p class="about__note">
-          pleko is a solo studio — every project gets my direct attention, start to finish, no hand-offs.
+          pleko es un estudio individual — cada proyecto recibe mi atención directa, de principio a fin, sin intermediarios.
         </p>
       </div>
     </section>
+
     <!-- ============ SERVICES ============ -->
     <section id="services" class="what-i-do">
       <div class="wrap">
-        <p class="section-label">03 — Services</p>
+        <p class="section-label">03 — Servicios</p>
         <h2 class="what-i-do__heading">
-          Taking the tangled threads of your workflows and weaving them into something clear.
+          Tomar los hilos enredados de tus flujos de trabajo y tejerlos en algo claro.
         </h2>
         <p class="what-i-do__intro">
-          My mission is simple: help small teams and freelancers replace scattered digital
-          workflows with a faster, clearer, more collaborative way of working. I turn disconnected
-          tasks, duplicate effort, and unclear ownership into shared structure, better visibility,
-          and smoother execution — using modern tools, infused with AI.
+          Mi misión es simple: ayudar a pequeños equipos y autónomos a sustituir flujos de
+          trabajo digitales dispersos por una forma de trabajar más rápida, clara y colaborativa.
+          Convierto tareas desconectadas, esfuerzo duplicado y responsabilidades poco claras en
+          estructura compartida, mejor visibilidad y una ejecución más fluida — usando
+          herramientas modernas, con IA.
         </p>
         <div class="cards">
           <div class="card">
             <span class="card__index">01</span>
-            <h3>Workflow Automation</h3>
-            <p>Untangling manual, repetitive steps into flows that run themselves.</p>
+            <h3>Automatización de flujos de trabajo</h3>
+            <p>Desenredo pasos manuales y repetitivos en flujos que funcionan solos.</p>
           </div>
           <div class="card">
             <span class="card__index">02</span>
-            <h3>AI-Assisted Systems</h3>
-            <p>Adding AI where it actually saves you time — not just for show.</p>
+            <h3>Sistemas asistidos por IA</h3>
+            <p>Añado IA donde realmente ahorra tiempo — no solo para aparentar.</p>
           </div>
           <div class="card">
             <span class="card__index">03</span>
-            <h3>Tool Integration</h3>
-            <p>Connecting the apps you already use, so they talk to each other.</p>
+            <h3>Integración de herramientas</h3>
+            <p>Conecto las apps que ya usas, para que hablen entre sí.</p>
           </div>
         </div>
       </div>
     </section>
+
     <!-- ============ BOOK A CALL ============ -->
     <section id="book" class="contact">
       <div class="wrap contact__inner">
-        <p class="section-label">04 — Let's talk</p>
-        <h2 class="contact__heading">Got a workflow worth taming?</h2>
-        <p class="contact__subtext">Book a free 20-minute call and let's see if pleko is a fit.</p>
+        <p class="section-label">04 — Hablemos</p>
+        <h2 class="contact__heading">¿Tienes un flujo de trabajo que merece la pena domar?</h2>
+        <p class="contact__subtext">Reserva una llamada gratuita de 20 minutos y veamos si pleko encaja.</p>
 
         <!--
           Cal.com inline embed. The div below is turned into the booking
@@ -147,10 +165,15 @@
           20-minute event without an extra click, change calLink below to
           "pleko/<event-slug>" (find the slug in your Cal.com event type's
           URL) in both the <div> and the script.
+
+          Note: Cal.com does not currently support forcing the embedded
+          widget's language via a config option — it follows the visitor's
+          own browser language, so most Spanish-browser visitors should
+          already see it in Spanish automatically.
         -->
         <div id="my-cal-inline" class="cal-embed" data-cal-link="pleko"></div>
 
-        <a href="mailto:alex@pleko.es" class="btn btn--ghost">Prefer email? Get in touch →</a>
+        <a href="mailto:alex@pleko.es" class="btn btn--ghost">¿Prefieres email? Ponte en contacto →</a>
       </div>
     </section>
   </main>
@@ -158,12 +181,13 @@
   <footer class="site-footer">
     <div class="wrap site-footer__inner">
       <span>&copy; <span id="year"></span> pleko</span>
-      <nav class="footer-links" aria-label="Social links">
+      <nav class="footer-links" aria-label="Enlaces">
         <a href="https://github.com/areizos" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener">LinkedIn</a>
       </nav>
     </div>
   </footer>
+
   <script>
     // Small touch of JS: keep the copyright year correct without editing it by hand.
     document.getElementById('year').textContent = new Date().getFullYear();
