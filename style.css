@@ -1,0 +1,439 @@
+/* =========================================================================
+   pleko.es — stylesheet
+   ---------------------------------------------------------------------
+   Organised in three parts:
+   1. Design tokens (custom properties) — every color, font and radius
+      used anywhere on the page is defined once here. Change a value in
+      this block and it updates everywhere it's used.
+   2. Base/reset — sensible defaults for raw HTML elements.
+   3. Components — one section per part of the page, top to bottom,
+      in the same order they appear in index.html.
+   ========================================================================= */
+
+/* ---------- 1. Design tokens ------------------------------------------- */
+:root {
+  /* Colors — lifted from the pleko brand palette */
+  --color-background: #fcf9f8;         /* page background, warm off-white */
+  --color-surface: #f6f3f2;            /* card / section background */
+  --color-surface-alt: #f0eded;        /* slightly deeper card background */
+  --color-text: #1b1c1c;               /* main body text, near-black */
+  --color-text-muted: #3e4949;         /* secondary text */
+  --color-outline: #6e7979;            /* borders only — too light for small text */
+  --color-outline-variant: #bdc9c8;    /* faint borders */
+  --color-label: #5c6767;              /* small uppercase labels — meets 4.5:1 contrast on bg */
+  --color-primary: #006565;            /* deep teal — headings, buttons */
+  --color-primary-hover: #004d4d;
+  --color-accent: #8ff6d0;             /* mint — small highlights only */
+  --color-accent-text: #007257;
+
+  /* Type */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Literata", Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* Shape */
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* Layout */
+  --content-width: 46rem;
+  --content-width-wide: 64rem;
+}
+
+/* ---------- 2. Base / reset ---------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--content-width-wide);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Small uppercase monospace labels, used throughout as a technical accent */
+.section-label,
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-label);
+  margin: 0 0 0.75rem;
+}
+
+/* ---------- Buttons -------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.btn--ghost:hover {
+  text-decoration: underline;
+}
+
+.btn--lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* ---------- Header ----------------------------------------------------- */
+.site-header {
+  border-bottom: 1px solid var(--color-outline-variant);
+  background: var(--color-background);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.brand__logo {
+  height: 28px;
+  width: auto;
+}
+
+.header-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header-links a {
+  color: var(--color-text-muted);
+  display: flex;
+}
+
+.header-links a:hover {
+  color: var(--color-primary);
+}
+
+.header-links svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* ---------- Hero --------------------------------------------------------
+   The faint dot pattern echoes the little scattered dots in the original
+   pleko hero image, done here in pure CSS via a repeating radial gradient
+   — no image file needed.
+   ------------------------------------------------------------------------ */
+.hero {
+  padding: 5rem 0 4rem;
+  background-image: radial-gradient(var(--color-outline-variant) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -14px -14px;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+  max-width: 20ch;
+}
+
+.hero__accent {
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+.hero__tagline {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  max-width: 42ch;
+  margin: 0 0 2rem;
+}
+
+.hero__cta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- The name ------------------------------------------------------
+   Two-column: wordmark on one side, the etymology on the other —
+   echoes the layout from the original pitch-deck slide this copy came from.
+   ------------------------------------------------------------------------ */
+.name-story {
+  padding: 4.5rem 0 3rem;
+}
+
+.name-story__inner {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 1.6fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.name-story__logo {
+  width: 100%;
+  max-width: 260px;
+}
+
+.name-story__text {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.name-story__text strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* ---------- About -------------------------------------------------------- */
+.about {
+  padding: 4rem 0;
+}
+
+.about .wrap {
+  max-width: var(--content-width);
+}
+
+.about__text {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin: 0 0 1.25rem;
+}
+
+.about__note {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-accent-text);
+  background: var(--color-accent);
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  margin: 0;
+}
+
+/* ---------- What I do ----------------------------------------------------- */
+.what-i-do {
+  padding: 4rem 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-outline-variant);
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+.what-i-do__heading {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  max-width: 32ch;
+  margin: 0 0 1.25rem;
+}
+
+.what-i-do__intro {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  max-width: 60ch;
+  margin: 0 0 2.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--color-background);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+
+.card__index {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-accent-text);
+  background: var(--color-accent);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.card p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ---------- Contact -------------------------------------------------------- */
+.contact {
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.contact__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.contact__subtext {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  margin: 0 0 2rem;
+}
+
+.cal-embed {
+  width: 100%;
+  min-height: 650px;
+  margin: 0 auto 2rem;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
+  text-align: left; /* the calendar's own layout, not centered like the rest of .contact */
+}
+
+@media (max-width: 720px) {
+  .cal-embed {
+    min-height: 780px; /* Cal.com stacks month view above time slots on narrow screens, so needs more height */
+  }
+}
+
+/* ---------- Footer -------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--color-outline-variant);
+  padding: 1.5rem 0;
+}
+
+.site-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--color-label);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--color-label);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+}
+
+/* ---------- Responsive ---------------------------------------------------- */
+@media (max-width: 720px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .name-story__inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  .name-story__logo {
+    max-width: 200px;
+  }
+
+  .hero {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .about,
+  .what-i-do {
+    padding: 3rem 0;
+  }
+
+  .site-footer__inner {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+}
