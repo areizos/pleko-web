@@ -25,6 +25,9 @@
   --color-primary-hover: #004d4d;
   --color-accent: #8ff6d0;             /* mint — small highlights only */
   --color-accent-text: #007257;
+  --color-accent-soft: #e1f5ee;        /* pale mint — icon backgrounds */
+  --color-border: #e3e8e7;             /* hairline dividers between sections and cards */
+  --color-dark: #0b3d3d;               /* dark teal — closing booking band */
 
   /* Type */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -38,7 +41,7 @@
 
   /* Layout */
   --content-width: 46rem;
-  --content-width-wide: 64rem;
+  --content-width-wide: 75rem;
 }
 
 /* ---------- 2. Base / reset ---------------------------------------------- */
@@ -99,16 +102,67 @@ a {
   margin: 0 0 0.75rem;
 }
 
+/* ---------- Shared section pieces --------------------------------------- */
+section {
+  scroll-margin-top: 64px; /* so menu links don't land under the sticky menu bar */
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.h2--italic {
+  font-style: italic;
+}
+
+.lead {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 47.5rem;
+  margin-bottom: 3rem;
+}
+
+.section-head .section-label {
+  margin: 0;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-text);
+  background: var(--color-accent);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  display: inline-block;
+  align-self: flex-start;
+}
+
 /* ---------- Buttons -------------------------------------------------- */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  min-height: 48px;
+  padding: 0.6rem 1.5rem;
+  text-align: center;
   border-radius: var(--radius-md);
   font-weight: 600;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
 }
 
@@ -125,63 +179,74 @@ a {
 .btn--ghost {
   background: transparent;
   color: var(--color-primary);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .btn--ghost:hover {
   text-decoration: underline;
 }
 
-.btn--lg {
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-}
-
-/* ---------- Header ----------------------------------------------------- */
+/* ---------- Menu bar (sticky) --------------------------------------------
+   Logo, the four section links and the language toggle. Stays pinned to the
+   top of the window while scrolling; kept slim so it takes little space.
+   ------------------------------------------------------------------------ */
 .site-header {
-  border-bottom: 1px solid var(--color-outline-variant);
-  background: var(--color-background);
   position: sticky;
   top: 0;
   z-index: 10;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .site-header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  gap: 1.75rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+
+.brand {
+  display: flex;
+  flex-shrink: 0;
 }
 
 .brand__logo {
-  height: 28px;
+  height: 26px;
   width: auto;
 }
 
-.header-links {
+.menu {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.75rem;
+  overflow-x: auto; /* on narrow phones the links scroll sideways instead of wrapping */
+  scrollbar-width: none;
 }
 
-.header-links a {
+.menu::-webkit-scrollbar {
+  display: none;
+}
+
+.menu a {
+  font-size: 0.95rem;
+  font-weight: 500;
   color: var(--color-text-muted);
-  display: flex;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0.5rem 0.25rem;
 }
 
-.header-links a:hover {
+.menu a:hover {
   color: var(--color-primary);
 }
 
-.header-links svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-/* Language toggle — small pill with the two language codes, current one
-   highlighted. Sits at the start of the header links. */
+/* Language toggle — small pill on the right of the menu bar, current
+   language highlighted. */
 .lang-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   font-family: var(--font-mono);
@@ -195,7 +260,7 @@ a {
 
 .lang-toggle a {
   display: inline-block;
-  padding: 0.2rem 0.55rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 999px;
   text-decoration: none;
   color: var(--color-text-muted);
@@ -210,25 +275,29 @@ a {
   color: #fff;
 }
 
-/* ---------- Hero --------------------------------------------------------
-   The faint dot pattern echoes the little scattered dots in the original
-   pleko hero image, done here in pure CSS via a repeating radial gradient
-   — no image file needed.
-   ------------------------------------------------------------------------ */
+/* ---------- Hero --------------------------------------------------------- */
 .hero {
-  padding: 5rem 0 4rem;
-  background-image: radial-gradient(var(--color-outline-variant) 1px, transparent 1px);
-  background-size: 28px 28px;
-  background-position: -14px -14px;
+  padding: clamp(3.5rem, 7vw, 6.5rem) 0 clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  max-width: 46rem;
+}
+
+.hero__copy .eyebrow {
+  margin: 0;
 }
 
 .hero__title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
-  line-height: 1.15;
-  margin: 0 0 1.25rem;
-  max-width: 20ch;
+  font-size: clamp(2.6rem, 5.2vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
 }
 
 .hero__accent {
@@ -237,212 +306,374 @@ a {
 }
 
 .hero__tagline {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  line-height: 1.6;
   color: var(--color-text-muted);
-  max-width: 42ch;
-  margin: 0 0 2rem;
+  max-width: 34em;
+  margin: 0;
 }
 
 .hero__cta {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0.75rem 1.5rem;
   flex-wrap: wrap;
 }
 
-/* ---------- The name ------------------------------------------------------
-   Two-column: wordmark on one side, the etymology on the other —
-   echoes the layout from the original pitch-deck slide this copy came from.
-   ------------------------------------------------------------------------ */
-.name-story {
-  padding: 4.5rem 0 3rem;
+.hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
 }
 
-.name-story__inner {
-  display: grid;
-  grid-template-columns: minmax(180px, 1fr) 1.6fr;
+.hero__trust span[aria-hidden] {
+  color: var(--color-outline-variant);
+}
+
+/* ---------- 01 Pain points ------------------------------------------------ */
+.pains {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.pains__inner {
+  display: flex;
+  flex-wrap: wrap;
   gap: 3rem;
-  align-items: center;
 }
 
-.name-story__logo {
-  width: 100%;
-  max-width: 260px;
+.pains__intro {
+  flex: 1 1 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.name-story__text {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  line-height: 1.6;
-  color: var(--color-text-muted);
+.pains__intro .section-label {
   margin: 0;
 }
 
-.name-story__text strong {
-  color: var(--color-primary);
-  font-weight: 600;
+.pains__grid {
+  flex: 2 1 35rem;
+  min-width: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
-/* ---------- About -------------------------------------------------------- */
-.about {
-  padding: 4rem 0;
-}
-
-.about .wrap {
-  max-width: var(--content-width);
-}
-
-.about__text {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
+.pains__grid li {
+  background: var(--color-background);
+  padding: 1.75rem;
+  font-size: 1.125rem;
   line-height: 1.5;
-  color: var(--color-text);
-  margin: 0 0 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.about__note {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--color-accent-text);
-  background: var(--color-accent);
-  display: inline-block;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
+.pains__grid .section-label {
   margin: 0;
 }
 
-/* ---------- What I do ----------------------------------------------------- */
-.what-i-do {
-  padding: 4rem 0;
+/* ---------- 02 Services --------------------------------------------------- */
+.services {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
   background: var(--color-surface);
-  border-top: 1px solid var(--color-outline-variant);
-  border-bottom: 1px solid var(--color-outline-variant);
-}
-
-.what-i-do__heading {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 600;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  max-width: 32ch;
-  margin: 0 0 1.25rem;
-}
-
-.what-i-do__intro {
-  font-size: 1.05rem;
-  line-height: 1.65;
-  color: var(--color-text-muted);
-  max-width: 60ch;
-  margin: 0 0 2.5rem;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
 .card {
   background: var(--color-background);
-  border: 1px solid var(--color-outline-variant);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.card__index {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--color-accent-text);
-  background: var(--color-accent);
-  border-radius: 999px;
-  padding: 0.15rem 0.6rem;
-  display: inline-block;
-  margin-bottom: 1rem;
+.card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .card h3 {
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin: 0 0 0.5rem;
+  margin: 0;
 }
 
 .card p {
   color: var(--color-text-muted);
-  font-size: 0.95rem;
   margin: 0;
 }
 
-/* ---------- Ideas (Substack) --------------------------------------------- */
-.ideas {
-  padding: 4rem 0;
-  border-bottom: 1px solid var(--color-outline-variant);
+.card__examples {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
-.ideas .wrap {
-  max-width: var(--content-width);
+.card__examples .section-label {
+  margin: 0;
 }
 
-.ideas__heading {
+.card__examples p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.75rem;
+  margin: 2.5rem 0 0;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.tools .section-label {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ---------- 03 How I work ------------------------------------------------- */
+.process {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  border-top: 3px solid var(--color-primary);
+  padding-top: 1.25rem;
+}
+
+/* The four top borders go from deep teal to mint, like the logo underline */
+.step--2 { border-top-color: #2f8a83; }
+.step--3 { border-top-color: #5fbfa6; }
+.step--4 { border-top-color: var(--color-accent); }
+
+.step h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.step p {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ---------- 04 About ------------------------------------------------------ */
+.about {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.about__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.about__inner .section-label {
+  margin: 0;
+}
+
+.about__text {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.about .lead {
+  font-size: 1.05rem;
+}
+
+.about__inner > *,
+.ideas__inner > * {
+  max-width: 50rem; /* readable line length, but left-aligned like the other sections */
+}
+
+/* The name story: πλέκω next to a short explanation */
+.name-note {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.name-note__word {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 600;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  margin: 0 0 1rem;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--color-primary);
+  white-space: nowrap;
 }
 
-.ideas__text {
-  font-size: 1.05rem;
-  line-height: 1.65;
+.name-note p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--color-text-muted);
-  max-width: 60ch;
-  margin: 0 0 1.75rem;
 }
 
-/* Line the link up with the paragraph above it */
-.ideas .btn--ghost {
-  padding-left: 0;
+/* ---------- 05 Ideas (Substack) ------------------------------------------- */
+.ideas {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
 }
 
-/* ---------- Contact -------------------------------------------------------- */
+.ideas__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.ideas__inner .section-label {
+  margin: 0;
+}
+
+/* ---------- 06 Book a call ------------------------------------------------
+   Dark teal closing band: text and contact links on the left, a compact
+   Cal.com calendar in a white card on the right.
+   ------------------------------------------------------------------------ */
 .contact {
-  padding: 5rem 0;
-  text-align: center;
+  background: var(--color-dark);
+  color: #fff;
+  padding: clamp(4rem, 7vw, 7rem) 0;
+}
+
+.contact__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3rem;
+}
+
+.contact__copy {
+  flex: 1 1 26rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact .section-label {
+  color: var(--color-accent);
+  margin: 0;
 }
 
 .contact__heading {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
-  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0;
 }
 
 .contact__subtext {
-  color: var(--color-text-muted);
-  font-size: 1.05rem;
-  margin: 0 0 2rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #cfe3e1;
+  margin: 0;
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+}
+
+.contact__links a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #5fbfa6;
+}
+
+.contact__links a:hover {
+  color: var(--color-accent);
+}
+
+.contact__calendar {
+  flex: 1 1 26rem;
+  max-width: 34rem;
+  min-width: 0;
+  background: #fff;
+  color: var(--color-text);
+  border-radius: 1.25rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
 }
 
 .cal-embed {
   width: 100%;
-  min-height: 650px;
-  margin: 0 auto 2rem;
-  border: 1px solid var(--color-outline-variant);
-  border-radius: var(--radius-lg);
+  min-height: 440px;
   overflow: hidden;
-  background: var(--color-surface);
-  text-align: left; /* the calendar's own layout, not centered like the rest of .contact */
-}
-
-@media (max-width: 720px) {
-  .cal-embed {
-    min-height: 780px; /* Cal.com stacks month view above time slots on narrow screens, so needs more height */
-  }
+  border-radius: var(--radius-lg);
 }
 
 /* ---------- Footer -------------------------------------------------------- */
 .site-footer {
-  border-top: 1px solid var(--color-outline-variant);
+  border-top: 1px solid var(--color-border);
   padding: 1.5rem 0;
 }
 
@@ -450,18 +681,22 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.85rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
   color: var(--color-label);
 }
 
 .footer-links {
   display: flex;
-  gap: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
 }
 
 .footer-links a {
   text-decoration: none;
-  color: var(--color-label);
+  color: var(--color-text-muted);
+  padding: 0.35rem 0;
 }
 
 .footer-links a:hover {
@@ -469,34 +704,35 @@ a {
 }
 
 /* ---------- Responsive ---------------------------------------------------- */
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .cards {
     grid-template-columns: 1fr;
   }
 
-  .name-story__inner {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header__inner {
+    gap: 1rem;
+  }
+
+  .menu {
+    gap: 1rem;
+  }
+
+  .brand__logo {
+    height: 22px;
+  }
+
+  .pains__grid,
+  .steps {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    text-align: left;
   }
 
-  .name-story__logo {
-    max-width: 200px;
-  }
-
-  .hero {
-    padding: 3rem 0 2.5rem;
-  }
-
-  .about,
-  .what-i-do,
-  .ideas {
-    padding: 3rem 0;
-  }
-
-  .site-footer__inner {
+  .name-note {
     flex-direction: column;
-    gap: 0.75rem;
-    text-align: center;
   }
 }
