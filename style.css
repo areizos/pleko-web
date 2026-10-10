@@ -107,6 +107,12 @@ section {
   scroll-margin-top: 64px; /* so menu links don't land under the sticky menu bar */
 }
 
+@media (max-width: 600px) {
+  section {
+    scroll-margin-top: 96px; /* the menu bar is two lines tall on phones */
+  }
+}
+
 .h2 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -714,12 +720,29 @@ section {
 }
 
 @media (max-width: 600px) {
+  /* Phones: the menu bar becomes two lines so every link is always visible.
+     Line 1: logo on the left, language toggle on the right.
+     Line 2: the four section links, spread across the full width. */
   .site-header__inner {
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+
+  .lang-toggle {
+    order: 2;
   }
 
   .menu {
-    gap: 1rem;
+    order: 3;
+    flex: 1 1 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+    overflow-x: visible;
+  }
+
+  .menu a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0;
   }
 
   .brand__logo {
