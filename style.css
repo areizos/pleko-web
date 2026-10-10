@@ -609,7 +609,8 @@ section {
 }
 
 .contact__copy {
-  flex: 1 1 26rem;
+  flex: 1 1 100%;
+  max-width: 46rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -653,9 +654,12 @@ section {
   color: var(--color-accent);
 }
 
+/* The calendar takes the full width under the text: at this width Cal.com
+   uses its compact desktop layout (month grid with the time slots in a short
+   scrolling column beside it). In a narrow box it falls back to its phone
+   layout, a single very long column of full-width time buttons. */
 .contact__calendar {
-  flex: 1 1 26rem;
-  max-width: 34rem;
+  flex: 1 1 100%;
   min-width: 0;
   background: #fff;
   color: var(--color-text);
@@ -666,7 +670,7 @@ section {
 
 .cal-embed {
   width: 100%;
-  min-height: 440px;
+  min-height: 420px;
   overflow: hidden;
   border-radius: var(--radius-lg);
 }
