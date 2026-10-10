@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css?v=4" />
+    <link rel="stylesheet" href="style.css?v=6" />
 </head>
 <body>
 
@@ -233,18 +233,11 @@
           <h2 class="contact__heading">¿Tienes un flujo de trabajo que merece la pena domar?</h2>
           <p class="contact__subtext">Reserva una llamada gratuita de 20 minutos. Me cuentas qué te frena y te digo con sinceridad si pleko encaja.</p>
           <div class="contact__links">
+            <!-- Opens the Cal.com booking calendar in a pop-up (script at the bottom of the page) -->
+            <button type="button" class="btn btn--mint" data-cal-link="pleko" data-cal-config='{"layout":"month_view"}'>Elegir día y hora</button>
             <a href="mailto:alex@pleko.es">alex@pleko.es</a>
             <a href="https://wa.me/34656310631" target="_blank" rel="noopener">WhatsApp</a>
           </div>
-        </div>
-
-        <!--
-          Cal.com inline embed. The div below is turned into the booking
-          calendar by the script at the bottom of the page (search for
-          "Cal.com embed"). It sits in a compact white card next to the text.
-        -->
-        <div class="contact__calendar">
-          <div id="my-cal-inline" class="cal-embed" data-cal-link="pleko"></div>
         </div>
       </div>
     </section>
@@ -270,8 +263,9 @@
   <!--
     Cal.com embed — this is Cal.com's own standard snippet (copied as-is from
     their embed instructions, not something hand-written), it just loads
-    their booking widget script and tells it to render inline into the
-    #my-cal-inline div above, themed with pleko's teal. Event details are hidden to keep the calendar compact.
+    their booking widget script. Any element with data-cal-link (the
+    booking button in the contact section) opens the calendar in a pop-up,
+    themed with pleko's teal.
   -->
   <script type="text/javascript">
     (function (C, A, L) {
@@ -303,15 +297,10 @@
 
     Cal("init", { origin: "https://cal.com" });
 
-    Cal("inline", {
-      elementOrSelector: "#my-cal-inline",
-      calLink: "pleko",
-      layout: "month_view",
-    });
 
     Cal("ui", {
       styles: { branding: { brandColor: "#006565" } },
-      hideEventTypeDetails: true,
+      hideEventTypeDetails: false,
       layout: "month_view",
     });
   </script>

@@ -609,7 +609,8 @@ section {
 }
 
 .contact__copy {
-  flex: 1 1 26rem;
+  flex: 1 1 100%;
+  max-width: 46rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -638,10 +639,26 @@ section {
 .contact__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 2rem;
+  align-items: center;
+  gap: 1rem 2rem;
+  padding-top: 0.5rem;
 }
 
-.contact__links a {
+/* Booking button: mint on the dark band; opens the Cal.com pop-up */
+.btn--mint {
+  background: var(--color-accent);
+  color: var(--color-dark);
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn--mint:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.contact__links a:not(.btn) {
   color: #fff;
   font-weight: 600;
   text-decoration: none;
@@ -649,26 +666,8 @@ section {
   border-bottom: 1px solid #5fbfa6;
 }
 
-.contact__links a:hover {
+.contact__links a:not(.btn):hover {
   color: var(--color-accent);
-}
-
-.contact__calendar {
-  flex: 1 1 26rem;
-  max-width: 34rem;
-  min-width: 0;
-  background: #fff;
-  color: var(--color-text);
-  border-radius: 1.25rem;
-  padding: 0.5rem;
-  box-sizing: border-box;
-}
-
-.cal-embed {
-  width: 100%;
-  min-height: 440px;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
 }
 
 /* ---------- Footer -------------------------------------------------------- */
