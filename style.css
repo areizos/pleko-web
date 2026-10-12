@@ -599,30 +599,58 @@ section {
   line-height: 1.5;
 }
 
+/* Two boxes side by side: the tools people already use on the left,
+   the ones we add on the right (pale mint). Stacked on phones. */
 .tools {
   display: grid;
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
   margin: 2.5rem 0 0;
 }
 
 .tools__row {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1.75rem;
+  align-content: flex-start;
+  gap: 0.5rem;
   margin: 0;
+  padding: 1.5rem;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   font-weight: 600;
-  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  color: var(--color-text);
 }
 
 .tools .section-label {
-  margin: 0;
+  flex-basis: 100%;
+  margin: 0 0 0.5rem;
   font-weight: 400;
+  line-height: 1.5;
 }
 
-/* Second line: the new tools, in the brand teal so they read as "next step" */
+/* Each tool as a small pill */
+.tools__row > span:not(.section-label) {
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: var(--color-surface);
+}
+
 .tools__row--new {
+  background: var(--color-accent-soft);
+  border-color: transparent;
   color: var(--color-primary);
+}
+
+.tools__row--new > span:not(.section-label) {
+  background: var(--color-background);
+}
+
+@media (max-width: 600px) {
+  .tools {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---------- 03 How I work ------------------------------------------------- */
