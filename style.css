@@ -600,11 +600,17 @@ section {
 }
 
 .tools {
+  display: grid;
+  gap: 1.25rem;
+  margin: 2.5rem 0 0;
+}
+
+.tools__row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem 1.75rem;
-  margin: 2.5rem 0 0;
+  margin: 0;
   font-weight: 600;
   color: var(--color-text-muted);
 }
@@ -612,6 +618,11 @@ section {
 .tools .section-label {
   margin: 0;
   font-weight: 400;
+}
+
+/* Second line: the new tools, in the brand teal so they read as "next step" */
+.tools__row--new {
+  color: var(--color-primary);
 }
 
 /* ---------- 03 How I work ------------------------------------------------- */
