@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="../style.css?v=7" />
+  <link rel="stylesheet" href="../style.css?v=8" />
 </head>
 <body>
 
@@ -88,6 +88,14 @@
             <span>Direct attention, start to finish</span><span aria-hidden="true">·</span>
             <span>English and Spanish</span>
           </p>
+        </div>
+
+        <div class="hero__visual-wrap">
+          <div class="hero__visual" id="hero-anim" data-label="Animation: six apps go from copying and pasting by hand to being connected, talking to each other and producing the result on their own."></div>
+          <button class="hero__pause" type="button" aria-pressed="false" aria-label="Pause animation">
+            <svg class="hero__pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10M11 3v10" /></svg>
+            <svg class="hero__play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z" /></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -316,5 +324,6 @@
       layout: "month_view",
     });
   </script>
+  <script src="../hero-animation.js?v=1" defer></script>
 </body>
 </html>

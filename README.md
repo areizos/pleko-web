@@ -8,6 +8,7 @@ open `index.html` in a browser and that's the whole app.
 ```
 index.html   the page content and structure (all of it — one file)
 style.css    every color, font and layout rule
+hero-animation.js  draws the animated hero picture (apps going from copy-paste to connected)
 assets/      logo + favicon images
 CNAME        tells GitHub Pages which custom domain to serve this under
 ```
