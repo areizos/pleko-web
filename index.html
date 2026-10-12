@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css?v=8" />
+    <link rel="stylesheet" href="style.css?v=9" />
 </head>
 <body>
 
@@ -176,11 +176,18 @@
             </div>
           </div>
         </div>
-        <p class="tools">
-          <span class="section-label">Trabajo con lo que ya usas</span>
-          <span>n8n</span><span>Make</span><span>Zapier</span><span>Airtable</span><span>Notion</span>
-          <span>Google Workspace</span><span>Microsoft 365</span><span>Claude</span><span>ChatGPT</span>
-        </p>
+        <!-- Tools in two lines: first what people already use, then the
+             automation tools they have probably heard of but don't use yet -->
+        <div class="tools">
+          <p class="tools__row">
+            <span class="section-label">Empezamos con lo que ya usas</span>
+            <span>Google Workspace</span><span>Google Drive</span><span>Microsoft 365</span><span>Excel</span><span>PowerPoint</span><span>ChatGPT</span><span>Claude</span>
+          </p>
+          <p class="tools__row tools__row--new">
+            <span class="section-label">Y sumamos solo las que necesites, sin prisas y aprendiendo juntos</span>
+            <span>n8n</span><span>Make</span><span>Zapier</span><span>Airtable</span><span>Notion</span><span>Tally</span><span>Perplexity</span>
+          </p>
+        </div>
       </div>
     </section>
 
