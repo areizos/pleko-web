@@ -744,32 +744,82 @@ section {
   max-width: 50rem; /* readable line length, but left-aligned like the other sections */
 }
 
-/* The name story: πλέκω next to a short explanation */
+/* The name story: πλέκω as a little dictionary entry. The Greek word sits
+   centred in a pale mint panel, underlined by the same teal-to-mint thread
+   as the logo, with the explanation beside it (stacked on phones). */
 .name-note {
-  display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
-  background: var(--color-background);
+  display: grid;
+  grid-template-columns: minmax(11rem, 14rem) 1fr;
+  align-items: stretch;
+  width: 100%;
+  background: #fff;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(11, 61, 61, 0.04), 0 8px 24px -12px rgba(11, 61, 61, 0.12);
+}
+
+.name-note__mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem 1.5rem;
+  background: var(--color-accent-soft);
+  text-align: center;
 }
 
 .name-note__word {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 600;
-  font-size: 1.9rem;
+  font-size: 2.5rem;
   line-height: 1;
   color: var(--color-primary);
   white-space: nowrap;
 }
 
+.name-note__thread {
+  display: block;
+  width: 4.5rem;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+.name-note__say {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-text);
+}
+
 .name-note p {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  align-self: center;
+  padding: 1.75rem 2rem;
+  font-size: 1rem;
+  line-height: 1.65;
   color: var(--color-text-muted);
+}
+
+.name-note em {
+  color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  .name-note {
+    grid-template-columns: 1fr;
+  }
+
+  .name-note__mark {
+    padding: 1.75rem 1.25rem 1.5rem;
+  }
+
+  .name-note p {
+    padding: 1.5rem 1.25rem;
+  }
 }
 
 /* ---------- 05 Ideas (Substack) ------------------------------------------- */
@@ -818,11 +868,13 @@ section {
   margin: 0;
 }
 
+/* Same size and weight as the other section headings (.h2) */
 .contact__heading {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  line-height: 1.1;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   margin: 0;
 }
 
