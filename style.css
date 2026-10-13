@@ -28,7 +28,7 @@
   --color-accent-soft: #e1f5ee;        /* pale mint — icon backgrounds */
   --color-border: #e3e8e7;             /* hairline dividers between sections and cards */
   --color-dark: #0b3d3d;               /* dark teal — closing booking band */
-  --color-signal: #cc5500;             /* burnt orange — tiny details only (dots, the κ), never buttons */
+  --color-signal: #cc5500;             /* burnt orange — tiny details only (section dots), never buttons */
 
   /* Type */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -327,11 +327,6 @@ section {
 .hero__accent {
   font-style: italic;
   color: var(--color-primary);
-}
-
-/* The Greek κ in "pleκo" is the one orange letter on the page */
-.hero__kappa {
-  color: var(--color-signal);
 }
 
 .hero__tagline {
