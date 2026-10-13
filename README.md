@@ -11,6 +11,9 @@ style.css    every color, font and layout rule
 hero-animation.js  draws the animated hero picture (apps going from copy-paste to connected)
 assets/      logo + favicon images
 CNAME        tells GitHub Pages which custom domain to serve this under
+og-es.png / og-en.png  the preview image shown when the site is shared (LinkedIn, WhatsApp…)
+sitemap.xml  list of pages for search engines (update lastmod when content changes)
+robots.txt   tells search engines they may crawl everything and where the sitemap is
 ```
 
 ## Editing
