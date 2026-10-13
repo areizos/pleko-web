@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fcf9f8" />
   <title>FAQ about AI and workflow automation | pleko</title>
   <meta name="description" content="Straight answers on how I work: tools, AI, timing, your data and what happens after the project. Everything lives in your accounts, and I'll teach you how to do it yourself." />
   <link rel="canonical" href="https://pleko.es/en/faq/" />
@@ -215,7 +216,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/style.css?v=15" />
+  <link rel="stylesheet" href="/style.css?v=16" />
 </head>
 <body>
 
@@ -232,6 +233,7 @@
         <a href="/en/#about">About</a>
         <a href="/en/#ideas">Ideas</a>
       </nav>
+      <a href="/en/#book" class="btn btn--primary header-cta" tabindex="-1" aria-hidden="true">Book a call</a>
       <div class="lang-toggle" aria-label="Language">
         <a href="/preguntas-frecuentes/">ES</a>
         <a href="/en/faq/" aria-current="page">EN</a>
@@ -426,14 +428,18 @@
       };
     })(window, "https://app.cal.com/embed/embed.js", "init");
 
-    Cal("init", { origin: "https://cal.com" });
-
-
-    Cal("ui", {
-      styles: { branding: { brandColor: "#006565" } },
-      hideEventTypeDetails: false,
-      layout: "month_view",
-    });
+    // Started by site.js once the page has loaded, or as soon as someone
+    // heads for the booking button, so it doesn't slow the first paint.
+    window.plekoLoadCal = function () {
+      window.plekoLoadCal = function () {}; // only once
+      Cal("init", { origin: "https://cal.com" });
+      Cal("ui", {
+        styles: { branding: { brandColor: "#006565" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    };
   </script>
-  </body>
+    <script src="/site.js?v=1" defer></script>
+</body>
 </html>

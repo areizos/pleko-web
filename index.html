@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fcf9f8" />
   <title>pleko · Consultor de IA y automatización de procesos</title>
   <meta name="description" content="Automatizo tareas repetitivas y conecto las herramientas que ya usas, con IA donde de verdad ahorra tiempo. Todo queda en tus cuentas y te enseño a hacerlo tú. Llamada gratuita de 20 min." />
   <link rel="canonical" href="https://pleko.es/" />
@@ -27,12 +28,6 @@
   <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png?v=3" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=3" />
 
-  <!--
-    Tally form popup: the diagnostic questionnaire button opens it in a window
-    on top of the page. Without this script the button still works as a plain
-    link to the form.
-  -->
-  <script async src="https://tally.so/widgets/embed.js"></script>
 
   <!--
     Language versions of this page. hreflang tells search engines "these
@@ -116,7 +111,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css?v=15" />
+    <link rel="stylesheet" href="style.css?v=16" />
 </head>
 <body>
 
@@ -133,6 +128,7 @@
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#ideas">Ideas</a>
       </nav>
+      <a href="#reserva" class="btn btn--primary header-cta" tabindex="-1" aria-hidden="true">Reservar llamada</a>
       <div class="lang-toggle" aria-label="Idioma">
         <a href="/" aria-current="page">ES</a>
         <a href="/en/">EN</a>
@@ -155,7 +151,7 @@
           </p>
           <div class="hero__cta">
             <a href="#reserva" class="btn btn--primary">Reserva una llamada gratuita de 20 min</a>
-            <a href="#servicios" class="btn btn--ghost">Ver servicios →</a>
+            <a href="#servicios" class="btn btn--ghost">Ver servicios <span class="arrow" aria-hidden="true">→</span></a>
           </div>
           <p class="hero__trust">
             <span>Estudio individual</span><span aria-hidden="true">·</span>
@@ -191,7 +187,7 @@
     </section>
 
     <!-- ============ DIAGNOSTIC (lead questionnaire) ============
-         The button opens the Tally form in a popup (script in <head>);
+         The button opens the Tally form in a popup (site.js loads Tally);
          without the script it is a plain link to the form. -->
     <section id="diagnostico" class="diagnostic">
       <div class="wrap diagnostic__inner">
@@ -200,7 +196,7 @@
           <h2 class="h2">¿Cuántas horas pierde tu equipo cada semana?</h2>
           <p class="lead">Responde 7 preguntas rápidas y verás al momento cuántas horas al año podríais recuperar. Después te escribo con 2 o 3 ideas concretas para tu caso, sin compromiso.</p>
         </div>
-        <a href="https://tally.so/r/gDy5D1" data-tally-open="gDy5D1" data-tally-layout="modal" data-tally-width="640" data-tally-emoji-animation="none" class="btn btn--primary">Haz el diagnóstico →</a>
+        <a href="https://tally.so/r/gDy5D1" data-tally-form="gDy5D1" class="btn btn--primary">Haz el diagnóstico <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -329,6 +325,12 @@
         <p class="lead">
           Lo he visto desde dentro: más de 15 años en marketing digital, entre Londres y Barcelona, siempre buscando una forma más sencilla de hacer las cosas. pleko es mi manera de ayudar a personas y empresas a dar ese salto, con calma y con honestidad, conectando las herramientas que ya usas en lugar de venderte otras nuevas. Trabajas directamente conmigo, y mi objetivo es sencillo: que las herramientas trabajen para ti y que tu equipo sepa seguir usándolas.
         </p>
+        <!-- A few figures; the numbers count up once when they come into view (site.js) -->
+        <ul class="stats">
+          <li><span class="stats__num"><span data-count="15">15</span>+</span> años en marketing digital</li>
+          <li><span class="stats__num"><span data-count="2">2</span></span> idiomas de trabajo: español e inglés</li>
+          <li><span class="stats__num"><span data-count="1">1</span></span> persona de principio a fin: yo</li>
+        </ul>
         <div class="name-note">
           <div class="name-note__mark">
             <span class="name-note__word" lang="grc">πλέκω</span>
@@ -337,7 +339,7 @@
           </div>
           <p>En griego antiguo, <em>pleko</em> significa «tejer» o «trenzar». Es la raíz de <em>complejo</em> y <em>plexo</em>: entrelazar cosas distintas hasta formar algo único. Eso es lo que hago con tus herramientas.</p>
         </div>
-        <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener" class="btn btn--ghost">Ver mi perfil en LinkedIn →</a>
+        <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener" class="btn btn--ghost">Ver mi perfil en LinkedIn <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -349,7 +351,7 @@
         <p class="lead">
           Escribo sobre lo que voy aprendiendo al llevar la IA y la automatización al trabajo real: lo que funciona, lo que no, y las ideas que todavía estoy desenredando. Si quieres ver cómo pienso antes de que hablemos, empieza por ahí.
         </p>
-        <a href="https://areizos.substack.com/" target="_blank" rel="noopener" class="btn btn--ghost">Lee mi Substack →</a>
+        <a href="https://areizos.substack.com/" target="_blank" rel="noopener" class="btn btn--ghost">Lee mi Substack <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -390,7 +392,7 @@
               <p>Estoy en Barcelona y trabajo con personas y empresas en español y en inglés, en remoto o en persona, lo que mejor funcione. Si tu oficina está a una distancia razonable voy encantado, y también viajo a Madrid u otras ciudades cuando el proyecto lo pide.</p>
             </details>
           </div>
-          <a href="/preguntas-frecuentes/" class="btn btn--ghost faq__more">Ver las 20 preguntas →</a>
+          <a href="/preguntas-frecuentes/" class="btn btn--ghost faq__more">Ver las 20 preguntas <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -466,15 +468,19 @@
       };
     })(window, "https://app.cal.com/embed/embed.js", "init");
 
-    Cal("init", { origin: "https://cal.com" });
-
-
-    Cal("ui", {
-      styles: { branding: { brandColor: "#006565" } },
-      hideEventTypeDetails: false,
-      layout: "month_view",
-    });
+    // Started by site.js once the page has loaded, or as soon as someone
+    // heads for the booking button, so it doesn't slow the first paint.
+    window.plekoLoadCal = function () {
+      window.plekoLoadCal = function () {}; // only once
+      Cal("init", { origin: "https://cal.com" });
+      Cal("ui", {
+        styles: { branding: { brandColor: "#006565" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    };
   </script>
   <script src="hero-animation.js?v=1" defer></script>
+  <script src="/site.js?v=1" defer></script>
 </body>
 </html>

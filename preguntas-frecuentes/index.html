@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fcf9f8" />
   <title>Preguntas frecuentes sobre IA y automatización de procesos | pleko</title>
   <meta name="description" content="Respuestas claras sobre cómo trabajo: herramientas, IA, plazos, tus datos y qué pasa después del proyecto. Todo queda en tus cuentas y te enseño a hacerlo tú." />
   <link rel="canonical" href="https://pleko.es/preguntas-frecuentes/" />
@@ -215,7 +216,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="/style.css?v=15" />
+    <link rel="stylesheet" href="/style.css?v=16" />
 </head>
 <body>
 
@@ -232,6 +233,7 @@
         <a href="/#sobre-mi">Sobre mí</a>
         <a href="/#ideas">Ideas</a>
       </nav>
+      <a href="/#reserva" class="btn btn--primary header-cta" tabindex="-1" aria-hidden="true">Reservar llamada</a>
       <div class="lang-toggle" aria-label="Idioma">
         <a href="/preguntas-frecuentes/" aria-current="page">ES</a>
         <a href="/en/faq/">EN</a>
@@ -426,14 +428,18 @@
       };
     })(window, "https://app.cal.com/embed/embed.js", "init");
 
-    Cal("init", { origin: "https://cal.com" });
-
-
-    Cal("ui", {
-      styles: { branding: { brandColor: "#006565" } },
-      hideEventTypeDetails: false,
-      layout: "month_view",
-    });
+    // Started by site.js once the page has loaded, or as soon as someone
+    // heads for the booking button, so it doesn't slow the first paint.
+    window.plekoLoadCal = function () {
+      window.plekoLoadCal = function () {}; // only once
+      Cal("init", { origin: "https://cal.com" });
+      Cal("ui", {
+        styles: { branding: { brandColor: "#006565" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    };
   </script>
-  </body>
+    <script src="/site.js?v=1" defer></script>
+</body>
 </html>
