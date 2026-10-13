@@ -951,10 +951,157 @@ section {
   color: var(--color-primary);
 }
 
+/* ---------- 03b Three promises -------------------------------------------
+   Three small cards under the process steps, each with a line icon.
+   ------------------------------------------------------------------------ */
+.promises {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.promises .section-label {
+  margin: 0;
+}
+
+.promises__grid {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.promise {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.promise h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.25;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.promise p {
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ---------- 06 FAQ -------------------------------------------------------
+   Heading on the left (sticks while you scroll on wide screens), questions
+   on the right. Each question is a <details> that opens on click.
+   ------------------------------------------------------------------------ */
+.faq {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.faq__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+.faq__head {
+  margin-bottom: 0;
+  position: sticky;
+  top: 96px;
+}
+
+.faq__head .lead a {
+  color: var(--color-primary);
+}
+
+.faq__group + .faq__group {
+  margin-top: 2.25rem;
+}
+
+.faq__group-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-label);
+  margin: 0 0 0.25rem;
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq__item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item summary::after {
+  content: "+";
+  flex: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-primary);
+  transition: transform 0.2s ease;
+}
+
+.faq__item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq__item summary:hover {
+  color: var(--color-primary);
+}
+
+.faq__item summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.faq__item p {
+  color: var(--color-text-muted);
+  margin: 0 0 1.25rem;
+  max-width: 40rem;
+}
+
 /* ---------- Responsive ---------------------------------------------------- */
 @media (max-width: 900px) {
-  .cards {
+  .cards,
+  .promises__grid,
+  .faq__inner {
     grid-template-columns: 1fr;
+  }
+
+  .faq__inner {
+    gap: 2rem;
+  }
+
+  .faq__head {
+    position: static;
   }
 
   .steps {
