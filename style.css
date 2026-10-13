@@ -1088,6 +1088,16 @@ section {
   max-width: 40rem;
 }
 
+/* "See all questions" link under the short homepage list */
+.faq__more {
+  margin-top: 1.75rem;
+}
+
+/* The FAQ page has no section above it, so drop the top border */
+.faq--page {
+  border-top: 0;
+}
+
 /* ---------- Responsive ---------------------------------------------------- */
 @media (max-width: 900px) {
   .cards,

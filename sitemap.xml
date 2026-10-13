@@ -15,4 +15,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/" />
   </url>
+  <url>
+    <loc>https://pleko.es/preguntas-frecuentes/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/preguntas-frecuentes/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/faq/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/preguntas-frecuentes/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/faq/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/preguntas-frecuentes/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/faq/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/preguntas-frecuentes/" />
+  </url>
 </urlset>
