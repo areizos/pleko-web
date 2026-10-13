@@ -148,7 +148,7 @@ function scene(host,cfg){
       set(c.b,{opacity:flash,transform:`translate(16 -20) scale(${since>0&&since<.25?1+since*1.6:1})`})});
   }
 
-  // Loop. Pauses with the button, while the hero is off screen, and never runs for reduced motion.
+  // Loop. Pauses with the button, while the hero is off screen or the tab is hidden, and never runs for reduced motion.
   render(17.2,true); // finished state: tools connected, result box full, all documents checked
   const btn=host.parentElement.querySelector(".hero__pause");
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){if(btn)btn.hidden=true;return}
@@ -158,6 +158,8 @@ function scene(host,cfg){
   const stop=()=>{cancelAnimationFrame(raf);raf=0};
   if(btn) btn.addEventListener("click",()=>{paused=!paused;btn.setAttribute("aria-pressed",paused);host.classList.toggle("is-paused",paused);paused?stop():run()});
   if("IntersectionObserver" in window) new IntersectionObserver(([e])=>{visible=e.isIntersecting;visible?run():stop()}).observe(host);
+  // Also rests while the tab is in the background.
+  document.addEventListener("visibilitychange",()=>{document.hidden?stop():run()});
   run();
 }
 

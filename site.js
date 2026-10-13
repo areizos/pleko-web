@@ -16,14 +16,14 @@
   var header = document.querySelector('.site-header');
 
   var text = en
-    ? { top: 'Back to top', whatsapp: 'Message me on WhatsApp' }
-    : { top: 'Volver arriba', whatsapp: 'Escríbeme por WhatsApp' };
+    ? { top: 'Back to top', whatsapp: 'Message me on WhatsApp', waText: 'Hi Alex, I found you on pleko.es. ' }
+    : { top: 'Volver arriba', whatsapp: 'Escríbeme por WhatsApp', waText: 'Hola Alex, vengo de pleko.es. ' };
 
   /* ---------- Floating buttons: WhatsApp (phones only) and back to top --- */
   var floating = document.createElement('div');
   floating.className = 'floating';
   floating.innerHTML =
-    '<a class="floating__btn floating__btn--wa" href="https://wa.me/34656310631" target="_blank" rel="noopener" aria-label="' + text.whatsapp + '">' +
+    '<a class="floating__btn floating__btn--wa" href="https://wa.me/34656310631?text=' + encodeURIComponent(text.waText) + '" target="_blank" rel="noopener" aria-label="' + text.whatsapp + '">' +
       '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3.5 20.5l1.5-4.2a8.5 8.5 0 1 1 15.5-4.7z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8a4.5 4.5 0 0 1-2.2-2.2l.8-1-1-2z"/></svg>' +
     '</a>' +
     '<button class="floating__btn floating__btn--top" type="button" aria-label="' + text.top + '">' +
@@ -321,6 +321,78 @@
   }
   if (document.readyState === 'complete') afterLoad();
   else window.addEventListener('load', afterLoad);
+
+  /* ---------- Language switch keeps your place ---------------------------
+     Switching ES ↔ EN while reading a section lands on the same section in
+     the other language (and on the FAQ page, on the same question). */
+  var sectionPairs = {
+    servicios: 'services', 'como-trabajo': 'how-i-work', 'sobre-mi': 'about', ideas: 'ideas',
+    preguntas: 'faq', reserva: 'book', diagnostico: 'diagnostic'
+  };
+  var faqItems = Array.prototype.slice.call(document.querySelectorAll('.faq--page .faq__item'));
+
+  function currentPlace() {
+    var line = window.innerHeight * 0.35;
+    var found = null;
+    var candidates = faqItems.length ? faqItems : document.querySelectorAll('main section[id]');
+    Array.prototype.forEach.call(candidates, function (el) {
+      if (el.getBoundingClientRect().top <= line) found = el;
+    });
+    return found;
+  }
+
+  document.querySelectorAll('.lang-toggle a:not([aria-current])').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var linked = faqItems.length && location.hash ? document.getElementById(location.hash.slice(1)) : null;
+      var place = linked && faqItems.indexOf(linked) !== -1 ? linked : (window.scrollY < 200 ? null : currentPlace());
+      if (!place) return;
+      var hash = '';
+      if (faqItems.length) {
+        hash = 'q' + (faqItems.indexOf(place) + 1);
+      } else {
+        var id = place.id;
+        if (en) {
+          Object.keys(sectionPairs).forEach(function (es) { if (sectionPairs[es] === id) hash = es; });
+        } else {
+          hash = sectionPairs[id] || '';
+        }
+      }
+      if (hash) link.href = link.href.split('#')[0] + '#' + hash;
+    });
+  });
+
+  /* ---------- Every FAQ question has its own link ------------------------
+     Opening /preguntas-frecuentes/#q-pasa-con-datos (or #q13, used by the
+     language switch) opens that answer; opening a question updates the
+     address bar so it can be copied and shared. */
+  function openFromHash() {
+    if (!faqItems.length || !location.hash) return;
+    var key = decodeURIComponent(location.hash.slice(1));
+    var item = /^q\d+$/.test(key) ? faqItems[parseInt(key.slice(1), 10) - 1] : document.getElementById(key);
+    if (!item || faqItems.indexOf(item) === -1) return;
+    if (/^q\d+$/.test(key) && item.id) history.replaceState(null, '', '#' + item.id);
+    item.open = true;
+    item.scrollIntoView({ block: 'start', behavior: 'auto' });
+  }
+
+  faqItems.forEach(function (item) {
+    item.addEventListener('toggle', function () {
+      if (item.open && item.id) history.replaceState(null, '', '#' + item.id);
+      else if (!item.open && location.hash === '#' + item.id) history.replaceState(null, '', location.pathname);
+    });
+  });
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+
+  /* ---------- Printing shows every FAQ answer, then puts things back ----- */
+  var openedForPrint = [];
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('details:not([open])').forEach(function (d) { d.open = true; openedForPrint.push(d); });
+  });
+  window.addEventListener('afterprint', function () {
+    openedForPrint.forEach(function (d) { d.open = false; });
+    openedForPrint = [];
+  });
 
   onScroll();
 })();

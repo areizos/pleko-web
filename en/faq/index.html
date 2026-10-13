@@ -216,9 +216,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/style.css?v=16" />
+  <link rel="stylesheet" href="/style.css?v=17" />
 </head>
 <body>
+  <a class="skip-link" href="#top">Skip to content</a>
 
   <!-- ============ MENU BAR ============
        Sticks to the top of the window while scrolling (position: sticky in style.css). -->
@@ -252,105 +253,105 @@
         <div class="section-head faq__head">
           <p class="section-label">Frequently asked questions</p>
           <h1 class="h2">What people usually ask before the first call.</h1>
-          <p class="lead">Can't see your question? Email me at <a href="mailto:alex@pleko.es">alex@pleko.es</a> and I'll answer it myself.</p>
+          <p class="lead">Can't see your question? Email me at <a href="mailto:alex@pleko.es?subject=Enquiry%20from%20pleko.es">alex@pleko.es</a> and I'll answer it myself.</p>
         </div>
         <div class="faq__list">
           <div class="faq__group">
             <h3 class="faq__group-title">Getting started</h3>
-            <details class="faq__item">
+            <details class="faq__item" id="q-exactly-does-pleko">
               <summary>What exactly does pleko do?</summary>
               <p>I help you get rid of manual, repetitive work. I connect the tools you already use, automate the steps you do by hand today and add AI only where it really saves time. You end up with clear workflows that run on their own, and you understand how they work.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-who-for">
               <summary>Who is it for?</summary>
               <p>For people and companies who feel they lose hours to work a machine could do. Industry and size don't matter: if you copy data from one place to another, or a report eats your morning, there's a thread worth pulling.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-need-be-technical">
               <summary>Do I need to be technical?</summary>
               <p>No. You know your work and I handle the technical side. I explain everything in plain words and, if you want, I'll teach you how to do it yourself.</p>
             </details>
-            <details class="faq__item">
-              <summary>What happens on the 20-minute call?</summary>
+            <details class="faq__item" id="q-happens-on-20">
+              <summary>What happens on the 20&#8209;minute call?</summary>
               <p>You tell me how you work today and what's slowing you down. I ask questions, share one or two concrete ideas and tell you honestly whether it makes sense to go further. No sales pitch, no commitment.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-2-minute-diagnostic">
               <summary>What is the 2-minute diagnostic?</summary>
               <p>Seven quick questions that estimate how many hours a year you could get back. Afterwards I write to you with 2 or 3 ideas for your case. It's free and there are no strings attached.</p>
             </details>
           </div>
           <div class="faq__group">
             <h3 class="faq__group-title">Tools and AI</h3>
-            <details class="faq__item">
+            <details class="faq__item" id="q-have-change-tools-use">
               <summary>Do I have to change the tools I use?</summary>
               <p>Almost never. I start with what you already have (Google Workspace, Microsoft 365, Excel, your CRM) and get them talking to each other. I only suggest something new if it really saves you work.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-which-tools-you-work">
               <summary>Which tools do you work with?</summary>
               <p>The ones you already use. When needed, I add automation tools like n8n, Make or Zapier, databases like Airtable or Notion, and AI models like ChatGPT or Claude. I pick the simplest one that solves the problem, not the trendiest.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-n8n-make-or-zapier">
               <summary>n8n, Make or Zapier: which one do I need?</summary>
               <p>It depends on how much you'll automate, who will maintain it and what you want to spend each month. I walk you through it with your numbers and we choose together. The tool matters less than a workflow that makes sense.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-we-tried-ai-didn">
               <summary>We tried AI and it didn't stick. What's different?</summary>
               <p>It usually fails because AI is tried “in general” rather than inside a specific everyday task. I start with one real process, untangle it, then automate it. Automating a tangled process just tangles it faster.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-will-ai-replace-people">
               <summary>Will AI replace my people?</summary>
               <p>That's not the idea. The idea is that your people stop copying and pasting and spend their time on work that needs judgement. Important decisions stay with a person.</p>
             </details>
           </div>
           <div class="faq__group">
             <h3 class="faq__group-title">Timing</h3>
-            <details class="faq__item">
+            <details class="faq__item" id="q-how-soon-will-something">
               <summary>How soon will something be working?</summary>
               <p>I work in short phases, so you can usually try something in the first week. A simple workflow can be ready in days; a project with several parts takes a few weeks.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-if-something-isn-t">
               <summary>What if something isn't worth automating?</summary>
               <p>I'll tell you first. Sometimes the best fix is changing one step, not buying a tool. I'd rather save you money than sell you something you don't need.</p>
             </details>
           </div>
           <div class="faq__group">
             <h3 class="faq__group-title">Data and safety</h3>
-            <details class="faq__item">
+            <details class="faq__item" id="q-about-data">
               <summary>What about my data?</summary>
               <p>Everything lives in your accounts, documented and yours. I use the minimum permissions needed, follow GDPR and can sign an NDA if you need one.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-who-owns-you-build">
               <summary>Who owns what you build?</summary>
               <p>You do. The workflows, accounts and documentation are in your name from day one. If we stop working together tomorrow, everything keeps running.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-if-ai-gets-wrong">
               <summary>What if the AI gets it wrong?</summary>
               <p>It can happen, so I design things so that nothing important reaches a customer without a person checking it. AI drafts, your people decide.</p>
             </details>
           </div>
           <div class="faq__group">
             <h3 class="faq__group-title">After the project</h3>
-            <details class="faq__item">
+            <details class="faq__item" id="q-happens-when-you-re">
               <summary>What happens when you're done?</summary>
               <p>Everything is documented and lives in your accounts. I leave you training materials and teach you or your team how to use the workflows and change them when needed.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-you-offer-maintenance-or">
               <summary>Do you offer maintenance or support?</summary>
               <p>Yes. I can review the workflows each month, keep them up to date and adjust what changes.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-you-run-training-or">
               <summary>Do you run training or workshops?</summary>
               <p>Yes. Hands-on workshops so your people use AI in their everyday work, with their own tasks rather than textbook examples.</p>
             </details>
           </div>
           <div class="faq__group">
             <h3 class="faq__group-title">About me</h3>
-            <details class="faq__item">
+            <details class="faq__item" id="q-where-are-you-based">
               <summary>Where are you based? Do you work remotely or in person?</summary>
               <p>I'm based in Barcelona and work with people and companies in English and Spanish, remotely or in person, whatever works best. If your office is within a reasonable distance I'm happy to come in, and I also travel to Madrid or other cities when a project needs it.</p>
             </details>
-            <details class="faq__item">
+            <details class="faq__item" id="q-why-one-person-studio">
               <summary>Why a one-person studio and not an agency?</summary>
-              <p>Because you always talk to me, from the first call to the last tweak, with no salespeople or middlemen. I've spent 15+ years in digital marketing, always obsessed with processes. Every project gets my direct attention.</p>
+              <p>Because you always talk to me, from the first call to the last tweak, with no salespeople or middlemen. I've spent 15+&nbsp;years in digital marketing, always obsessed with processes. Every project gets my direct attention.</p>
             </details>
           </div>
         </div>
@@ -363,12 +364,12 @@
         <div class="contact__copy">
           <p class="section-label">Let's talk</p>
           <h2 class="contact__heading">Got a workflow worth taming?</h2>
-          <p class="contact__subtext">Book a free 20-minute call. Tell me what's holding you back and I'll tell you honestly whether pleko is a fit.</p>
+          <p class="contact__subtext">Book a free 20&#8209;minute call. Tell me what's holding you back and I'll tell you honestly whether pleko is a fit.</p>
           <div class="contact__links">
             <!-- Opens the Cal.com booking calendar in a pop-up (script at the bottom of the page) -->
             <button type="button" class="btn btn--mint" data-cal-link="pleko" data-cal-config='{"layout":"month_view"}'>Pick a day and time</button>
-            <a href="mailto:alex@pleko.es">alex@pleko.es</a>
-            <a href="https://wa.me/34656310631" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="mailto:alex@pleko.es?subject=Enquiry%20from%20pleko.es">alex@pleko.es</a>
+            <a href="https://wa.me/34656310631?text=Hi%20Alex%2C%20I%20found%20you%20on%20pleko.es.%20" target="_blank" rel="noopener">WhatsApp</a>
           </div>
         </div>
       </div>
@@ -383,7 +384,7 @@
         <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://areizos.substack.com/" target="_blank" rel="noopener">Substack</a>
         <a href="https://github.com/areizos" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:alex@pleko.es">alex@pleko.es</a>
+        <a href="mailto:alex@pleko.es?subject=Enquiry%20from%20pleko.es">alex@pleko.es</a>
       </nav>
     </div>
   </footer>
@@ -440,6 +441,6 @@
       });
     };
   </script>
-    <script src="/site.js?v=1" defer></script>
+    <script src="/site.js?v=2" defer></script>
 </body>
 </html>
