@@ -28,6 +28,7 @@
   --color-accent-soft: #e1f5ee;        /* pale mint — icon backgrounds */
   --color-border: #e3e8e7;             /* hairline dividers between sections and cards */
   --color-dark: #0b3d3d;               /* dark teal — closing booking band */
+  --color-signal: #cc5500;             /* burnt orange — tiny details only (section dots), never buttons */
 
   /* Type */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -100,6 +101,23 @@ a {
   text-transform: uppercase;
   color: var(--color-label);
   margin: 0 0 0.75rem;
+}
+
+/* Numbered section labels ("01 — ¿Te suena?" etc.) get a small neon-orange dot */
+.section-head > .section-label::before,
+.pains__intro > .section-label::before,
+.diagnostic__copy > .section-label::before,
+.about__inner > .section-label::before,
+.ideas__inner > .section-label::before,
+.contact__copy > .section-label::before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.6rem;
+  border-radius: 50%;
+  background: var(--color-signal);
+  vertical-align: 0.05em;
 }
 
 /* ---------- Shared section pieces --------------------------------------- */
