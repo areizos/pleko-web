@@ -111,7 +111,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css?v=17" />
+    <link rel="stylesheet" href="style.css?v=18" />
 </head>
 <body>
   <a class="skip-link" href="#top">Saltar al contenido</a>
@@ -198,6 +198,35 @@
           <p class="lead">Responde 7 preguntas rápidas y verás al momento cuántas horas al año podríais recuperar. Después te escribo con 2 o 3 ideas concretas para tu caso, sin compromiso.</p>
         </div>
         <a href="https://tally.so/r/gDy5D1" data-tally-form="gDy5D1" class="btn btn--primary">Haz el diagnóstico <span class="arrow" aria-hidden="true">→</span></a>
+        <!-- Quick hours calculator: hidden until site.js runs it. 46 working weeks; hourly cost slider starts at ~20 € (Spanish office average). -->
+        <div class="calc" hidden aria-label="Calculadora rápida de horas" role="group" data-locale="es-ES">
+          <div class="calc__field">
+            <label for="calc-people">¿Cuántas personas hay en tu equipo?</label>
+            <div class="calc__control">
+              <input type="range" id="calc-people" min="1" max="50" step="1" value="3" />
+              <span class="calc__value" data-for="calc-people">3</span>
+            </div>
+          </div>
+          <div class="calc__field">
+            <label for="calc-hours">¿Cuántas horas a la semana pierde cada persona en tareas repetitivas?</label>
+            <div class="calc__control">
+              <input type="range" id="calc-hours" min="1" max="20" step="1" value="4" />
+              <span class="calc__value" data-for="calc-hours">4</span>
+            </div>
+          </div>
+          <div class="calc__field">
+            <label for="calc-rate">¿Cuánto cuesta una hora de trabajo? (€)</label>
+            <div class="calc__control">
+              <input type="range" id="calc-rate" min="10" max="100" step="5" value="20" />
+              <span class="calc__value" data-for="calc-rate">20</span>
+            </div>
+          </div>
+          <p class="calc__result" aria-live="polite">
+            <span class="calc__figure"><output class="calc__total" for="calc-hours calc-people">552</output> <span>horas al año</span></span>
+            <span class="calc__figure"><output class="calc__money" for="calc-hours calc-people calc-rate">11.040&nbsp;€</output> <span>al año en tiempo perdido</span></span>
+            <span class="calc__note">Estimación con 46 semanas laborables. Los 20&nbsp;€ por hora de partida son, aproximadamente, el coste medio de una hora de trabajo de oficina en España; ajústalo a tu caso. El diagnóstico te dice qué parte se puede automatizar.</span>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -352,6 +381,15 @@
         <p class="lead">
           Escribo sobre lo que voy aprendiendo al llevar la IA y la automatización al trabajo real: lo que funciona, lo que no, y las ideas que todavía estoy desenredando. Si quieres ver cómo pienso antes de que hablemos, empieza por ahí.
         </p>
+        <!-- Latest Substack post. Between the markers it is rewritten every
+             Saturday by .github/workflows/latest-post.yml; don't edit by hand. -->
+        <!-- latest-post:start -->
+        <a class="latest-post" href="https://areizos.substack.com/" target="_blank" rel="noopener" lang="es">
+          <span class="section-label">Último texto</span>
+          <span class="latest-post__title">La IA no es solo para los de arriba</span>
+          <span class="latest-post__sub">Primer texto: por qué creo que esta es la mayor oportunidad que hemos tenido en años, y por qué también es tuya</span>
+        </a>
+        <!-- latest-post:end -->
         <a href="https://areizos.substack.com/" target="_blank" rel="noopener" class="btn btn--ghost">Lee mi Substack <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </section>
@@ -482,6 +520,6 @@
     };
   </script>
   <script src="hero-animation.js?v=2" defer></script>
-  <script src="/site.js?v=2" defer></script>
+  <script src="/site.js?v=3" defer></script>
 </body>
 </html>

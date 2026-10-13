@@ -384,6 +384,42 @@
   openFromHash();
   window.addEventListener('hashchange', openFromHash);
 
+  /* ---------- Quick hours calculator (diagnostic band) -------------------
+     People × hours a week × 46 working weeks, and that time at the hourly
+     cost on the third slider (starts at 20 €, roughly the average cost of an
+     hour of office work in Spain). */
+  var calc = document.querySelector('.calc');
+  if (calc) {
+    var WEEKS = 46;
+    var locale = calc.getAttribute('data-locale') || 'es-ES';
+    var people = calc.querySelector('#calc-people');
+    var hours = calc.querySelector('#calc-hours');
+    var rate = calc.querySelector('#calc-rate');
+    var totalOut = calc.querySelector('.calc__total');
+    var moneyOut = calc.querySelector('.calc__money');
+    var number = new Intl.NumberFormat(locale);
+    var money = new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+    var paint = function (input) {
+      // fills the slider track up to the thumb
+      var pct = (input.value - input.min) / (input.max - input.min) * 100;
+      input.style.setProperty('--fill', pct + '%');
+      calc.querySelector('.calc__value[data-for="' + input.id + '"]').textContent = input.value;
+    };
+    var update = function () {
+      paint(people);
+      paint(hours);
+      paint(rate);
+      var total = people.value * hours.value * WEEKS;
+      totalOut.textContent = number.format(total);
+      moneyOut.textContent = money.format(total * rate.value);
+    };
+    people.addEventListener('input', update);
+    hours.addEventListener('input', update);
+    rate.addEventListener('input', update);
+    update();
+    calc.hidden = false;
+  }
+
   /* ---------- Printing shows every FAQ answer, then puts things back ----- */
   var openedForPrint = [];
   window.addEventListener('beforeprint', function () {

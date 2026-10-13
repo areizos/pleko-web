@@ -111,7 +111,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="../style.css?v=17" />
+  <link rel="stylesheet" href="../style.css?v=18" />
 </head>
 <body>
   <a class="skip-link" href="#top">Skip to content</a>
@@ -198,6 +198,35 @@
           <p class="lead">Answer 7 quick questions and see right away how many hours a year you could get back. Then I'll write to you with 2 or 3 concrete ideas for your case, no strings attached.</p>
         </div>
         <a href="https://tally.so/r/QKgAok" data-tally-form="QKgAok" class="btn btn--primary">Take the check <span class="arrow" aria-hidden="true">→</span></a>
+        <!-- Quick hours calculator: hidden until site.js runs it. 46 working weeks; hourly cost slider starts at ~20 € (Spanish office average). -->
+        <div class="calc" hidden aria-label="Quick hours calculator" role="group" data-locale="en-GB">
+          <div class="calc__field">
+            <label for="calc-people">How many people are on your team?</label>
+            <div class="calc__control">
+              <input type="range" id="calc-people" min="1" max="50" step="1" value="3" />
+              <span class="calc__value" data-for="calc-people">3</span>
+            </div>
+          </div>
+          <div class="calc__field">
+            <label for="calc-hours">How many hours a week does each person lose to repetitive tasks?</label>
+            <div class="calc__control">
+              <input type="range" id="calc-hours" min="1" max="20" step="1" value="4" />
+              <span class="calc__value" data-for="calc-hours">4</span>
+            </div>
+          </div>
+          <div class="calc__field">
+            <label for="calc-rate">What does an hour of work cost? (€)</label>
+            <div class="calc__control">
+              <input type="range" id="calc-rate" min="10" max="100" step="5" value="20" />
+              <span class="calc__value" data-for="calc-rate">20</span>
+            </div>
+          </div>
+          <p class="calc__result" aria-live="polite">
+            <span class="calc__figure"><output class="calc__total" for="calc-hours calc-people">552</output> <span>hours a year</span></span>
+            <span class="calc__figure"><output class="calc__money" for="calc-hours calc-people calc-rate">€11,040</output> <span>a year in lost time</span></span>
+            <span class="calc__note">Estimate based on 46 working weeks. The starting €20 an hour is roughly the average cost of an hour of office work in Spain; adjust it to your case. The check tells you how much of it can be automated.</span>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -352,6 +381,15 @@
         <p class="lead">
           I write about what I'm learning as I bring AI and automation into real work: what works, what doesn't, and the ideas I'm still untangling. If you want to see how I think before we talk, start there.
         </p>
+        <!-- Latest Substack post. Between the markers it is rewritten every
+             Saturday by .github/workflows/latest-post.yml; don't edit by hand. -->
+        <!-- latest-post:start -->
+        <a class="latest-post" href="https://areizos.substack.com/" target="_blank" rel="noopener" lang="es">
+          <span class="section-label">Latest post</span>
+          <span class="latest-post__title">La IA no es solo para los de arriba</span>
+          <span class="latest-post__sub">Primer texto: por qué creo que esta es la mayor oportunidad que hemos tenido en años, y por qué también es tuya</span>
+        </a>
+        <!-- latest-post:end -->
         <a href="https://areizos.substack.com/" target="_blank" rel="noopener" class="btn btn--ghost">Read my Substack <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </section>
@@ -482,6 +520,6 @@
     };
   </script>
   <script src="../hero-animation.js?v=2" defer></script>
-  <script src="/site.js?v=2" defer></script>
+  <script src="/site.js?v=3" defer></script>
 </body>
 </html>
