@@ -8,6 +8,7 @@ English homepages. Leaves the files untouched if the feed can't be read.
 import html
 import re
 import sys
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
@@ -31,12 +32,28 @@ def fetch(url):
         return resp.read()
 
 
+# Substack's firewall often blocks GitHub's servers, so if the feed and the
+# API both refuse, the feed is read through rss2json.com, a free RSS reader.
+RSS2JSON = "https://api.rss2json.com/v1/api.json?rss_url=" + urllib.parse.quote(FEED, safe="")
+
+
 def latest_post():
-    try:
-        return from_feed()
-    except Exception as exc:
-        print(f"Feed failed ({exc}), trying the Substack API")
-        return from_api()
+    for source in (from_feed, from_api, from_rss2json):
+        try:
+            return source()
+        except Exception as exc:
+            print(f"{source.__name__} failed: {exc}")
+    raise RuntimeError("no source worked")
+
+
+def from_rss2json():
+    import json
+    data = json.loads(fetch(RSS2JSON))
+    if data.get("status") != "ok" or not data.get("items"):
+        raise RuntimeError(data.get("message") or "no items")
+    item = data["items"][0]
+    subtitle = re.sub(r"<[^>]+>", "", html.unescape(item.get("description") or "")).strip()
+    return (item.get("title") or "").strip(), subtitle, item.get("link") or "https://areizos.substack.com/"
 
 
 def from_api():
