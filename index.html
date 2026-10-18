@@ -117,7 +117,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css?v=24" />
+    <link rel="stylesheet" href="style.css?v=25" />
 </head>
 <body>
   <a class="skip-link" href="#top">Saltar al contenido</a>
@@ -183,12 +183,45 @@
         <div class="pains__intro">
           <p class="section-label">01 — ¿Te suena?</p>
           <h2 class="h2">Si tu equipo pierde horas en esto, hay un hilo del que tirar.</h2>
+          <p class="lead pains__lead">Casi nunca es un gran problema. Son diez minutos aquí, veinte allá, un copia y pega que nadie ve. Sumados, son días enteros al mes que tu equipo podría dedicar a lo que de verdad importa.</p>
         </div>
         <ul class="pains__grid">
-          <li><span class="section-label">A</span>Copias los mismos datos de una herramienta a otra, a mano.</li>
-          <li><span class="section-label">B</span>Nadie sabe en qué punto está cada tarea sin preguntar.</li>
-          <li><span class="section-label">C</span>El informe semanal te roba la mañana del lunes.</li>
-          <li><span class="section-label">D</span>Ya usáis la IA, pero a mano y cada uno a su manera, sin un sistema detrás.</li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></span>
+            <h3 class="pain__title">Copias los mismos datos a mano</h3>
+            <p class="pain__text">Del correo a la hoja de cálculo, de la hoja al CRM y del CRM a la factura.</p>
+            <p class="pain__after"><span class="pain__after-label">Después</span> Los datos se escriben una vez y viajan solos.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.6.3-1 .8-1 1.5v.6"/><path d="M12 16.8v.1"/></svg></span>
+            <h3 class="pain__title">Nadie sabe cómo va nada sin preguntar</h3>
+            <p class="pain__text">Para saber en qué punto está un pedido, un cliente o una tarea, hay que buscar o esperar respuesta.</p>
+            <p class="pain__after"><span class="pain__after-label">Después</span> Un solo sitio donde todo el mundo ve el estado real.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8.5 16v-4M12.5 16V8M16.5 16v-6"/></svg></span>
+            <h3 class="pain__title">El informe se come tu lunes</h3>
+            <p class="pain__text">Juntar cifras de cinco sitios, pegarlas y darles formato. Cada semana, igual.</p>
+            <p class="pain__after"><span class="pain__after-label">Después</span> El informe se prepara solo y tú solo lo revisas.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span>
+            <h3 class="pain__title">Hay cosas que se escapan</h3>
+            <p class="pain__text">Un correo sin contestar, una factura sin cobrar, un seguimiento que nadie hizo.</p>
+            <p class="pain__after"><span class="pain__after-label">Después</span> Avisos y recordatorios antes de que sea tarde.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8z"/></svg></span>
+            <h3 class="pain__title">La IA, cada uno a su manera</h3>
+            <p class="pain__text">Todo el mundo prueba ChatGPT, pero sin método y sin saber qué datos se comparten.</p>
+            <p class="pain__after"><span class="pain__after-label">Después</span> Unas normas claras y flujos con IA para todo el equipo.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><path d="M17 13.5v7M13.5 17h7"/></svg></span>
+            <h3 class="pain__title">Demasiadas herramientas</h3>
+            <p class="pain__text">Pagas aplicaciones que nadie usa y la información vive repartida en diez sitios.</p>
+            <p class="pain__after"><span class="pain__after-label">Después</span> Ordenamos lo que hay antes de añadir nada nuevo.</p>
+          </li>
         </ul>
       </div>
     </section>
