@@ -2007,3 +2007,247 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):hover::after 
   .diagnostic__inner > .calc { order: 1; }
   .diagnostic__inner > .btn { order: 2; }
 }
+
+/* =========================================================================
+   Added 2026-10-18: fourth service card, "Also" links, 04 AI with
+   judgement, 05 The pieces, and the new service / glossary pages.
+   ========================================================================= */
+
+/* Four service cards: four across on wide screens, two on tablets, one on phones */
+@media (min-width: 1100px) {
+  .cards.cards--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cards--four .card { padding: 1.75rem; }
+}
+@media (min-width: 601px) and (max-width: 1099px) {
+  .cards.cards--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.card__link {
+  margin-top: auto;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+.card__link:hover { text-decoration: underline; }
+
+/* "Also": two smaller services as link cards under the four */
+.services__more {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+}
+.services__more .section-label { grid-column: 1 / -1; margin: 0; }
+.more-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.1rem 1.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-background);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.more-link strong { color: var(--color-primary); font-weight: 600; }
+@media (hover: hover) {
+  .more-link:hover { border-color: var(--color-outline-variant); transform: translateY(-1px); }
+}
+
+/* 04 AI with judgement */
+.judgement {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+  border-top: 1px solid var(--color-border);
+}
+.judgement .promises__grid { margin-top: 0; }
+.section-more { margin-top: 1.5rem; }
+
+/* 05 The pieces: the jargon as loose pills that open to a one-line meaning */
+.pieces-section {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.pieces {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.7rem 0.6rem;
+  max-width: 60rem;
+}
+.pieces > li:nth-child(3n + 1) { transform: rotate(-1.2deg); }
+.pieces > li:nth-child(3n + 2) { transform: translateY(4px); }
+.pieces > li:nth-child(4n) { transform: rotate(1deg); }
+.piece summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 999px;
+  background: var(--color-background);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.piece summary::-webkit-details-marker { display: none; }
+.piece summary:hover,
+.piece[open] summary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-accent-soft);
+}
+.piece summary:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.piece p {
+  max-width: 17rem;
+  margin: 0.45rem 0 0;
+  padding: 0.7rem 0.9rem;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+.pieces__close {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  color: var(--color-primary);
+  margin: 2.25rem 0 0;
+}
+.pieces__close + .section-more { margin-top: 0.5rem; }
+
+/* New pages: hero + alternating blocks */
+.subpage-hero { padding: clamp(3rem, 6vw, 5rem) 0 clamp(1rem, 2vw, 1.5rem); }
+.subpage-hero .section-head { margin-bottom: 0; }
+.subpage-block { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.subpage-block--alt {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.section-head--sub { margin-bottom: 2rem; }
+.h3-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  line-height: 1.2;
+  margin: 0;
+}
+.subpage-block:not(.subpage-block--alt) .card { background: var(--color-surface); }
+.subpage-block .card .chip { margin-bottom: -0.25rem; }
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem 2rem;
+  max-width: 60rem;
+}
+.checklist li {
+  position: relative;
+  padding-left: 1.75rem;
+  color: var(--color-text);
+  font-size: 1.05rem;
+}
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+}
+.subpage-note {
+  margin: 1.5rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+.subpage-note a,
+.callout a,
+.subpage-text a,
+.faq__item p a { color: var(--color-primary); }
+
+.callout {
+  max-width: 47.5rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.callout .section-label { margin: 0; }
+.callout p { margin: 0; color: var(--color-text); line-height: 1.6; }
+.callout .callout__note { color: var(--color-label); font-size: 0.9rem; }
+
+.subpage-text { max-width: 47.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+.subpage-text p { margin: 0; font-size: 1.1rem; line-height: 1.65; color: var(--color-text-muted); }
+
+/* Glossary */
+.glossary__group + .glossary__group { margin-top: 2.75rem; }
+.glossary__title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-label);
+  margin: 0 0 1rem;
+}
+.glossary {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+.glossary__item {
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  scroll-margin-top: 96px;
+}
+.subpage-block--alt .glossary__item { background: var(--color-background); }
+.glossary__item:target { border-color: var(--color-primary); box-shadow: 0 0 0 2px var(--color-accent-soft); }
+.glossary dt { font-weight: 700; color: var(--color-primary); }
+.glossary dd { margin: 0.3rem 0 0; color: var(--color-text-muted); line-height: 1.5; }
+.glossary__group + .btn { margin-top: 1.5rem; }
+
+@media (max-width: 900px) {
+  .services__more { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .checklist,
+  .glossary { grid-template-columns: 1fr; }
+  .pieces > li { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .more-link, .more-link:hover { transition: none; transform: none; }
+}
+
+/* Wider screens: the meaning floats under its pill, so the cloud doesn't jump */
+@media (min-width: 601px) {
+  .pieces > li { position: relative; }
+  .pieces > li:has(.piece[open]) { z-index: 3; }
+  .piece p {
+    position: absolute;
+    top: calc(100% + 0.4rem);
+    left: 0;
+    width: max-content;
+    margin: 0;
+    box-shadow: 0 14px 30px -18px rgba(11, 61, 61, 0.35);
+  }
+}

@@ -111,7 +111,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css?v=18" />
+    <link rel="stylesheet" href="style.css?v=19" />
 </head>
 <body>
   <a class="skip-link" href="#top">Saltar al contenido</a>
@@ -236,9 +236,9 @@
         <div class="section-head">
           <p class="section-label">02 — Servicios</p>
           <h2 class="h2 h2--italic">Tomo los hilos enredados de tu forma de trabajar y los tejo en algo claro.</h2>
-          <p class="lead">Tres maneras de ayudarte, que casi siempre se combinan. Empiezo por lo que más tiempo te quita hoy.</p>
+          <p class="lead">Cuatro maneras de ayudarte, que casi siempre se combinan. Empiezo por lo que más tiempo te quita hoy.</p>
         </div>
-        <div class="cards">
+        <div class="cards cards--four">
           <div class="card">
             <div class="card__icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7" /><path d="M21 4v5h-5" /></svg>
@@ -275,6 +275,24 @@
               <p>Un panel con los números que hoy buscas en cinco sitios distintos.</p>
             </div>
           </div>
+          <div class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z" /><path d="M12 6v13" /></svg>
+            </div>
+            <h3>Formación en IA</h3>
+            <p>Te enseño a ti y a tu equipo a usar la IA con criterio en el trabajo de cada día.</p>
+            <div class="card__examples">
+              <span class="section-label">Por ejemplo</span>
+              <p>Un taller práctico con vuestras tareas reales, no con ejemplos de manual.</p>
+              <p>Guías y normas de uso para seguir aprendiendo.</p>
+            </div>
+            <a href="/formacion-ia/" class="card__link">Más sobre la formación <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="services__more">
+          <span class="section-label">Y además</span>
+          <a href="/orden-herramientas-ia/" class="more-link"><strong>Orden en tus herramientas de IA <span class="arrow" aria-hidden="true">→</span></strong><span>Qué se usa, qué sobra, dónde van tus datos y quién tiene acceso.</span></a>
+          <a href="/acompanamiento-ia/" class="more-link"><strong>Acompañamiento estratégico en IA <span class="arrow" aria-hidden="true">→</span></strong><span>Alguien que piense la IA contigo, unos días al mes.</span></a>
         </div>
         <!-- Tools in two boxes: first what people already use, then the
              automation tools they have probably heard of but don't use yet -->
@@ -307,7 +325,7 @@
           <li class="step step--2">
             <span class="chip">02</span>
             <h3>Auditoría</h3>
-            <p>Reviso a fondo tus herramientas y procesos actuales para descubrir dónde la automatización y la IA te ahorrarían más tiempo.</p>
+            <p>Reviso a fondo tus herramientas y procesos actuales para descubrir dónde la automatización y la IA te ahorrarían más tiempo. Medimos cuánto tiempo se va hoy, para comparar el antes y el después.</p>
           </li>
           <li class="step step--3">
             <span class="chip">03</span>
@@ -344,10 +362,70 @@
       </div>
     </section>
 
+    <!-- ============ 04 AI WITH JUDGEMENT ============
+         Three principles on safety and control; full page at /ia-con-cabeza/ -->
+    <section id="ia-con-cabeza" class="judgement">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-label">04 — IA con cabeza</p>
+          <h2 class="h2">Útil, segura y bajo tu control.</h2>
+          <p class="lead">La IA es potente, pero no es infalible. Por eso cada flujo lleva sus propios frenos.</p>
+        </div>
+        <ul class="promises__grid">
+          <li class="promise">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" /><path d="M5 20c1-4 4-6 7-6s6 2 7 6" /></svg></div>
+            <h3>Una persona revisa lo importante.</h3>
+            <p>Nada que llegue a un cliente o cueste dinero sale sin que alguien lo vea.</p>
+          </li>
+          <li class="promise">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg></div>
+            <h3>La IA solo accede a lo que necesita.</h3>
+            <p>Permisos mínimos, claves guardadas bajo llave y tus datos fuera de donde no deben estar.</p>
+          </li>
+          <li class="promise">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h8l4 4v12H7z" /><path d="M15 4v4h4" /><path d="M10 13h6M10 17h6" /></svg></div>
+            <h3>Todo queda registrado y explicado.</h3>
+            <p>Qué hizo cada flujo y cuándo, documentado en tus cuentas.</p>
+          </li>
+        </ul>
+        <a href="/ia-con-cabeza/" class="btn btn--ghost section-more">Cómo cuido la seguridad <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- ============ 05 THE PIECES ============
+         The jargon as small pills; each <details> opens to a one-line
+         explanation, no JavaScript. Full list at /diccionario-ia/ -->
+    <section id="piezas" class="pieces-section">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-label">05 — Las piezas</p>
+          <h2 class="h2">Detrás de cada automatización hay muchas piezas.</h2>
+          <p class="lead">No necesitas saber qué es cada una. Para eso estoy yo. Pero si te pica la curiosidad, toca cualquiera.</p>
+        </div>
+        <ul class="pieces">
+          <li><details class="piece"><summary>IA generativa / LLM</summary><p>El «cerebro» que entiende y escribe texto, como ChatGPT o Claude.</p></details></li>
+          <li><details class="piece"><summary>Modelos grandes y pequeños</summary><p>Los grandes razonan mejor; los pequeños son rápidos y baratos. Lo eficiente es usar cada uno donde toca.</p></details></li>
+          <li><details class="piece"><summary>Prompt</summary><p>Las instrucciones que le das a la IA. Bien escritas, lo cambian todo.</p></details></li>
+          <li><details class="piece"><summary>API</summary><p>La puerta por la que dos programas se hablan.</p></details></li>
+          <li><details class="piece"><summary>Webhook</summary><p>Un aviso automático: «acaba de pasar algo».</p></details></li>
+          <li><details class="piece"><summary>JSON</summary><p>El formato en el que viajan los datos entre apps.</p></details></li>
+          <li><details class="piece"><summary>MCP</summary><p>Un enchufe estándar para conectar la IA con tus herramientas.</p></details></li>
+          <li><details class="piece"><summary>RAG</summary><p>Que la IA responda con tus documentos, no con lo que recuerda.</p></details></li>
+          <li><details class="piece"><summary>Agente de IA</summary><p>Una IA que no solo responde, sino que da pasos y usa herramientas.</p></details></li>
+          <li><details class="piece"><summary>Human-in-the-loop</summary><p>El punto en el que una persona revisa antes de seguir.</p></details></li>
+          <li><details class="piece"><summary>Evals</summary><p>Pruebas que comprueban que la IA responde bien, antes y después de cada cambio.</p></details></li>
+          <li><details class="piece"><summary>Inyección de prompts</summary><p>Instrucciones escondidas en un correo o una web que intentan engañar a la IA.</p></details></li>
+          <li><details class="piece"><summary>Mínimo privilegio</summary><p>Cada pieza accede solo a lo que necesita, nada más.</p></details></li>
+        </ul>
+        <p class="pieces__close">Lo difícil no es cada pieza, sino saber cómo encajan.</p>
+        <a href="/diccionario-ia/" class="btn btn--ghost section-more">Ver el diccionario completo <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
     <!-- ============ 04 ABOUT (founder + the name) ============ -->
     <section id="sobre-mi" class="about">
       <div class="wrap about__inner">
-        <p class="section-label">04 — Sobre mí</p>
+        <p class="section-label">06 — Sobre mí</p>
         <h2 class="h2">Por qué creé pleko.</h2>
         <p class="about__text">
           Durante la mayor parte de mi carrera, las mejores herramientas eran cosa de empresas con grandes presupuestos y equipos de desarrolladores. Eso ya no es así. La IA pone ese tipo de ventaja al alcance de cualquiera que tenga ganas de aprender.
@@ -376,7 +454,7 @@
     <!-- ============ 05 IDEAS / SUBSTACK ============ -->
     <section id="ideas" class="ideas">
       <div class="wrap ideas__inner">
-        <p class="section-label">05 — Ideas</p>
+        <p class="section-label">07 — Ideas</p>
         <h2 class="h2 h2--italic">Pensando en voz alta</h2>
         <p class="lead">
           Escribo sobre lo que voy aprendiendo al llevar la IA y la automatización al trabajo real: lo que funciona, lo que no, y las ideas que todavía estoy desenredando. Si quieres ver cómo pienso antes de que hablemos, empieza por ahí.
@@ -400,7 +478,7 @@
     <section id="preguntas" class="faq">
       <div class="wrap faq__inner">
         <div class="section-head faq__head">
-          <p class="section-label">06 — Preguntas frecuentes</p>
+          <p class="section-label">08 — Preguntas frecuentes</p>
           <h2 class="h2">Lo que suele preguntarse antes de la primera llamada.</h2>
           <p class="lead">¿No ves tu pregunta? Escríbeme a <a href="mailto:alex@pleko.es?subject=Consulta%20desde%20pleko.es">alex@pleko.es</a> y te respondo yo.</p>
         </div>
@@ -431,7 +509,7 @@
               <p>Estoy en Barcelona y trabajo con personas y empresas en español y en inglés, en remoto o en persona, lo que mejor funcione. Si tu oficina está a una distancia razonable voy encantado, y también viajo a Madrid u otras ciudades cuando el proyecto lo pide.</p>
             </details>
           </div>
-          <a href="/preguntas-frecuentes/" class="btn btn--ghost faq__more">Ver las 20 preguntas <span class="arrow" aria-hidden="true">→</span></a>
+          <a href="/preguntas-frecuentes/" class="btn btn--ghost faq__more">Ver las 26 preguntas <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -440,7 +518,7 @@
     <section id="reserva" class="contact">
       <div class="wrap contact__inner">
         <div class="contact__copy">
-          <p class="section-label">07 — Hablemos</p>
+          <p class="section-label">09 — Hablemos</p>
           <h2 class="contact__heading">¿Tienes un flujo de trabajo que merece la pena domar?</h2>
           <p class="contact__subtext">Reserva una llamada gratuita de 20&nbsp;minutos. Me cuentas qué te frena y te digo con sinceridad si pleko encaja.</p>
           <div class="contact__links">
@@ -459,6 +537,9 @@
       <span>&copy; <span id="year"></span> pleko</span>
       <nav class="footer-links" aria-label="Enlaces">
         <a href="/preguntas-frecuentes/">Preguntas frecuentes</a>
+        <a href="/formacion-ia/">Formación en IA</a>
+        <a href="/ia-con-cabeza/">IA con cabeza</a>
+        <a href="/diccionario-ia/">Diccionario de IA</a>
         <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://areizos.substack.com/" target="_blank" rel="noopener">Substack</a>
         <a href="https://github.com/areizos" target="_blank" rel="noopener">GitHub</a>
@@ -520,6 +601,6 @@
     };
   </script>
   <script src="hero-animation.js?v=2" defer></script>
-  <script src="/site.js?v=3" defer></script>
+  <script src="/site.js?v=4" defer></script>
 </body>
 </html>

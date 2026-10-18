@@ -3,30 +3,100 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://pleko.es/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/" />
   </url>
   <url>
     <loc>https://pleko.es/en/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/" />
   </url>
   <url>
     <loc>https://pleko.es/preguntas-frecuentes/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/preguntas-frecuentes/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/faq/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/preguntas-frecuentes/" />
   </url>
   <url>
     <loc>https://pleko.es/en/faq/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/preguntas-frecuentes/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/faq/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/preguntas-frecuentes/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/formacion-ia/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/formacion-ia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-training/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/formacion-ia/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/ai-training/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/formacion-ia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-training/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/formacion-ia/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/orden-herramientas-ia/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/orden-herramientas-ia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-tools-audit/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/orden-herramientas-ia/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/ai-tools-audit/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/orden-herramientas-ia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-tools-audit/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/orden-herramientas-ia/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/acompanamiento-ia/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/acompanamiento-ia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-strategy-support/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/acompanamiento-ia/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/ai-strategy-support/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/acompanamiento-ia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-strategy-support/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/acompanamiento-ia/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/ia-con-cabeza/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/ia-con-cabeza/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-with-judgement/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/ia-con-cabeza/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/ai-with-judgement/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/ia-con-cabeza/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-with-judgement/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/ia-con-cabeza/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/diccionario-ia/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/diccionario-ia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-glossary/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/diccionario-ia/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/ai-glossary/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/diccionario-ia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-glossary/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/diccionario-ia/" />
   </url>
 </urlset>

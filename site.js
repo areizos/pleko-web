@@ -180,7 +180,8 @@
   var revealGroups = [
     '.section-head', '.pains__intro', '.diagnostic__inner', '.about__inner > .section-label',
     '.about__inner > .h2', '.about__text', '.stats', '.name-note', '.ideas__inner',
-    '.contact__copy', '.faq__group', '.promises > .section-label', '.not-found__art'
+    '.contact__copy', '.faq__group', '.promises > .section-label', '.not-found__art',
+    '.services__more', '.pieces', '.pieces__close', '.callout', '.subpage-text', '.checklist', '.glossary__group'
   ];
   var revealRows = ['.pains__grid > li', '.cards > .card', '.tools > .tools__row', '.steps > .step', '.promises__grid > .promise'];
 
@@ -322,12 +323,22 @@
   if (document.readyState === 'complete') afterLoad();
   else window.addEventListener('load', afterLoad);
 
+  /* ---------- The pieces: one meaning open at a time ---------------------- */
+  var pieces = Array.prototype.slice.call(document.querySelectorAll('.piece'));
+  pieces.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      pieces.forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+
   /* ---------- Language switch keeps your place ---------------------------
      Switching ES ↔ EN while reading a section lands on the same section in
      the other language (and on the FAQ page, on the same question). */
   var sectionPairs = {
     servicios: 'services', 'como-trabajo': 'how-i-work', 'sobre-mi': 'about', ideas: 'ideas',
-    preguntas: 'faq', reserva: 'book', diagnostico: 'diagnostic'
+    preguntas: 'faq', reserva: 'book', diagnostico: 'diagnostic',
+    'ia-con-cabeza': 'ai-with-judgement', piezas: 'pieces'
   };
   var faqItems = Array.prototype.slice.call(document.querySelectorAll('.faq--page .faq__item'));
 

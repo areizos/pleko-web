@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fcf9f8" />
+  <title>AI glossary, no hype: API, MCP, RAG and more | pleko</title>
+  <meta name="description" content="The words you'll hear when people talk about AI and automation, explained in one line: LLM, API, webhook, JSON, MCP, RAG, agents, security and regulation." />
+  <link rel="canonical" href="https://pleko.es/en/ai-glossary/" />
+
+  <!-- Open Graph: controls how this page looks when shared on LinkedIn, Slack, etc. -->
+  <meta property="og:title" content="AI glossary, no hype: API, MCP, RAG and more | pleko" />
+  <meta property="og:description" content="The words you'll hear when people talk about AI and automation, explained in one line: LLM, API, webhook, JSON, MCP, RAG, agents, security and regulation." />
+  <meta property="og:image" content="https://pleko.es/og-en.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="pleko logo and interwoven threads: Tame your digital chaos." />
+  <meta property="og:url" content="https://pleko.es/en/ai-glossary/" />
+  <meta property="og:site_name" content="pleko" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="es_ES" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons: the pleko "p" mark (teal p with a burnt orange dot on a cream tile) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+
+  <!-- Language versions of this page, so search engines pair them up. -->
+  <link rel="alternate" hreflang="es" href="https://pleko.es/diccionario-ia/" />
+  <link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-glossary/" />
+  <link rel="alternate" hreflang="x-default" href="https://pleko.es/diccionario-ia/" />
+
+  <!--
+    Fonts: the same pairing as the pleko brand —
+    Inter for body text, Literata (a serif with a nice italic) for headings/wordmark.
+    Loaded from Google Fonts, so no font files to manage ourselves.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/style.css?v=19" />
+</head>
+<body>
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <!-- ============ MENU BAR ============
+       Sticks to the top of the window while scrolling (position: sticky in style.css). -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a href="/en/" class="brand" aria-label="pleko, home">
+        <img src="/pleko-logo.svg?v=2" alt="pleko" class="brand__logo" />
+      </a>
+      <nav class="menu" aria-label="Menu">
+        <a href="/en/#services">Services</a>
+        <a href="/en/#how-i-work">How I work</a>
+        <a href="/en/#about">About</a>
+        <a href="/en/#ideas">Ideas</a>
+      </nav>
+      <a href="/en/#book" class="btn btn--primary header-cta" tabindex="-1" aria-hidden="true">Book a call</a>
+      <div class="lang-toggle" aria-label="Language">
+        <a href="/diccionario-ia/">ES</a>
+        <a href="/en/ai-glossary/" aria-current="page">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="subpage-hero">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-label">AI glossary</p>
+          <h1 class="h2">An AI glossary, no hype.</h1>
+          <p class="lead">The words you'll hear when people talk about AI and automation, each explained in one line. You don't need to know them all. That's my job.</p>
+        </div>
+      </div>
+    </section>
+    <section class="subpage-block">
+      <div class="wrap">
+        <div class="glossary__group">
+          <h2 class="glossary__title">The AI</h2>
+          <dl class="glossary">
+            <div class="glossary__item" id="t-llm"><dt>Generative AI / LLM</dt><dd>The “brain” that reads and writes text, like ChatGPT or Claude.</dd></div>
+            <div class="glossary__item" id="t-prompt"><dt>Prompt</dt><dd>The instructions you give the AI. Written well, they change everything.</dd></div>
+            <div class="glossary__item" id="t-contexto"><dt>Context window</dt><dd>How much the AI can keep in mind at once.</dd></div>
+            <div class="glossary__item" id="t-tokens"><dt>Tokens</dt><dd>The little chunks of text AI reads, and pays by.</dd></div>
+            <div class="glossary__item" id="t-alucinacion"><dt>Hallucination</dt><dd>When AI makes something up, confidently.</dd></div>
+            <div class="glossary__item" id="t-agente"><dt>AI agent</dt><dd>AI that doesn't just answer, but takes steps and uses tools.</dd></div>
+            <div class="glossary__item" id="t-rag"><dt>RAG</dt><dd>Letting AI answer from your documents, not from memory.</dd></div>
+            <div class="glossary__item" id="t-embeddings"><dt>Embeddings and vector database</dt><dd>How your information is organised so AI finds what's relevant.</dd></div>
+            <div class="glossary__item" id="t-modelo"><dt>AI model</dt><dd>Each company (OpenAI, Anthropic, Google…) has several, and each shines at something: text, code, images, video or research.</dd></div>
+            <div class="glossary__item" id="t-modelos-grandes-pequenos"><dt>Large and small models</dt><dd>Large ones reason better; small ones are fast and cheap. Efficient means using each where it fits.</dd></div>
+            <div class="glossary__item" id="t-coste-por-uso"><dt>Pay per use</dt><dd>Most models charge for every request. With the wrong model at scale, the bill takes off.</dd></div>
+            <div class="glossary__item" id="t-multimodal"><dt>Multimodal</dt><dd>AI that understands or creates more than text: images, audio or video.</dd></div>
+            <div class="glossary__item" id="t-human-in-the-loop"><dt>Human-in-the-loop</dt><dd>The point where a person checks before things move on.</dd></div>
+            <div class="glossary__item" id="t-evals"><dt>Evals</dt><dd>Tests that check the AI answers well, before and after every change.</dd></div>
+          </dl>
+        </div>
+        <div class="glossary__group">
+          <h2 class="glossary__title">Connecting tools</h2>
+          <dl class="glossary">
+            <div class="glossary__item" id="t-api"><dt>API</dt><dd>The door two programs use to talk to each other.</dd></div>
+            <div class="glossary__item" id="t-webhook"><dt>Webhook</dt><dd>An automatic “something just happened” ping.</dd></div>
+            <div class="glossary__item" id="t-json"><dt>JSON</dt><dd>The format data travels in between apps.</dd></div>
+            <div class="glossary__item" id="t-mcp"><dt>MCP</dt><dd>A standard plug that connects AI to your tools.</dd></div>
+            <div class="glossary__item" id="t-oauth"><dt>OAuth</dt><dd>The “sign in with Google” that grants access without sharing passwords.</dd></div>
+            <div class="glossary__item" id="t-trigger"><dt>Trigger</dt><dd>What starts a flow: an email, a form, a time of day.</dd></div>
+            <div class="glossary__item" id="t-ocr"><dt>OCR</dt><dd>Reading text from photos and scanned PDFs.</dd></div>
+            <div class="glossary__item" id="t-low-code"><dt>Low-code / no-code</dt><dd>Tools like n8n, Make or Zapier for building flows without coding everything.</dd></div>
+            <div class="glossary__item" id="t-crm"><dt>CRM</dt><dd>Where your customers and contacts live.</dd></div>
+          </dl>
+        </div>
+        <div class="glossary__group">
+          <h2 class="glossary__title">Security</h2>
+          <dl class="glossary">
+            <div class="glossary__item" id="t-claves-api"><dt>API keys</dt><dd>The “key” that unlocks a tool. Kept locked away, never in an email.</dd></div>
+            <div class="glossary__item" id="t-gestor-secretos"><dt>Secrets manager</dt><dd>The safe where passwords and keys live.</dd></div>
+            <div class="glossary__item" id="t-minimo-privilegio"><dt>Least privilege</dt><dd>Each piece gets only the access it needs, nothing more.</dd></div>
+            <div class="glossary__item" id="t-2fa"><dt>2FA / MFA</dt><dd>A second step when signing in, like a code on your phone.</dd></div>
+            <div class="glossary__item" id="t-sso"><dt>SSO</dt><dd>One company login for every tool.</dd></div>
+            <div class="glossary__item" id="t-cifrado"><dt>Encryption</dt><dd>Data travels and is stored unreadable to anyone who shouldn't see it.</dd></div>
+            <div class="glossary__item" id="t-inyeccion-prompts"><dt>Prompt injection</dt><dd>Hidden instructions in an email or web page that try to trick the AI.</dd></div>
+            <div class="glossary__item" id="t-fuga-datos"><dt>Data leak</dt><dd>Information ending up where it shouldn't.</dd></div>
+            <div class="glossary__item" id="t-shadow-ai"><dt>Shadow AI</dt><dd>AI tools people use without anyone approving them.</dd></div>
+            <div class="glossary__item" id="t-registro"><dt>Audit log</dt><dd>The record of who did what, and when.</dd></div>
+            <div class="glossary__item" id="t-anonimizacion"><dt>Anonymisation</dt><dd>Removing names and personal details before AI sees them.</dd></div>
+            <div class="glossary__item" id="t-datos-ue"><dt>EU data residency</dt><dd>Keeping your data on European servers.</dd></div>
+            <div class="glossary__item" id="t-dpa"><dt>DPA (data processing agreement)</dt><dd>The contract that makes a provider look after your data.</dd></div>
+            <div class="glossary__item" id="t-backup"><dt>Backup</dt><dd>So one mistake doesn't wipe out your work.</dd></div>
+          </dl>
+        </div>
+        <div class="glossary__group">
+          <h2 class="glossary__title">Rules</h2>
+          <dl class="glossary">
+            <div class="glossary__item" id="t-rgpd"><dt>GDPR</dt><dd>The personal-data rules every automation must respect.</dd></div>
+            <div class="glossary__item" id="t-ai-act"><dt>EU AI Act</dt><dd>The EU law on using AI responsibly.</dd></div>
+            <div class="glossary__item" id="t-alfabetizacion"><dt>AI literacy</dt><dd>Knowing enough about AI to use it well at work. The AI Act asks companies to support it.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+    <section class="subpage-block subpage-block--alt">
+      <div class="wrap">
+        <div class="subpage-text">
+          <h2 class="h3-display">The hard part isn't any one piece. It's knowing how they fit.</h2>
+          <p>An automation that really works brings many of these pieces together. Choosing which ones you need, which you don't and how to connect them so it doesn't break the first time is exactly my job. And if you're curious, I'll explain it along the way.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOK A CALL ============ -->
+    <section id="book" class="contact">
+      <div class="wrap contact__inner">
+        <div class="contact__copy">
+          <p class="section-label">Let's talk</p>
+          <h2 class="contact__heading">Got a workflow worth taming?</h2>
+          <p class="contact__subtext">Book a free 20&#8209;minute call. Tell me what's holding you back and I'll tell you honestly whether pleko is a fit.</p>
+          <div class="contact__links">
+            <!-- Opens the Cal.com booking calendar in a pop-up (script at the bottom of the page) -->
+            <button type="button" class="btn btn--mint" data-cal-link="pleko" data-cal-config='{"layout":"month_view"}'>Pick a day and time</button>
+            <a href="mailto:alex@pleko.es?subject=Enquiry%20from%20pleko.es">alex@pleko.es</a>
+            <a href="https://wa.me/34656310631?text=Hi%20Alex%2C%20I%20found%20you%20on%20pleko.es.%20" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <span>&copy; <span id="year"></span> pleko</span>
+      <nav class="footer-links" aria-label="Links">
+        <a href="/en/faq/">FAQ</a>
+        <a href="/en/ai-training/">AI training</a>
+        <a href="/en/ai-with-judgement/">AI with judgement</a>
+        <a href="/en/ai-glossary/" aria-current="page">AI glossary</a>
+        <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://areizos.substack.com/" target="_blank" rel="noopener">Substack</a>
+        <a href="https://github.com/areizos" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:alex@pleko.es?subject=Enquiry%20from%20pleko.es">alex@pleko.es</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Small touch of JS: keep the copyright year correct without editing it by hand.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!--
+    Cal.com embed — this is Cal.com's own standard snippet (copied as-is from
+    their embed instructions, not something hand-written), it just loads
+    their booking widget script. Any element with data-cal-link (the
+    booking button in the contact section) opens the calendar in a pop-up,
+    themed with pleko's teal.
+  -->
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    // Started by site.js once the page has loaded, or as soon as someone
+    // heads for the booking button, so it doesn't slow the first paint.
+    window.plekoLoadCal = function () {
+      window.plekoLoadCal = function () {}; // only once
+      Cal("init", { origin: "https://cal.com" });
+      Cal("ui", {
+        styles: { branding: { brandColor: "#006565" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    };
+  </script>
+    <script src="/site.js?v=4" defer></script>
+</body>
+</html>

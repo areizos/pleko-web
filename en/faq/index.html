@@ -109,6 +109,38 @@
       },
       {
         "@type": "Question",
+        "name": "The tools are easy now. Why not do it myself?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can, and I'll teach you if you like. Building a simple flow gets easier every month. The hard part is choosing what's worth automating, connecting it to everything else without breaking anything, and making it work as well on day one hundred as on day one. That's where I help."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "API, MCP, RAG, agents… Do I need to understand all this?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. But someone does. An automation that really works brings many pieces together: the AI that understands the text, the API that connects your apps, the permissions so nobody sees what they shouldn't, the keys locked away, the point where a person checks and the tests that show it answers well. Each piece is simple on its own. The hard part is knowing which ones you need, which you don't and how to fit them so it doesn't break the first time. That's what I do, and if you're curious, I'll explain it along the way."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ChatGPT, Claude or Gemini? Which model do I need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends on the task. Each company has several models, and each one shines at something: writing, coding, analysing documents, creating images or video, research. Large models reason better but cost more; small ones are fast and cheap. In a well-built flow, every step uses the model that suits it. Use the most expensive one for everything and, at scale, the bill takes off without the quality getting any better."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's an AI agent, and do I need one?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An agent is AI that doesn't just answer: it takes steps on its own and uses tools, like searching your CRM or drafting an email. Sometimes that's exactly what you need. Often, a simpler flow does the same job with less risk and lower cost. I'll tell you honestly which one fits."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "We tried AI and it didn't stick. What's different?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -165,6 +197,14 @@
       },
       {
         "@type": "Question",
+        "name": "How do you stop AI doing something it shouldn't?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I give it only the permissions it needs, keep keys somewhere safe and add a human check before any important step. I also protect flows against hidden instructions in emails or web pages that try to trick the AI, and keep a log of what each one does."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "What happens when you're done?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -185,6 +225,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes. Hands-on workshops so your people use AI in their everyday work, with their own tasks rather than textbook examples."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I legally have to train my team on AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The EU AI Act asks companies that use AI, including tools like ChatGPT, to take measures to support their people's AI literacy. Since July 2026 it doesn't require a guaranteed level, but it does expect effort. A hands-on workshop with materials is a simple way to do it. This is general information, not legal advice."
         }
       },
       {
@@ -216,7 +264,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/style.css?v=18" />
+  <link rel="stylesheet" href="/style.css?v=19" />
 </head>
 <body>
   <a class="skip-link" href="#top">Skip to content</a>
@@ -293,6 +341,22 @@
               <summary>n8n, Make or Zapier: which one do I need?</summary>
               <p>It depends on how much you'll automate, who will maintain it and what you want to spend each month. I walk you through it with your numbers and we choose together. The tool matters less than a workflow that makes sense.</p>
             </details>
+            <details class="faq__item" id="q-tools-easy-now">
+              <summary>The tools are easy now. Why not do it myself?</summary>
+              <p>You can, and I'll teach you if you like. Building a simple flow gets easier every month. The hard part is choosing what's worth automating, connecting it to everything else without breaking anything, and making it work as well on day one hundred as on day one. That's where I help.</p>
+            </details>
+            <details class="faq__item" id="q-api-mcp-rag">
+              <summary>API, MCP, RAG, agents… Do I need to understand all this?</summary>
+              <p>No. But someone does. An automation that really works brings many pieces together: the AI that understands the text, the API that connects your apps, the permissions so nobody sees what they shouldn't, the keys locked away, the point where a person checks and the tests that show it answers well. Each piece is simple on its own. The hard part is knowing which ones you need, which you don't and how to fit them so it doesn't break the first time. That's what I do, and if you're curious, I'll explain it along the way. <a href="/en/ai-glossary/">See the AI glossary</a>.</p>
+            </details>
+            <details class="faq__item" id="q-which-ai-model">
+              <summary>ChatGPT, Claude or Gemini? Which model do I need?</summary>
+              <p>It depends on the task. Each company has several models, and each one shines at something: writing, coding, analysing documents, creating images or video, research. Large models reason better but cost more; small ones are fast and cheap. In a well-built flow, every step uses the model that suits it. Use the most expensive one for everything and, at scale, the bill takes off without the quality getting any better.</p>
+            </details>
+            <details class="faq__item" id="q-ai-agent">
+              <summary>What's an AI agent, and do I need one?</summary>
+              <p>An agent is AI that doesn't just answer: it takes steps on its own and uses tools, like searching your CRM or drafting an email. Sometimes that's exactly what you need. Often, a simpler flow does the same job with less risk and lower cost. I'll tell you honestly which one fits.</p>
+            </details>
             <details class="faq__item" id="q-we-tried-ai-didn">
               <summary>We tried AI and it didn't stick. What's different?</summary>
               <p>It usually fails because AI is tried “in general” rather than inside a specific everyday task. I start with one real process, untangle it, then automate it. Automating a tangled process just tangles it faster.</p>
@@ -327,6 +391,10 @@
               <summary>What if the AI gets it wrong?</summary>
               <p>It can happen, so I design things so that nothing important reaches a customer without a person checking it. AI drafts, your people decide.</p>
             </details>
+            <details class="faq__item" id="q-stop-ai-doing-wrong">
+              <summary>How do you stop AI doing something it shouldn't?</summary>
+              <p>I give it only the permissions it needs, keep keys somewhere safe and add a human check before any important step. I also protect flows against hidden instructions in emails or web pages that try to trick the AI, and keep a log of what each one does. <a href="/en/ai-with-judgement/">Here's how</a>.</p>
+            </details>
           </div>
           <div class="faq__group">
             <h3 class="faq__group-title">After the project</h3>
@@ -340,7 +408,11 @@
             </details>
             <details class="faq__item" id="q-you-run-training-or">
               <summary>Do you run training or workshops?</summary>
-              <p>Yes. Hands-on workshops so your people use AI in their everyday work, with their own tasks rather than textbook examples.</p>
+              <p>Yes. Hands-on workshops so your people use AI in their everyday work, with their own tasks rather than textbook examples. <a href="/en/ai-training/">More about training</a>.</p>
+            </details>
+            <details class="faq__item" id="q-train-team-law">
+              <summary>Do I legally have to train my team on AI?</summary>
+              <p>The EU AI Act asks companies that use AI, including tools like ChatGPT, to take measures to support their people's AI literacy. Since July 2026 it doesn't require a guaranteed level, but it does expect effort. A hands-on workshop with materials is a simple way to do it. This is general information, not legal advice. <a href="/en/ai-training/">More about training</a>.</p>
             </details>
           </div>
           <div class="faq__group">
@@ -381,6 +453,9 @@
       <span>&copy; <span id="year"></span> pleko</span>
       <nav class="footer-links" aria-label="Links">
         <a href="/en/faq/" aria-current="page">FAQ</a>
+        <a href="/en/ai-training/">AI training</a>
+        <a href="/en/ai-with-judgement/">AI with judgement</a>
+        <a href="/en/ai-glossary/">AI glossary</a>
         <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://areizos.substack.com/" target="_blank" rel="noopener">Substack</a>
         <a href="https://github.com/areizos" target="_blank" rel="noopener">GitHub</a>
@@ -441,6 +516,6 @@
       });
     };
   </script>
-    <script src="/site.js?v=3" defer></script>
+    <script src="/site.js?v=4" defer></script>
 </body>
 </html>
