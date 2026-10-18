@@ -2347,3 +2347,35 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):hover::after 
   text-underline-offset: 0.2em;
 }
 .services__sectors a:hover { text-decoration-color: var(--color-primary); }
+
+/* About: Alex's photo (black and white) beside the intro, above it on phones */
+.about__inner > .about__intro { max-width: none; width: 100%; }
+.about__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 50rem) minmax(12rem, 17rem);
+  gap: 1.5rem clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.about__intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.about__intro-text .h2 { margin: 0; }
+.about__photo {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+}
+.about__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+@media (max-width: 760px) {
+  .about__intro { grid-template-columns: 1fr; }
+  .about__photo { grid-column: 1; width: min(13rem, 60%); }
+  .about__intro-text { grid-row: 2; }
+}

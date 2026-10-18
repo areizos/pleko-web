@@ -92,6 +92,7 @@
         "@type": "Person",
         "@id": "https://pleko.es/#alexandros",
         "name": "Alexandros Reïzos",
+        "image": "https://pleko.es/alex.jpg",
         "jobTitle": "Consultor de IA y automatización",
         "worksFor": {
           "@id": "https://pleko.es/#pleko"
@@ -116,7 +117,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css?v=23" />
+    <link rel="stylesheet" href="style.css?v=24" />
 </head>
 <body>
   <a class="skip-link" href="#top">Saltar al contenido</a>
@@ -372,13 +373,20 @@
     <section id="sobre-mi" class="about">
       <div class="wrap about__inner">
         <p class="section-label">04 — Sobre mí</p>
-        <h2 class="h2">Por qué creé pleko.</h2>
-        <p class="about__text">
-          Durante la mayor parte de mi carrera, las mejores herramientas eran cosa de empresas con grandes presupuestos y equipos de desarrolladores. Eso ya no es así. La IA pone ese tipo de ventaja al alcance de cualquiera que tenga ganas de aprender.
-        </p>
-        <p class="lead">
-          Lo he visto desde dentro: más de 15&nbsp;años en marketing digital, entre Londres y Barcelona, siempre buscando una forma más sencilla de hacer las cosas. pleko es mi manera de ayudar a personas y empresas a dar ese salto, con calma y con honestidad, conectando las herramientas que ya usas en lugar de venderte otras nuevas. Trabajas directamente conmigo, y mi objetivo es sencillo: que las herramientas trabajen para ti y que tu equipo sepa seguir usándolas.
-        </p>
+        <div class="about__intro">
+          <figure class="about__photo">
+            <img src="/alex.jpg?v=1" width="800" height="1000" alt="Alex Reïzos, fundador de pleko" loading="lazy" decoding="async" />
+          </figure>
+          <div class="about__intro-text">
+            <h2 class="h2">Por qué creé pleko.</h2>
+          <p class="about__text">
+            Durante la mayor parte de mi carrera, las mejores herramientas eran cosa de empresas con grandes presupuestos y equipos de desarrolladores. Eso ya no es así. La IA pone ese tipo de ventaja al alcance de cualquiera que tenga ganas de aprender.
+          </p>
+          <p class="lead">
+            Lo he visto desde dentro: más de 15&nbsp;años en marketing digital, entre Londres y Barcelona, siempre buscando una forma más sencilla de hacer las cosas. pleko es mi manera de ayudar a personas y empresas a dar ese salto, con calma y con honestidad, conectando las herramientas que ya usas en lugar de venderte otras nuevas. Trabajas directamente conmigo, y mi objetivo es sencillo: que las herramientas trabajen para ti y que tu equipo sepa seguir usándolas.
+          </p>
+          </div>
+        </div>
         <!-- A few figures; the numbers count up once when they come into view (site.js) -->
         <ul class="stats">
           <li><span class="stats__num"><span data-count="15">15</span>+</span> años en marketing digital</li>
@@ -611,6 +619,6 @@
     };
   </script>
   <script src="hero-animation.js?v=2" defer></script>
-  <script src="/site.js?v=5" defer></script>
+  <script src="/site.js?v=6" defer></script>
 </body>
 </html>

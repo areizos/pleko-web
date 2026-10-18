@@ -179,7 +179,7 @@
      on screen when the page opens is left alone, so nothing flickers. */
   var revealGroups = [
     '.section-head', '.pains__intro', '.diagnostic__inner', '.about__inner > .section-label',
-    '.about__inner > .h2', '.about__text', '.stats', '.name-note', '.ideas__inner',
+    '.about__photo', '.about__intro-text > .h2', '.about__text', '.stats', '.name-note', '.ideas__inner',
     '.contact__copy', '.faq__group', '.promises > .section-label', '.not-found__art',
     '.services__more', '.pieces', '.callout', '.subpage-text', '.checklist', '.glossary__group'
   ];
