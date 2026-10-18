@@ -99,4 +99,46 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-glossary/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/diccionario-ia/" />
   </url>
+  <url>
+    <loc>https://pleko.es/ia-para-asesorias/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/ia-para-asesorias/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-for-advisory-firms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/ia-para-asesorias/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/ai-for-advisory-firms/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/ia-para-asesorias/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-for-advisory-firms/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/ia-para-asesorias/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/ia-para-inmobiliarias/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/ia-para-inmobiliarias/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-for-real-estate/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/ia-para-inmobiliarias/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/ai-for-real-estate/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/ia-para-inmobiliarias/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-for-real-estate/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/ia-para-inmobiliarias/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/ia-para-agencias/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/ia-para-agencias/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-for-agencies/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/ia-para-agencias/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/ai-for-agencies/</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/ia-para-agencias/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-for-agencies/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/ia-para-agencias/" />
+  </url>
 </urlset>

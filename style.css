@@ -2329,3 +2329,21 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):hover::after 
 .legal strong { color: var(--color-text); font-weight: 600; }
 .legal a { color: var(--color-primary); }
 .legal .legal__updated { margin-top: 1.5rem; font-size: 0.9rem; color: var(--color-label); }
+
+/* Sector pages: one small line of links under "Y además" (added 2026-10-18) */
+.services__sectors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.25rem;
+  margin: 1.25rem 0 0;
+}
+.services__sectors .section-label { margin: 0; }
+.services__sectors a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--color-outline-variant);
+  text-underline-offset: 0.2em;
+}
+.services__sectors a:hover { text-decoration-color: var(--color-primary); }
