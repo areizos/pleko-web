@@ -181,7 +181,7 @@
     '.section-head', '.pains__intro', '.diagnostic__inner', '.about__inner > .section-label',
     '.about__inner > .h2', '.about__text', '.stats', '.name-note', '.ideas__inner',
     '.contact__copy', '.faq__group', '.promises > .section-label', '.not-found__art',
-    '.services__more', '.pieces', '.pieces__close', '.callout', '.subpage-text', '.checklist', '.glossary__group'
+    '.services__more', '.pieces', '.callout', '.subpage-text', '.checklist', '.glossary__group'
   ];
   var revealRows = ['.pains__grid > li', '.cards > .card', '.tools > .tools__row', '.steps > .step', '.promises__grid > .promise'];
 
@@ -324,6 +324,11 @@
   else window.addEventListener('load', afterLoad);
 
   /* ---------- The pieces: one meaning open at a time ---------------------- */
+  /* Service examples start folded on phones, to keep the page short. */
+  if (window.matchMedia && window.matchMedia('(max-width: 600px)').matches) {
+    document.querySelectorAll('.card__examples[open]').forEach(function (d) { d.removeAttribute('open'); });
+  }
+
   var pieces = Array.prototype.slice.call(document.querySelectorAll('.piece'));
   pieces.forEach(function (d) {
     d.addEventListener('toggle', function () {

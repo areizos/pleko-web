@@ -116,7 +116,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="../style.css?v=20" />
+  <link rel="stylesheet" href="../style.css?v=21" />
 </head>
 <body>
   <a class="skip-link" href="#top">Skip to content</a>
@@ -132,7 +132,7 @@
         <a href="#services">Services</a>
         <a href="#how-i-work">How I work</a>
         <a href="#about">About</a>
-        <a href="#ideas">Ideas</a>
+        <a href="#faq">FAQ</a>
       </nav>
       <a href="#book" class="btn btn--primary header-cta" tabindex="-1" aria-hidden="true">Book a call</a>
       <div class="lang-toggle" aria-label="Language">
@@ -148,9 +148,9 @@
     <section class="hero">
       <div class="wrap hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow">AI &amp; automation · Digital transformation</p>
+          <p class="eyebrow">Tame your digital chaos</p>
           <h1 class="hero__title">
-            Tame your digital chaos with <span class="hero__accent">pleκo</span>.
+            AI and automation in <span class="hero__accent">Barcelona</span>.
           </h1>
           <p class="hero__tagline">
             I help people and companies replace manual tasks and scattered tools with clear, connected, automated workflows, with AI wherever it genuinely saves time.
@@ -250,11 +250,11 @@
             </div>
             <h3>Workflow automation</h3>
             <p>I turn manual, repetitive steps into processes that run themselves.</p>
-            <div class="card__examples">
-              <span class="section-label">For example</span>
+            <details class="card__examples" open>
+              <summary class="section-label">For example</summary>
               <p>A new client who shows up automatically in your CRM, invoicing and shared folder.</p>
               <p>Reminders and follow-ups that go out without anyone having to send them.</p>
-            </div>
+            </details>
           </div>
           <div class="card">
             <div class="card__icon">
@@ -262,11 +262,11 @@
             </div>
             <h3>AI-assisted systems</h3>
             <p>I add AI where it actually saves you time, not just for show.</p>
-            <div class="card__examples">
-              <span class="section-label">For example</span>
+            <details class="card__examples" open>
+              <summary class="section-label">For example</summary>
               <p>An assistant that drafts first replies to the emails you keep writing.</p>
               <p>Automatic summaries of meetings and long documents.</p>
-            </div>
+            </details>
           </div>
           <div class="card">
             <div class="card__icon">
@@ -274,11 +274,11 @@
             </div>
             <h3>Tool integration</h3>
             <p>I connect the apps you already use so they talk to each other.</p>
-            <div class="card__examples">
-              <span class="section-label">For example</span>
+            <details class="card__examples" open>
+              <summary class="section-label">For example</summary>
               <p>Forms, spreadsheets and CRM joined into a single flow.</p>
               <p>One dashboard with the numbers you now look up in five different places.</p>
-            </div>
+            </details>
           </div>
           <div class="card">
             <div class="card__icon">
@@ -286,11 +286,11 @@
             </div>
             <h3>AI training</h3>
             <p>I teach you and your team to use AI with good judgement in everyday work.</p>
-            <div class="card__examples">
-              <span class="section-label">For example</span>
+            <details class="card__examples" open>
+              <summary class="section-label">For example</summary>
               <p>A hands-on workshop with your real tasks, not textbook examples.</p>
               <p>Guides and usage rules to keep learning afterwards.</p>
-            </div>
+            </details>
             <a href="/en/ai-training/" class="card__link">More about training <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
@@ -367,69 +367,10 @@
       </div>
     </section>
 
-    <!-- ============ 04 AI WITH JUDGEMENT ============
-         Three principles on safety and control; full page at /en/ai-with-judgement/ -->
-    <section id="ai-with-judgement" class="judgement">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-label">04 — AI with judgement</p>
-          <h2 class="h2">Useful, safe and under your control.</h2>
-          <p class="lead">AI is powerful, but it isn't infallible. So every flow comes with its own brakes.</p>
-        </div>
-        <ul class="promises__grid">
-          <li class="promise">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" /><path d="M5 20c1-4 4-6 7-6s6 2 7 6" /></svg></div>
-            <h3>A person checks what matters.</h3>
-            <p>Nothing that reaches a customer or costs money goes out without someone seeing it.</p>
-          </li>
-          <li class="promise">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg></div>
-            <h3>AI only gets access to what it needs.</h3>
-            <p>Minimum permissions, keys locked away and your data kept out of places it shouldn't be.</p>
-          </li>
-          <li class="promise">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h8l4 4v12H7z" /><path d="M15 4v4h4" /><path d="M10 13h6M10 17h6" /></svg></div>
-            <h3>Everything is logged and explained.</h3>
-            <p>What each flow did and when, documented in your accounts.</p>
-          </li>
-        </ul>
-        <a href="/en/ai-with-judgement/" class="btn btn--ghost section-more">How I look after security <span class="arrow" aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-    <!-- ============ 05 THE PIECES ============
-         The jargon as small pills; each <details> opens to a one-line
-         explanation, no JavaScript. Full list at /en/ai-glossary/ -->
-    <section id="pieces" class="pieces-section">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-label">05 — The pieces</p>
-          <h2 class="h2">The hard part isn't any one piece. It's knowing how they fit.</h2>
-          <p class="lead">Behind every automation there are lots of pieces. You don't need to know what each one is: that's my job. But if you're curious, tap any of them.</p>
-        </div>
-        <ul class="pieces">
-          <li><details class="piece"><summary>Generative AI / LLM</summary><p>The “brain” that reads and writes text, like ChatGPT or Claude.</p></details></li>
-          <li><details class="piece"><summary>Large and small models</summary><p>Large ones reason better; small ones are fast and cheap. Efficient means using each where it fits.</p></details></li>
-          <li><details class="piece"><summary>Prompt</summary><p>The instructions you give the AI. Written well, they change everything.</p></details></li>
-          <li><details class="piece"><summary>API</summary><p>The door two programs use to talk to each other.</p></details></li>
-          <li><details class="piece"><summary>Webhook</summary><p>An automatic “something just happened” ping.</p></details></li>
-          <li><details class="piece"><summary>JSON</summary><p>The format data travels in between apps.</p></details></li>
-          <li><details class="piece"><summary>MCP</summary><p>A standard plug that connects AI to your tools.</p></details></li>
-          <li><details class="piece"><summary>RAG</summary><p>Letting AI answer from your documents, not from memory.</p></details></li>
-          <li><details class="piece"><summary>AI agent</summary><p>AI that doesn't just answer, but takes steps and uses tools.</p></details></li>
-          <li><details class="piece"><summary>Human-in-the-loop</summary><p>The point where a person checks before things move on.</p></details></li>
-          <li><details class="piece"><summary>Evals</summary><p>Tests that check the AI answers well, before and after every change.</p></details></li>
-          <li><details class="piece"><summary>Prompt injection</summary><p>Hidden instructions in an email or web page that try to trick the AI.</p></details></li>
-          <li><details class="piece"><summary>Least privilege</summary><p>Each piece gets only the access it needs, nothing more.</p></details></li>
-        </ul>
-        <a href="/en/ai-glossary/" class="btn btn--ghost section-more">See the full glossary <span class="arrow" aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
     <!-- ============ 04 ABOUT (founder + the name) ============ -->
     <section id="about" class="about">
       <div class="wrap about__inner">
-        <p class="section-label">06 — About</p>
+        <p class="section-label">04 — About</p>
         <h2 class="h2">Why I started pleko.</h2>
         <p class="about__text">
           For most of my career, the best tools belonged to companies with big budgets and teams of developers. That's no longer true. AI puts that kind of leverage within reach of anyone willing to learn.
@@ -465,13 +406,65 @@
       </div>
     </section>
 
+    <!-- ============ 05 AI WITH JUDGEMENT + THE PIECES ============
+         Three principles on safety and control; full page at /en/ai-with-judgement/ -->
+    <section id="ai-with-judgement" class="judgement">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-label">05 — AI with judgement</p>
+          <h2 class="h2">Useful, safe and under your control.</h2>
+          <p class="lead">AI is powerful, but it isn't infallible. So every flow comes with its own brakes.</p>
+        </div>
+        <ul class="promises__grid">
+          <li class="promise">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" /><path d="M5 20c1-4 4-6 7-6s6 2 7 6" /></svg></div>
+            <h3>A person checks what matters.</h3>
+            <p>Nothing that reaches a customer or costs money goes out without someone seeing it.</p>
+          </li>
+          <li class="promise">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg></div>
+            <h3>AI only gets access to what it needs.</h3>
+            <p>Minimum permissions, keys locked away and your data kept out of places it shouldn't be.</p>
+          </li>
+          <li class="promise">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h8l4 4v12H7z" /><path d="M15 4v4h4" /><path d="M10 13h6M10 17h6" /></svg></div>
+            <h3>Everything is logged and explained.</h3>
+            <p>What each flow did and when, documented in your accounts.</p>
+          </li>
+        </ul>
+        <a href="/en/ai-with-judgement/" class="btn btn--ghost section-more">How I look after security <span class="arrow" aria-hidden="true">→</span></a>
+        <div id="pieces" class="pieces-block">
+          <div class="section-head">
+            <h2 class="h2">The hard part isn't any one piece. It's knowing how they fit.</h2>
+            <p class="lead">Behind every automation there are lots of pieces. You don't need to know what each one is: that's my job. But if you're curious, tap any of them.</p>
+          </div>
+        <ul class="pieces">
+          <li><details class="piece"><summary>Generative AI / LLM</summary><p>The “brain” that reads and writes text, like ChatGPT or Claude.</p></details></li>
+          <li><details class="piece"><summary>Large and small models</summary><p>Large ones reason better; small ones are fast and cheap. Efficient means using each where it fits.</p></details></li>
+          <li><details class="piece"><summary>Prompt</summary><p>The instructions you give the AI. Written well, they change everything.</p></details></li>
+          <li><details class="piece"><summary>API</summary><p>The door two programs use to talk to each other.</p></details></li>
+          <li><details class="piece"><summary>Webhook</summary><p>An automatic “something just happened” ping.</p></details></li>
+          <li><details class="piece"><summary>JSON</summary><p>The format data travels in between apps.</p></details></li>
+          <li><details class="piece"><summary>MCP</summary><p>A standard plug that connects AI to your tools.</p></details></li>
+          <li><details class="piece"><summary>RAG</summary><p>Letting AI answer from your documents, not from memory.</p></details></li>
+          <li><details class="piece"><summary>AI agent</summary><p>AI that doesn't just answer, but takes steps and uses tools.</p></details></li>
+          <li><details class="piece"><summary>Human-in-the-loop</summary><p>The point where a person checks before things move on.</p></details></li>
+          <li><details class="piece"><summary>Evals</summary><p>Tests that check the AI answers well, before and after every change.</p></details></li>
+          <li><details class="piece"><summary>Prompt injection</summary><p>Hidden instructions in an email or web page that try to trick the AI.</p></details></li>
+          <li><details class="piece"><summary>Least privilege</summary><p>Each piece gets only the access it needs, nothing more.</p></details></li>
+        </ul>
+        <a href="/en/ai-glossary/" class="btn btn--ghost section-more">See the full glossary <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ 05 IDEAS / SUBSTACK ============ -->
     <section id="ideas" class="ideas">
       <div class="wrap ideas__inner">
-        <p class="section-label">07 — Ideas</p>
+        <p class="section-label">06 — Ideas</p>
         <h2 class="h2 h2--italic">Thinking out loud</h2>
         <p class="lead">
-          I write about what I'm learning as I bring AI and automation into real work: what works, what doesn't, and the ideas I'm still untangling. If you want to see how I think before we talk, start there.
+          What I'm learning as I bring AI into real work. If you want to see how I think before we talk, start here.
         </p>
         <!-- Latest Substack post. Between the markers it is rewritten every
              Saturday by .github/workflows/latest-post.yml; don't edit by hand. -->
@@ -492,7 +485,7 @@
     <section id="faq" class="faq">
       <div class="wrap faq__inner">
         <div class="section-head faq__head">
-          <p class="section-label">08 — FAQ</p>
+          <p class="section-label">07 — FAQ</p>
           <h2 class="h2">What people usually ask before the first call.</h2>
           <p class="lead">Can't see your question? Email me at <a href="mailto:alex@pleko.es?subject=Enquiry%20from%20pleko.es">alex@pleko.es</a> and I'll answer it myself.</p>
         </div>
@@ -532,7 +525,7 @@
     <section id="book" class="contact">
       <div class="wrap contact__inner">
         <div class="contact__copy">
-          <p class="section-label">09 — Let's talk</p>
+          <p class="section-label">08 — Let's talk</p>
           <h2 class="contact__heading">Got a workflow worth taming?</h2>
           <p class="contact__subtext">Book a free 20&#8209;minute call. Tell me what's holding you back and I'll tell you honestly whether pleko is a fit.</p>
           <div class="contact__links">
@@ -615,6 +608,6 @@
     };
   </script>
   <script src="../hero-animation.js?v=2" defer></script>
-  <script src="/site.js?v=4" defer></script>
+  <script src="/site.js?v=5" defer></script>
 </body>
 </html>

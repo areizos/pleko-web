@@ -846,6 +846,7 @@ section {
 /* ---------- 05 Ideas (Substack) ------------------------------------------- */
 .ideas {
   padding: clamp(3.5rem, 6vw, 6rem) 0;
+  border-top: 1px solid var(--color-border);
 }
 
 .ideas__inner {
@@ -2284,3 +2285,37 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):hover::after 
   border: 2px solid var(--color-primary);
 }
 .credentials__list strong { color: var(--color-text); font-weight: 600; }
+
+/* 05: the pieces now sit inside the "IA con cabeza" section */
+.pieces-block {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--color-border);
+  scroll-margin-top: 5rem;
+}
+
+/* Service examples: a <details> that is open on wide screens and folded on
+   phones (site.js closes it below 601px). */
+.card__examples > summary {
+  list-style: none;
+  cursor: pointer;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card__examples > summary::-webkit-details-marker { display: none; }
+.card__examples > summary::after {
+  content: "+";
+  font-size: 1rem;
+  color: var(--color-primary);
+  display: none;
+}
+.card__examples[open] > summary::after { content: "−"; }
+.card__examples:not([open]) { gap: 0; }
+@media (max-width: 600px) {
+  .card__examples > summary::after { display: inline; }
+}
+@media (min-width: 601px) {
+  .card__examples > summary { pointer-events: none; }
+}
