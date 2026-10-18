@@ -2251,3 +2251,36 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):hover::after 
     box-shadow: 0 14px 30px -18px rgba(11, 61, 61, 0.35);
   }
 }
+
+/* About: short list of training / credentials */
+.credentials { width: 100%; }
+.credentials__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+  color: var(--color-primary);
+}
+.credentials__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+.credentials__list li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+.credentials__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+}
+.credentials__list strong { color: var(--color-text); font-weight: 600; }
