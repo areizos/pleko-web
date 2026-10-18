@@ -2319,3 +2319,13 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):hover::after 
 @media (min-width: 601px) {
   .card__examples > summary { pointer-events: none; }
 }
+
+/* Legal pages: privacy policy and legal notice */
+.legal { max-width: 47.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+.legal h2 { margin: 1.5rem 0 0; }
+.legal h2:first-child { margin-top: 0; }
+.legal p, .legal li { margin: 0; font-size: 1.05rem; line-height: 1.65; color: var(--color-text-muted); }
+.legal ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.legal strong { color: var(--color-text); font-weight: 600; }
+.legal a { color: var(--color-primary); }
+.legal .legal__updated { margin-top: 1.5rem; font-size: 0.9rem; color: var(--color-label); }
