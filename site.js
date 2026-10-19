@@ -375,6 +375,24 @@
     list.addEventListener('mouseleave', clear);
   });
 
+  /* ---------- Blog: filter the post list by topic ------------------------ */
+  document.querySelectorAll('.tag-filter').forEach(function (bar) {
+    var list = bar.parentNode.querySelector('.post-list');
+    if (!list) return;
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest('.tag-filter__btn');
+      if (!btn) return;
+      var tag = btn.getAttribute('data-tag');
+      bar.querySelectorAll('.tag-filter__btn').forEach(function (b) {
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      Array.prototype.forEach.call(list.children, function (li) {
+        var tags = (li.getAttribute('data-tags') || '').split(' ');
+        li.hidden = !!tag && tags.indexOf(tag) === -1;
+      });
+    });
+  });
+
   /* ---------- Language switch keeps your place ---------------------------
      Switching ES ↔ EN while reading a section lands on the same section in
      the other language (and on the FAQ page, on the same question). */

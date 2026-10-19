@@ -2502,3 +2502,50 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):hover::after 
   .pain__text, .pain__after { grid-column: 1 / -1; }
   .pain__after { padding-top: 0.9rem; margin-top: 0.2rem; }
 }
+
+/* ---------- Blog: post list with topic filter, and the post page ---------- */
+.tag-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
+.tag-filter__btn {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: 999px;
+  background: var(--color-background);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.tag-filter__btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.tag-filter__btn[aria-pressed="true"] { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+.tag-filter__btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.post-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1rem; max-width: 47.5rem; }
+.post-list > li[hidden] { display: none; }
+.post-list .latest-post { margin-top: 0; }
+.post__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.25rem 0 0; }
+.post { padding: clamp(3rem, 6vw, 5rem) 0 clamp(3rem, 6vw, 5rem); }
+.post__head { max-width: 47.5rem; margin-bottom: 2.5rem; }
+.post__head .section-label a { color: inherit; text-decoration: none; }
+.post__meta { margin: 1rem 0 0; color: var(--color-label); font-size: 0.92rem; }
+.post__body { max-width: 42rem; }
+.post__body p,
+.post__body li { font-size: 1.12rem; line-height: 1.75; color: var(--color-text); }
+.post__body p { margin: 0 0 1.25rem; }
+.post__body h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-primary);
+  margin: 2.5rem 0 1rem;
+}
+.post__body ul,
+.post__body ol { margin: 0 0 1.5rem; padding-left: 1.4rem; }
+.post__body li { margin-bottom: 0.6rem; }
+.post__body a { color: var(--color-primary); }
+.post__body hr { border: 0; border-top: 1px solid var(--color-border); margin: 2.5rem 0 1.5rem; }
+.post__body .post__sources li { font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); }
+.post__cta { margin-top: 3rem; }
+.post__cta .btn { margin-top: 0.25rem; }
+.callout a.btn--primary { color: #fff; }

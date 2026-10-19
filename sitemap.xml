@@ -155,4 +155,32 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-for-freelancers/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/ia-para-autonomos/" />
   </url>
+  <url>
+    <loc>https://pleko.es/blog/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/blog/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/blog/la-ia-no-es-solo-para-los-de-arriba/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/la-ia-no-es-solo-para-los-de-arriba/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/ai-isnt-just-for-the-people-at-the-top/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/la-ia-no-es-solo-para-los-de-arriba/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/blog/ai-isnt-just-for-the-people-at-the-top/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/la-ia-no-es-solo-para-los-de-arriba/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/ai-isnt-just-for-the-people-at-the-top/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/la-ia-no-es-solo-para-los-de-arriba/" />
+  </url>
 </urlset>
