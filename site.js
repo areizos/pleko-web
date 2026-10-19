@@ -393,6 +393,18 @@
     });
   });
 
+  /* ---------- Don't count my own visits: open any page with ?nocount=1
+     (or ?nocount=0 to count again). Umami skips browsers with this flag. */
+  (function () {
+    var m = /[?&]nocount=([01])/.exec(location.search);
+    if (!m) return;
+    try {
+      if (m[1] === '1') localStorage.setItem('umami.disabled', '1');
+      else localStorage.removeItem('umami.disabled');
+      alert(m[1] === '1' ? 'Listo: este navegador ya no cuenta en las estadísticas.' : 'Listo: este navegador vuelve a contar en las estadísticas.');
+    } catch (e) {}
+  })();
+
   /* ---------- Count key clicks in Umami (cookie-free stats) -------------- */
   document.addEventListener('click', function (e) {
     if (!window.umami || !e.target.closest) return;
