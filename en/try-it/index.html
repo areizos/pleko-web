@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fcf9f8" />
+  <title>Try it: automation and AI demos | pleko</title>
+  <meta name="description" content="Demos you can play with: hide sensitive data before using AI, watch an assistant book appointments and see data travel between apps." />
+  <link rel="canonical" href="https://pleko.es/en/try-it/" />
+
+  <!-- Open Graph: controls how this page looks when shared on LinkedIn, Slack, etc. -->
+  <meta property="og:title" content="Try it: automation and AI demos | pleko" />
+  <meta property="og:description" content="Demos you can play with: hide sensitive data before using AI, watch an assistant book appointments and see data travel between apps." />
+  <meta property="og:image" content="https://pleko.es/og-en.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="pleko logo and interwoven threads: Tame your digital chaos." />
+  <meta property="og:url" content="https://pleko.es/en/try-it/" />
+  <meta property="og:site_name" content="pleko" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="es_ES" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons: the pleko "p" mark (teal p with a burnt orange dot on a cream tile) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+
+  <!-- Language versions of this page, so search engines pair them up. -->
+  <link rel="alternate" hreflang="es" href="https://pleko.es/pruebalo/" />
+  <link rel="alternate" hreflang="en" href="https://pleko.es/en/try-it/" />
+  <link rel="alternate" hreflang="x-default" href="https://pleko.es/pruebalo/" />
+
+  <!--
+    Fonts: the same pairing as the pleko brand —
+    Inter for body text, Literata (a serif with a nice italic) for headings/wordmark.
+    Loaded from Google Fonts, so no font files to manage ourselves.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/style.css?v=28" />
+    <!-- Structured data for search engines. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Try it: automation and AI demos | pleko",
+      "url": "https://pleko.es/en/try-it/",
+      "inLanguage": "en",
+      "description": "Demos you can play with: hide sensitive data before using AI, watch an assistant book appointments and see data travel between apps."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "pleko",
+          "item": "https://pleko.es/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Try it",
+          "item": "https://pleko.es/en/try-it/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
+</head>
+<body>
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <!-- ============ MENU BAR ============
+       Sticks to the top of the window while scrolling (position: sticky in style.css). -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a href="/en/" class="brand" aria-label="pleko, home">
+        <img src="/pleko-logo.svg?v=2" alt="pleko" class="brand__logo" />
+      </a>
+      <nav class="menu" aria-label="Menu">
+        <a href="/en/#services">Services</a>
+        <a href="/en/#how-i-work">How I work</a>
+        <a href="/en/#about">About</a>
+        <a href="/en/faq/">FAQ</a>
+      </nav>
+      <a href="/en/#book" class="btn btn--primary header-cta" tabindex="-1" aria-hidden="true">Book a call</a>
+      <div class="lang-toggle" aria-label="Language">
+        <a href="/pruebalo/">ES</a>
+        <a href="/en/try-it/" aria-current="page">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="subpage-hero">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-label">Demos</p>
+          <h1 class="h2">Try it yourself.</h1>
+          <p class="lead">Demos you can play with, not videos. Each one tells you whether it really runs or is a simulation with sample data.</p>
+          <ul class="demo__legend">
+            <li><span class="demo__badge demo__badge--live">Live</span> it really runs, right here.</li>
+            <li><span class="demo__badge demo__badge--sim">Simulation</span> you can click through it, but with sample data.</li>
+          </ul>
+          <p class="demo__private">What you type into these demos never leaves your browser: it isn't sent or stored anywhere.</p>
+          <nav class="demo__nav" aria-label="Demos"><a href="#demo-datos">Sensitive-data detector</a><a href="#demo-citas">Booking receptionist</a><a href="#demo-piezas">Connect the pieces</a></nav>
+        </div>
+      </div>
+    </section>
+    <section class="subpage-block demo" id="demo-datos">
+      <div class="wrap">
+        <div class="section-head section-head--sub">
+          <span class="demo__badge demo__badge--live">Live</span>
+          <h2 class="h3-display">Sensitive-data detector</h2>
+          <p class="lead">Before pasting a text into an AI, it's worth removing the personal bits. Type or paste a text and you'll see the sensitive data marked and an anonymous version ready to use.</p>
+        </div>
+        <div class="demo__box detect">
+          <div>
+            <label class="demo__label" for="detect-input">Your text</label>
+            <textarea id="detect-input" rows="7" spellcheck="false"></textarea>
+            <button type="button" class="chat__choice" data-sample="Hi, I&#x27;m Laura García Pérez, ID number 45127391B. Here&#x27;s my IBAN ES91 2100 0418 4502 0005 1332 for the refund. If anything goes wrong, call me on 612 345 678 or email laura.garcia@ejemplo.com. Thanks, Laura">Use a sample text</button>
+          </div>
+          <div>
+            <p class="demo__label">What I found</p>
+            <p class="detect__marked"></p>
+            <p class="detect__summary" aria-live="polite"></p>
+            <p class="demo__label">Anonymous version <button type="button" class="chat__choice chat__choice--small" data-copy>Copy</button></p>
+            <p class="detect__anon"></p>
+          </div>
+        </div>
+        <p class="demo__how"><strong>How it's built:</strong> Rules that recognise Spanish ID numbers (checking the letter), IBANs, phone numbers, emails, cards (with their check digit) and common first names. It all happens in your browser. No detection is perfect, which is why a person always checks what matters.</p>
+      </div>
+    </section>
+    <section class="subpage-block subpage-block--alt demo" id="demo-citas" data-steps="[{&quot;key&quot;: &quot;servicio&quot;, &quot;q&quot;: &quot;Hi! I&#x27;m the Tijeras salon assistant. What can we do for you?&quot;, &quot;options&quot;: [&quot;Cut&quot;, &quot;Colour&quot;, &quot;Styling&quot;]}, {&quot;key&quot;: &quot;dia&quot;, &quot;q&quot;: &quot;Great. Which day suits you?&quot;, &quot;options&quot;: [&quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;]}, {&quot;key&quot;: &quot;hora&quot;, &quot;q&quot;: &quot;These slots are free. Which one would you like?&quot;, &quot;options&quot;: [&quot;10:00&quot;, &quot;12:30&quot;, &quot;17:00&quot;]}]" data-done="Done! See you on {dia} at {hora} for your {servicio}. I&#x27;ll send you a reminder the day before." data-reminder="Hi 👋 Just a reminder of your {servicio} tomorrow at {hora}. Reply YES to confirm or CHANGE if it no longer suits you.">
+      <div class="wrap">
+        <div class="section-head section-head--sub">
+          <span class="demo__badge demo__badge--sim">Simulation</span>
+          <h2 class="h3-display">Booking receptionist</h2>
+          <p class="lead">This is how a client books at a hair salon when the assistant is connected to the calendar and to WhatsApp. Pick the answers and watch the calendar fill in.</p>
+        </div>
+        <div class="demo__box booking">
+          <div class="chat">
+            <p class="chat__title">Tijeras hair salon (a made-up salon)</p>
+            <div class="chat__log" aria-live="polite"></div>
+            <div class="chat__choices"></div>
+          </div>
+          <div class="booking__side">
+            <p class="demo__label">Salon calendar</p>
+            <div class="week"><span class="week__head">Tue</span><span class="week__head">Wed</span><span class="week__head">Thu</span><span class="week__slot" data-day="Tuesday" data-time="10:00" data-t="10:00"></span><span class="week__slot" data-day="Wednesday" data-time="10:00" data-t="10:00"></span><span class="week__slot" data-day="Thursday" data-time="10:00" data-t="10:00"></span><span class="week__slot" data-day="Tuesday" data-time="12:30" data-t="12:30"></span><span class="week__slot" data-day="Wednesday" data-time="12:30" data-t="12:30"></span><span class="week__slot" data-day="Thursday" data-time="12:30" data-t="12:30"></span><span class="week__slot" data-day="Tuesday" data-time="17:00" data-t="17:00"></span><span class="week__slot" data-day="Wednesday" data-time="17:00" data-t="17:00"></span><span class="week__slot" data-day="Thursday" data-time="17:00" data-t="17:00"></span></div>
+            <div class="reminder" hidden>
+              <p class="demo__label">WhatsApp reminder, the day before</p>
+              <p class="reminder__text"></p>
+            </div>
+          </div>
+        </div>
+        <p class="demo__how"><strong>How it's built:</strong> In a real salon, the assistant reads the free slots from the calendar, saves the booking and schedules the reminder. Here everything is sample data: nothing gets booked.</p>
+      </div>
+    </section>
+    <section class="subpage-block demo" id="demo-piezas" data-flow="{&quot;trigger&quot;: {&quot;form&quot;: &quot;&lt;strong&gt;A form comes in:&lt;/strong&gt; “Hi, I&#x27;m Marta. I run a bakery and want to automate orders. marta@ejemplo.com”&quot;, &quot;email&quot;: &quot;&lt;strong&gt;An email arrives:&lt;/strong&gt; “Hi, are you open on Saturday afternoon? If so, please call me. Jordi”&quot;, &quot;photo&quot;: &quot;&lt;strong&gt;A photo of an invoice arrives&lt;/strong&gt; from Papelería Sol, taken on a phone.&quot;}, &quot;step&quot;: {&quot;ai&quot;: {&quot;form&quot;: &quot;&lt;strong&gt;AI sorts it:&lt;/strong&gt; potential client · shop · high priority&quot;, &quot;email&quot;: &quot;&lt;strong&gt;AI sorts it:&lt;/strong&gt; client question · opening hours · wants a call&quot;, &quot;photo&quot;: &quot;&lt;strong&gt;AI sorts it:&lt;/strong&gt; supplier invoice · office supplies&quot;}, &quot;extract&quot;: {&quot;form&quot;: &quot;&lt;strong&gt;Data pulled out:&lt;/strong&gt; name Marta · business bakery · email marta@ejemplo.com&quot;, &quot;email&quot;: &quot;&lt;strong&gt;Data pulled out:&lt;/strong&gt; sender Jordi · topic Saturday afternoon · wants a call&quot;, &quot;photo&quot;: &quot;&lt;strong&gt;Data pulled out:&lt;/strong&gt; Papelería Sol · 14/10 · total €48.40 · VAT €8.40&quot;}}, &quot;dest&quot;: {&quot;sheet&quot;: &quot;&lt;strong&gt;Done:&lt;/strong&gt; there&#x27;s a new row in your spreadsheet.&quot;, &quot;crm&quot;: &quot;&lt;strong&gt;Done:&lt;/strong&gt; there&#x27;s a new record in your CRM, with a task for tomorrow.&quot;, &quot;wa&quot;: &quot;&lt;strong&gt;Done:&lt;/strong&gt; you get a WhatsApp with the summary.&quot;}}">
+      <div class="wrap">
+        <div class="section-head section-head--sub">
+          <span class="demo__badge demo__badge--sim">Simulation</span>
+          <h2 class="h3-display">Connect the pieces</h2>
+          <p class="lead">This is what an automation is: something happens, it gets processed and lands where it should, without anyone copying and pasting. Pick one piece from each column and run it.</p>
+        </div>
+        <div class="demo__box flow">
+          <div class="flow__cols">
+            <div class="flow__col" data-key="trigger">
+              <p class="demo__label">1. When…</p>
+              <button type="button" class="flow__piece" data-id="form" aria-pressed="false">A web form comes in</button><button type="button" class="flow__piece" data-id="email" aria-pressed="false">An email arrives</button><button type="button" class="flow__piece" data-id="photo" aria-pressed="false">A photo of an invoice arrives</button>
+            </div>
+            <div class="flow__col" data-key="step">
+              <p class="demo__label">2. Then…</p>
+              <button type="button" class="flow__piece" data-id="ai" aria-pressed="false">AI sorts it</button><button type="button" class="flow__piece" data-id="extract" aria-pressed="false">The data is pulled out</button>
+            </div>
+            <div class="flow__col" data-key="dest">
+              <p class="demo__label">3. And finally…</p>
+              <button type="button" class="flow__piece" data-id="sheet" aria-pressed="false">It goes to your spreadsheet</button><button type="button" class="flow__piece" data-id="crm" aria-pressed="false">A record is created in your CRM</button><button type="button" class="flow__piece" data-id="wa" aria-pressed="false">You get a WhatsApp alert</button>
+            </div>
+          </div>
+          <div class="flow__bar">
+            <button type="button" class="btn btn--primary flow__run" disabled>Run it</button>
+            <span class="flow__status" aria-live="polite"></span>
+          </div>
+          <ol class="flow__trace"></ol>
+        </div>
+        <p class="demo__how"><strong>How it's built:</strong> In tools like n8n or Make, each piece is one step. Here you see an example with made-up data; in your business it would be your forms, your email and your apps.</p>
+      </div>
+    </section>
+    <section class="subpage-block">
+      <div class="wrap">
+        <aside class="callout">
+          <p class="section-label">Let's talk</p>
+          <h2 class="h3-display">Want something like this in your business?</h2>
+          <p>Book a free 20-minute call and we'll see what could be automated in your case.</p>
+          <p><a href="/en/#book" class="btn btn--primary">Book a call <span class="arrow" aria-hidden="true">→</span></a></p>
+          <p class="callout__note">More live demos, connected to real tools, coming soon.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <span>&copy; <span id="year"></span> pleko</span>
+      <nav class="footer-links" aria-label="Links">
+        <a href="/en/faq/">FAQ</a>
+        <a href="/en/ai-training/">AI training</a>
+        <a href="/en/ai-with-judgement/" aria-current="page">AI with judgement</a>
+        <a href="/en/ai-glossary/">AI glossary</a>
+        <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/en/blog/">Blog</a>
+        <a href="https://github.com/areizos" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:alex@pleko.es?subject=Enquiry%20from%20pleko.es">alex@pleko.es</a>
+        <a href="/en/privacy/">Privacy</a>
+        <a href="/en/legal-notice/">Legal notice</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Small touch of JS: keep the copyright year correct without editing it by hand.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!--
+    Cal.com embed — this is Cal.com's own standard snippet (copied as-is from
+    their embed instructions, not something hand-written), it just loads
+    their booking widget script. Any element with data-cal-link (the
+    booking button in the contact section) opens the calendar in a pop-up,
+    themed with pleko's teal.
+  -->
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    // Started by site.js once the page has loaded, or as soon as someone
+    // heads for the booking button, so it doesn't slow the first paint.
+    window.plekoLoadCal = function () {
+      window.plekoLoadCal = function () {}; // only once
+      Cal("init", { origin: "https://cal.com" });
+      Cal("ui", {
+        styles: { branding: { brandColor: "#006565" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    };
+  </script>
+    <script src="/pruebalo.js?v=1" defer></script>
+    <script src="/site.js?v=10" defer></script>
+</body>
+</html>
