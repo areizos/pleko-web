@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/style.css?v=28" />
+  <link rel="stylesheet" href="/style.css?v=29" />
     <!-- Structured data for search engines. -->
   <script type="application/ld+json">
 {
@@ -114,11 +114,37 @@
             <li><span class="demo__badge demo__badge--sim">Simulation</span> you can click through it, but with sample data.</li>
           </ul>
           <p class="demo__private">What you type into these demos never leaves your browser: it isn't sent or stored anywhere.</p>
-          <nav class="demo__nav" aria-label="Demos"><a href="#demo-datos">Sensitive-data detector</a><a href="#demo-citas">Booking receptionist</a><a href="#demo-piezas">Connect the pieces</a></nav>
+          <nav class="demo__nav" aria-label="Demos"><a href="#demo-piezas">Connect the pieces</a><a href="#demo-datos">Sensitive-data detector</a><a href="#demo-citas">Booking receptionist</a></nav>
         </div>
       </div>
     </section>
-    <section class="subpage-block demo" id="demo-datos">
+    <section class="subpage-block demo" id="demo-piezas">
+      <div class="wrap">
+        <div class="section-head section-head--sub">
+          <span class="demo__badge demo__badge--sim">Simulation</span>
+          <h2 class="h3-display">Connect the pieces</h2>
+          <p class="lead">This is what an automation is: something comes in, AI processes it and it lands where it should, without anyone copying and pasting. Pick your business and one piece from each column, or press “Surprise me”.</p>
+        </div>
+        <div class="demo__box piezas" id="demo-piezas-app">
+          <div class="piezas__biz" role="group"></div>
+          <div class="piezas__stage">
+            <svg class="piezas__lines" aria-hidden="true"></svg>
+            <div class="piezas__cols"><noscript><p>This demo needs JavaScript.</p></noscript></div>
+          </div>
+          <div class="piezas__bar">
+            <button type="button" class="btn btn--primary piezas__run" disabled></button>
+            <button type="button" class="chat__choice piezas__surprise"></button>
+            <span class="piezas__status" aria-live="polite"></span>
+          </div>
+          <div class="piezas__out" hidden>
+            <ol class="piezas__trace"></ol>
+            <div class="piezas__result"></div>
+          </div>
+        </div>
+        <p class="demo__how"><strong>How it's built:</strong> In tools like n8n or Make, each piece is one step. These examples use made-up data; in your business they would be your real forms, email and apps. Greyed-out pieces don't fit what you picked before.</p>
+      </div>
+    </section>
+    <section class="subpage-block subpage-block--alt demo" id="demo-datos">
       <div class="wrap">
         <div class="section-head section-head--sub">
           <span class="demo__badge demo__badge--live">Live</span>
@@ -142,7 +168,7 @@
         <p class="demo__how"><strong>How it's built:</strong> Rules that recognise Spanish ID numbers (checking the letter), IBANs, phone numbers, emails, cards (with their check digit) and common first names. It all happens in your browser. No detection is perfect, which is why a person always checks what matters.</p>
       </div>
     </section>
-    <section class="subpage-block subpage-block--alt demo" id="demo-citas" data-steps="[{&quot;key&quot;: &quot;servicio&quot;, &quot;q&quot;: &quot;Hi! I&#x27;m the Tijeras salon assistant. What can we do for you?&quot;, &quot;options&quot;: [&quot;Cut&quot;, &quot;Colour&quot;, &quot;Styling&quot;]}, {&quot;key&quot;: &quot;dia&quot;, &quot;q&quot;: &quot;Great. Which day suits you?&quot;, &quot;options&quot;: [&quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;]}, {&quot;key&quot;: &quot;hora&quot;, &quot;q&quot;: &quot;These slots are free. Which one would you like?&quot;, &quot;options&quot;: [&quot;10:00&quot;, &quot;12:30&quot;, &quot;17:00&quot;]}]" data-done="Done! See you on {dia} at {hora} for your {servicio}. I&#x27;ll send you a reminder the day before." data-reminder="Hi 👋 Just a reminder of your {servicio} tomorrow at {hora}. Reply YES to confirm or CHANGE if it no longer suits you.">
+    <section class="subpage-block demo" id="demo-citas" data-steps="[{&quot;key&quot;: &quot;servicio&quot;, &quot;q&quot;: &quot;Hi! I&#x27;m the Tijeras salon assistant. What can we do for you?&quot;, &quot;options&quot;: [&quot;Cut&quot;, &quot;Colour&quot;, &quot;Styling&quot;]}, {&quot;key&quot;: &quot;dia&quot;, &quot;q&quot;: &quot;Great. Which day suits you?&quot;, &quot;options&quot;: [&quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;]}, {&quot;key&quot;: &quot;hora&quot;, &quot;q&quot;: &quot;These slots are free. Which one would you like?&quot;, &quot;options&quot;: [&quot;10:00&quot;, &quot;12:30&quot;, &quot;17:00&quot;]}]" data-done="Done! See you on {dia} at {hora} for your {servicio}. I&#x27;ll send you a reminder the day before." data-reminder="Hi 👋 Just a reminder of your {servicio} tomorrow at {hora}. Reply YES to confirm or CHANGE if it no longer suits you.">
       <div class="wrap">
         <div class="section-head section-head--sub">
           <span class="demo__badge demo__badge--sim">Simulation</span>
@@ -165,37 +191,6 @@
           </div>
         </div>
         <p class="demo__how"><strong>How it's built:</strong> In a real salon, the assistant reads the free slots from the calendar, saves the booking and schedules the reminder. Here everything is sample data: nothing gets booked.</p>
-      </div>
-    </section>
-    <section class="subpage-block demo" id="demo-piezas" data-flow="{&quot;trigger&quot;: {&quot;form&quot;: &quot;&lt;strong&gt;A form comes in:&lt;/strong&gt; “Hi, I&#x27;m Marta. I run a bakery and want to automate orders. marta@ejemplo.com”&quot;, &quot;email&quot;: &quot;&lt;strong&gt;An email arrives:&lt;/strong&gt; “Hi, are you open on Saturday afternoon? If so, please call me. Jordi”&quot;, &quot;photo&quot;: &quot;&lt;strong&gt;A photo of an invoice arrives&lt;/strong&gt; from Papelería Sol, taken on a phone.&quot;}, &quot;step&quot;: {&quot;ai&quot;: {&quot;form&quot;: &quot;&lt;strong&gt;AI sorts it:&lt;/strong&gt; potential client · shop · high priority&quot;, &quot;email&quot;: &quot;&lt;strong&gt;AI sorts it:&lt;/strong&gt; client question · opening hours · wants a call&quot;, &quot;photo&quot;: &quot;&lt;strong&gt;AI sorts it:&lt;/strong&gt; supplier invoice · office supplies&quot;}, &quot;extract&quot;: {&quot;form&quot;: &quot;&lt;strong&gt;Data pulled out:&lt;/strong&gt; name Marta · business bakery · email marta@ejemplo.com&quot;, &quot;email&quot;: &quot;&lt;strong&gt;Data pulled out:&lt;/strong&gt; sender Jordi · topic Saturday afternoon · wants a call&quot;, &quot;photo&quot;: &quot;&lt;strong&gt;Data pulled out:&lt;/strong&gt; Papelería Sol · 14/10 · total €48.40 · VAT €8.40&quot;}}, &quot;dest&quot;: {&quot;sheet&quot;: &quot;&lt;strong&gt;Done:&lt;/strong&gt; there&#x27;s a new row in your spreadsheet.&quot;, &quot;crm&quot;: &quot;&lt;strong&gt;Done:&lt;/strong&gt; there&#x27;s a new record in your CRM, with a task for tomorrow.&quot;, &quot;wa&quot;: &quot;&lt;strong&gt;Done:&lt;/strong&gt; you get a WhatsApp with the summary.&quot;}}">
-      <div class="wrap">
-        <div class="section-head section-head--sub">
-          <span class="demo__badge demo__badge--sim">Simulation</span>
-          <h2 class="h3-display">Connect the pieces</h2>
-          <p class="lead">This is what an automation is: something happens, it gets processed and lands where it should, without anyone copying and pasting. Pick one piece from each column and run it.</p>
-        </div>
-        <div class="demo__box flow">
-          <div class="flow__cols">
-            <div class="flow__col" data-key="trigger">
-              <p class="demo__label">1. When…</p>
-              <button type="button" class="flow__piece" data-id="form" aria-pressed="false">A web form comes in</button><button type="button" class="flow__piece" data-id="email" aria-pressed="false">An email arrives</button><button type="button" class="flow__piece" data-id="photo" aria-pressed="false">A photo of an invoice arrives</button>
-            </div>
-            <div class="flow__col" data-key="step">
-              <p class="demo__label">2. Then…</p>
-              <button type="button" class="flow__piece" data-id="ai" aria-pressed="false">AI sorts it</button><button type="button" class="flow__piece" data-id="extract" aria-pressed="false">The data is pulled out</button>
-            </div>
-            <div class="flow__col" data-key="dest">
-              <p class="demo__label">3. And finally…</p>
-              <button type="button" class="flow__piece" data-id="sheet" aria-pressed="false">It goes to your spreadsheet</button><button type="button" class="flow__piece" data-id="crm" aria-pressed="false">A record is created in your CRM</button><button type="button" class="flow__piece" data-id="wa" aria-pressed="false">You get a WhatsApp alert</button>
-            </div>
-          </div>
-          <div class="flow__bar">
-            <button type="button" class="btn btn--primary flow__run" disabled>Run it</button>
-            <span class="flow__status" aria-live="polite"></span>
-          </div>
-          <ol class="flow__trace"></ol>
-        </div>
-        <p class="demo__how"><strong>How it's built:</strong> In tools like n8n or Make, each piece is one step. Here you see an example with made-up data; in your business it would be your forms, your email and your apps.</p>
       </div>
     </section>
     <section class="subpage-block">
@@ -281,7 +276,8 @@
       });
     };
   </script>
-    <script src="/pruebalo.js?v=1" defer></script>
+    <script src="/piezas.js?v=2" defer></script>
+    <script src="/pruebalo.js?v=2" defer></script>
     <script src="/site.js?v=10" defer></script>
 </body>
 </html>

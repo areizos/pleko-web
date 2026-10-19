@@ -16,7 +16,7 @@ blog = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(blog)
 
 PATHS = {"es": "/pruebalo/", "en": "/en/try-it/"}
-JS_VERSION = 1
+JS_VERSION = 2
 
 C = {
     "es": dict(
@@ -60,35 +60,9 @@ C = {
         b_how="En un salón de verdad, el asistente lee los huecos libres del calendario, guarda la cita y programa el recordatorio. Aquí todo es de ejemplo: no se reserva nada.",
         # 3. Flow
         f_title="Conecta las piezas",
-        f_intro="Una automatización es esto: algo pasa, se procesa y acaba donde tiene que estar, sin que nadie copie y pegue. Elige una pieza de cada columna y ponlo en marcha.",
-        f_cols=[("trigger", "1. Cuando…"), ("step", "2. Entonces…"), ("dest", "3. Y al final…")],
-        f_opts=dict(
-            trigger=[("form", "Llega un formulario web"), ("email", "Llega un correo"), ("photo", "Llega la foto de una factura")],
-            step=[("ai", "La IA lo clasifica"), ("extract", "Se sacan los datos")],
-            dest=[("sheet", "Va a tu hoja de cálculo"), ("crm", "Se crea una ficha en tu CRM"), ("wa", "Te avisa por WhatsApp")],
-        ),
-        f_data=dict(
-            trigger=dict(
-                form="<strong>Llega un formulario:</strong> «Hola, soy Marta. Tengo una panadería y quiero automatizar los pedidos. marta@ejemplo.com»",
-                email="<strong>Llega un correo:</strong> «Buenas, ¿abrís el sábado por la tarde? Si podéis, llamadme. Jordi»",
-                photo="<strong>Llega la foto de una factura</strong> de Papelería Sol, hecha con el móvil.",
-            ),
-            step=dict(
-                ai=dict(form="<strong>La IA lo clasifica:</strong> cliente potencial · comercio · prioridad alta",
-                        email="<strong>La IA lo clasifica:</strong> pregunta de cliente · horarios · pide llamada",
-                        photo="<strong>La IA lo clasifica:</strong> factura de proveedor · material de oficina"),
-                extract=dict(form="<strong>Se sacan los datos:</strong> nombre Marta · negocio panadería · email marta@ejemplo.com",
-                             email="<strong>Se sacan los datos:</strong> remitente Jordi · tema sábado por la tarde · quiere llamada",
-                             photo="<strong>Se sacan los datos:</strong> Papelería Sol · 14/10 · total 48,40 € · IVA 8,40 €"),
-            ),
-            dest=dict(
-                sheet="<strong>Listo:</strong> hay una fila nueva en tu hoja de cálculo.",
-                crm="<strong>Listo:</strong> hay una ficha nueva en tu CRM, con una tarea para mañana.",
-                wa="<strong>Listo:</strong> te llega un WhatsApp con el resumen.",
-            ),
-        ),
-        f_run="Ponerlo en marcha",
-        f_how="Con herramientas como n8n o Make, cada pieza es un paso. Aquí ves un ejemplo con datos inventados; en tu negocio serían tus formularios, tu correo y tus apps.",
+        f_intro="Una automatización es esto: algo llega, la IA lo procesa y acaba donde tiene que estar, sin que nadie copie y pegue. Elige tu negocio y una pieza de cada columna, o pulsa «Sorpréndeme».",
+        f_noscript="Esta demo necesita JavaScript.",
+        f_how="Con herramientas como n8n o Make, cada pieza es un paso. Aquí ves ejemplos con datos inventados; en tu negocio serían tus formularios, tu correo y tus apps de verdad. Las piezas en gris no encajan con lo que has elegido antes.",
     ),
     "en": dict(
         title="Try it: automation and AI demos | pleko",
@@ -128,35 +102,9 @@ C = {
         b_wa="WhatsApp reminder, the day before",
         b_how="In a real salon, the assistant reads the free slots from the calendar, saves the booking and schedules the reminder. Here everything is sample data: nothing gets booked.",
         f_title="Connect the pieces",
-        f_intro="This is what an automation is: something happens, it gets processed and lands where it should, without anyone copying and pasting. Pick one piece from each column and run it.",
-        f_cols=[("trigger", "1. When…"), ("step", "2. Then…"), ("dest", "3. And finally…")],
-        f_opts=dict(
-            trigger=[("form", "A web form comes in"), ("email", "An email arrives"), ("photo", "A photo of an invoice arrives")],
-            step=[("ai", "AI sorts it"), ("extract", "The data is pulled out")],
-            dest=[("sheet", "It goes to your spreadsheet"), ("crm", "A record is created in your CRM"), ("wa", "You get a WhatsApp alert")],
-        ),
-        f_data=dict(
-            trigger=dict(
-                form="<strong>A form comes in:</strong> “Hi, I'm Marta. I run a bakery and want to automate orders. marta@ejemplo.com”",
-                email="<strong>An email arrives:</strong> “Hi, are you open on Saturday afternoon? If so, please call me. Jordi”",
-                photo="<strong>A photo of an invoice arrives</strong> from Papelería Sol, taken on a phone.",
-            ),
-            step=dict(
-                ai=dict(form="<strong>AI sorts it:</strong> potential client · shop · high priority",
-                        email="<strong>AI sorts it:</strong> client question · opening hours · wants a call",
-                        photo="<strong>AI sorts it:</strong> supplier invoice · office supplies"),
-                extract=dict(form="<strong>Data pulled out:</strong> name Marta · business bakery · email marta@ejemplo.com",
-                             email="<strong>Data pulled out:</strong> sender Jordi · topic Saturday afternoon · wants a call",
-                             photo="<strong>Data pulled out:</strong> Papelería Sol · 14/10 · total €48.40 · VAT €8.40"),
-            ),
-            dest=dict(
-                sheet="<strong>Done:</strong> there's a new row in your spreadsheet.",
-                crm="<strong>Done:</strong> there's a new record in your CRM, with a task for tomorrow.",
-                wa="<strong>Done:</strong> you get a WhatsApp with the summary.",
-            ),
-        ),
-        f_run="Run it",
-        f_how="In tools like n8n or Make, each piece is one step. Here you see an example with made-up data; in your business it would be your forms, your email and your apps.",
+        f_intro="This is what an automation is: something comes in, AI processes it and it lands where it should, without anyone copying and pasting. Pick your business and one piece from each column, or press “Surprise me”.",
+        f_noscript="This demo needs JavaScript.",
+        f_how="In tools like n8n or Make, each piece is one step. These examples use made-up data; in your business they would be your real forms, email and apps. Greyed-out pieces don't fit what you picked before.",
     ),
 }
 
@@ -203,7 +151,7 @@ def build(lang):
             <p class="demo__label">{c["d_anon"]} <button type="button" class="chat__choice chat__choice--small" data-copy>{c["d_copy"]}</button></p>
             <p class="detect__anon"></p>
           </div>
-        </div>''', c["d_how"])
+        </div>''', c["d_how"], alt=True)
 
     days = c["b_steps"][1]["options"]
     times = c["b_steps"][2]["options"]
@@ -224,29 +172,29 @@ def build(lang):
               <p class="reminder__text"></p>
             </div>
           </div>
-        </div>''', c["b_how"], alt=True)
+        </div>''', c["b_how"])
     # The JS reads the chat script from data attributes on the section itself.
     booking = booking.replace(
         f'id="demo-citas">',
         f'id="demo-citas" data-steps="{a(json.dumps(c["b_steps"], ensure_ascii=False))}" data-done="{a(c["b_done"])}" data-reminder="{a(c["b_reminder"])}">', 1)
 
-    cols = "".join(f'''
-            <div class="flow__col" data-key="{k}">
-              <p class="demo__label">{label}</p>
-              {"".join(f'<button type="button" class="flow__piece" data-id="{i}" aria-pressed="false">{t}</button>' for i, t in c["f_opts"][k])}
-            </div>''' for k, label in c["f_cols"])
-    flow = section(c, "demo-piezas", False, c["f_title"], c["f_intro"], f'''<div class="demo__box flow">
-          <div class="flow__cols">{cols}
+    flow = section(c, "demo-piezas", False, c["f_title"], c["f_intro"], f'''<div class="demo__box piezas" id="demo-piezas-app">
+          <div class="piezas__biz" role="group"></div>
+          <div class="piezas__stage">
+            <svg class="piezas__lines" aria-hidden="true"></svg>
+            <div class="piezas__cols"><noscript><p>{c["f_noscript"]}</p></noscript></div>
           </div>
-          <div class="flow__bar">
-            <button type="button" class="btn btn--primary flow__run" disabled>{c["f_run"]}</button>
-            <span class="flow__status" aria-live="polite"></span>
+          <div class="piezas__bar">
+            <button type="button" class="btn btn--primary piezas__run" disabled></button>
+            <button type="button" class="chat__choice piezas__surprise"></button>
+            <span class="piezas__status" aria-live="polite"></span>
           </div>
-          <ol class="flow__trace"></ol>
+          <div class="piezas__out" hidden>
+            <ol class="piezas__trace"></ol>
+            <div class="piezas__result"></div>
+          </div>
         </div>''', c["f_how"])
-    flow = flow.replace('id="demo-piezas">', f'id="demo-piezas" data-flow="{a(json.dumps(c["f_data"], ensure_ascii=False))}">', 1)
-
-    nav = "".join(f'<a href="#{i}">{t}</a>' for i, t in [("demo-datos", c["d_title"]), ("demo-citas", c["b_title"]), ("demo-piezas", c["f_title"])])
+    nav = "".join(f'<a href="#{i}">{t}</a>' for i, t in [("demo-piezas", c["f_title"]), ("demo-datos", c["d_title"]), ("demo-citas", c["b_title"])])
     main = f'''
     <section class="subpage-hero">
       <div class="wrap">
@@ -262,7 +210,7 @@ def build(lang):
           <nav class="demo__nav" aria-label="Demos">{nav}</nav>
         </div>
       </div>
-    </section>{detect}{booking}{flow}
+    </section>{flow}{detect}{booking}
     <section class="subpage-block">
       <div class="wrap">
         <aside class="callout">
@@ -281,7 +229,7 @@ def build(lang):
     ]}
     out = blog.page(lang, path, other, c["title"], c["desc"], ld, main)
     # The shell ends with the booking band from its source page; keep it, and load the demo script.
-    out = out.replace('<script src="/site.js', f'<script src="/pruebalo.js?v={JS_VERSION}" defer></script>\n    <script src="/site.js', 1)
+    out = out.replace('<script src="/site.js', f'<script src="/piezas.js?v={JS_VERSION}" defer></script>\n    <script src="/pruebalo.js?v={JS_VERSION}" defer></script>\n    <script src="/site.js', 1)
     blog.write(path, out)
 
 

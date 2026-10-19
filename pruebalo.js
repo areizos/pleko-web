@@ -15,10 +15,7 @@
       copied: '¡Copiado!',
       tags: { NOMBRE: 'NOMBRE', DNI: 'DNI', IBAN: 'IBAN', TELEFONO: 'TELEFONO', EMAIL: 'EMAIL', TARJETA: 'TARJETA' },
       kinds: { NOMBRE: 'Nombre', DNI: 'DNI/NIE', IBAN: 'IBAN', TELEFONO: 'Teléfono', EMAIL: 'Email', TARJETA: 'Tarjeta' },
-      again: 'Empezar de nuevo',
-      flowReady: 'Listo. Pulsa «Ponerlo en marcha».',
-      flowPick: 'Elige una pieza de cada columna.',
-      flowDone: 'Hecho, sin tocar nada. Esto es una automatización.'
+      again: 'Empezar de nuevo'
     },
     en: {
       found: function (n) { return n === 1 ? '1 piece of sensitive data found.' : n + ' pieces of sensitive data found.'; },
@@ -26,10 +23,7 @@
       copied: 'Copied!',
       tags: { NOMBRE: 'NAME', DNI: 'ID', IBAN: 'IBAN', TELEFONO: 'PHONE', EMAIL: 'EMAIL', TARJETA: 'CARD' },
       kinds: { NOMBRE: 'Name', DNI: 'ID number', IBAN: 'IBAN', TELEFONO: 'Phone', EMAIL: 'Email', TARJETA: 'Card' },
-      again: 'Start over',
-      flowReady: 'Ready. Press “Run it”.',
-      flowPick: 'Pick one piece from each column.',
-      flowDone: 'Done, without touching a thing. That’s an automation.'
+      again: 'Start over'
     }
   }[lang];
 
@@ -173,48 +167,5 @@
       step(0);
     };
     reset();
-  }
-
-  /* ---------- 3. Connect the pieces (simulation) --------------------------
-     Pick a trigger, a step and a destination; "Run it" walks one example
-     record through the three pieces and shows what it looks like at each. */
-  var flow = $('#demo-piezas');
-  if (flow) {
-    var status = $('.flow__status', flow);
-    var runBtn = $('.flow__run', flow);
-    var data = JSON.parse(flow.getAttribute('data-flow'));
-    var sel = {};
-    var refresh = function () {
-      var ready = sel.trigger && sel.step && sel.dest;
-      runBtn.disabled = !ready;
-      status.textContent = ready ? T.flowReady : T.flowPick;
-    };
-    $$('.flow__col', flow).forEach(function (col) {
-      var key = col.getAttribute('data-key');
-      $$('button', col).forEach(function (b) {
-        b.addEventListener('click', function () {
-          $$('button', col).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
-          b.setAttribute('aria-pressed', 'true');
-          sel[key] = b.getAttribute('data-id');
-          $('.flow__trace', flow).innerHTML = '';
-          refresh();
-        });
-      });
-    });
-    runBtn.addEventListener('click', function () {
-      var trace = $('.flow__trace', flow);
-      trace.innerHTML = '';
-      runBtn.disabled = true;
-      var lines = [data.trigger[sel.trigger], data.step[sel.step][sel.trigger], data.dest[sel.dest]];
-      lines.forEach(function (l, i) {
-        setTimeout(function () {
-          var li = document.createElement('li');
-          li.innerHTML = l;
-          trace.appendChild(li);
-          if (i === lines.length - 1) { status.textContent = T.flowDone; runBtn.disabled = false; }
-        }, reduced ? 0 : 700 * (i + 1));
-      });
-    });
-    refresh();
   }
 })();

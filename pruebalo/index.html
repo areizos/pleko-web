@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="/style.css?v=28" />
+    <link rel="stylesheet" href="/style.css?v=29" />
     <!-- Structured data for search engines. -->
   <script type="application/ld+json">
 {
@@ -114,11 +114,37 @@
             <li><span class="demo__badge demo__badge--sim">Simulación</span> puedes hacer clic, pero con datos de ejemplo.</li>
           </ul>
           <p class="demo__private">Lo que escribes en estas demos no sale de tu navegador: no se envía ni se guarda en ningún sitio.</p>
-          <nav class="demo__nav" aria-label="Demos"><a href="#demo-datos">Detector de datos sensibles</a><a href="#demo-citas">Recepcionista de citas</a><a href="#demo-piezas">Conecta las piezas</a></nav>
+          <nav class="demo__nav" aria-label="Demos"><a href="#demo-piezas">Conecta las piezas</a><a href="#demo-datos">Detector de datos sensibles</a><a href="#demo-citas">Recepcionista de citas</a></nav>
         </div>
       </div>
     </section>
-    <section class="subpage-block demo" id="demo-datos">
+    <section class="subpage-block demo" id="demo-piezas">
+      <div class="wrap">
+        <div class="section-head section-head--sub">
+          <span class="demo__badge demo__badge--sim">Simulación</span>
+          <h2 class="h3-display">Conecta las piezas</h2>
+          <p class="lead">Una automatización es esto: algo llega, la IA lo procesa y acaba donde tiene que estar, sin que nadie copie y pegue. Elige tu negocio y una pieza de cada columna, o pulsa «Sorpréndeme».</p>
+        </div>
+        <div class="demo__box piezas" id="demo-piezas-app">
+          <div class="piezas__biz" role="group"></div>
+          <div class="piezas__stage">
+            <svg class="piezas__lines" aria-hidden="true"></svg>
+            <div class="piezas__cols"><noscript><p>Esta demo necesita JavaScript.</p></noscript></div>
+          </div>
+          <div class="piezas__bar">
+            <button type="button" class="btn btn--primary piezas__run" disabled></button>
+            <button type="button" class="chat__choice piezas__surprise"></button>
+            <span class="piezas__status" aria-live="polite"></span>
+          </div>
+          <div class="piezas__out" hidden>
+            <ol class="piezas__trace"></ol>
+            <div class="piezas__result"></div>
+          </div>
+        </div>
+        <p class="demo__how"><strong>Cómo está hecho:</strong> Con herramientas como n8n o Make, cada pieza es un paso. Aquí ves ejemplos con datos inventados; en tu negocio serían tus formularios, tu correo y tus apps de verdad. Las piezas en gris no encajan con lo que has elegido antes.</p>
+      </div>
+    </section>
+    <section class="subpage-block subpage-block--alt demo" id="demo-datos">
       <div class="wrap">
         <div class="section-head section-head--sub">
           <span class="demo__badge demo__badge--live">En directo</span>
@@ -142,7 +168,7 @@
         <p class="demo__how"><strong>Cómo está hecho:</strong> Reglas que reconocen DNI y NIE (comprobando la letra), IBAN, teléfonos, emails, tarjetas (con su dígito de control) y nombres comunes. Todo ocurre en tu navegador. Ninguna detección es perfecta, por eso una persona revisa siempre lo importante.</p>
       </div>
     </section>
-    <section class="subpage-block subpage-block--alt demo" id="demo-citas" data-steps="[{&quot;key&quot;: &quot;servicio&quot;, &quot;q&quot;: &quot;¡Hola! Soy el asistente de Peluquería Tijeras. ¿Qué te hacemos?&quot;, &quot;options&quot;: [&quot;Corte&quot;, &quot;Color&quot;, &quot;Peinado&quot;]}, {&quot;key&quot;: &quot;dia&quot;, &quot;q&quot;: &quot;Perfecto. ¿Qué día te va bien?&quot;, &quot;options&quot;: [&quot;Martes&quot;, &quot;Miércoles&quot;, &quot;Jueves&quot;]}, {&quot;key&quot;: &quot;hora&quot;, &quot;q&quot;: &quot;Tengo estos huecos libres. ¿Cuál prefieres?&quot;, &quot;options&quot;: [&quot;10:00&quot;, &quot;12:30&quot;, &quot;17:00&quot;]}]" data-done="¡Hecho! Te espero el {dia} a las {hora} para {servicio}. Te mandaré un recordatorio el día antes." data-reminder="Hola 👋 Te recuerdo tu cita de {servicio} mañana a las {hora}. Responde SÍ para confirmar o CAMBIAR si te viene mal.">
+    <section class="subpage-block demo" id="demo-citas" data-steps="[{&quot;key&quot;: &quot;servicio&quot;, &quot;q&quot;: &quot;¡Hola! Soy el asistente de Peluquería Tijeras. ¿Qué te hacemos?&quot;, &quot;options&quot;: [&quot;Corte&quot;, &quot;Color&quot;, &quot;Peinado&quot;]}, {&quot;key&quot;: &quot;dia&quot;, &quot;q&quot;: &quot;Perfecto. ¿Qué día te va bien?&quot;, &quot;options&quot;: [&quot;Martes&quot;, &quot;Miércoles&quot;, &quot;Jueves&quot;]}, {&quot;key&quot;: &quot;hora&quot;, &quot;q&quot;: &quot;Tengo estos huecos libres. ¿Cuál prefieres?&quot;, &quot;options&quot;: [&quot;10:00&quot;, &quot;12:30&quot;, &quot;17:00&quot;]}]" data-done="¡Hecho! Te espero el {dia} a las {hora} para {servicio}. Te mandaré un recordatorio el día antes." data-reminder="Hola 👋 Te recuerdo tu cita de {servicio} mañana a las {hora}. Responde SÍ para confirmar o CAMBIAR si te viene mal.">
       <div class="wrap">
         <div class="section-head section-head--sub">
           <span class="demo__badge demo__badge--sim">Simulación</span>
@@ -165,37 +191,6 @@
           </div>
         </div>
         <p class="demo__how"><strong>Cómo está hecho:</strong> En un salón de verdad, el asistente lee los huecos libres del calendario, guarda la cita y programa el recordatorio. Aquí todo es de ejemplo: no se reserva nada.</p>
-      </div>
-    </section>
-    <section class="subpage-block demo" id="demo-piezas" data-flow="{&quot;trigger&quot;: {&quot;form&quot;: &quot;&lt;strong&gt;Llega un formulario:&lt;/strong&gt; «Hola, soy Marta. Tengo una panadería y quiero automatizar los pedidos. marta@ejemplo.com»&quot;, &quot;email&quot;: &quot;&lt;strong&gt;Llega un correo:&lt;/strong&gt; «Buenas, ¿abrís el sábado por la tarde? Si podéis, llamadme. Jordi»&quot;, &quot;photo&quot;: &quot;&lt;strong&gt;Llega la foto de una factura&lt;/strong&gt; de Papelería Sol, hecha con el móvil.&quot;}, &quot;step&quot;: {&quot;ai&quot;: {&quot;form&quot;: &quot;&lt;strong&gt;La IA lo clasifica:&lt;/strong&gt; cliente potencial · comercio · prioridad alta&quot;, &quot;email&quot;: &quot;&lt;strong&gt;La IA lo clasifica:&lt;/strong&gt; pregunta de cliente · horarios · pide llamada&quot;, &quot;photo&quot;: &quot;&lt;strong&gt;La IA lo clasifica:&lt;/strong&gt; factura de proveedor · material de oficina&quot;}, &quot;extract&quot;: {&quot;form&quot;: &quot;&lt;strong&gt;Se sacan los datos:&lt;/strong&gt; nombre Marta · negocio panadería · email marta@ejemplo.com&quot;, &quot;email&quot;: &quot;&lt;strong&gt;Se sacan los datos:&lt;/strong&gt; remitente Jordi · tema sábado por la tarde · quiere llamada&quot;, &quot;photo&quot;: &quot;&lt;strong&gt;Se sacan los datos:&lt;/strong&gt; Papelería Sol · 14/10 · total 48,40 € · IVA 8,40 €&quot;}}, &quot;dest&quot;: {&quot;sheet&quot;: &quot;&lt;strong&gt;Listo:&lt;/strong&gt; hay una fila nueva en tu hoja de cálculo.&quot;, &quot;crm&quot;: &quot;&lt;strong&gt;Listo:&lt;/strong&gt; hay una ficha nueva en tu CRM, con una tarea para mañana.&quot;, &quot;wa&quot;: &quot;&lt;strong&gt;Listo:&lt;/strong&gt; te llega un WhatsApp con el resumen.&quot;}}">
-      <div class="wrap">
-        <div class="section-head section-head--sub">
-          <span class="demo__badge demo__badge--sim">Simulación</span>
-          <h2 class="h3-display">Conecta las piezas</h2>
-          <p class="lead">Una automatización es esto: algo pasa, se procesa y acaba donde tiene que estar, sin que nadie copie y pegue. Elige una pieza de cada columna y ponlo en marcha.</p>
-        </div>
-        <div class="demo__box flow">
-          <div class="flow__cols">
-            <div class="flow__col" data-key="trigger">
-              <p class="demo__label">1. Cuando…</p>
-              <button type="button" class="flow__piece" data-id="form" aria-pressed="false">Llega un formulario web</button><button type="button" class="flow__piece" data-id="email" aria-pressed="false">Llega un correo</button><button type="button" class="flow__piece" data-id="photo" aria-pressed="false">Llega la foto de una factura</button>
-            </div>
-            <div class="flow__col" data-key="step">
-              <p class="demo__label">2. Entonces…</p>
-              <button type="button" class="flow__piece" data-id="ai" aria-pressed="false">La IA lo clasifica</button><button type="button" class="flow__piece" data-id="extract" aria-pressed="false">Se sacan los datos</button>
-            </div>
-            <div class="flow__col" data-key="dest">
-              <p class="demo__label">3. Y al final…</p>
-              <button type="button" class="flow__piece" data-id="sheet" aria-pressed="false">Va a tu hoja de cálculo</button><button type="button" class="flow__piece" data-id="crm" aria-pressed="false">Se crea una ficha en tu CRM</button><button type="button" class="flow__piece" data-id="wa" aria-pressed="false">Te avisa por WhatsApp</button>
-            </div>
-          </div>
-          <div class="flow__bar">
-            <button type="button" class="btn btn--primary flow__run" disabled>Ponerlo en marcha</button>
-            <span class="flow__status" aria-live="polite"></span>
-          </div>
-          <ol class="flow__trace"></ol>
-        </div>
-        <p class="demo__how"><strong>Cómo está hecho:</strong> Con herramientas como n8n o Make, cada pieza es un paso. Aquí ves un ejemplo con datos inventados; en tu negocio serían tus formularios, tu correo y tus apps.</p>
       </div>
     </section>
     <section class="subpage-block">
@@ -281,7 +276,8 @@
       });
     };
   </script>
-    <script src="/pruebalo.js?v=1" defer></script>
+    <script src="/piezas.js?v=2" defer></script>
+    <script src="/pruebalo.js?v=2" defer></script>
     <script src="/site.js?v=10" defer></script>
 </body>
 </html>
