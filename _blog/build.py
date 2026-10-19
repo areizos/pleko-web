@@ -108,7 +108,8 @@ def shell(lang):
     s = open(os.path.join(ROOT, L[lang]["shell"]), encoding="utf-8").read()
     head_end = s.index("<!-- Structured data")
     top = s[:head_end]
-    nav_start = s.index("</head>")
+    # Keep anything after the structured data (e.g. the Umami script) along with the nav.
+    nav_start = s.index("</script>", head_end) + len("</script>\n")
     main_start = s.index('  <main id="top">')
     main_end = s.index("  </main>") + len("  </main>")
     return top, s[nav_start:main_start], s[main_end:]

@@ -393,6 +393,19 @@
     });
   });
 
+  /* ---------- Count key clicks in Umami (cookie-free stats) -------------- */
+  document.addEventListener('click', function (e) {
+    if (!window.umami || !e.target.closest) return;
+    var el = e.target.closest('a, button');
+    if (!el) return;
+    var href = el.getAttribute('href') || '';
+    var name = el.hasAttribute('data-cal-link') ? 'Calendario' :
+      el.hasAttribute('data-tally-form') ? 'Cuestionario' :
+      href.indexOf('wa.me/') !== -1 ? 'WhatsApp' :
+      href.indexOf('mailto:') === 0 ? 'Email' : '';
+    if (name) window.umami.track(name, { lang: document.documentElement.lang });
+  });
+
   /* ---------- Language switch keeps your place ---------------------------
      Switching ES ↔ EN while reading a section lands on the same section in
      the other language (and on the FAQ page, on the same question). */
