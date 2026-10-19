@@ -337,6 +337,44 @@
     });
   });
 
+  /* Hovering a pill tips it, and the pills around it (left, right, above,
+     below), a little further the opposite way to their resting tilt. */
+  var mm = window.matchMedia;
+  var tiltOk = mm && mm('(hover: hover) and (pointer: fine)').matches &&
+    !mm('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.pieces').forEach(function (list) {
+    if (!tiltOk) return;
+    var items = Array.prototype.slice.call(list.children);
+    function baseTilt(li, i) {
+      var t = parseFloat(getComputedStyle(li).getPropertyValue('--tilt')) || 0;
+      return t || (i % 2 ? 1 : -1) * 0.01; /* untilted pills pick a side */
+    }
+    function nudge(li, i, deg) {
+      li.style.setProperty('--nudge', (baseTilt(li, i) > 0 ? -deg : deg) + 'deg');
+    }
+    function clear() { items.forEach(function (li) { li.style.removeProperty('--nudge'); }); }
+    function rowNeighbour(li, dir) {
+      /* nearest pill in the row above (-1) or below (1) under this one's middle */
+      var mid = li.offsetLeft + li.offsetWidth / 2, best = null, bestTop = null;
+      items.forEach(function (o) {
+        var dy = (o.offsetTop - li.offsetTop) * dir;
+        if (dy <= 8 || mid < o.offsetLeft || mid > o.offsetLeft + o.offsetWidth) return;
+        if (bestTop === null || dy < bestTop) { best = o; bestTop = dy; }
+      });
+      return best;
+    }
+    items.forEach(function (li, i) {
+      li.addEventListener('mouseenter', function () {
+        clear();
+        nudge(li, i, 2);
+        [items[i - 1], items[i + 1], rowNeighbour(li, -1), rowNeighbour(li, 1)].forEach(function (o) {
+          if (o && o !== li) nudge(o, items.indexOf(o), 1);
+        });
+      });
+    });
+    list.addEventListener('mouseleave', clear);
+  });
+
   /* ---------- Language switch keeps your place ---------------------------
      Switching ES ↔ EN while reading a section lands on the same section in
      the other language (and on the FAQ page, on the same question). */
