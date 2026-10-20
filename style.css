@@ -2133,15 +2133,6 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
    judgement, 05 The pieces, and the new service / glossary pages.
    ========================================================================= */
 
-/* Four service cards: four across on wide screens, two on tablets, one on phones */
-@media (min-width: 1100px) {
-  .cards.cards--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .cards--four .card { padding: 1.75rem; }
-}
-@media (min-width: 601px) and (max-width: 1099px) {
-  .cards.cards--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
 .card__link {
   margin-top: auto;
   color: var(--color-primary);
@@ -2439,7 +2430,7 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
 }
 .card__examples-body p + p { margin-top: 0; }
 .card__examples.is-folded .card__examples-body {
-  max-height: 2.25em; /* 1.5 lines at a 1.5 line height */
+  max-height: 4.05em; /* 2.7 lines at a 1.5 line height */
   cursor: pointer;
   -webkit-mask-image: linear-gradient(to bottom, #000 15%, transparent);
   mask-image: linear-gradient(to bottom, #000 15%, transparent);
@@ -2467,20 +2458,19 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
   .card__examples-toggle { display: none; }
 }
 
-/* Four service cards (tablet and desktop): the rows (icon, title, premise,
-   examples, link) line up across the cards, so the divider above the
-   examples sits at the same height. Phones stack the cards, so no need. */
-@media (min-width: 601px) {
+/* Service cards (three across, from 901px): the rows (icon, title, premise,
+   examples) line up across the cards, so the divider above the examples
+   sits at the same height. Narrower screens stack the cards, so no need. */
+@media (min-width: 901px) {
 @supports (grid-template-rows: subgrid) {
-  .cards--four .card {
+  .cards--services .card {
     display: grid;
-    grid-row: span 5;
+    grid-row: span 4;
     grid-template-rows: subgrid;
     row-gap: 1rem;
     align-content: start;
   }
-  .cards--four .card__examples { align-self: start; }
-  .cards--four .card__link { align-self: end; }
+  .cards--services .card__examples { align-self: start; }
 }
 }
 
