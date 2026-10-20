@@ -148,6 +148,21 @@
     }, { threshold: 0.15 }).observe(contact);
   }
 
+  /* ---------- "Recursos" dropdown in the menu ---------------------------
+     A <details>: closes on a click outside it or on Escape. */
+  var menuMore = document.querySelector('.menu-more');
+  if (menuMore) {
+    document.addEventListener('click', function (e) {
+      if (menuMore.open && !menuMore.contains(e.target)) menuMore.open = false;
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menuMore.open) {
+        menuMore.open = false;
+        menuMore.querySelector('summary').focus();
+      }
+    });
+  }
+
   /* ---------- Current section underlined in the menu --------------------- */
   var menuLinks = Array.prototype.slice.call(document.querySelectorAll('.menu a[href^="#"]'));
   if (hasIO && menuLinks.length) {

@@ -117,7 +117,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="../style.css?v=39" />
+  <link rel="stylesheet" href="../style.css?v=40" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
 </head>
 <body>
@@ -135,6 +135,15 @@
         <a href="#how-i-work">How I work</a>
         <a href="#about">About</a>
         <a href="#faq">FAQ</a>
+        <details class="menu-more">
+          <summary>Resources</summary>
+          <div class="menu-more__panel">
+            <a href="/en/blog/">Blog</a>
+            <a href="/en/try-it/">Try it</a>
+            <a href="/en/ai-glossary/">AI glossary</a>
+            <a href="/en/ai-with-judgement/">AI with judgement</a>
+          </div>
+        </details>
       </nav>
       <a href="#book" class="btn btn--primary header-cta" tabindex="-1" aria-hidden="true">Book a call</a>
       <div class="lang-toggle" aria-label="Language">
@@ -332,7 +341,13 @@
           <a href="/en/ai-tools-audit/" class="more-link"><strong>Order in your AI tools <span class="arrow" aria-hidden="true">→</span></strong><span>What's used, what's redundant, where your data goes and who has access.</span></a>
           <a href="/en/ai-strategy-support/" class="more-link"><strong>Ongoing AI strategy support <span class="arrow" aria-hidden="true">→</span></strong><span>Someone to think through AI with you, a few days a month.</span></a>
         </div>
-        <p class="services__sectors"><span class="section-label">By sector</span> <a href="/en/ai-for-advisory-firms/">Advisory firms and law offices</a> <a href="/en/ai-for-real-estate/">Real estate</a> <a href="/en/ai-for-agencies/">Marketing agencies</a> <a href="/en/ai-for-freelancers/">Freelancers and the self-employed</a></p>
+        <div class="services__more services__more--sectors">
+          <span class="section-label">By sector</span>
+          <a href="/en/ai-for-freelancers/" class="more-link"><strong>Freelancers and the self-employed <span class="arrow" aria-hidden="true">→</span></strong><span>Your own way of working, made to measure.</span></a>
+          <a href="/en/ai-for-advisory-firms/" class="more-link"><strong>Advisory firms and law offices <span class="arrow" aria-hidden="true">→</span></strong><span>Less repeated paperwork at your firm.</span></a>
+          <a href="/en/ai-for-real-estate/" class="more-link"><strong>Real estate <span class="arrow" aria-hidden="true">→</span></strong><span>Reply faster to every enquiry, without living on your phone.</span></a>
+          <a href="/en/ai-for-agencies/" class="more-link"><strong>Marketing agencies <span class="arrow" aria-hidden="true">→</span></strong><span>More time for ideas, less for reports.</span></a>
+        </div>
         <h3 class="h3-display tools__title">The hard part isn't any one piece. It's knowing how they fit.</h3>
         <!-- Tools in two boxes: first what people already use, then the
              automation tools they have probably heard of but don't use yet -->
@@ -425,7 +440,7 @@
         </div>
         <!-- Short bio; the full story lives on /en/about/ -->
         <div id="about" class="bio-short">
-          <figure class="bio-short__photo"><img src="/alex.jpg?v=1" width="800" height="1000" alt="Alex Reïzos, founder of pleko" loading="lazy" decoding="async" /></figure>
+          <figure class="bio-short__photo"><img src="/alex.jpg?v=1" width="800" height="1000" alt="Alex Reïzos, founder of pleko" loading="lazy" decoding="async" /><figcaption><strong>Alexandros Reïzos</strong><span>Founder of pleko</span></figcaption></figure>
           <div class="bio-short__text">
             <p class="section-label">About</p>
             <h3 class="h3-display">Why I started pleko.</h3>
@@ -577,6 +592,6 @@
     };
   </script>
   <script src="../hero-animation.js?v=2" defer></script>
-  <script src="/site.js?v=12" defer></script>
+  <script src="/site.js?v=13" defer></script>
 </body>
 </html>

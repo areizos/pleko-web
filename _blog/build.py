@@ -130,7 +130,13 @@ def page(lang, path, other_path, title, desc, ld, main, og_type="website"):
     top = re.sub(r'(hreflang="es" href=")[^"]*', lambda m: m.group(1) + SITE + es_path, top)
     top = re.sub(r'(hreflang="en" href=")[^"]*', lambda m: m.group(1) + SITE + en_path, top)
     top = re.sub(r'(hreflang="x-default" href=")[^"]*', lambda m: m.group(1) + SITE + es_path, top)
-    nav = nav.replace(f'href="{cfg["shell_path"]}"', f'href="{path}"').replace(f'href="{cfg["other_shell_path"]}"', f'href="{other_path}"')
+    # Only the language switch points at this page; the Resources dropdown keeps its own links
+    nav = re.sub(r'<div class="lang-toggle".*?</div>', lambda m: m.group(0).replace(f'href="{cfg["shell_path"]}"', f'href="{path}"').replace(f'href="{cfg["other_shell_path"]}"', f'href="{other_path}"'), nav, count=1, flags=re.S)
+    nav = nav.replace('<details class="menu-more is-current">', '<details class="menu-more">').replace(' aria-current="page">', '>', 1) if 'menu-more is-current' in nav else nav
+    for u in re.findall(r'<a href="(/[^"]*)">', nav[nav.find('menu-more__panel'):nav.find('</details>')] if 'menu-more__panel' in nav else ''):
+        if path.startswith(u) and u not in ('/', '/en/'):
+            nav = nav.replace(f'<a href="{u}">', f'<a href="{u}" aria-current="page">', 1).replace('<details class="menu-more">', '<details class="menu-more is-current">', 1)
+            break
     ld_block = '  <!-- Structured data for search engines. -->\n  <script type="application/ld+json">\n' + json.dumps(ld, ensure_ascii=False, indent=2) + "\n  </script>\n"
     return top + ld_block + nav + '  <main id="top">\n' + main + "\n  </main>" + foot
 
