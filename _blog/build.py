@@ -19,8 +19,8 @@ SITE = "https://pleko.es"
 L = {
     "es": dict(
         shell="ia-con-cabeza/index.html", shell_path="/ia-con-cabeza/", other_shell_path="/en/ai-with-judgement/",
-        blog="/blog/", label="Blog", index_title="Blog de pleko: IA y automatización sin humo",
-        index_desc="Lo que voy aprendiendo al llevar la IA y la automatización al trabajo real: ideas, experimentos y herramientas, contados de la forma más clara que sé.",
+        blog="/blog/", label="Blog", index_title="Blog de pleko: automatización e IA sin humo",
+        index_desc="Lo que voy aprendiendo al llevar la automatización y la IA al trabajo real: ideas, experimentos y herramientas, contados de la forma más clara que sé.",
         index_h1="Pensando en voz alta.", all_tags="Todos", latest="Último texto", filter_label="Filtrar por tema",
         index_lead="Lo que voy aprendiendo al llevar la IA al trabajo real: ideas, experimentos y herramientas. Sin humo y sin intentar venderte nada.",
         read="Leer", back="← Todos los textos", by="Alexandros Reïzos",
@@ -30,8 +30,8 @@ L = {
         mins="min de lectura", locale="es_ES"),
     "en": dict(
         shell="en/ai-with-judgement/index.html", shell_path="/en/ai-with-judgement/", other_shell_path="/ia-con-cabeza/",
-        blog="/en/blog/", label="Blog", index_title="The pleko blog: AI and automation without the hype",
-        index_desc="What I'm learning as I bring AI and automation into real work: ideas, experiments and tools, explained as clearly as I can.",
+        blog="/en/blog/", label="Blog", index_title="The pleko blog: automation and AI without the hype",
+        index_desc="What I'm learning as I bring automation and AI into real work: ideas, experiments and tools, explained as clearly as I can.",
         index_h1="Thinking out loud.", all_tags="All", latest="Latest post", filter_label="Filter by topic",
         index_lead="What I'm learning as I bring AI into real work: ideas, experiments and tools. No hype, and no trying to sell you anything.",
         read="Read", back="← All posts", by="Alexandros Reïzos",
