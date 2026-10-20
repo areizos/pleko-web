@@ -2142,6 +2142,89 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
 .card__link:hover { text-decoration: none; }
 
 /* "Also": two smaller services as link cards under the four */
+/* Training banner under the three service cards (pale mint, full width) */
+.training-banner {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.6rem;
+  border-radius: 1.25rem;
+  background: var(--color-accent-soft);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.training-banner__icon {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.training-banner__icon svg {
+  width: 24px; height: 24px; fill: none; stroke: var(--color-primary);
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.training-banner__text { font-size: 1.1rem; line-height: 1.45; }
+.training-banner__text strong { font-weight: 600; color: var(--color-text); }
+.training-banner__text > span { font-weight: 600; white-space: nowrap; }
+@media (hover: hover) {
+  .training-banner:hover { transform: translateY(-1px); box-shadow: 0 6px 18px -12px rgba(0, 101, 101, 0.45); }
+}
+@media (max-width: 600px) {
+  .training-banner { align-items: flex-start; padding: 1.1rem 1.25rem; }
+  .training-banner__text { font-size: 1rem; }
+  .training-banner__text > span { white-space: normal; }
+}
+
+/* Phones and tablets: the service cards become a swipeable row. The next
+   card peeks in from the right; site.js adds dots and a one-off nudge. */
+.cards-dots { display: none; }
+@media (max-width: 900px) {
+  .cards.cards--services {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1.5rem;
+    margin-inline: -1.5rem;
+    padding: 0.25rem 1.5rem 0.5rem;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .cards.cards--services::-webkit-scrollbar { display: none; }
+  .cards--services .card {
+    flex: 0 0 min(84%, 26rem);
+    scroll-snap-align: start;
+  }
+  .cards--services.is-nudging .card { animation: cards-nudge 1.4s ease-in-out; }
+  .cards-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+  }
+  .cards-dots button {
+    width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px;
+    background: var(--color-outline-variant);
+    cursor: pointer;
+    transition: width 0.25s ease, background 0.25s ease;
+  }
+  .cards-dots button[aria-current="true"] { width: 22px; background: var(--color-primary); }
+}
+@keyframes cards-nudge {
+  0%, 100% { transform: translateX(0); }
+  40%, 55% { transform: translateX(-48px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cards--services.is-nudging .card { animation: none; }
+}
+
 .services__more {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

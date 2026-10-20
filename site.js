@@ -352,6 +352,46 @@
     body.addEventListener('click', function () { if (box.classList.contains('is-folded')) set(true); });
   });
 
+  /* Service cards on phones and tablets: a swipeable row with dots, and one
+     gentle nudge to the left the first time it comes into view. */
+  var track = document.querySelector('.cards--services');
+  var dotsBox = document.querySelector('.cards-dots');
+  if (track && dotsBox) {
+    var cards = Array.prototype.slice.call(track.children);
+    var isRow = function () { return track.scrollWidth > track.clientWidth + 4; };
+    var dots = cards.map(function (card, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.tabIndex = -1;
+      b.addEventListener('click', function () {
+        track.scrollTo({ left: card.offsetLeft - cards[0].offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+      dotsBox.appendChild(b);
+      return b;
+    });
+    var markDot = function () {
+      var x = track.scrollLeft, best = 0;
+      cards.forEach(function (c, i) {
+        if (Math.abs(c.offsetLeft - cards[0].offsetLeft - x) < Math.abs(cards[best].offsetLeft - cards[0].offsetLeft - x)) best = i;
+      });
+      if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) best = cards.length - 1;
+      dots.forEach(function (d, i) { d.setAttribute('aria-current', i === best ? 'true' : 'false'); });
+    };
+    track.addEventListener('scroll', markDot, { passive: true });
+    markDot();
+    if (hasIO && !reduceMotion) {
+      var nudgeSeen = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting || !isRow() || track.scrollLeft > 0) return;
+        nudgeSeen.disconnect();
+        window.setTimeout(function () {
+          track.classList.add('is-nudging');
+          window.setTimeout(function () { track.classList.remove('is-nudging'); }, 1500);
+        }, 400);
+      }, { threshold: 0.6 });
+      nudgeSeen.observe(track);
+    }
+  }
+
   var pieces = Array.prototype.slice.call(document.querySelectorAll('.piece'));
   pieces.forEach(function (d) {
     d.addEventListener('toggle', function () {
