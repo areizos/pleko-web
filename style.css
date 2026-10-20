@@ -739,6 +739,11 @@ section {
   line-height: 1.5;
 }
 
+/* Longer examples with a bold lead-in need a little air between them */
+.card__examples p + p {
+  margin-top: 0.75rem;
+}
+
 /* Two boxes side by side: the tools people already use on the left,
    the ones we add on the right (pale mint). Stacked on phones. */
 .tools {
