@@ -117,7 +117,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="../style.css?v=32" />
+  <link rel="stylesheet" href="../style.css?v=33" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
 </head>
 <body>
@@ -286,11 +286,14 @@
             </div>
             <h3>Workflow automation</h3>
             <p>I turn manual, error-prone admin steps into processes that run themselves.</p>
-            <details class="card__examples" open>
-              <summary class="section-label">For example</summary>
-              <p><strong>Onboarding and invoicing without friction.</strong> When a client accepts a quote, their contact appears in your CRM, the draft invoice in Holded, their folder in Drive and your team gets a heads-up. In seconds, with no mistyped tax ID or amount.</p>
-              <p><strong>Enquiries and sales follow-up.</strong> Every enquiry from your website, WhatsApp Business or portals like Idealista gets an instant reply, is logged and sets off automatic reminders, so no quote goes cold.</p>
-            </details>
+            <div class="card__examples">
+              <p class="section-label">For example</p>
+              <div class="card__examples-body">
+                <p><strong>Onboarding and invoicing without friction.</strong> When a client accepts a quote, their contact appears in your CRM, the draft invoice in Holded, their folder in Drive and your team gets a heads-up. In seconds, with no mistyped tax ID or amount.</p>
+                <p><strong>Enquiries and sales follow-up.</strong> Every enquiry from your website, WhatsApp Business or portals like Idealista gets an instant reply, is logged and sets off automatic reminders, so no quote goes cold.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Show less" data-closed="Read more" hidden>Show less</button>
+            </div>
           </div>
           <div class="card">
             <div class="card__icon">
@@ -298,11 +301,14 @@
             </div>
             <h3>AI-assisted systems</h3>
             <p>I add AI where it genuinely speeds up work and cuts costs, always with your team in control.</p>
-            <details class="card__examples" open>
-              <summary class="section-label">For example</summary>
-              <p><strong>Reading invoices and documents.</strong> A system that reads supplier invoices, contracts or delivery notes in PDF, pulls out the key data and puts it in your accounts or Excel, so a person only has to check it with one click.</p>
-              <p><strong>Replies and drafts with your own judgement.</strong> An assistant connected to your history that instantly drafts replies to clients, proposals or reports in English or Spanish, ready to review and send.</p>
-            </details>
+            <div class="card__examples">
+              <p class="section-label">For example</p>
+              <div class="card__examples-body">
+                <p><strong>Reading invoices and documents.</strong> A system that reads supplier invoices, contracts or delivery notes in PDF, pulls out the key data and puts it in your accounts or Excel, so a person only has to check it with one click.</p>
+                <p><strong>Replies and drafts with your own judgement.</strong> An assistant connected to your history that instantly drafts replies to clients, proposals or reports in English or Spanish, ready to review and send.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Show less" data-closed="Read more" hidden>Show less</button>
+            </div>
           </div>
           <div class="card">
             <div class="card__icon">
@@ -310,23 +316,29 @@
             </div>
             <h3>Tool integration</h3>
             <p>I connect the apps you already pay for so they talk to each other, without making you switch software.</p>
-            <details class="card__examples" open>
-              <summary class="section-label">For example</summary>
-              <p><strong>No more data islands.</strong> Your Excel sheets, web forms, WhatsApp, CRM and invoicing software joined into one flow, so nobody types the same data twice.</p>
-              <p><strong>Your business, up to date.</strong> A clean dashboard with your real sales, hours worked and invoicing up to date, without losing Monday morning cross-checking five different files.</p>
-            </details>
+            <div class="card__examples">
+              <p class="section-label">For example</p>
+              <div class="card__examples-body">
+                <p><strong>No more data islands.</strong> Your Excel sheets, web forms, WhatsApp, CRM and invoicing software joined into one flow, so nobody types the same data twice.</p>
+                <p><strong>Your business, up to date.</strong> A clean dashboard with your real sales, hours worked and invoicing up to date, without losing Monday morning cross-checking five different files.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Show less" data-closed="Read more" hidden>Show less</button>
+            </div>
           </div>
           <div class="card">
             <div class="card__icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z" /><path d="M12 6v13" /></svg>
             </div>
             <h3>AI training</h3>
-            <p>I teach you and your team to use AI with good judgement in everyday work.</p>
-            <details class="card__examples" open>
-              <summary class="section-label">For example</summary>
-              <p>A hands-on workshop with your real tasks, not textbook examples.</p>
-              <p>Guides and usage rules to keep learning afterwards.</p>
-            </details>
+            <p>I teach you and your team to use AI with good judgement in everyday work, with your own tasks and tools.</p>
+            <div class="card__examples">
+              <p class="section-label">For example</p>
+              <div class="card__examples-body">
+                <p><strong>A hands-on workshop with your real work.</strong> A live session by video call where we use your actual emails, documents and processes, not textbook examples. You leave knowing which tasks to hand to AI, which not to, and how to check what it gives back.</p>
+                <p><strong>Clear rules to carry on alone.</strong> A simple guide to which tools to use, which data never to share and the prompts that work best for you, so the team keeps learning after the session and everyone works to the same standard.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Show less" data-closed="Read more" hidden>Show less</button>
+            </div>
             <a href="/en/ai-training/" class="card__link">More about training <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
@@ -653,6 +665,6 @@
     };
   </script>
   <script src="../hero-animation.js?v=2" defer></script>
-  <script src="/site.js?v=10" defer></script>
+  <script src="/site.js?v=11" defer></script>
 </body>
 </html>

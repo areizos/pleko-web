@@ -739,11 +739,6 @@ section {
   line-height: 1.5;
 }
 
-/* Longer examples with a bold lead-in need a little air between them */
-.card__examples p + p {
-  margin-top: 0.75rem;
-}
-
 /* Two boxes side by side: the tools people already use on the left,
    the ones we add on the right (pale mint). Stacked on phones. */
 .tools {
@@ -2432,30 +2427,61 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
   scroll-margin-top: 5rem;
 }
 
-/* Service examples: a <details> that is open on wide screens and folded on
-   phones (site.js closes it below 601px). */
-.card__examples > summary {
-  list-style: none;
-  cursor: pointer;
-  margin: 0;
+/* Service examples: they show the first 1.5 lines fading out, and open on
+   click (site.js adds .is-folded). Without JS everything is simply shown. */
+.card__examples-body {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
 }
-.card__examples > summary::-webkit-details-marker { display: none; }
-.card__examples > summary::after {
-  content: "+";
-  font-size: 1rem;
+.card__examples-body p + p { margin-top: 0; }
+.card__examples.is-folded .card__examples-body {
+  max-height: 2.25em; /* 1.5 lines at a 1.5 line height */
+  cursor: pointer;
+  -webkit-mask-image: linear-gradient(to bottom, #000 15%, transparent);
+  mask-image: linear-gradient(to bottom, #000 15%, transparent);
+}
+.card__examples-toggle {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0.25rem 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
   color: var(--color-primary);
-  display: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
-.card__examples[open] > summary::after { content: "−"; }
-.card__examples:not([open]) { gap: 0; }
-@media (max-width: 600px) {
-  .card__examples > summary::after { display: inline; }
+.card__examples-toggle::after { content: "+"; font-weight: 400; }
+.card__examples-toggle[aria-expanded="true"]::after { content: "\2212"; }
+.card__examples-toggle:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+@media print {
+  .card__examples.is-folded .card__examples-body { max-height: none; -webkit-mask-image: none; mask-image: none; }
+  .card__examples-toggle { display: none; }
 }
+
+/* Four service cards (tablet and desktop): the rows (icon, title, premise,
+   examples, link) line up across the cards, so the divider above the
+   examples sits at the same height. Phones stack the cards, so no need. */
 @media (min-width: 601px) {
-  .card__examples > summary { pointer-events: none; }
+@supports (grid-template-rows: subgrid) {
+  .cards--four .card {
+    display: grid;
+    grid-row: span 5;
+    grid-template-rows: subgrid;
+    row-gap: 1rem;
+    align-content: start;
+  }
+  .cards--four .card__examples { align-self: start; }
+  .cards--four .card__link { align-self: end; }
+}
 }
 
 /* Legal pages: privacy policy and legal notice */

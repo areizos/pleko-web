@@ -324,10 +324,33 @@
   else window.addEventListener('load', afterLoad);
 
   /* ---------- The pieces: one meaning open at a time ---------------------- */
-  /* Service examples start folded on phones, to keep the page short. */
-  if (window.matchMedia && window.matchMedia('(max-width: 600px)').matches) {
-    document.querySelectorAll('.card__examples[open]').forEach(function (d) { d.removeAttribute('open'); });
-  }
+  /* Service examples: show a 1.5-line peek, open and close on click. */
+  document.querySelectorAll('.card__examples').forEach(function (box) {
+    var body = box.querySelector('.card__examples-body');
+    var btn = box.querySelector('.card__examples-toggle');
+    if (!body || !btn) return;
+    function set(open) {
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? btn.dataset.open : btn.dataset.closed;
+      if (open) {
+        box.classList.remove('is-folded');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      } else {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        void body.offsetHeight;
+        box.classList.add('is-folded');
+        body.style.maxHeight = '';
+      }
+    }
+    body.addEventListener('transitionend', function () {
+      if (!box.classList.contains('is-folded')) body.style.maxHeight = 'none';
+    });
+    btn.hidden = false;
+    box.classList.add('is-folded');
+    set(false);
+    btn.addEventListener('click', function () { set(box.classList.contains('is-folded')); });
+    body.addEventListener('click', function () { if (box.classList.contains('is-folded')) set(true); });
+  });
 
   var pieces = Array.prototype.slice.call(document.querySelectorAll('.piece'));
   pieces.forEach(function (d) {

@@ -117,7 +117,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css?v=32" />
+    <link rel="stylesheet" href="style.css?v=33" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
 </head>
 <body>
@@ -286,11 +286,14 @@
             </div>
             <h3>Automatización de flujos</h3>
             <p>Convierto pasos administrativos, manuales y propensos a errores en procesos que funcionan solos.</p>
-            <details class="card__examples" open>
-              <summary class="section-label">Por ejemplo</summary>
-              <p><strong>Alta y facturación sin fricción.</strong> Cuando un cliente acepta un presupuesto, se crea solo el contacto en tu CRM, el borrador de factura en Holded, su carpeta en Drive y el aviso a tu equipo. En segundos y sin errores al copiar un NIF o un importe.</p>
-              <p><strong>Captación y seguimiento comercial.</strong> Cada consulta que entra por tu web, WhatsApp Business o portales como Idealista recibe respuesta al instante, queda registrada y activa recordatorios automáticos para que ningún presupuesto se enfríe.</p>
-            </details>
+            <div class="card__examples">
+              <p class="section-label">Por ejemplo</p>
+              <div class="card__examples-body">
+                <p><strong>Alta y facturación sin fricción.</strong> Cuando un cliente acepta un presupuesto, se crea solo el contacto en tu CRM, el borrador de factura en Holded, su carpeta en Drive y el aviso a tu equipo. En segundos y sin errores al copiar un NIF o un importe.</p>
+                <p><strong>Captación y seguimiento comercial.</strong> Cada consulta que entra por tu web, WhatsApp Business o portales como Idealista recibe respuesta al instante, queda registrada y activa recordatorios automáticos para que ningún presupuesto se enfríe.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Ver menos" data-closed="Ver más" hidden>Ver menos</button>
+            </div>
           </div>
           <div class="card">
             <div class="card__icon">
@@ -298,11 +301,14 @@
             </div>
             <h3>Sistemas asistidos por IA</h3>
             <p>Añado IA donde de verdad acelera el trabajo y ahorra costes, siempre bajo la supervisión de tu equipo.</p>
-            <details class="card__examples" open>
-              <summary class="section-label">Por ejemplo</summary>
-              <p><strong>Lectura de facturas y documentos.</strong> Un sistema que lee facturas de proveedores, contratos o albaranes en PDF, extrae los datos clave y los deja listos en tu contabilidad o Excel para que una persona solo tenga que validar con un clic.</p>
-              <p><strong>Atención y borradores con tu propio criterio.</strong> Un asistente conectado a tu histórico que prepara al momento el primer borrador de respuestas a clientes, propuestas o informes en español o inglés, listos para revisar y enviar.</p>
-            </details>
+            <div class="card__examples">
+              <p class="section-label">Por ejemplo</p>
+              <div class="card__examples-body">
+                <p><strong>Lectura de facturas y documentos.</strong> Un sistema que lee facturas de proveedores, contratos o albaranes en PDF, extrae los datos clave y los deja listos en tu contabilidad o Excel para que una persona solo tenga que validar con un clic.</p>
+                <p><strong>Atención y borradores con tu propio criterio.</strong> Un asistente conectado a tu histórico que prepara al momento el primer borrador de respuestas a clientes, propuestas o informes en español o inglés, listos para revisar y enviar.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Ver menos" data-closed="Ver más" hidden>Ver menos</button>
+            </div>
           </div>
           <div class="card">
             <div class="card__icon">
@@ -310,23 +316,29 @@
             </div>
             <h3>Integración de herramientas</h3>
             <p>Conecto las aplicaciones que ya pagas para que hablen entre sí, sin obligarte a cambiar de software.</p>
-            <details class="card__examples" open>
-              <summary class="section-label">Por ejemplo</summary>
-              <p><strong>Fin de las islas de datos.</strong> Tus hojas de Excel, formularios web, WhatsApp, CRM y programa de facturación unidos en un solo flujo, para que nadie tenga que picar el mismo dato dos veces.</p>
-              <p><strong>Control del negocio en tiempo real.</strong> Un panel limpio con las cifras reales de ventas, horas dedicadas y facturación al día, sin perder la mañana del lunes cruzando cinco archivos distintos.</p>
-            </details>
+            <div class="card__examples">
+              <p class="section-label">Por ejemplo</p>
+              <div class="card__examples-body">
+                <p><strong>Fin de las islas de datos.</strong> Tus hojas de Excel, formularios web, WhatsApp, CRM y programa de facturación unidos en un solo flujo, para que nadie tenga que picar el mismo dato dos veces.</p>
+                <p><strong>Control del negocio en tiempo real.</strong> Un panel limpio con las cifras reales de ventas, horas dedicadas y facturación al día, sin perder la mañana del lunes cruzando cinco archivos distintos.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Ver menos" data-closed="Ver más" hidden>Ver menos</button>
+            </div>
           </div>
           <div class="card">
             <div class="card__icon">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z" /><path d="M12 6v13" /></svg>
             </div>
             <h3>Formación en IA</h3>
-            <p>Te enseño a ti y a tu equipo a usar la IA con criterio en el trabajo de cada día.</p>
-            <details class="card__examples" open>
-              <summary class="section-label">Por ejemplo</summary>
-              <p>Un taller práctico con vuestras tareas reales, no con ejemplos de manual.</p>
-              <p>Guías y normas de uso para seguir aprendiendo.</p>
-            </details>
+            <p>Te enseño a ti y a tu equipo a usar la IA con criterio en el trabajo de cada día, con vuestras propias tareas y herramientas.</p>
+            <div class="card__examples">
+              <p class="section-label">Por ejemplo</p>
+              <div class="card__examples-body">
+                <p><strong>Taller práctico con vuestro trabajo real.</strong> Una sesión en directo por videollamada en la que usamos vuestros correos, documentos y procesos de verdad, no ejemplos de manual. Salís sabiendo qué tareas conviene delegar en la IA, cuáles no y cómo revisar lo que te devuelve.</p>
+                <p><strong>Normas claras para seguir solos.</strong> Una guía sencilla con qué herramientas usar, qué datos no compartir nunca y las instrucciones que mejor os funcionan, para que el equipo siga aprendiendo cuando termine la sesión y todos trabajen con el mismo criterio.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Ver menos" data-closed="Ver más" hidden>Ver menos</button>
+            </div>
             <a href="/formacion-ia/" class="card__link">Más sobre la formación <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
@@ -653,6 +665,6 @@
     };
   </script>
   <script src="hero-animation.js?v=2" defer></script>
-  <script src="/site.js?v=10" defer></script>
+  <script src="/site.js?v=11" defer></script>
 </body>
 </html>
