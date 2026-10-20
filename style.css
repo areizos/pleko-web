@@ -2819,7 +2819,9 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
 .bio-short__text p { margin: 0; color: var(--color-text-muted); line-height: 1.6; }
 .bio-short__text .btn { margin-top: 0.4rem; }
 
-.faq__inner > .latest-post { grid-column: 1 / -1; margin-top: 0; }
+/* Outside the FAQ grid, so the sticky FAQ heading stops before it */
+.faq__blog { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.faq__blog > .latest-post { margin-top: 0; }
 
 @media (max-width: 760px) {
   .bio-short { grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr); }
