@@ -229,6 +229,8 @@ def build(lang):
     ]}
     out = blog.page(lang, path, other, c["title"], c["desc"], ld, main)
     # The shell ends with the booking band from its source page; keep it, and load the demo script.
+    # Not public yet (Alex, 2026-10-20): keep it out of search engines; it is linked from nowhere
+    out = out.replace('</head>', '  <meta name="robots" content="noindex" />\n</head>', 1)
     out = out.replace('<script src="/site.js', f'<script src="/piezas.js?v={JS_VERSION}" defer></script>\n    <script src="/pruebalo.js?v={JS_VERSION}" defer></script>\n    <script src="/site.js', 1)
     blog.write(path, out)
 
