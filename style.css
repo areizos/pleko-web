@@ -228,7 +228,7 @@ section {
 }
 
 .btn--ghost:hover {
-  text-decoration: underline;
+  text-decoration: none; /* arrows are never underlined; the arrow moves instead */
 }
 
 /* ---------- Menu bar (sticky) --------------------------------------------
@@ -374,6 +374,11 @@ section {
   margin: 0;
   padding-top: 0.75rem;
   border-top: 1px solid var(--color-border);
+}
+
+/* Desktop: the three trust items always share one line */
+@media (min-width: 900px) {
+  .hero__trust { flex-wrap: nowrap; white-space: nowrap; gap: 0.5rem 1rem; }
 }
 
 .hero__trust span[aria-hidden] {
@@ -1503,9 +1508,22 @@ html {
   transition: transform 0.2s ease;
 }
 
-a:hover > .arrow,
-a:focus-visible > .arrow {
-  transform: translateX(3px);
+/* Every → arrow: no underline on its link, and a gentle back-and-forth while pointed at */
+a:has(.arrow),
+a:has(.arrow):hover {
+  text-decoration: none;
+}
+
+a:hover .arrow,
+a:focus-visible .arrow,
+button:hover .arrow,
+button:focus-visible .arrow {
+  animation: arrow-nudge 0.9s ease-in-out infinite;
+}
+
+@keyframes arrow-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
 }
 
 .card,
@@ -1720,9 +1738,13 @@ a:focus-visible > .arrow {
   .btn--primary:hover,
   .btn--mint:hover,
   .card:hover,
-  .promise:hover,
-  a:hover > .arrow {
+  .promise:hover {
     transform: none;
+  }
+
+  a:hover .arrow,
+  a:focus-visible .arrow {
+    animation: none;
   }
 }
 
@@ -1752,8 +1774,9 @@ a[href^="mailto:"] {
   white-space: nowrap;          /* the email address never splits over two lines */
 }
 
-/* Small ↗ on links that open another site (not on buttons, which have their own arrow) */
-a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post)::after {
+/* Small ↗ on links that open another site (not on buttons, which have their own arrow,
+   nor the contact links, where WhatsApp sits next to the email and should match it) */
+a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact__links a)::after {
   content: "↗" / "";
   display: inline-block;
   margin-left: 0.2em;
@@ -1764,7 +1787,7 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post)::after {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):hover::after {
+a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact__links a):hover::after {
   opacity: 1;
   transform: translate(1px, -1px);
 }
@@ -2125,7 +2148,7 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):hover::after 
   font-weight: 600;
   text-decoration: none;
 }
-.card__link:hover { text-decoration: underline; }
+.card__link:hover { text-decoration: none; }
 
 /* "Also": two smaller services as link cards under the four */
 .services__more {
@@ -2389,7 +2412,9 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):hover::after 
   height: 0.6rem;
   border-radius: 50%;
   border: 2px solid var(--color-primary);
+  transition: background-color 0.2s ease;
 }
+.credentials__list li:hover::before { background: var(--color-signal); }
 .credentials__list strong { color: var(--color-text); font-weight: 600; }
 
 /* 05: the pieces now sit inside the "IA con cabeza" section */
