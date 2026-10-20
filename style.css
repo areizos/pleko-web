@@ -2407,9 +2407,11 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
   content: "";
   position: absolute;
   left: 0;
-  top: 0.5em;
-  width: 0.6rem;
-  height: 0.6rem;
+  top: 0.75em;                  /* middle of the first line (line-height 1.5) */
+  transform: translateY(-50%);
+  box-sizing: border-box;
+  width: 0.7rem;
+  height: 0.7rem;
   border-radius: 50%;
   border: 2px solid var(--color-primary);
   transition: background-color 0.2s ease;
