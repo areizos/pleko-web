@@ -2775,3 +2775,56 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
   .piezas__col .demo__label { margin-left: -1.25rem; }
 }
 @media (prefers-reduced-motion: reduce) { .piezas__trace li, .piezas__mocks, .mock__slot.is-new, .mock--sheet tr.is-new td, .mock__bubble--out { animation: none; } .piezas__line { transition: none; } }
+
+/* ---------- Homepage in 5 sections (20 Oct 2026) ------------------------
+   01 joins the pain points and the diagnostic; 03 adds the safety rules
+   and a short bio; 04 carries the latest blog post. */
+.diagnostic--box {
+  border-radius: 1.25rem;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+}
+.tools__title { margin: clamp(2.5rem, 5vw, 3.5rem) 0 0; max-width: 40rem; }
+.tools__title + .tools { margin-top: 1.25rem; }
+
+.safety,
+.bio-short {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--color-border);
+  scroll-margin-top: 5rem;
+}
+.safety { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.safety .section-label { margin: 0; }
+.safety .promises__grid { margin: 0.5rem 0 0.5rem; width: 100%; }
+.promises__grid--compact .promise { padding: 1.25rem 1.4rem; gap: 0.6rem; }
+.promises__grid--compact .promise .card__icon { width: 40px; height: 40px; }
+.promises__grid--compact .promise h3 { font-size: 1.05rem; }
+.promises__grid--compact .promise p { font-size: 0.95rem; }
+
+.bio-short {
+  display: grid;
+  grid-template-columns: minmax(0, 13rem) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+.bio-short__photo { margin: 0; }
+.bio-short__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+}
+.bio-short__text { display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; max-width: 42rem; }
+.bio-short__text .section-label { margin: 0; }
+.bio-short__text p { margin: 0; color: var(--color-text-muted); line-height: 1.6; }
+.bio-short__text .btn { margin-top: 0.4rem; }
+
+.faq__inner > .latest-post { grid-column: 1 / -1; margin-top: 0; }
+
+@media (max-width: 760px) {
+  .bio-short { grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .bio-short { grid-template-columns: 1fr; }
+  .bio-short__photo { max-width: 9rem; }
+}

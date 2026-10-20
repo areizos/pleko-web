@@ -97,7 +97,7 @@
         "worksFor": {
           "@id": "https://pleko.es/#pleko"
         },
-        "url": "https://pleko.es/",
+        "url": "https://pleko.es/sobre-mi/",
         "sameAs": [
           "https://www.linkedin.com/in/areizos/",
           "https://areizos.substack.com/",
@@ -117,7 +117,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css?v=37" />
+    <link rel="stylesheet" href="style.css?v=38" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
 </head>
 <body>
@@ -179,7 +179,7 @@
       </div>
     </section>
 
-    <!-- ============ 01 PAIN POINTS ============ -->
+    <!-- ============ 01 PAIN POINTS + DIAGNOSTIC ============ -->
     <section class="pains">
       <div class="wrap pains__inner">
         <div class="pains__intro">
@@ -225,48 +225,47 @@
             <p class="pain__after"><span class="pain__after-label">Después</span> Ordenamos lo que hay antes de añadir nada nuevo.</p>
           </li>
         </ul>
-      </div>
-    </section>
-
-    <!-- ============ DIAGNOSTIC (lead questionnaire) ============
-         The button opens the Tally form in a popup (site.js loads Tally);
-         without the script it is a plain link to the form. -->
-    <section id="diagnostico" class="diagnostic">
-      <div class="wrap diagnostic__inner">
-        <div class="diagnostic__copy">
-          <p class="section-label">Diagnóstico gratuito · 2&nbsp;min</p>
-          <h2 class="h2">¿Cuántas horas pierde tu equipo cada semana?</h2>
-          <p class="lead">Responde 7 preguntas rápidas y verás al momento cuántas horas al año podríais recuperar. Después te escribo con 2 o 3 ideas concretas para tu caso, sin compromiso.</p>
-        </div>
-        <a href="https://tally.so/r/gDy5D1" data-tally-form="gDy5D1" class="btn btn--primary">Haz el diagnóstico <span class="arrow" aria-hidden="true">→</span></a>
-        <!-- Quick hours calculator: hidden until site.js runs it. 46 working weeks; hourly cost slider starts at ~20 € (Spanish office average). -->
-        <div class="calc" hidden aria-label="Calculadora rápida de horas" role="group" data-locale="es-ES">
-          <div class="calc__field">
-            <label for="calc-people">¿Cuántas personas hay en tu equipo?</label>
-            <div class="calc__control">
-              <input type="range" id="calc-people" min="1" max="50" step="1" value="3" />
-              <span class="calc__value" data-for="calc-people">3</span>
+        <!-- Diagnostic box (lead questionnaire), joined to the pain points.
+             The button opens the Tally form in a popup (site.js loads Tally);
+             without the script it is a plain link to the form. -->
+        <div id="diagnostico" class="diagnostic diagnostic--box">
+          <div class="diagnostic__inner">
+            <div class="diagnostic__copy">
+              <p class="section-label">Diagnóstico gratuito · 2&nbsp;min</p>
+              <h2 class="h2">¿Cuántas horas pierde tu equipo cada semana?</h2>
+              <p class="lead">Responde 7 preguntas rápidas y verás al momento cuántas horas al año podríais recuperar. Después te escribo con 2 o 3 ideas concretas para tu caso, sin compromiso.</p>
+            </div>
+            <a href="https://tally.so/r/gDy5D1" data-tally-form="gDy5D1" class="btn btn--primary">Haz el diagnóstico <span class="arrow" aria-hidden="true">→</span></a>
+            <!-- Quick hours calculator: hidden until site.js runs it. 46 working weeks; hourly cost slider starts at ~20 € (Spanish office average). -->
+            <div class="calc" hidden aria-label="Calculadora rápida de horas" role="group" data-locale="es-ES">
+              <div class="calc__field">
+                <label for="calc-people">¿Cuántas personas hay en tu equipo?</label>
+                <div class="calc__control">
+                  <input type="range" id="calc-people" min="1" max="50" step="1" value="3" />
+                  <span class="calc__value" data-for="calc-people">3</span>
+                </div>
+              </div>
+              <div class="calc__field">
+                <label for="calc-hours">¿Cuántas horas a la semana pierde cada persona en tareas repetitivas?</label>
+                <div class="calc__control">
+                  <input type="range" id="calc-hours" min="1" max="20" step="1" value="4" />
+                  <span class="calc__value" data-for="calc-hours">4</span>
+                </div>
+              </div>
+              <div class="calc__field">
+                <label for="calc-rate">¿Cuánto cuesta una hora de trabajo? (€)</label>
+                <div class="calc__control">
+                  <input type="range" id="calc-rate" min="10" max="100" step="5" value="20" />
+                  <span class="calc__value" data-for="calc-rate">20</span>
+                </div>
+              </div>
+              <p class="calc__result" aria-live="polite">
+                <span class="calc__figure"><output class="calc__total" for="calc-hours calc-people">552</output> <span>horas al año</span></span>
+                <span class="calc__figure"><output class="calc__money" for="calc-hours calc-people calc-rate">11.040&nbsp;€</output> <span>al año en tiempo perdido</span></span>
+                <span class="calc__note">Estimación con 46 semanas laborables. Los 20&nbsp;€ por hora de partida son, aproximadamente, el coste medio de una hora de trabajo de oficina en España; ajústalo a tu caso. El diagnóstico te dice qué parte se puede automatizar.</span>
+              </p>
             </div>
           </div>
-          <div class="calc__field">
-            <label for="calc-hours">¿Cuántas horas a la semana pierde cada persona en tareas repetitivas?</label>
-            <div class="calc__control">
-              <input type="range" id="calc-hours" min="1" max="20" step="1" value="4" />
-              <span class="calc__value" data-for="calc-hours">4</span>
-            </div>
-          </div>
-          <div class="calc__field">
-            <label for="calc-rate">¿Cuánto cuesta una hora de trabajo? (€)</label>
-            <div class="calc__control">
-              <input type="range" id="calc-rate" min="10" max="100" step="5" value="20" />
-              <span class="calc__value" data-for="calc-rate">20</span>
-            </div>
-          </div>
-          <p class="calc__result" aria-live="polite">
-            <span class="calc__figure"><output class="calc__total" for="calc-hours calc-people">552</output> <span>horas al año</span></span>
-            <span class="calc__figure"><output class="calc__money" for="calc-hours calc-people calc-rate">11.040&nbsp;€</output> <span>al año en tiempo perdido</span></span>
-            <span class="calc__note">Estimación con 46 semanas laborables. Los 20&nbsp;€ por hora de partida son, aproximadamente, el coste medio de una hora de trabajo de oficina en España; ajústalo a tu caso. El diagnóstico te dice qué parte se puede automatizar.</span>
-          </p>
         </div>
       </div>
     </section>
@@ -334,6 +333,7 @@
           <a href="/acompanamiento-ia/" class="more-link"><strong>Acompañamiento estratégico en IA <span class="arrow" aria-hidden="true">→</span></strong><span>Alguien que piense la IA contigo, unos días al mes.</span></a>
         </div>
         <p class="services__sectors"><span class="section-label">Por sector</span> <a href="/ia-para-asesorias/">Asesorías y despachos</a> <a href="/ia-para-inmobiliarias/">Inmobiliarias</a> <a href="/ia-para-agencias/">Agencias de marketing</a> <a href="/ia-para-autonomos/">Autónomos y freelancers</a></p>
+        <h3 class="h3-display tools__title">Lo difícil no es cada pieza, sino saber cómo encajan.</h3>
         <!-- Tools in two boxes: first what people already use, then the
              automation tools they have probably heard of but don't use yet -->
         <div class="tools">
@@ -346,14 +346,15 @@
             <span>n8n</span><span>Make</span><span>Zapier</span><span>Airtable</span><span>Notion</span><span>Tally</span>
           </p>
         </div>
+        <a href="/diccionario-ia/" class="btn btn--ghost section-more">Ver el diccionario completo <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <!-- ============ 03 HOW I WORK ============ -->
+    <!-- ============ 03 HOW I WORK + AI WITH JUDGEMENT + SHORT BIO ============ -->
     <section id="como-trabajo" class="process">
       <div class="wrap">
         <div class="section-head">
-          <p class="section-label">03 — Cómo trabajo</p>
+          <p class="section-label">03 — Cómo trabajo y por qué pleko</p>
           <h2 class="h2">De la primera llamada a flujos que funcionan y siguen funcionando.</h2>
         </div>
         <ol class="steps">
@@ -399,136 +400,50 @@
           </li>
           </ul>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ 04 ABOUT (founder + the name) ============ -->
-    <section id="sobre-mi" class="about">
-      <div class="wrap about__inner">
-        <p class="section-label">04 — Sobre mí</p>
-        <div class="about__intro">
-          <figure class="about__photo">
-            <img src="/alex.jpg?v=1" width="800" height="1000" alt="Alex Reïzos, fundador de pleko" loading="lazy" decoding="async" />
-          </figure>
-          <div class="about__intro-text">
-            <h2 class="h2">Por qué creé pleko.</h2>
-          <p class="about__text">
-            Durante la mayor parte de mi carrera, las mejores herramientas eran cosa de empresas con grandes presupuestos y equipos de desarrolladores. Eso ya no es así. La IA pone ese tipo de ventaja al alcance de cualquiera que tenga ganas de aprender.
-          </p>
-          <p class="lead">
-            Lo he visto desde dentro: más de 15&nbsp;años en marketing digital, entre Londres y Barcelona, siempre buscando una forma más sencilla de hacer las cosas. pleko es mi manera de ayudar a personas y empresas a dar ese salto, con calma y con honestidad, conectando las herramientas que ya usas en lugar de venderte otras nuevas. Trabajas directamente conmigo, y mi objetivo es sencillo: que las herramientas trabajen para ti y que tu equipo sepa seguir usándolas.
-          </p>
-          </div>
-        </div>
-        <!-- A few figures; the numbers count up once when they come into view (site.js) -->
-        <ul class="stats">
-          <li><span class="stats__num"><span data-count="15">15</span>+</span> años en marketing digital</li>
-          <li><span class="stats__num"><span data-count="2">2</span></span> idiomas de trabajo: español e inglés</li>
-          <li><span class="stats__num"><span data-count="1">1</span></span> persona de principio a fin: yo</li>
-        </ul>
-        <div class="name-note">
-          <div class="name-note__mark">
-            <span class="name-note__word" lang="grc">πλέκω</span>
-            <span class="name-note__thread" aria-hidden="true"></span>
-            <span class="name-note__say">plé·ko · tejer</span>
-          </div>
-          <p>En griego antiguo, <em>pleko</em> significa «tejer» o «trenzar». Es la raíz de <em>complejo</em> y <em>plexo</em>: entrelazar cosas distintas hasta formar algo único. Eso es lo que hago con tus herramientas.</p>
-        </div>
-        <div class="credentials">
-          <h3 class="credentials__title">Formación</h3>
-          <ul class="credentials__list">
-            <li><strong>Máster en Chief AI Strategy</strong> · Nuclio Digital School (en curso)</li>
-            <li><strong>Certificado profesional en Project Management</strong> · Google</li>
-            <li><strong>Ethics of AI y Elements of AI</strong> · Universidad de Helsinki</li>
-            <li><strong>AI Act Fundamentals</strong> (Reglamento Europeo de IA) · Regulation AI</li>
-            <li><strong>Agentic AI and AI Agents for Leaders</strong> · Vanderbilt University</li>
-            <li><strong>Make Foundation y Notion Academy</strong> · formación oficial de las herramientas</li>
+        <!-- AI with judgement: the three safety rules, compact; full page linked -->
+        <div id="ia-con-cabeza" class="safety">
+          <p class="section-label">IA con cabeza</p>
+          <h3 class="h3-display">Útil, segura y bajo tu control.</h3>
+          <ul class="promises__grid promises__grid--compact">
+            <li class="promise">
+              <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" /><path d="M5 20c1-4 4-6 7-6s6 2 7 6" /></svg></div>
+              <h3>Una persona revisa lo importante.</h3>
+              <p>Nada que llegue a un cliente o cueste dinero sale sin que alguien lo vea.</p>
+            </li>
+            <li class="promise">
+              <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg></div>
+              <h3>La IA solo accede a lo que necesita.</h3>
+              <p>Permisos mínimos, claves guardadas bajo llave y tus datos fuera de donde no deben estar.</p>
+            </li>
+            <li class="promise">
+              <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h8l4 4v12H7z" /><path d="M15 4v4h4" /><path d="M10 13h6M10 17h6" /></svg></div>
+              <h3>Todo queda registrado y explicado.</h3>
+              <p>Qué hizo cada flujo y cuándo, documentado en tus cuentas.</p>
+            </li>
           </ul>
+          <a href="/ia-con-cabeza/" class="btn btn--ghost">Cómo cuido la seguridad <span class="arrow" aria-hidden="true">→</span></a>
         </div>
-        <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener" class="btn btn--ghost">Ver mi perfil en LinkedIn <span class="arrow" aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-    <!-- ============ 05 AI WITH JUDGEMENT + THE PIECES ============
-         Three principles on safety and control; full page at /ia-con-cabeza/ -->
-    <section id="ia-con-cabeza" class="judgement">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="section-label">05 — IA con cabeza</p>
-          <h2 class="h2">Útil, segura y bajo tu control.</h2>
-          <p class="lead">La IA es potente, pero no es infalible. Por eso cada flujo lleva sus propios frenos.</p>
-        </div>
-        <ul class="promises__grid">
-          <li class="promise">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" /><path d="M5 20c1-4 4-6 7-6s6 2 7 6" /></svg></div>
-            <h3>Una persona revisa lo importante.</h3>
-            <p>Nada que llegue a un cliente o cueste dinero sale sin que alguien lo vea.</p>
-          </li>
-          <li class="promise">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg></div>
-            <h3>La IA solo accede a lo que necesita.</h3>
-            <p>Permisos mínimos, claves guardadas bajo llave y tus datos fuera de donde no deben estar.</p>
-          </li>
-          <li class="promise">
-            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h8l4 4v12H7z" /><path d="M15 4v4h4" /><path d="M10 13h6M10 17h6" /></svg></div>
-            <h3>Todo queda registrado y explicado.</h3>
-            <p>Qué hizo cada flujo y cuándo, documentado en tus cuentas.</p>
-          </li>
-        </ul>
-        <a href="/ia-con-cabeza/" class="btn btn--ghost section-more">Cómo cuido la seguridad <span class="arrow" aria-hidden="true">→</span></a>
-        <div id="piezas" class="pieces-block">
-          <div class="section-head">
-            <h2 class="h2">Lo difícil no es cada pieza, sino saber cómo encajan.</h2>
-            <p class="lead">Detrás de cada automatización hay muchas piezas. No necesitas saber qué es cada una: para eso estoy yo. Pero si te pica la curiosidad, toca cualquiera.</p>
+        <!-- Short bio; the full story lives on /sobre-mi/ -->
+        <div id="sobre-mi" class="bio-short">
+          <figure class="bio-short__photo"><img src="/alex.jpg?v=1" width="800" height="1000" alt="Alex Reïzos, fundador de pleko" loading="lazy" decoding="async" /></figure>
+          <div class="bio-short__text">
+            <p class="section-label">Sobre mí</p>
+            <h3 class="h3-display">Por qué creé pleko.</h3>
+            <p>Durante la mayor parte de mi carrera, las mejores herramientas eran cosa de empresas con grandes presupuestos y equipos de desarrolladores. Eso ya no es así. La IA pone ese tipo de ventaja al alcance de cualquiera que tenga ganas de aprender.</p>
+            <p>Trabajas directamente conmigo, y mi objetivo es sencillo: que las herramientas trabajen para ti y que tu equipo sepa seguir usándolas.</p>
+            <a href="/sobre-mi/" class="btn btn--ghost">Conoce mi historia <span class="arrow" aria-hidden="true">→</span></a>
           </div>
-        <ul class="pieces">
-          <li><details class="piece"><summary>IA generativa / LLM</summary><p>El «cerebro» que entiende y escribe texto, como ChatGPT o Claude.</p></details></li>
-          <li><details class="piece"><summary>Modelos grandes y pequeños</summary><p>Los grandes razonan mejor; los pequeños son rápidos y baratos. Lo eficiente es usar cada uno donde toca.</p></details></li>
-          <li><details class="piece"><summary>Prompt</summary><p>Las instrucciones que le das a la IA. Bien escritas, lo cambian todo.</p></details></li>
-          <li><details class="piece"><summary>API</summary><p>La puerta por la que dos programas se hablan.</p></details></li>
-          <li><details class="piece"><summary>Webhook</summary><p>Un aviso automático: «acaba de pasar algo».</p></details></li>
-          <li><details class="piece"><summary>JSON</summary><p>El formato en el que viajan los datos entre apps.</p></details></li>
-          <li><details class="piece"><summary>MCP</summary><p>Un enchufe estándar para conectar la IA con tus herramientas.</p></details></li>
-          <li><details class="piece"><summary>RAG</summary><p>Que la IA responda con tus documentos, no con lo que recuerda.</p></details></li>
-          <li><details class="piece"><summary>Agente de IA</summary><p>Una IA que no solo responde, sino que da pasos y usa herramientas.</p></details></li>
-          <li><details class="piece"><summary>Human-in-the-loop</summary><p>El punto en el que una persona revisa antes de seguir.</p></details></li>
-          <li><details class="piece"><summary>Evals</summary><p>Pruebas que comprueban que la IA responde bien, antes y después de cada cambio.</p></details></li>
-          <li><details class="piece"><summary>Inyección de prompts</summary><p>Instrucciones escondidas en un correo o una web que intentan engañar a la IA.</p></details></li>
-          <li><details class="piece"><summary>Mínimo privilegio</summary><p>Cada pieza accede solo a lo que necesita, nada más.</p></details></li>
-        </ul>
-        <a href="/diccionario-ia/" class="btn btn--ghost section-more">Ver el diccionario completo <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
-    <!-- ============ 05 IDEAS / SUBSTACK ============ -->
-    <section id="ideas" class="ideas">
-      <div class="wrap ideas__inner">
-        <p class="section-label">06 — Ideas</p>
-        <h2 class="h2 h2--italic">Pensando en voz alta</h2>
-        <p class="lead">
-          Lo que voy aprendiendo al llevar la IA al trabajo real. Si quieres ver cómo pienso antes de que hablemos, empieza por aquí.
-        </p>
-        <!-- Latest blog post. Between the markers it is rewritten by
-             _blog/build.py (python3 _blog/build.py); do not edit by hand. -->
-        <!-- latest-post:start -->
-        <a class="latest-post" href="/blog/la-ia-no-es-solo-para-los-de-arriba/">
-          <span class="section-label">Último texto</span>
-          <span class="latest-post__title">La IA no es solo para los de arriba</span>
-          <span class="latest-post__sub">Primer texto: por qué creo que esta es la mayor oportunidad que hemos tenido en años, y por qué también es tuya</span>
-        </a>
-        <!-- latest-post:end -->
-        <a href="/blog/" class="btn btn--ghost">Lee el blog <span class="arrow" aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-    <!-- ============ 06 FAQ (short) ============
+    <!-- ============ 04 FAQ (short) ============
          Six key questions; each <details> opens on click with no JavaScript.
          The full list of 20 lives on its own page (link below). -->
     <section id="preguntas" class="faq">
       <div class="wrap faq__inner">
         <div class="section-head faq__head">
-          <p class="section-label">07 — Preguntas frecuentes</p>
+          <p class="section-label">04 — Preguntas frecuentes</p>
           <h2 class="h2">Lo que suele preguntarse antes de la primera llamada.</h2>
           <p class="lead">¿No ves tu pregunta? Escríbeme a <a href="mailto:alex@pleko.es?subject=Consulta%20desde%20pleko.es">alex@pleko.es</a> y te respondo yo.</p>
         </div>
@@ -559,16 +474,25 @@
               <p>Sí, es lo que más me gusta. Vivo en Barcelona y prefiero sentarme con tu equipo y ver cómo trabajáis de verdad. Para seguimientos, o con clientes de fuera, también trabajo por videollamada, en español o en inglés.</p>
             </details>
           </div>
-          <a href="/preguntas-frecuentes/" class="btn btn--ghost faq__more">Ver las 29 preguntas <span class="arrow" aria-hidden="true">→</span></a>
+          <a href="/preguntas-frecuentes/" class="btn btn--ghost faq__more">Ver las 30 preguntas <span class="arrow" aria-hidden="true">→</span></a>
         </div>
+        <!-- Latest blog post. Between the markers it is rewritten by
+             _blog/build.py (python3 _blog/build.py); do not edit by hand. -->
+        <!-- latest-post:start -->
+        <a class="latest-post" href="/blog/la-ia-no-es-solo-para-los-de-arriba/">
+          <span class="section-label">Último texto</span>
+          <span class="latest-post__title">La IA no es solo para los de arriba</span>
+          <span class="latest-post__sub">Primer texto: por qué creo que esta es la mayor oportunidad que hemos tenido en años, y por qué también es tuya</span>
+        </a>
+        <!-- latest-post:end -->
       </div>
     </section>
 
-    <!-- ============ 07 BOOK A CALL ============ -->
+    <!-- ============ 05 BOOK A CALL ============ -->
     <section id="reserva" class="contact">
       <div class="wrap contact__inner">
         <div class="contact__copy">
-          <p class="section-label">08 — Hablemos</p>
+          <p class="section-label">05 — Hablemos</p>
           <h2 class="contact__heading">¿Tienes un flujo de trabajo que merece la pena domar?</h2>
           <p class="contact__subtext">Reserva una llamada gratuita de 20&nbsp;minutos. Me cuentas qué te frena y te digo con sinceridad si pleko encaja.</p>
           <div class="contact__links">

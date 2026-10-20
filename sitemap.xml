@@ -185,4 +185,18 @@
   </url>
   <url><loc>https://pleko.es/pruebalo/</loc></url>
   <url><loc>https://pleko.es/en/try-it/</loc></url>
+  <url>
+    <loc>https://pleko.es/sobre-mi/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/sobre-mi/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/sobre-mi/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/about/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/sobre-mi/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/sobre-mi/" />
+  </url>
 </urlset>
