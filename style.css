@@ -2989,3 +2989,9 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
 }
 .promises__more a { color: var(--color-primary); font-weight: 500; white-space: nowrap; }
 @media (max-width: 600px) { .promises__more a { white-space: normal; } }
+
+/* Pricing page booking band: shorter, long button on its own line, email + WhatsApp side by side under it */
+.contact--compact { padding: clamp(2.5rem, 4.5vw, 4rem) 0; }
+.contact--compact .contact__copy { gap: 1.25rem; }
+.contact__alt { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
+.contact--compact .contact__links { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
