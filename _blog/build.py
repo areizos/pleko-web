@@ -93,7 +93,12 @@ def tag_id(t):
     return re.sub(r"[^a-z0-9]+", "-", t).strip("-")
 
 
+SHOW_TAGS = False  # topic chips + filter hidden until there are more posts; tags stay in frontmatter
+
+
 def tag_chips(tags):
+    if not SHOW_TAGS:
+        return ""
     return "".join(f'<span class="chip">{html.escape(t)}</span>' for t in tags)
 
 
@@ -178,8 +183,7 @@ def main():
           <h1 class="h2">{html.escape(p["title"])}</h1>
           <p class="lead">{inline(p["subtitle"])}</p>
           <p class="post__meta">{cfg["by"]} · <time datetime="{p["date"]}">{nice_date(p["date"], lang)}</time> · {mins} {cfg["mins"]}</p>
-          <p class="post__tags">{tag_chips(tags_of(p))}</p>
-        </header>
+{f'          <p class="post__tags">{tag_chips(tags_of(p))}</p>{chr(10)}' if SHOW_TAGS else ""}        </header>
         <div class="post__body">
           {markdown(p["body"])}
         </div>
@@ -193,19 +197,18 @@ def main():
       </div>
     </article>'''
             write(path, page(lang, path, other_path, f'{p["title"]} | pleko', p["subtitle"], ld, main_html, og_type="article"))
-        cards = "\n".join(f'''          <li data-tags="{" ".join(tag_id(t) for t in tags_of(p))}">
+        cards = "\n".join(f'''          <li{f' data-tags="{" ".join(tag_id(t) for t in tags_of(p))}"' if SHOW_TAGS else ""}>
             <a class="latest-post" href="{cfg["blog"]}{p["slug"]}/">
               <span class="section-label"><time datetime="{p["date"]}">{nice_date(p["date"], lang)}</time></span>
               <span class="latest-post__title">{html.escape(p["title"])}</span>
               <span class="latest-post__sub">{inline(p["subtitle"])}</span>
-              <span class="post__tags">{tag_chips(tags_of(p))}</span>
-            </a>
+{f'              <span class="post__tags">{tag_chips(tags_of(p))}</span>{chr(10)}' if SHOW_TAGS else ""}            </a>
           </li>''' for p in mine)
         all_tags = sorted({t for p in mine for t in tags_of(p)}, key=str.lower)
         filters = ('<div class="tag-filter" role="group" aria-label="' + cfg["filter_label"] + '">'
                    + f'<button type="button" class="tag-filter__btn" data-tag="" aria-pressed="true">{cfg["all_tags"]}</button>'
                    + "".join(f'<button type="button" class="tag-filter__btn" data-tag="{tag_id(t)}" aria-pressed="false">{html.escape(t)}</button>' for t in all_tags)
-                   + "</div>") if all_tags else ""
+                   + "</div>") if all_tags and SHOW_TAGS else ""
         main_html = f'''    <section class="subpage-hero">
       <div class="wrap">
         <div class="section-head">
