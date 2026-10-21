@@ -233,7 +233,7 @@ def main():
             j = s.index("        <!-- latest-post:end -->")
             card = f'''
         <a class="latest-post" href="{cfg["blog"]}{p["slug"]}/">
-          <span class="section-label">{cfg["latest"]}</span>
+          <span class="section-label">{cfg["latest"]} · <time datetime="{p["date"]}">{nice_date(p["date"], lang)}</time></span>
           <span class="latest-post__title">{html.escape(p["title"])}</span>
           <span class="latest-post__sub">{inline(p["subtitle"])}</span>
         </a>
