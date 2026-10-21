@@ -156,6 +156,7 @@ def main():
     posts = [read_post(os.path.join(ROOT, "_blog/posts", f)) for f in sorted(os.listdir(os.path.join(ROOT, "_blog/posts"))) if f.endswith(".md")]
     by_slug = {p["slug"]: p for p in posts}
     home = {"es": "/", "en": "/en/"}
+    about = {"es": "/sobre-mi/", "en": "/en/about/"}
     for lang in ("es", "en"):
         cfg, other = L[lang], L["en" if lang == "es" else "es"]
         mine = sorted((p for p in posts if p["lang"] == lang), key=lambda p: p["date"], reverse=True)
@@ -225,12 +226,8 @@ def main():
         ld = {"@context": "https://schema.org", "@graph": [crumbs(lang, [("pleko", home[lang]), (cfg["label"], cfg["blog"])]),
               {"@type": "Blog", "name": cfg["index_title"], "url": SITE + cfg["blog"], "inLanguage": lang, "publisher": {"@id": "https://pleko.es/#pleko"}}]}
         write(cfg["blog"], page(lang, cfg["blog"], other["blog"], cfg["index_title"], cfg["index_desc"], ld, main_html))
-        if mine:  # homepage "Ideas" card shows the newest post
+        if mine:  # homepage and bio "Ideas" cards show the newest post
             p = mine[0]
-            hp = os.path.join(ROOT, home[lang].strip("/"), "index.html")
-            s = open(hp, encoding="utf-8").read()
-            i = s.index("<!-- latest-post:start -->") + len("<!-- latest-post:start -->")
-            j = s.index("        <!-- latest-post:end -->")
             card = f'''
         <a class="latest-post" href="{cfg["blog"]}{p["slug"]}/">
           <span class="section-label">{cfg["latest"]} · <time datetime="{p["date"]}">{nice_date(p["date"], lang)}</time></span>
@@ -238,7 +235,12 @@ def main():
           <span class="latest-post__sub">{inline(p["subtitle"])}</span>
         </a>
 '''
-            open(hp, "w", encoding="utf-8").write(s[:i] + card + s[j:])
+            for pg in (home[lang], about[lang]):
+                hp = os.path.join(ROOT, pg.strip("/"), "index.html")
+                s = open(hp, encoding="utf-8").read()
+                i = s.index("<!-- latest-post:start -->") + len("<!-- latest-post:start -->")
+                j = s.index("        <!-- latest-post:end -->")
+                open(hp, "w", encoding="utf-8").write(s[:i] + card + s[j:])
     print("Built", len(posts), "posts")
 
 
