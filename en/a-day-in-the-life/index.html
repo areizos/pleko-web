@@ -103,6 +103,16 @@
     .ba__step p{margin:.4rem 0}
     .ba__check{color:var(--color-text)}
     .ba__count{font-weight:600;color:var(--color-primary)}
+    .flow{position:relative;height:360px;border:1px dashed var(--color-border);border-radius:1.25rem;background:var(--color-background);overflow:hidden;margin:0 0 1.5rem}
+    .flow svg{position:absolute;inset:0;width:100%;height:100%;transition:opacity .5s}
+    .flow line{stroke:var(--color-primary);stroke-width:1.2;opacity:.5;vector-effect:non-scaling-stroke}
+    .pill{position:absolute;left:var(--bx);top:var(--by);transform:translate(-50%,-50%);padding:.45rem .9rem;border-radius:999px;background:var(--color-background);border:1px solid var(--color-primary);color:var(--color-primary);font-size:.85rem;white-space:nowrap;transition:left .6s ease,top .6s ease,opacity .5s ease;z-index:1}
+    .pill--you{background:var(--color-accent-soft)}
+    .ba[data-mode="after"] .pill{left:var(--ax);top:var(--ay)}
+    .ba[data-mode="after"] .pill--s{opacity:0}
+    .ba[data-mode="before"] .lines-after,.ba[data-mode="after"] .lines-before{opacity:0}
+    @media (max-width:700px){.flow{height:420px}.pill{font-size:.72rem;padding:.35rem .6rem}}
+    @media (max-width:700px){.ba[data-mode="after"] .pill{left:50%;top:var(--my)}.ba[data-mode="after"] .lines-after{display:none}}
   </style>
 </head>
 <body>
@@ -157,6 +167,43 @@
           </div>
           <p class="ba__total"><span class="c-before">Manual actions in this example: <strong>73</strong></span><span class="c-after">After, only <strong>8</strong> checks are left</span></p>
           <p class="ba__rule">An action is anything you do by hand: open, copy, paste, type, send or check. Counted across the steps on this page.</p>
+          <div class="flow" aria-hidden="true">
+            <svg class="lines-before" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <line x1="10" y1="22" x2="38" y2="12" />
+              <line x1="10" y1="22" x2="70" y2="14" />
+              <line x1="10" y1="22" x2="88" y2="42" />
+              <line x1="10" y1="22" x2="50" y2="40" />
+              <line x1="38" y1="12" x2="70" y2="14" />
+              <line x1="70" y1="14" x2="88" y2="42" />
+              <line x1="88" y1="42" x2="38" y2="12" />
+              <line x1="38" y1="12" x2="50" y2="40" />
+              <line x1="70" y1="14" x2="50" y2="40" />
+              <line x1="88" y1="42" x2="50" y2="40" />
+              <line x1="50" y1="40" x2="30" y2="62" />
+              <line x1="30" y1="62" x2="38" y2="12" />
+              <line x1="30" y1="62" x2="62" y2="70" />
+              <line x1="62" y1="70" x2="70" y2="14" />
+              <line x1="62" y1="70" x2="88" y2="42" />
+              <line x1="62" y1="70" x2="84" y2="86" />
+              <line x1="84" y1="86" x2="10" y2="22" />
+              <line x1="84" y1="86" x2="50" y2="40" />
+              <line x1="10" y1="22" x2="62" y2="70" />
+            </svg>
+            <svg class="lines-after" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <line x1="8" y1="50" x2="29" y2="50" />
+              <line x1="29" y1="50" x2="50" y2="50" />
+              <line x1="50" y1="50" x2="71" y2="50" />
+              <line x1="71" y1="50" x2="92" y2="50" />
+            </svg>
+            <span class="pill" style="--bx:10%;--by:22%;--ax:8%;--ay:50%;--my:8%">Couple</span>
+            <span class="pill pill--s" style="--bx:38%;--by:12%;--ax:29%;--ay:50%;--my:26%">Restaurant</span>
+            <span class="pill pill--s" style="--bx:70%;--by:14%;--ax:29%;--ay:50%;--my:26%">Musician</span>
+            <span class="pill pill--s" style="--bx:88%;--by:42%;--ax:29%;--ay:50%;--my:26%">Florist</span>
+            <span class="pill" style="--bx:30%;--by:62%;--ax:50%;--ay:50%;--my:44%">Quote</span>
+            <span class="pill" style="--bx:62%;--by:70%;--ax:71%;--ay:50%;--my:62%">Booking</span>
+            <span class="pill" style="--bx:84%;--by:86%;--ax:92%;--ay:50%;--my:80%">Invoice</span>
+            <span class="pill pill--you" style="--bx:50%;--by:40%;--ax:29%;--ay:50%;--my:26%">You</span>
+          </div>
           <ol class="ba__steps">
           <li class="ba__step">
             <h3>1 · Enquiry</h3>
