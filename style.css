@@ -1831,8 +1831,8 @@ a[href^="mailto:"] {
 }
 
 /* Small ↗ on links that open another site (not on buttons, which have their own arrow,
-   nor the contact links or footer links, which stay plain) */
-a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact__links a):not(.footer-links a)::after {
+   nor the contact links, footer links or .link-plain links, which stay plain) */
+a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact__links a):not(.footer-links a):not(.link-plain)::after {
   content: "↗" / "";
   display: inline-block;
   margin-left: 0.2em;
@@ -1843,7 +1843,7 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact__links a):not(.footer-links a):hover::after {
+a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact__links a):not(.footer-links a):not(.link-plain):hover::after {
   opacity: 1;
   transform: translate(1px, -1px);
 }
