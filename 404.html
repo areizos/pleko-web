@@ -12,10 +12,11 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/style.css?v=43" />
+  <!-- Fonts (Inter + Literata) are served from pleko.es itself: see /fonts/ and the
+       @font-face rules at the top of style.css. The two used above the fold load first. -->
+  <link rel="preload" href="/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/style.css?v=44" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
 </head>
 <body>
@@ -24,7 +25,7 @@
   <header class="site-header">
     <div class="wrap site-header__inner">
       <a href="/" class="brand" aria-label="pleko, inicio">
-        <img src="/pleko-logo.svg?v=2" alt="pleko" class="brand__logo" />
+        <img src="/pleko-logo.svg?v=2" alt="pleko" class="brand__logo" width="314" height="116" />
       </a>
       <div class="lang-toggle" aria-label="Idioma / Language">
         <a href="/">ES</a>

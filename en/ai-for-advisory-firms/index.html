@@ -33,16 +33,12 @@
   <link rel="alternate" hreflang="en" href="https://pleko.es/en/ai-for-advisory-firms/" />
   <link rel="alternate" hreflang="x-default" href="https://pleko.es/ia-para-asesorias/" />
 
-  <!--
-    Fonts: the same pairing as the pleko brand —
-    Inter for body text, Literata (a serif with a nice italic) for headings/wordmark.
-    Loaded from Google Fonts, so no font files to manage ourselves.
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,500;1,7..72,600&display=swap" rel="stylesheet" />
+  <!-- Fonts (Inter + Literata) are served from pleko.es itself: see /fonts/ and the
+       @font-face rules at the top of style.css. The two used above the fold load first. -->
+  <link rel="preload" href="/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="/style.css?v=43" />
+  <link rel="stylesheet" href="/style.css?v=44" />
   <!-- Structured data: breadcrumb and service for search engines. -->
   <script type="application/ld+json">
   {
@@ -106,7 +102,7 @@
   <header class="site-header">
     <div class="wrap site-header__inner">
       <a href="/en/" class="brand" aria-label="pleko, home">
-        <img src="/pleko-logo.svg?v=2" alt="pleko" class="brand__logo" />
+        <img src="/pleko-logo.svg?v=2" alt="pleko" class="brand__logo" width="314" height="116" />
       </a>
       <nav class="menu" aria-label="Menu">
         <a href="/en/#services">Services</a>
