@@ -737,6 +737,9 @@ section {
   gap: 1.5rem;
 }
 
+/* Four cards sit 2 × 2 instead of 3 + 1 (sector and service pages). */
+.cards--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
 .card {
   background: var(--color-background);
   border: 1px solid var(--color-border);
