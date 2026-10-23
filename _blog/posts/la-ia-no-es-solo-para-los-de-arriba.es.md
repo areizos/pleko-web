@@ -11,7 +11,7 @@ Hola, soy Alexandros Reïzos.
 
 Siempre he sido un friki de la tecnología. De pequeño abría televisores, ordenadores y los móviles de los demás, y acababa siendo yo quien los arreglaba: necesito entender cómo funcionan las cosas. Con los años, esa obsesión pasó a los procesos, tanto que a veces me apartaba de mi propio trabajo. Hay una razón para eso, y tiene nombre, pero esa historia merece su propio texto.
 
-Llevo más de 15 años en marketing digital, entre Londres y Barcelona, en startups, SaaS y empresas tecnológicas, B2B y B2C. Ahora, gracias a la IA, la tecnología, los procesos y la simplificación por fin encajan.
+Llevo más de 20 años en marketing digital, entre Londres y Barcelona, en startups, SaaS y empresas tecnológicas, B2B y B2C. Ahora, gracias a la IA, la tecnología, los procesos y la simplificación por fin encajan.
 
 ## Todos lo sabemos. Y a muchos nos da miedo
 
