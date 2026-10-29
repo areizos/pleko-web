@@ -40,7 +40,7 @@
   <link rel="preload" href="/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-    <link rel="stylesheet" href="/style.css?v=47" />
+    <link rel="stylesheet" href="/style.css?v=48" />
   <!-- Structured data: breadcrumb and service for search engines. -->
   <script type="application/ld+json">
   {
@@ -197,9 +197,9 @@
           <p class="subpage-note">On its own, Notion doesn't talk to your WhatsApp or your invoicing. For that I put a piece in the middle, a connector (n8n or Make), that carries information from one place to another. Tick what you use and see how it would connect.</p>
         </div>
 
-        <!-- Interactive diagram: the buttons choose the tools, notion-picker.js draws the threads. -->
+        <!-- Interactive demo: the buttons choose the tools; notion-picker.js draws the threads and fills the example client record. -->
         <div class="picker" data-picker>
-          <p class="picker__hint" id="picker-hint">Build your Notion. Tick the tools you use:</p>
+          <p class="picker__hint" id="picker-hint">Build your Notion. Tick the tools you use and watch a client record fill up:</p>
           <div class="picker__chips" role="group" aria-labelledby="picker-hint">
             <button type="button" class="picker__chip" data-tool="form" aria-pressed="true" data-text="Every message from your form creates a record in Notion, with the details and the date, and lets you know." data-note="">Web form</button>
             <button type="button" class="picker__chip" data-tool="whatsapp" aria-pressed="false" data-text="A new message creates or updates the contact. If nobody replies within the time you set, you get a reminder." data-note="This usually needs the WhatsApp Business API (through Meta or a provider), which has its own setup and cost. The normal WhatsApp Business app is not enough.">WhatsApp</button>
@@ -209,13 +209,80 @@
             <button type="button" class="picker__chip" data-tool="sheets" aria-pressed="false" data-text="We move your current tables into Notion or, if you prefer to keep the spreadsheet, keep it connected to Notion." data-note="">Spreadsheets</button>
             <button type="button" class="picker__chip" data-tool="invoices" aria-pressed="false" data-text="An invoice that arrives by email is saved to Drive and logged in an expenses table your accountant can see." data-note="">Invoices</button>
           </div>
-          <div class="picker__stage">
-            <svg class="picker__svg" role="img" aria-label="Diagram: the tools you tick join in a connector and reach Notion." data-conn="connector" data-notion="Notion" data-notion-sub="your central place"></svg>
+          <div class="picker__grid">
+            <div class="picker__stage">
+              <svg class="picker__svg" role="img" aria-label="Diagram: the tools you tick join in a connector and reach Notion." data-conn="connector" data-notion="Notion" data-notion-sub="your central place"></svg>
+            </div>
+            <div class="ncard" data-ncard>
+              <div class="ncard__bar">
+                <span class="ncard__crumb">Clients / Marta Vidal</span>
+                <span class="ncard__fake">Example with made-up data</span>
+              </div>
+              <div class="ncard__body">
+                <h3 class="ncard__title">Marta Vidal <small>Vidal Hair Salon</small></h3>
+                <dl class="ncard__props">
+                  <div><dt>Status</dt><dd><span class="ncard__pill" data-pill data-lead="New lead" data-won="Won">New lead</span></dd></div>
+                  <div><dt>Source</dt><dd data-origin data-none="Not set">Not set</dd></div>
+                </dl>
+                <p class="ncard__empty" data-ncard-empty>Tick a tool and watch Marta's record fill up.</p>
+          <section class="ncard__block" data-block="form" hidden>
+            <h4>Web form</h4>
+            <p class="ncard__quote">“Hi, I’d like a quote to refurbish the salon.”</p><p class="ncard__meta">Today · 09:12</p>
+            <p class="ncard__why"><span>How it gets here:</span> Every message from your form creates a record in Notion, with the details and the date, and lets you know.</p>
+          </section>
+          <section class="ncard__block" data-block="whatsapp" hidden>
+            <h4>WhatsApp</h4>
+            <p class="ncard__bubble">Can you come and see it this week?</p><p class="ncard__flag">Reminder on if nobody replies</p>
+            <p class="ncard__why"><span>How it gets here:</span> A new message creates or updates the contact. If nobody replies within the time you set, you get a reminder.</p>
+          </section>
+          <section class="ncard__block" data-block="gmail" hidden>
+            <h4>Linked emails</h4>
+            <ul class="ncard__rows"><li>Re: Salon quote</li><li>Photos of the premises (attachment)</li></ul>
+            <p class="ncard__why"><span>How it gets here:</span> The emails that matter, like a quote request, are filed where they belong and linked to their client.</p>
+          </section>
+          <section class="ncard__block" data-block="calendar" hidden>
+            <h4>Meeting · Thursday 12:00</h4>
+            <ul class="ncard__rows"><li>Quote call</li><li>Notes page created</li></ul>
+            <p class="ncard__why"><span>How it gets here:</span> Each booked meeting creates a notes page already linked to the client, ready to write on.</p>
+          </section>
+          <section class="ncard__block" data-block="drive" hidden>
+            <h4>Documents (still in Drive)</h4>
+            <ul class="ncard__rows"><li>Salon quote.pdf</li><li>Photos of the premises</li></ul>
+            <p class="ncard__why"><span>How it gets here:</span> Documents stay in Drive. Notion keeps the link on the client or project record, so you don't have to hunt for them.</p>
+          </section>
+          <section class="ncard__block" data-block="sheets" hidden>
+            <h4>Imported from your spreadsheet</h4>
+            <ul class="ncard__rows"><li>Marta’s previous purchases</li></ul>
+            <p class="ncard__why"><span>How it gets here:</span> We move your current tables into Notion or, if you prefer to keep the spreadsheet, keep it connected to Notion.</p>
+          </section>
+          <section class="ncard__block" data-block="invoices" hidden>
+            <h4>Invoices</h4>
+            <ul class="ncard__rows"><li>Invoice sent · awaiting payment</li></ul>
+            <p class="ncard__why"><span>How it gets here:</span> An invoice that arrives by email is saved to Drive and logged in an expenses table your accountant can see.</p>
+          </section>
+                <section class="ncard__won" data-won-block hidden>
+                  <h4>When you mark her as won</h4>
+                  <ul class="ncard__rows ncard__rows--won">
+            <li>Marta becomes a client</li>
+            <li>Project created: Salon refurbishment · Kick off</li>
+            <li data-needs="drive">Folder created in Drive<span class="ncard__conn">connector</span></li>
+            <li>Alert sent: “Marta is now a client”<span class="ncard__conn">connector</span></li>
+                  </ul>
+                  <p class="ncard__why">Notion creates the client and the project. The folder and the alert use the connector.</p>
+                </section>
+              </div>
+              <div class="ncard__foot">
+                <button type="button" class="btn btn--primary ncard__win" data-win data-label-win="Mark as won" data-label-back="Back to lead" aria-live="polite">Mark as won</button>
+              </div>
+            </div>
           </div>
-          <div class="picker__out" aria-live="polite">
-            <h3 class="picker__out-title">What would happen</h3>
-            <ul class="picker__list" data-picker-list data-empty="Tick at least one tool to see what would happen."></ul>
-            <p class="picker__note" data-picker-note></p>
+          <p class="picker__note" data-picker-note hidden></p>
+          <div class="picker__cta" data-cta data-wa="https://wa.me/34656310631" data-mail="alex@pleko.es" data-subj="Notion%20for%20my%20business" data-and="and" data-msg-with="Hi Alex, I found you on pleko.es. I use {tools}. I&#x27;d like to see how it would connect with Notion." data-msg-none="Hi Alex, I found you on pleko.es. I&#x27;d like to see how to set up Notion for my business." data-cta-with="Does it fit? I&#x27;ll draft the message with what you ticked." data-cta-none="Does it fit? Tell me your case and we&#x27;ll see how to set it up.">
+            <p class="picker__cta-text" data-cta-text>Does it fit? Tell me your case and we'll see how to set it up.</p>
+            <div class="picker__cta-links">
+              <a class="btn btn--primary" data-cta-wa href="https://wa.me/34656310631" target="_blank" rel="noopener">Send on WhatsApp</a>
+              <a class="btn btn--ghost" data-cta-mail href="mailto:alex@pleko.es">Send by email</a>
+            </div>
           </div>
           <p class="subpage-note">These are examples of what I can set up. Every business is different, and in the Diagnostic we see what is really useful to you.</p>
         </div>
@@ -422,6 +489,6 @@
     };
   </script>
     <script src="/site.js?v=13" defer></script>
-    <script src="/notion-picker.js?v=1" defer></script>
+    <script src="/notion-picker.js?v=2" defer></script>
 </body>
 </html>
