@@ -3057,3 +3057,130 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
 
 /* FAQ: small footnote line under an answer (e.g. the pricing asterisk) */
 .faq__item p:has(> small:only-child) { margin-top: -0.75rem; color: var(--color-label); }
+
+/* ---------- Notion page (/notion-para-negocios/) -------------------------- */
+.notion-hero__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.notion-hero__actions + .subpage-note { margin-top: 1rem; }
+.checklist--one { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+.callout .checklist li { color: var(--color-text); }
+
+/* "Arma tu Notion" picker */
+.picker {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.picker__hint { margin: 0; font-weight: 600; color: var(--color-text); }
+.picker__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.picker__chip {
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-outline-variant);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.picker__chip:hover { border-color: var(--color-primary); }
+.picker__chip[aria-pressed="true"] {
+  background: var(--color-accent-soft);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+.picker__chip:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.picker__stage { width: 100%; max-width: 40rem; margin: 0 auto; }
+.picker__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.picker__tool rect { fill: var(--color-surface); stroke: var(--color-outline-variant); stroke-width: 1.5; transition: fill 0.25s ease, stroke 0.25s ease; }
+.picker__tool text { fill: var(--color-label); font-family: var(--font-sans); }
+.picker__tool.is-on rect { fill: var(--color-accent-soft); stroke: var(--color-primary); }
+.picker__tool.is-on text { fill: var(--color-primary); font-weight: 600; }
+.picker__thread { fill: none; stroke: var(--color-primary); stroke-width: 2.5; stroke-linecap: round; opacity: 0.85; }
+.picker__thread--out { stroke-width: 3.5; }
+.picker__dot { fill: var(--color-accent-text); }
+.picker__knot circle:first-child { fill: var(--color-background); stroke: var(--color-outline-variant); stroke-width: 2.5; }
+.picker__knot.is-on circle:first-child { stroke: var(--color-primary); }
+.picker__orange { fill: var(--color-signal); }
+.picker__label { fill: var(--color-label); font-family: var(--font-sans); }
+.picker__notion rect:first-child { fill: var(--color-surface); stroke: var(--color-outline-variant); stroke-width: 2; }
+.picker__notion.is-on rect:first-child { stroke: var(--color-primary); fill: var(--color-accent-soft); }
+.picker__page { fill: var(--color-background); stroke: var(--color-primary); stroke-width: 2; }
+.picker__lines { fill: none; stroke: var(--color-primary); stroke-width: 2; stroke-linecap: round; }
+.picker__notion-name { fill: var(--color-primary); font-family: var(--font-display); font-weight: 600; }
+@media (prefers-reduced-motion: no-preference) {
+  .picker__thread { stroke-dasharray: 600; stroke-dashoffset: 600; animation: picker-draw 0.9s ease forwards; }
+  @keyframes picker-draw { to { stroke-dashoffset: 0; } }
+}
+.picker__out { display: flex; flex-direction: column; gap: 0.6rem; }
+.picker__out-title { margin: 0; font-size: 1.1rem; font-weight: 600; }
+.picker__list { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; color: var(--color-text-muted); line-height: 1.55; }
+.picker__list strong { color: var(--color-text); }
+.picker__empty { list-style: none; margin-left: -1.1rem; color: var(--color-label); }
+.picker__note { margin: 0; padding: 0.75rem 1rem; background: var(--color-accent-soft); border-radius: var(--radius-md); font-size: 0.95rem; color: var(--color-text); line-height: 1.5; }
+.picker__note[hidden] { display: none; }
+
+/* The three full examples: a row of boxes joined by a thread */
+.notion-flows__head { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.flow-cards { display: flex; flex-direction: column; gap: 1.25rem; }
+.flow-card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.flow-card h3 { margin: 0; font-size: 1.2rem; font-weight: 600; }
+.flow-card .chip { align-self: flex-start; }
+.flow-card__note { margin: 0; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.5; }
+.flow { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; }
+.flow__node {
+  position: relative;
+  flex: 1 1 9rem;
+  min-width: 8.5rem;
+  padding: 0.8rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  margin-right: 1.75rem;
+}
+.flow__node:last-child { margin-right: 0; }
+.flow__node::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  width: 1.75rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+.flow__node:last-child::after { display: none; }
+.flow__node--n { background: var(--color-accent-soft); border-color: var(--color-primary); color: var(--color-primary); font-weight: 600; }
+.flow__node--c { background: var(--color-background); border-style: dashed; }
+.flow__node--c::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-signal);
+}
+@media (max-width: 640px) {
+  .flow { flex-direction: column; }
+  .flow__node { margin-right: 0; margin-bottom: 1.5rem; flex-basis: auto; }
+  .flow__node:last-child { margin-bottom: 0; }
+  .flow__node::after { left: 50%; top: 100%; width: 2px; height: 1.5rem; background: linear-gradient(180deg, var(--color-primary), var(--color-accent)); }
+}
