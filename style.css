@@ -3184,3 +3184,21 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
   .flow__node:last-child { margin-bottom: 0; }
   .flow__node::after { left: 50%; top: 100%; width: 2px; height: 1.5rem; background: linear-gradient(180deg, var(--color-primary), var(--color-accent)); }
 }
+
+/* ---------- Paper texture ------------------------------------------------
+   One small seamless tile (paper.png, ~6 KB) of faint grey fibres over the
+   off-white background. Only the plain background and the white boxes get
+   it; the light-grey surface sections stay flat. To tone it down, lower
+   the tile's opacity in the source file, or remove a selector here.
+   ------------------------------------------------------------------------ */
+body,
+.card,
+.tools__row,
+.piece summary,
+.piece p,
+.subpage-block--alt .glossary__item,
+.demo__box,
+.picker,
+.flow-card {
+  background-image: url("paper.png");
+}
