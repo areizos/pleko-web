@@ -3278,3 +3278,6 @@ body,
 .flow-card {
   background-image: url("paper.png");
 }
+.notion-kicker { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 0.5rem; }
+.notion-kicker .section-label { margin: 0; }
+.notion-kicker__logo { display: block; width: 46px; height: auto; }
