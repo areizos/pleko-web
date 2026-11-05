@@ -9,7 +9,7 @@ tags: Opinion, AI and work
 ---
 Hi, I'm Alexandros Reïzos.
 
-I've always been a tech geek. As a kid I'd open up TVs, computers and other people's phones, and end up being the one who fixed them: I need to understand how things work. Over the years that obsession moved to processes, so much that it sometimes pulled me away from my own job. There's a reason for that, and it has a name, but that story deserves its own post.
+I've always been a tech geek. As a kid I'd open up TVs, computers and other people's phones, and end up being the one who fixed them: I need to understand how things work. Over the years that obsession moved to processes, so much that it sometimes pulled me away from my own job. There's a reason for that, and it has a name, but that story deserves [its own post](/en/blog/does-ai-change-who-gets-to-succeed/).
 
 I've spent more than 20 years in digital marketing, between London and Barcelona, at startups, SaaS and tech companies, B2B and B2C. Now, thanks to AI, technology, processes and simplification finally fit together.
 

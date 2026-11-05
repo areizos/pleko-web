@@ -7,7 +7,7 @@ subtitle: Post 2: the name I promised you, and why I think the rules of who does
 date: 2026-10-21
 tags: Opinion, AI and work
 ---
-In my first post I said my obsession with processes sometimes pulled me away from my own job. I said there was a reason for that, with a name, and that it deserved its own post. The name is ADHD. But this post isn't really about ADHD. It's about a question it made me ask: if the tools change, do the people who succeed change too?
+In my [first post](/en/blog/ai-isnt-just-for-the-people-at-the-top/) I said my obsession with processes sometimes pulled me away from my own job. I said there was a reason for that, with a name, and that it deserved its own post. The name is ADHD. But this post isn't really about ADHD. It's about a question it made me ask: if the tools change, do the people who succeed change too?
 
 ## The old rules
 
@@ -76,4 +76,4 @@ For a generalist like me, that can mean turning connections across different fie
 
 None of that removes the need for expertise or judgement. But it can lower barriers that have little to do with the quality of someone's ideas. That's what interests me: not everyone becoming good at everything, but more people being able to make use of what they're already good at. It connects to what I said in the first post: this isn't just for the people at the top.
 
-For me, that brings the question back to being a generalist. What happens when knowing a little about many things is paired with tools that help you bridge some of the gaps? That's where I want to go next: the generalist's comeback.
+For me, that brings the question back to being a generalist. What happens when knowing a little about many things is paired with tools that help you bridge some of the gaps? That's where I want to go next: [the generalist's comeback](/en/blog/the-generalists-comeback/).

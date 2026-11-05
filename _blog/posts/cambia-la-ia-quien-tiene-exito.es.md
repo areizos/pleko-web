@@ -7,7 +7,7 @@ subtitle: Segundo texto: el nombre que te prometí, y por qué creo que se está
 date: 2026-10-21
 tags: Opinión, IA y trabajo
 ---
-En mi primer texto conté que mi obsesión por los procesos a veces me apartaba de mi propio trabajo. Dije que había una razón para eso, que tenía nombre y que merecía su propio texto. El nombre es TDAH. Pero este texto no va realmente del TDAH. Va de una pregunta que me hizo plantearme: si cambian las herramientas, ¿cambian también las personas que tienen éxito?
+En mi [primer texto](/blog/la-ia-no-es-solo-para-los-de-arriba/) conté que mi obsesión por los procesos a veces me apartaba de mi propio trabajo. Dije que había una razón para eso, que tenía nombre y que merecía su propio texto. El nombre es TDAH. Pero este texto no va realmente del TDAH. Va de una pregunta que me hizo plantearme: si cambian las herramientas, ¿cambian también las personas que tienen éxito?
 
 ## Las reglas de siempre
 
@@ -76,4 +76,4 @@ Para un generalista como yo, puede significar convertir las conexiones entre cam
 
 Nada de eso elimina la necesidad de conocimiento o de criterio. Pero puede rebajar barreras que tienen poco que ver con la calidad de las ideas de alguien. Eso es lo que me interesa: no que todo el mundo sea bueno en todo, sino que más personas puedan aprovechar aquello en lo que ya son buenas. Y conecta con lo que dije en el primer texto: esto no es solo para los de arriba.
 
-Para mí, eso devuelve la pregunta a lo de ser generalista. ¿Qué pasa cuando saber un poco de muchas cosas se combina con herramientas que te ayudan a salvar algunas de las distancias? Por ahí quiero seguir: la vuelta del generalista.
+Para mí, eso devuelve la pregunta a lo de ser generalista. ¿Qué pasa cuando saber un poco de muchas cosas se combina con herramientas que te ayudan a salvar algunas de las distancias? Por ahí quiero seguir: [la vuelta del generalista](/blog/la-vuelta-del-generalista/).
