@@ -12,6 +12,8 @@ import html
 import json
 import os
 import re
+import subprocess
+import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://pleko.es"
@@ -40,6 +42,28 @@ L = {
         cta_btn="Book a call", months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         mins="min read", locale="en_GB"),
 }
+
+
+# Social preview images (og:image). Each post pair (ES + EN) gets the next background and
+# thread shape in these rotations, by date order, so neighbouring cards never look alike.
+# Square (90 degree) threads only: Alex's favourite. The burnt orange node is always on.
+OG_BGS = ["papel", "salvia", "noche", "menta-puntos", "arena", "teal", "menta", "marino", "papel-rejilla", "noche-rejilla", "puntos"]
+OG_STYLES = ["angular", "bottom", "corner", "top"]
+OG_ALT = {"es": "Portada del texto «{t}», de Alexandros Reïzos en el blog de pleko", "en": "Cover for “{t}”, by Alexandros Reïzos on the pleko blog"}
+OG_PAGE_ALT = {"es": "Blog de pleko: Pensando en voz alta, con Alexandros Reïzos", "en": "The pleko blog: Thinking out loud, with Alexandros Reïzos"}
+
+
+def render_og(cards, force=False):
+    """Draw any missing preview images with _og/render.js (needs Node + Playwright). --og redraws all."""
+    todo = [c for c in cards if force or not os.path.exists(os.path.join(ROOT, c["out"]))]
+    if not todo:
+        return
+    tmp = os.path.join(ROOT, "_og", ".cards.json")
+    json.dump(todo, open(tmp, "w", encoding="utf-8"), ensure_ascii=False)
+    try:
+        subprocess.run(["node", os.path.join(ROOT, "_og", "render.js"), tmp], check=True, cwd=ROOT)
+    finally:
+        os.remove(tmp)
 
 
 def read_post(path):
@@ -120,7 +144,7 @@ def shell(lang):
     return top, s[nav_start:main_start], s[main_end:]
 
 
-def page(lang, path, other_path, title, desc, ld, main, og_type="website"):
+def page(lang, path, other_path, title, desc, ld, main, og_type="website", og_image=None, og_alt=None):
     top, nav, foot = shell(lang)
     cfg = L[lang]
     url = SITE + path
@@ -131,6 +155,9 @@ def page(lang, path, other_path, title, desc, ld, main, og_type="website"):
     top = re.sub(r'(<link rel="canonical" href=")[^"]*', lambda m: m.group(1) + url, top)
     top = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + url, top)
     top = top.replace('<meta property="og:type" content="website" />', f'<meta property="og:type" content="{og_type}" />')
+    if og_image:
+        top = re.sub(r'(<meta property="og:image" content=")[^"]*', lambda m: m.group(1) + SITE + og_image, top)
+        top = re.sub(r'(<meta property="og:image:alt" content=")[^"]*', lambda m: m.group(1) + html.escape(og_alt or title), top)
     es_path, en_path = (path, other_path) if lang == "es" else (other_path, path)
     top = re.sub(r'(hreflang="es" href=")[^"]*', lambda m: m.group(1) + SITE + es_path, top)
     top = re.sub(r'(hreflang="en" href=")[^"]*', lambda m: m.group(1) + SITE + en_path, top)
@@ -160,6 +187,20 @@ def crumbs(lang, items):
 def main():
     posts = [read_post(os.path.join(ROOT, "_blog/posts", f)) for f in sorted(os.listdir(os.path.join(ROOT, "_blog/posts"))) if f.endswith(".md")]
     by_slug = {p["slug"]: p for p in posts}
+    # One rotation slot per ES/EN pair, in date order (ties by slug); EN shares its ES pair's slot.
+    firsts = sorted((p for p in posts if p["lang"] == "es" or p.get("pair") not in by_slug), key=lambda p: (p["date"], p["slug"]))
+    slot = {}
+    for i, p in enumerate(firsts):
+        slot[p["slug"]] = i
+        if p.get("pair") in by_slug:
+            slot[p["pair"]] = i
+    cards = json.load(open(os.path.join(ROOT, "_og", "static.json"), encoding="utf-8"))
+    for p in posts:
+        i = slot[p["slug"]]
+        p["og"] = f"/og/blog/{p['slug']}.png"
+        cards.append({"out": p["og"].lstrip("/"), "layout": "post", "label": "Blog", "title": p["title"],
+                      "bg": OG_BGS[i % len(OG_BGS)], "style": OG_STYLES[i % len(OG_STYLES)], "seed": 11 + i})
+    render_og(cards, force="--og" in sys.argv)
     home = {"es": "/", "en": "/en/"}
     about = {"es": "/sobre-mi/", "en": "/en/about/"}
     for lang in ("es", "en"):
@@ -175,7 +216,7 @@ def main():
                 {"@type": "BlogPosting", "headline": p["title"], "description": p["subtitle"], "datePublished": p["date"],
                  "inLanguage": lang, "keywords": ", ".join(tags_of(p)), "url": SITE + path, "mainEntityOfPage": SITE + path,
                  "author": {"@type": "Person", "name": cfg["by"], "url": SITE + home[lang]},
-                 "publisher": {"@id": "https://pleko.es/#pleko"}, "image": SITE + ("/og-es.png" if lang == "es" else "/og-en.png")}]}
+                 "publisher": {"@id": "https://pleko.es/#pleko"}, "image": SITE + p["og"]}]}
             main_html = f'''    <article class="post">
       <div class="wrap">
         <header class="post__head">
@@ -200,7 +241,7 @@ def main():
         <p class="subpage-note"><a href="{cfg["blog"]}">{cfg["back"]}</a></p>
       </div>
     </article>'''
-            write(path, page(lang, path, other_path, f'{p["title"]} | pleko', p["subtitle"], ld, main_html, og_type="article"))
+            write(path, page(lang, path, other_path, f'{p["title"]} | pleko', p["subtitle"], ld, main_html, og_type="article", og_image=p["og"], og_alt=OG_ALT[lang].format(t=p["title"])))
         cards = "\n".join(f'''          <li{f' data-tags="{" ".join(tag_id(t) for t in tags_of(p))}"' if SHOW_TAGS else ""}>
             <a class="latest-post" href="{cfg["blog"]}{p["slug"]}/">
               <span class="section-label"><time datetime="{p["date"]}">{nice_date(p["date"], lang)}</time></span>
@@ -233,7 +274,7 @@ def main():
     </section>'''
         ld = {"@context": "https://schema.org", "@graph": [crumbs(lang, [("pleko", home[lang]), (cfg["label"], cfg["blog"])]),
               {"@type": "Blog", "name": cfg["index_title"], "url": SITE + cfg["blog"], "inLanguage": lang, "publisher": {"@id": "https://pleko.es/#pleko"}}]}
-        write(cfg["blog"], page(lang, cfg["blog"], other["blog"], cfg["index_title"], cfg["index_desc"], ld, main_html))
+        write(cfg["blog"], page(lang, cfg["blog"], other["blog"], cfg["index_title"], cfg["index_desc"], ld, main_html, og_image=f"/og/blog-{lang}.png", og_alt=OG_PAGE_ALT[lang]))
         if mine:  # homepage and bio "Ideas" cards show the newest post
             p = mine[0]
             card = f'''

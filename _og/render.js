@@ -160,7 +160,7 @@ h1{font-family:Literata,serif;font-weight:600;color:${ink};letter-spacing:-.01em
 .t-blog{font-size:84px;line-height:1.05;margin-top:40px;max-width:640px}
 .t-serv{font-size:58px;line-height:1.1;margin-top:30px;max-width:760px}
 .lead{font-size:30px;line-height:1.4;margin-top:24px;max-width:720px}
-.t-home + .lead{font-size:27px;max-width:740px}
+.t-home + .lead{font-size:27px;max-width:700px}
 .lead.narrow{max-width:600px;font-size:28px}
 .url{margin-top:auto;font:600 24px Inter;color:${lab};display:flex;align-items:center;gap:12px}
 .logo{height:62px}
@@ -181,6 +181,8 @@ ${c.layout !== "blog" ? threads(c.seed, bg.threads, dark, c.style || "flow", c.l
 <div class="card">${main}</div>
 <script>
 const t=document.getElementById("t");
+const h=document.querySelector(".t-home");
+if(h){h.style.whiteSpace="nowrap";h.style.alignSelf="flex-start";let s=74;while(h.offsetWidth>700&&s>50){s-=2;h.style.fontSize=s+"px";}}
 if(t){let s=80;while(t.offsetHeight>300&&s>48){s-=2;t.style.fontSize=s+"px";}}
 </script></body></html>`;
 }
