@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fcf9f8" />
+  <title>pleko · Process automation and AI consultant in Barcelona</title>
+  <meta name="description" content="I automate repetitive tasks and connect your tools, with AI where it saves time. Everything stays in your accounts. In person in Barcelona. Free call." />
+
+  <!-- Open Graph: controls how this page looks when shared on LinkedIn, Slack, etc. -->
+  <meta property="og:title" content="pleko · Process automation and AI consultant in Barcelona" />
+  <meta property="og:description" content="We untangle first, then automate. Workflow automation and AI for people and companies, handled personally by Alexandros Reïzos." />
+  <meta property="og:image" content="https://pleko.es/og/home-en.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="pleko: Tame your digital chaos. Automation and AI for people and businesses." />
+  <meta property="og:url" content="https://pleko.es/en/" />
+  <meta property="og:site_name" content="pleko.es" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="es_ES" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons: the pleko "p" mark (teal p with a burnt orange dot on a cream tile) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+
+
+  <!--
+    Language versions of this page. hreflang tells search engines "these
+    are the same content in different languages" — helps English-speaking
+    searchers land here and Spanish-speaking searchers land on the root page.
+  -->
+
+  <!-- Structured data: tells search engines and AI assistants who pleko and Alexandros are. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://pleko.es/#website",
+        "name": "pleko.es",
+        "alternateName": ["pleko", "pleko · Automatización e IA"],
+        "url": "https://pleko.es/",
+        "inLanguage": ["es", "en"],
+        "publisher": { "@id": "https://pleko.es/#pleko" }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://pleko.es/#pleko",
+        "name": "pleko",
+        "url": "https://pleko.es/en/",
+        "logo": "https://pleko.es/favicon-512.png",
+        "image": "https://pleko.es/og/home-en.png",
+        "description": "Workflow automation and AI consulting: I connect your tools, automate repetitive tasks and add AI where it really saves time.",
+        "email": "alex@pleko.es",
+        "telephone": "+34656310631",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Barcelona",
+          "addressCountry": "ES"
+        },
+        "areaServed": [
+          "Barcelona",
+          "Spain",
+          "Europe"
+        ],
+        "availableLanguage": [
+          "es",
+          "en"
+        ],
+        "founder": {
+          "@id": "https://pleko.es/#alexandros"
+        },
+        "knowsAbout": [
+          "Workflow automation",
+          "Artificial intelligence",
+          "Tool integration",
+          "Digital transformation",
+          "n8n",
+          "Make",
+          "Zapier",
+          "Notion",
+          "AI training",
+          "EU AI Act",
+          "GDPR"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/areizos/",
+          "https://areizos.substack.com/"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://pleko.es/#alexandros",
+        "name": "Alexandros Reïzos",
+        "image": "https://pleko.es/alex.jpg",
+        "jobTitle": "Automation and AI consultant",
+        "worksFor": {
+          "@id": "https://pleko.es/#pleko"
+        },
+        "url": "https://pleko.es/en/",
+        "sameAs": [
+          "https://www.linkedin.com/in/areizos/",
+          "https://areizos.substack.com/",
+          "https://github.com/areizos"
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts (Inter + Literata) are served from pleko.es itself: see /fonts/ and the
+       @font-face rules at the top of style.css. The two used above the fold load first. -->
+  <link rel="preload" href="/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="/style.css?v=56" />
+  <style>
+  /* ---- Torrent of pills (test: moves into style.css once approved) ---- */
+  .stream { padding: clamp(3.5rem, 6vw, 6rem) 0 clamp(3rem, 5vw, 5rem); border-top: 1px solid var(--color-border); }
+  .stream .section-head { margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
+  .stream__stage-wrap { position: relative; }
+  .stream__stage { min-height: 13.5rem; display: flex; flex-direction: column; gap: 0.35rem; opacity: 0; transition: opacity 0.6s ease; }
+  .stream.is-ready .stream__stage { opacity: 1; }
+  .stream__row { overflow: hidden; padding: 0.7rem 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+  .stream__track { display: flex; width: max-content; will-change: transform; }
+  .stream__copy { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.8rem; padding-right: 0.8rem; }
+  .stream__pill {
+    --tilt: 0deg; --ty: 0px;
+    font: inherit; font-weight: 600; font-size: 0.95rem; white-space: nowrap;
+    padding: 0.5rem 1rem; border: 1px solid var(--color-outline-variant); border-radius: 999px;
+    background: var(--color-background); color: var(--color-text); cursor: pointer;
+    transform: translateY(var(--ty)) rotate(var(--tilt));
+    transition: transform 0.35s cubic-bezier(0.34, 1.6, 0.64, 1), background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.25s ease;
+  }
+  .stream__pill:hover, .stream__pill:focus-visible { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-accent-soft); }
+  .stream__pill:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+  .stream.has-open .stream__pill { opacity: 0.45; }
+  .stream.has-open .stream__pill.is-lit { opacity: 1; background: var(--color-accent); border-color: var(--color-primary); color: var(--color-primary-hover); }
+  .stream.has-open .stream__pill.is-open { opacity: 1; background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+  .stream__pop, .stream__panel {
+    background: #fff; border: 1px solid var(--color-outline-variant); border-radius: var(--radius-lg);
+    padding: 1rem 2.4rem 1rem 1.1rem; box-shadow: 0 18px 40px -20px rgba(11, 61, 61, 0.45); position: relative;
+  }
+  .stream__pop { position: absolute; z-index: 5; width: min(22rem, calc(100% - 16px)); animation: stream-pop 0.2s ease-out; }
+  @keyframes stream-pop { from { opacity: 0; transform: translateY(4px) scale(0.98); } }
+  .stream__panel { margin: 1.25rem auto 0; max-width: 34rem; }
+  .stream__term { margin: 0 0 0.25rem; font-weight: 700; color: var(--color-primary); }
+  .stream__def { margin: 0 0 0.75rem; color: var(--color-text); line-height: 1.5; }
+  .stream__works { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; margin: 0 0 0.75rem; font-size: 0.85rem; }
+  .stream__works-label { color: var(--color-label); margin-right: 0.2rem; }
+  .stream__works span:not(.stream__works-label) { background: var(--color-accent-soft); color: var(--color-primary-hover); border-radius: 999px; padding: 0.2rem 0.6rem; font-weight: 600; }
+  .stream__more { font-weight: 600; font-size: 0.9rem; color: var(--color-primary); text-decoration: none; }
+  .stream__close { position: absolute; top: 0.4rem; right: 0.5rem; width: 2rem; height: 2rem; border: 0; background: none; font-size: 1.3rem; line-height: 1; color: var(--color-label); cursor: pointer; border-radius: 50%; }
+  .stream__close:hover { background: var(--color-surface); color: var(--color-text); }
+  .stream__hint { margin: 1rem 0 0; font-size: 0.85rem; color: var(--color-label); text-align: center; }
+  /* Reduced motion: one still, wrapped wall of pills */
+  @media (prefers-reduced-motion: reduce) {
+    .stream__row { -webkit-mask-image: none; mask-image: none; overflow: visible; }
+    .stream__track { width: auto; }
+    .stream__copy { flex-wrap: wrap; justify-content: center; row-gap: 0.9rem; padding: 0 1rem; }
+    .stream__pill { transition: background-color 0.2s ease, color 0.2s ease; }
+  }
+  @media (max-width: 600px) {
+    .stream__stage { min-height: 11.5rem; gap: 0.1rem; }
+    .stream__pill { font-size: 0.88rem; padding: 0.45rem 0.85rem; }
+  }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <!-- ============ MENU BAR ============
+       Sticks to the top of the window while scrolling (position: sticky in style.css). -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a href="#top" class="brand" aria-label="pleko, home">
+        <img src="/pleko-logo.svg?v=2" alt="pleko" class="brand__logo" width="314" height="116" />
+      </a>
+      <nav class="menu" aria-label="Menu">
+        <a href="#services">Services</a>
+        <a href="#how-i-work">How I work</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <details class="menu-more">
+          <summary>Resources</summary>
+          <div class="menu-more__panel">
+            <a href="/en/blog/">Blog</a>
+            <a href="/en/ai-glossary/">AI glossary</a>
+            <a href="/en/ai-with-judgement/">AI with judgement</a>
+          </div>
+        </details>
+      </nav>
+      <a href="#book" class="btn btn--primary header-cta" tabindex="-1" aria-hidden="true">Book a call</a>
+      <div class="lang-toggle" aria-label="Language">
+        <a href="/prueba-pills/">ES</a>
+        <a href="/en/" aria-current="page">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="wrap hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">Tame your digital chaos</p>
+          <h1 class="hero__title">
+            Automation and AI in <span class="hero__accent">Barcelona</span>.
+          </h1>
+          <p class="hero__tagline">
+            I help SMEs, professional firms and teams replace manual tasks and scattered tools with clear, connected systems. Fewer invoicing errors, faster replies to your clients and more capacity without growing your overheads.
+          </p>
+          <div class="hero__cta">
+            <a href="#book" class="btn btn--primary">Book a free 20-min call</a>
+            <a href="#how-i-work" class="btn btn--ghost">See how it works <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+          <p class="hero__trust">
+            <span>Barcelona studio</span><span aria-hidden="true">·</span>
+            <span>Direct contact</span><span aria-hidden="true">·</span>
+            <span>Clear quote</span><span aria-hidden="true">·</span>
+            <span>EN / ES</span>
+          </p>
+        </div>
+
+        <div class="hero__visual-wrap">
+          <div class="hero__visual" id="hero-anim" data-label="Animation: six apps go from copying and pasting by hand to being connected, talking to each other and producing the result on their own."></div>
+          <button class="hero__pause" type="button" aria-pressed="false" aria-label="Pause animation">
+            <svg class="hero__pause-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10M11 3v10" /></svg>
+            <svg class="hero__play-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z" /></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 01 PAIN POINTS + DIAGNOSTIC ============ -->
+    <section class="pains">
+      <div class="wrap pains__inner">
+        <div class="pains__intro">
+          <p class="section-label">01 — Sound familiar?</p>
+          <h2 class="h2">If your team loses hours to this, there's a thread worth pulling.</h2>
+          <p class="lead pains__lead">It's rarely one big problem. It's ten minutes here, twenty there, a copy and paste nobody sees. Added up, that's whole days every month your team could spend on what really matters.</p>
+        </div>
+        <ul class="pains__grid">
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></span>
+            <h3 class="pain__title">You copy the same data by hand</h3>
+            <p class="pain__text">From email to spreadsheet, from spreadsheet to CRM, from CRM to invoice.</p>
+            <p class="pain__after"><span class="pain__after-label">After</span> Data is typed once and travels on its own.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.6.3-1 .8-1 1.5v.6"/><path d="M12 16.8v.1"/></svg></span>
+            <h3 class="pain__title">Nobody knows where things stand</h3>
+            <p class="pain__text">To find out how an order, a client or a task is going, you have to search or wait for an answer.</p>
+            <p class="pain__after"><span class="pain__after-label">After</span> One place where everyone sees the real status.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M8.5 16v-4M12.5 16V8M16.5 16v-6"/></svg></span>
+            <h3 class="pain__title">The report eats your Monday</h3>
+            <p class="pain__text">Pulling figures from five places, pasting them in and formatting them. Every week, the same.</p>
+            <p class="pain__after"><span class="pain__after-label">After</span> The report prepares itself and you just check it.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span>
+            <h3 class="pain__title">Things slip through the cracks</h3>
+            <p class="pain__text">An unanswered email, an unpaid invoice, a follow-up nobody did.</p>
+            <p class="pain__after"><span class="pain__after-label">After</span> Alerts and reminders before it's too late.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8z"/></svg></span>
+            <h3 class="pain__title">AI, everyone their own way</h3>
+            <p class="pain__text">Everyone tries ChatGPT, but with no method and no idea which data is being shared.</p>
+            <p class="pain__after"><span class="pain__after-label">After</span> Clear rules and AI flows for the whole team.</p>
+          </li>
+          <li class="pain">
+            <span class="pain__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><path d="M17 13.5v7M13.5 17h7"/></svg></span>
+            <h3 class="pain__title">Too many tools</h3>
+            <p class="pain__text">You pay for apps nobody uses, and information lives in ten different places.</p>
+            <p class="pain__after"><span class="pain__after-label">After</span> We tidy up what you have before adding anything new.</p>
+          </li>
+        </ul>
+        <!-- Diagnostic box (lead questionnaire), joined to the pain points.
+             The button opens the Tally form in a popup (site.js loads Tally);
+             without the script it is a plain link to the form. -->
+        <div id="diagnostic" class="diagnostic diagnostic--box">
+          <div class="diagnostic__inner">
+            <div class="diagnostic__copy">
+              <p class="section-label">Free check · 2&nbsp;min</p>
+              <h2 class="h2">How many hours is your team losing every week?</h2>
+              <p class="lead">Answer 7 quick questions and see right away how many hours a year you could get back. Then I'll write to you with 2 or 3 concrete ideas for your case, no strings attached.</p>
+            </div>
+            <a href="https://tally.so/r/QKgAok" data-tally-form="QKgAok" class="btn btn--primary">Take the check <span class="arrow" aria-hidden="true">→</span></a>
+            <!-- Quick hours calculator: hidden until site.js runs it. 46 working weeks; hourly cost slider starts at ~20 € (Spanish office average). -->
+            <div class="calc" hidden aria-label="Quick hours calculator" role="group" data-locale="en-GB">
+              <div class="calc__field">
+                <label for="calc-people">How many people are on your team?</label>
+                <div class="calc__control">
+                  <input type="range" id="calc-people" min="1" max="50" step="1" value="3" />
+                  <span class="calc__value" data-for="calc-people">3</span>
+                </div>
+              </div>
+              <div class="calc__field">
+                <label for="calc-hours">How many hours a week does each person lose to repetitive tasks?</label>
+                <div class="calc__control">
+                  <input type="range" id="calc-hours" min="1" max="20" step="1" value="4" />
+                  <span class="calc__value" data-for="calc-hours">4</span>
+                </div>
+              </div>
+              <div class="calc__field">
+                <label for="calc-rate">What does an hour of work cost? (€)</label>
+                <div class="calc__control">
+                  <input type="range" id="calc-rate" min="10" max="100" step="5" value="20" />
+                  <span class="calc__value" data-for="calc-rate">20</span>
+                </div>
+              </div>
+              <p class="calc__result" aria-live="polite">
+                <span class="calc__figure"><output class="calc__total" for="calc-hours calc-people">552</output> <span>hours a year</span></span>
+                <span class="calc__figure"><output class="calc__money" for="calc-hours calc-people calc-rate">€11,040</output> <span>a year in lost time</span></span>
+                <span class="calc__note">Estimate based on 46 working weeks. The starting €20 an hour is roughly the average cost of an hour of office work in Spain; adjust it to your case. The check tells you how much of it can be automated.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TEST: torrent of dictionary pills (pills-stream.js) ============ -->
+    <section id="pills-stream" class="stream" aria-labelledby="stream-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-label">The pieces</p>
+          <h2 class="h2" id="stream-title">You probably know a few of these. The mess starts when they all have to work together.</h2>
+          <p class="lead">Tap one to see what it does and which pieces it works with.</p>
+        </div>
+      </div>
+      <div class="stream__stage-wrap">
+        <div class="stream__stage"></div>
+      </div>
+      <div class="wrap"><div class="stream__panel" role="region" aria-live="polite" hidden></div></div>
+    </section>
+
+    <!-- ============ 02 SERVICES ============ -->
+    <section id="services" class="services">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-label">02 — Services</p>
+          <h2 class="h2 h2--italic">I take the tangled threads of how your business runs and weave them into a clear system.</h2>
+          <p class="lead">Three ways I can help, which usually go together. I start with the bottleneck that costs you the most time or margin today.</p>
+        </div>
+        <div class="cards cards--services">
+          <div class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7" /><path d="M21 4v5h-5" /></svg>
+            </div>
+            <h3>Workflow automation</h3>
+            <p>I turn manual, error-prone admin steps into processes that run themselves.</p>
+            <div class="card__examples">
+              <p class="section-label">For example</p>
+              <div class="card__examples-body">
+                <p><strong>Onboarding and invoicing without friction.</strong> When a client accepts a quote, their contact appears in your CRM, the draft invoice in Holded, their folder in Drive and your team gets a heads-up. In seconds, with no mistyped tax ID or amount.</p>
+                <p><strong>Enquiries and sales follow-up.</strong> Every enquiry from your website, WhatsApp Business or portals like Idealista gets an instant reply, is logged and sets off automatic reminders, so no quote goes cold.</p>
+                <p><strong>Social media content.</strong> From brainstorm to finished post: workflows that help you come up with topics, develop them with images, video and caption, and get them ready to schedule. All in your own accounts, with a human check before anything goes out.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Show less" data-closed="Read more" hidden>Show less</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></svg>
+            </div>
+            <h3>AI-assisted systems</h3>
+            <p>I add AI where it genuinely speeds up work and cuts costs, always with your team in control.</p>
+            <div class="card__examples">
+              <p class="section-label">For example</p>
+              <div class="card__examples-body">
+                <p><strong>Reading invoices and documents.</strong> A system that reads supplier invoices, contracts or delivery notes in PDF, pulls out the key data and puts it in your accounts or Excel, so a person only has to check it with one click.</p>
+                <p><strong>Replies and drafts with your own judgement.</strong> An assistant connected to your history that instantly drafts replies to clients, proposals or reports in English or Spanish, ready to review and send.</p>
+                <p><strong>Blog posts and newsletters in your voice.</strong> A system that helps you brainstorm ideas and turn them into drafts of blog posts, newsletters or product descriptions, built on what you've already written. You pick the ideas and have the final word.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Show less" data-closed="Read more" hidden>Show less</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7H6a4 4 0 0 0 0 8h3" /><path d="M15 7h3a4 4 0 0 1 0 8h-3" /><path d="M8 11h8" /></svg>
+            </div>
+            <h3>Tool integration</h3>
+            <p>I connect the apps you already pay for so they talk to each other, without making you switch software.</p>
+            <div class="card__examples">
+              <p class="section-label">For example</p>
+              <div class="card__examples-body">
+                <p><strong>No more data islands.</strong> Your Excel sheets, web forms, WhatsApp, CRM and invoicing software joined into one flow, so nobody types the same data twice.</p>
+                <p><strong>Your business, up to date.</strong> A clean dashboard with your real sales, hours worked and invoicing up to date, without losing Monday morning cross-checking five different files.</p>
+              </div>
+              <button type="button" class="card__examples-toggle" aria-expanded="true" data-open="Show less" data-closed="Read more" hidden>Show less</button>
+            </div>
+          </div>
+        </div>
+        <div class="cards-dots" aria-hidden="true"></div>
+        <div class="services__more">
+          <span class="section-label">Also</span>
+          <a href="/en/ai-training/" class="more-link more-link--mint"><strong>AI training <span class="arrow" aria-hidden="true">→</span></strong><span>Rather learn to do it yourself? AI workshops for you or your team.</span></a>
+          <a href="/en/ai-tools-audit/" class="more-link"><strong>Order in your AI tools <span class="arrow" aria-hidden="true">→</span></strong><span>What's used, what's redundant, where your data goes and who has access.</span></a>
+          <a href="/en/ai-strategy-support/" class="more-link"><strong>Ongoing AI strategy support <span class="arrow" aria-hidden="true">→</span></strong><span>Someone to think through AI with you, a few days a month.</span></a>
+        </div>
+        <div class="services__more services__more--sectors">
+          <span class="section-label">By sector</span>
+          <a href="/en/ai-for-freelancers/" class="more-link"><strong>Freelancers and the self-employed <span class="arrow" aria-hidden="true">→</span></strong><span>Your own way of working, made to measure.</span></a>
+          <a href="/en/ai-for-advisory-firms/" class="more-link"><strong>Advisory firms and law offices <span class="arrow" aria-hidden="true">→</span></strong><span>Less repeated paperwork at your firm.</span></a>
+          <a href="/en/ai-for-real-estate/" class="more-link"><strong>Real estate <span class="arrow" aria-hidden="true">→</span></strong><span>Reply faster to every enquiry, without living on your phone.</span></a>
+          <a href="/en/ai-for-agencies/" class="more-link"><strong>Marketing agencies <span class="arrow" aria-hidden="true">→</span></strong><span>More time for ideas, less for reports.</span></a>
+        </div>
+        <h3 class="h3-display tools__title">The hard part isn't any one piece. It's knowing how they fit.</h3>
+        <!-- Tools in two boxes: first what people already use, then the
+             automation tools they have probably heard of but don't use yet -->
+        <div class="tools">
+          <p class="tools__row">
+            <span class="section-label">We start with what you already use every day</span>
+            <span>Google Workspace</span><span>Google Drive</span><span>Microsoft 365</span><span>Excel</span><span>PowerPoint</span><span>Holded</span><span>WhatsApp Business</span><span>ChatGPT</span><span>Claude</span>
+          </p>
+          <p class="tools__row tools__row--new">
+            <span class="section-label">Then we add only the pieces needed to connect them, in your own accounts</span>
+            <span>n8n</span><span>Make</span><span>Zapier</span><span>Airtable</span><span>Notion</span><span>Tally</span>
+          </p>
+        </div>
+        <a href="/en/ai-glossary/" class="btn btn--ghost section-more">See the full glossary <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- ============ 03 HOW I WORK + AI WITH JUDGEMENT + SHORT BIO ============ -->
+    <section id="how-i-work" class="process">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-label">03 — How I work and why pleko</p>
+          <h2 class="h2">From the first call to workflows that work, and keep working.</h2>
+        </div>
+        <ol class="steps">
+          <li class="step step--1">
+            <span class="chip">01</span>
+            <h3>20-min call</h3>
+            <p>Free, no strings attached. You tell me how you work today and we see whether it makes sense to go further.</p>
+          </li>
+          <li class="step step--2">
+            <span class="chip">02</span>
+            <h3>Audit</h3>
+            <p>I review your current tools and processes in depth to find where automation and AI would save you the most time. We measure where the time goes today, so we can compare before and after.</p>
+          </li>
+          <li class="step step--3">
+            <span class="chip">03</span>
+            <h3>Build</h3>
+            <p>I build the solution with your tools, in short phases you can try out from the first week.</p>
+          </li>
+          <li class="step step--4">
+            <span class="chip">04</span>
+            <h3>Training</h3>
+            <p>Everything is documented, with training materials so you or your team know how to use the workflows.</p>
+          </li>
+        </ol>
+        <!-- Three promises: what makes pleko different, in Alex's own lines -->
+        <div class="promises">
+          <p class="section-label">Three promises</p>
+          <ul class="promises__grid">
+          <li class="promise">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12c1.5-4 5-4 5 0s-3.5 4-3.5 0S7 8 9 8s2.5 4 2.5 4" /><path d="M11.5 12H22" /><path d="M19 9l3 3-3 3" /></svg></div>
+            <h3>We untangle first.</h3>
+            <p>Automating a tangled process just tangles it faster. So I start by putting it in order.</p>
+          </li>
+          <li class="promise">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="M9 13l2 2 4-4" /></svg></div>
+            <h3>It's all yours.</h3>
+            <p>Everything lives in your accounts, documented and in your name. If we stop working together tomorrow, it keeps running.</p>
+          </li>
+          <li class="promise">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13c-3-.5-6 0-8 1.5z" /><path d="M12 6v13" /></svg></div>
+            <h3>I'll teach you how to do it yourself.</h3>
+            <p>So you understand every workflow and know how to change it when you need to.</p>
+          </li>
+          </ul>
+          <p class="promises__more">Would you rather see how I structure projects and my guide prices before we talk? <a href="/en/services/">See my services and pricing page <span class="arrow" aria-hidden="true">→</span></a></p>
+        </div>
+        <!-- AI with judgement: the three safety rules, compact; full page linked -->
+        <div id="ai-with-judgement" class="safety">
+          <p class="section-label">AI with judgement</p>
+          <h3 class="h3-display">Useful, safe and under your control.</h3>
+          <ul class="promises__grid promises__grid--compact">
+            <li class="promise">
+              <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" /><path d="M5 20c1-4 4-6 7-6s6 2 7 6" /></svg></div>
+              <h3>A person checks what matters.</h3>
+              <p>Nothing that reaches a customer or costs money goes out without someone seeing it.</p>
+            </li>
+            <li class="promise">
+              <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg></div>
+              <h3>AI only gets access to what it needs.</h3>
+              <p>Minimum permissions, keys locked away and your data kept out of places it shouldn't be.</p>
+            </li>
+            <li class="promise">
+              <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h8l4 4v12H7z" /><path d="M15 4v4h4" /><path d="M10 13h6M10 17h6" /></svg></div>
+              <h3>If something fails, you find out.</h3>
+              <p>Each flow sends a warning when something doesn't go as it should, and logs what it did and when, in your accounts.</p>
+            </li>
+          </ul>
+          <a href="/en/ai-with-judgement/" class="btn btn--ghost">How I look after security <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <!-- Short bio; the full story lives on /en/about/ -->
+        <div id="about" class="bio-short">
+          <figure class="bio-short__photo"><img src="/alex.jpg?v=1" width="800" height="1000" alt="Alex Reïzos, founder of pleko" loading="lazy" decoding="async" /><figcaption><strong>Alexandros Reïzos</strong><span>Founder of pleko</span></figcaption></figure>
+          <div class="bio-short__text">
+            <p class="section-label">About</p>
+            <h3 class="h3-display">Why I built pleko.</h3>
+            <p>For most of my career, the best tools belonged to companies with big budgets and teams of developers. That's no longer true. AI puts that kind of leverage within reach of anyone willing to learn.</p>
+            <p>You work directly with me, and my aim is simple: tools that work for you, and a team that knows how to keep using them.</p>
+            <p>For web design, optimisation and digital marketing, I work under my own name at <a class="link-plain" href="https://areizos.com/" target="_blank" rel="noopener">areizos.com</a>.</p>
+            <a href="/en/about/" class="btn btn--ghost">Read my story <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 FAQ (short) ============
+         Six key questions; each <details> opens on click with no JavaScript.
+         The full list of 20 lives on its own page (link below). -->
+    <section id="faq" class="faq">
+      <div class="wrap faq__inner">
+        <div class="section-head faq__head">
+          <p class="section-label">04 — FAQ</p>
+          <h2 class="h2">What people usually ask before the first call.</h2>
+          <p class="lead">Can't see your question? Email me at <a href="mailto:alex@pleko.es?subject=Enquiry%20from%20pleko.es">alex@pleko.es</a> and I'll answer it myself.</p>
+        </div>
+        <div class="faq__list">
+          <div class="faq__group">
+            <details class="faq__item">
+              <summary>What exactly does pleko do?</summary>
+              <p>I help you get rid of manual, repetitive work. I connect the tools you already use, automate the steps you do by hand today and add AI only where it really saves time. You end up with clear workflows that run on their own, and you understand how they work.</p>
+            </details>
+            <details class="faq__item">
+              <summary>Do I have to change the tools I use?</summary>
+              <p>Almost never. What you already use stays (Google Workspace, Microsoft 365, Excel, your CRM). What I almost always add is a piece that connects them, like n8n or Make, because many tools don't talk to each other. If you're also missing one central place for clients and projects, I'll suggest one, such as Notion. Before we start, I tell you what I'm adding, why, and what it costs.</p>
+            </details>
+            <details class="faq__item">
+              <summary>We tried AI and it didn't stick. What's different?</summary>
+              <p>Usually for two reasons. One: AI gets tried “in general” rather than inside a specific everyday task. Two: many automations fail quietly, and nobody notices until the problem has grown. I start with one real process, untangle it and automate it, testing on copies of your data before touching anything real. And each flow sends a warning when something doesn't go as it should, so a person can check it in time.</p>
+            </details>
+            <details class="faq__item">
+              <summary>What about my data?</summary>
+              <p>Everything lives in your accounts, documented and yours. I use the minimum permissions needed, follow GDPR and can sign an NDA if you need one.</p>
+            </details>
+            <details class="faq__item">
+              <summary>What happens when you're done?</summary>
+              <p>Everything is documented and lives in your accounts. I leave you training materials and teach you or your team how to use the workflows and change them when needed.</p>
+            </details>
+            <details class="faq__item">
+              <summary>Do you work in person with companies in Barcelona?</summary>
+              <p>Yes, it's what I enjoy most. I live in Barcelona and prefer to sit with your team and see how you really work. For follow-ups, or with clients further away, I also work by video call, in English or Spanish.</p>
+            </details>
+          </div>
+          <a href="/en/faq/" class="btn btn--ghost faq__more">See all 30 questions <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="wrap faq__blog">
+        <!-- Latest blog post. Between the markers it is rewritten by
+             _blog/build.py (python3 _blog/build.py); do not edit by hand. -->
+        <!-- latest-post:start -->
+        <a class="latest-post" href="/en/blog/why-i-built-pleko/">
+          <span class="section-label">Latest post · <time datetime="2026-11-18">18 November 2026</time></span>
+          <span class="latest-post__title">Why I built pleko</span>
+          <span class="latest-post__sub">Not a decision to start a consultancy. A name for a shape of work that never had a job title.</span>
+        </a>
+        <!-- latest-post:end -->
+      </div>
+    </section>
+
+    <!-- ============ 05 BOOK A CALL ============ -->
+    <section id="book" class="contact">
+      <div class="wrap contact__inner">
+        <div class="contact__copy">
+          <p class="section-label">05 — Let's talk</p>
+          <h2 class="contact__heading">Got a workflow worth taming?</h2>
+          <p class="contact__subtext">Book a free 20&#8209;minute call. Tell me what's holding you back and I'll tell you honestly whether pleko is a fit.</p>
+          <div class="contact__links">
+            <!-- Opens the Cal.com booking calendar in a pop-up (script at the bottom of the page) -->
+            <button type="button" class="btn btn--mint" data-cal-link="pleko" data-cal-config='{"layout":"month_view"}'>Pick a day and time</button>
+            <a href="mailto:alex@pleko.es?subject=Enquiry%20from%20pleko.es">alex@pleko.es</a>
+            <a href="https://wa.me/34656310631?text=Hi%20Alex%2C%20I%20found%20you%20on%20pleko.es.%20" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <span>&copy; <span id="year"></span> pleko</span>
+      <nav class="footer-links" aria-label="Links">
+        <a href="/en/faq/">FAQ</a>
+        <a href="/en/services/">Services and pricing</a>
+        <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/en/blog/">Blog</a>
+        <a href="/en/privacy/">Privacy</a>
+        <a href="/en/legal-notice/">Legal notice</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Small touch of JS: keep the copyright year correct without editing it by hand.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!--
+    Cal.com embed — this is Cal.com's own standard snippet (copied as-is from
+    their embed instructions, not something hand-written), it just loads
+    their booking widget script. Any element with data-cal-link (the
+    booking button in the contact section) opens the calendar in a pop-up,
+    themed with pleko's teal.
+  -->
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    // Started by site.js once the page has loaded, or as soon as someone
+    // heads for the booking button, so it doesn't slow the first paint.
+    window.plekoLoadCal = function () {
+      window.plekoLoadCal = function () {}; // only once
+      Cal("init", { origin: "https://cal.com" });
+      Cal("ui", {
+        styles: { branding: { brandColor: "#006565" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    };
+  </script>
+  <script src="/hero-animation.js?v=2" defer></script>
+  <script src="/site.js?v=13" defer></script>
+  <script src="/pills-stream.js?v=1" defer></script>
+</body>
+</html>
