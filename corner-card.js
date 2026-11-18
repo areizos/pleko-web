@@ -7,12 +7,14 @@
      - how many seconds you've spent on the site and how many pages you've
        opened, so it shows after SHOW_AFTER_SECONDS or on SHOW_ON_PAGE;
      - that it has already been shown, closed or used, so it shows once.
-   It never shows on legal pages, the demos, the 404 page, or while the
-   "Hablemos" booking band is on screen.
+   After it is closed or used it also stays away for REMEMBER_DAYS on
+   later visits (one date in localStorage, not a cookie).
+   It never shows on legal pages, the demos or the 404 page, and it stays
+   away while any booking button or block of the page is on screen.
 
    Test links (they only change your own browser):
      ?tarjeta=ya     show it now, skipping the wait
-     ?tarjeta=reset  forget this visit, as if you had just arrived
+     ?tarjeta=reset  forget this visit and the 2 weeks, as if new
    ========================================================================= */
 (function () {
   'use strict';
@@ -21,6 +23,7 @@
   var SHOW_ON_PAGE = 3;          // the 3rd page opened in the visit
   var PAGE_DELAY_SECONDS = 4;    // even then, never the moment a page opens
   var VARIANT = 'call';          // later: 'pdf'
+  var REMEMBER_DAYS = 14;        // after closing or using it, away this long
 
   var SKIP_PATHS = [
     '/privacidad/', '/aviso-legal/', '/en/privacy/', '/en/legal-notice/',
@@ -56,6 +59,12 @@
 
   function get(k) { try { return sessionStorage.getItem(KEY + k); } catch (e) { return null; } }
   function set(k, v) { try { sessionStorage.setItem(KEY + k, String(v)); } catch (e) {} }
+  // The 2-week memory lives in localStorage (not a cookie): one date, nothing personal
+  function getUntil() { try { return parseInt(localStorage.getItem(KEY + 'until'), 10) || 0; } catch (e) { return 0; } }
+  function remember() {
+    set('done', 1);
+    try { localStorage.setItem(KEY + 'until', String(Date.now() + REMEMBER_DAYS * 864e5)); } catch (e) {}
+  }
   function track(action) {
     if (window.umami && window.umami.track) {
       window.umami.track('Tarjeta llamada', { accion: action, lang: lang, page: location.pathname });
@@ -69,6 +78,7 @@
       Object.keys(sessionStorage).forEach(function (k) {
         if (k.indexOf(KEY) === 0) sessionStorage.removeItem(k);
       });
+      localStorage.removeItem(KEY + 'until');
     } catch (e) {}
   }
 
@@ -81,7 +91,7 @@
 
   // Anyone who books anywhere in this visit doesn't need the card
   document.addEventListener('click', function (e) {
-    if (e.target.closest && e.target.closest('[data-cal-link]')) set('done', 1);
+    if (e.target.closest && e.target.closest('[data-cal-link]')) remember();
   });
 
   // Count this page once (a reload of the same page doesn't count)
@@ -90,7 +100,7 @@
     set('last', path);
   }
 
-  if (get('done') && test !== 'ya') return;
+  if ((get('done') || getUntil() > Date.now()) && test !== 'ya') return;
 
   /* ---------- Styles (moved into style.css when it goes on every page) */
   var css =
@@ -121,6 +131,7 @@
 
   var card = null;
   var shown = false;
+  var wanted = false;            // time to show, waiting for booking buttons to leave the screen
   var contactVisible = false;
 
   function build() {
@@ -156,6 +167,7 @@
   }
 
   function open() {
+    wanted = true;
     if (shown || contactVisible) return;
     shown = true;
     set('shown', 1);
@@ -171,19 +183,37 @@
     if (!card) return;
     card.classList.remove('is-open');
     document.body.classList.remove('pcard-open');
-    set('done', 1);
+    remember();
     if (action) track(action);
   }
 
-  // While the "Hablemos" booking band is on screen, the card stays away
-  var contact = document.querySelector('.contact');
-  if (contact && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      contactVisible = entries[0].isIntersecting;
-      if (!card || get('done')) return;
-      card.classList.toggle('is-open', shown && !contactVisible);
-      document.body.classList.toggle('pcard-open', shown && !contactVisible);
-    }).observe(contact);
+  // While any booking button or block of the page itself is on screen, the
+  // card stays away (and steps aside if already open). Counted: the
+  // "Hablemos" band, every calendar button, and every "Reservar llamada"
+  // link in the page. Not counted: the small button in the top menu bar,
+  // which is on screen almost all the time.
+  var BOOKING = '.contact, [data-cal-link], a[href*="#reserva"], a[href*="#book"], a[href*="cal.com/pleko"]';
+  var onScreen = [];
+  function refresh() {
+    contactVisible = onScreen.length > 0;
+    if (wanted && !shown && !contactVisible) return open();
+    if (!card || get('done')) return;
+    card.classList.toggle('is-open', shown && !contactVisible);
+    document.body.classList.toggle('pcard-open', shown && !contactVisible);
+  }
+  if ('IntersectionObserver' in window) {
+    var watcher = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var i = onScreen.indexOf(en.target);
+        if (en.isIntersecting && i === -1) onScreen.push(en.target);
+        if (!en.isIntersecting && i !== -1) onScreen.splice(i, 1);
+      });
+      refresh();
+    });
+    Array.prototype.forEach.call(document.querySelectorAll(BOOKING), function (el) {
+      if (el.closest('.site-header, .pcard')) return;
+      watcher.observe(el);
+    });
   }
 
   // Already shown earlier in this visit: don't show again
@@ -205,7 +235,7 @@
     if (document.hidden) return;
     seconds += 1;
     set('seconds', seconds);
-    if (seconds >= SHOW_AFTER_SECONDS && !contactVisible) {
+    if (seconds >= SHOW_AFTER_SECONDS) {
       clearInterval(timer);
       open();
     }
