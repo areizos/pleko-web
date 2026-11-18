@@ -278,21 +278,29 @@
   function magnet() {
     raf = 0;
     if (!mouse || open) return;
-    Array.prototype.forEach.call(stage.querySelectorAll('.stream__pill'), function (p) {
-      var b = p.getBoundingClientRect(), m = p._m || [0, 0];
-      var cx = b.left + b.width / 2 - m[0], cy = b.top + b.height / 2 - m[1];
-      var dx = cx - mouse.x, dy = cy - mouse.y;
-      // distance from the mouse to the pill's edge, not its centre
-      var ex = Math.max(Math.abs(dx) - b.width / 2, 0), ey = Math.max(Math.abs(dy) - b.height / 2, 0);
-      var d = Math.sqrt(ex * ex + ey * ey);
-      if (d >= R) { if (p._m && (p._m[0] || p._m[1] || p._mr)) { setM(p, 0, 0, 0); p._mr = 0; } return; }
-      var k = (1 - d / R); k *= k;
-      var len = Math.sqrt(dx * dx + dy * dy) || 1;
-      var side = dx >= 0 ? 1 : -1;
-      if (!d) { setM(p, 0, 0, side * 4); p._mr = 1; return; } // under the mouse
-      setM(p, dx / len * PUSH * k, dy / len * PUSH * k, side * TURN * k);
-      p._mr = 1;
+    // Read every position first, then write: one layout per frame, not one per pill.
+    var todo = [];
+    rows.forEach(function (row) {
+      var rb = row.el.getBoundingClientRect();
+      var near = mouse.y > rb.top - R && mouse.y < rb.bottom + R;
+      Array.prototype.forEach.call(row.track.querySelectorAll('.stream__pill'), function (p) {
+        if (!near) { if (p._mr) todo.push([p, 0, 0, 0]); return; }
+        var b = p.getBoundingClientRect(), m = p._m || [0, 0];
+        if (b.right < rb.left || b.left > rb.right) { if (p._mr) todo.push([p, 0, 0, 0]); return; }
+        var cx = b.left + b.width / 2 - m[0], cy = b.top + b.height / 2 - m[1];
+        var dx = cx - mouse.x, dy = cy - mouse.y;
+        // distance from the mouse to the pill's edge, not its centre
+        var ex = Math.max(Math.abs(dx) - b.width / 2, 0), ey = Math.max(Math.abs(dy) - b.height / 2, 0);
+        var d = Math.sqrt(ex * ex + ey * ey);
+        if (d >= R) { if (p._mr) todo.push([p, 0, 0, 0]); return; }
+        var k = (1 - d / R); k *= k;
+        var len = Math.sqrt(dx * dx + dy * dy) || 1;
+        var side = dx >= 0 ? 1 : -1;
+        if (!d) todo.push([p, 0, 0, side * 4]); // under the mouse: stays clickable
+        else todo.push([p, dx / len * PUSH * k, dy / len * PUSH * k, side * TURN * k]);
+      });
     });
+    todo.forEach(function (t) { setM(t[0], t[1], t[2], t[3]); t[0]._mr = (t[1] || t[2] || t[3]) ? 1 : 0; });
     raf = requestAnimationFrame(magnet);
   }
   function unmagnet() {
