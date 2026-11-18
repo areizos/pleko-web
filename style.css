@@ -2680,7 +2680,7 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
 .post { padding: clamp(3rem, 6vw, 5rem) 0 clamp(3rem, 6vw, 5rem); }
 .post__head { max-width: 47.5rem; margin-bottom: 3rem; }
 .post__head h1 { margin: 0 0 1.1rem; }
-.post__head .lead { margin: 0 0 1.6rem; }
+.post__head .lead { margin: 0 0 1.6rem; max-width: 38rem; text-wrap: balance; }
 .post__head .section-label a { color: inherit; text-decoration: none; }
 .post__meta { margin: 1rem 0 0; color: var(--color-label); font-size: 0.92rem; }
 /* Byline: photo + name (a quiet link to About, no underline) and date / read time as mint pills */
