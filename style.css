@@ -2687,13 +2687,17 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
 .byline { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.75rem; margin: 0; }
 .byline__who { display: inline-flex; align-items: center; gap: 0.6rem; margin-right: 0.25rem; color: var(--color-text); text-decoration: none; border-radius: 999px; }
 .byline__who img { width: 2.5rem; height: 2.5rem; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-accent); background: var(--color-accent-soft); }
-.byline__name { font-weight: 600; font-size: 0.95rem; transition: color 0.2s ease; }
+.byline__name { display: inline-block; transform-origin: left center; font-weight: 600; font-size: 0.95rem; transition: color 0.2s ease; }
 .byline__pill { font-size: 0.8rem; line-height: 1; padding: 0.4rem 0.75rem; border-radius: 999px; background: var(--color-accent-soft); color: var(--color-primary-hover); }
 .byline__who:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; }
 @media (prefers-reduced-motion: no-preference) {
-  .byline__who img { transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease; }
+  /* drop-shadow (not box-shadow) so Safari draws the shadow round, not as a grey square */
+  .byline__who img { transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease; }
+  .byline__who .byline__name { transition: color 0.2s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
   .byline__who:hover img,
-  .byline__who:focus-visible img { transform: translateY(-3px) scale(1.12) rotate(-3deg); box-shadow: 0 6px 14px rgba(0, 101, 101, 0.28); }
+  .byline__who:focus-visible img { transform: translateY(-3px) scale(1.12) rotate(-3deg); filter: drop-shadow(0 5px 6px rgba(0, 101, 101, 0.3)); }
+  .byline__who:hover .byline__name,
+  .byline__who:focus-visible .byline__name { transform: scale(1.07); }
 }
 @media (hover: hover) {
   .byline__who:hover .byline__name { color: var(--color-primary); }
