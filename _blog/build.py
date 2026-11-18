@@ -23,7 +23,7 @@ L = {
         index_desc="Lo que voy aprendiendo al llevar la automatización y la IA al trabajo real: ideas, experimentos y herramientas, contados de la forma más clara que sé.",
         index_h1="Pensando en voz alta.", all_tags="Todos", latest="Último texto", filter_label="Filtrar por tema",
         index_lead="Lo que voy aprendiendo al llevar la IA al trabajo real: ideas, experimentos y herramientas. Sin humo y sin intentar venderte nada.",
-        read="Leer", back="← Todos los textos", by="Alexandros Reïzos",
+        read="Leer", back="← Todos los textos", by="Alexandros Reïzos", about="/sobre-mi/",
         cta_label="Hablemos", cta_h="¿Quieres aplicar esto en tu trabajo?",
         cta_p="Reserva una llamada gratuita de 20 minutos y vemos por dónde empezar.",
         cta_btn="Reserva una llamada", months=["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
@@ -34,7 +34,7 @@ L = {
         index_desc="What I'm learning as I bring automation and AI into real work: ideas, experiments and tools, explained as clearly as I can.",
         index_h1="Thinking out loud.", all_tags="All", latest="Latest post", filter_label="Filter by topic",
         index_lead="What I'm learning as I bring AI into real work: ideas, experiments and tools. No hype, and no trying to sell you anything.",
-        read="Read", back="← All posts", by="Alexandros Reïzos",
+        read="Read", back="← All posts", by="Alexandros Reïzos", about="/en/about/",
         cta_label="Let's talk", cta_h="Want to put this to work?",
         cta_p="Book a free 20-minute call and we'll see where to start.",
         cta_btn="Book a call", months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -182,7 +182,11 @@ def main():
           <p class="section-label"><a href="{cfg["blog"]}">{cfg["label"]}</a></p>
           <h1 class="h2">{html.escape(p["title"])}</h1>
           <p class="lead">{inline(p["subtitle"])}</p>
-          <p class="post__meta">{cfg["by"]} · <time datetime="{p["date"]}">{nice_date(p["date"], lang)}</time> · {mins} {cfg["mins"]}</p>
+          <div class="byline">
+            <a class="byline__who" href="{cfg["about"]}"><img src="/alex-avatar.jpg" width="40" height="40" alt="" /><span class="byline__name">{cfg["by"]}</span></a>
+            <time class="byline__pill" datetime="{p["date"]}">{nice_date(p["date"], lang)}</time>
+            <span class="byline__pill">{mins} {cfg["mins"]}</span>
+          </div>
 {f'          <p class="post__tags">{tag_chips(tags_of(p))}</p>{chr(10)}' if SHOW_TAGS else ""}        </header>
         <div class="post__body">
           {markdown(p["body"])}

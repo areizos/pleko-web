@@ -2678,9 +2678,26 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
 .post-list .latest-post { margin-top: 0; }
 .post__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.25rem 0 0; }
 .post { padding: clamp(3rem, 6vw, 5rem) 0 clamp(3rem, 6vw, 5rem); }
-.post__head { max-width: 47.5rem; margin-bottom: 2.5rem; }
+.post__head { max-width: 47.5rem; margin-bottom: 3rem; }
+.post__head h1 { margin: 0 0 1.1rem; }
+.post__head .lead { margin: 0 0 1.6rem; }
 .post__head .section-label a { color: inherit; text-decoration: none; }
 .post__meta { margin: 1rem 0 0; color: var(--color-label); font-size: 0.92rem; }
+/* Byline: photo + name (a quiet link to About, no underline) and date / read time as mint pills */
+.byline { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.75rem; margin: 0; }
+.byline__who { display: inline-flex; align-items: center; gap: 0.6rem; margin-right: 0.25rem; color: var(--color-text); text-decoration: none; border-radius: 999px; }
+.byline__who img { width: 2.5rem; height: 2.5rem; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-accent); background: var(--color-accent-soft); }
+.byline__name { font-weight: 600; font-size: 0.95rem; transition: color 0.2s ease; }
+.byline__pill { font-size: 0.8rem; line-height: 1; padding: 0.4rem 0.75rem; border-radius: 999px; background: var(--color-accent-soft); color: var(--color-primary-hover); }
+.byline__who:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; }
+@media (prefers-reduced-motion: no-preference) {
+  .byline__who img { transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease; }
+  .byline__who:hover img,
+  .byline__who:focus-visible img { transform: translateY(-3px) scale(1.12) rotate(-3deg); box-shadow: 0 6px 14px rgba(0, 101, 101, 0.28); }
+}
+@media (hover: hover) {
+  .byline__who:hover .byline__name { color: var(--color-primary); }
+}
 .post__body { max-width: 38rem; }
 .post__body p,
 .post__body li { font-family: var(--font-display); font-weight: 400; font-size: 1.12rem; line-height: 1.7; color: var(--color-text); }
