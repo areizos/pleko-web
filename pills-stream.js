@@ -3,7 +3,7 @@
    Labels and one-line meanings are read from the AI dictionary page itself
    (/diccionario-ia/ or /en/ai-glossary/), so they never go stale. Only the
    chosen term ids and which ones "work with" which live here.
-   Desktop: hover tips a pill to a new angle; click stops the stream and opens
+   Desktop: the mouse pushes nearby pills away like a magnet; click stops the stream and opens
    a small popup next to the pill, lighting up the pills it works with.
    Phones: slower stream, tap shows the meaning in a panel under the rows.
    Reduced motion: a still wall of pills, same click behaviour.
@@ -78,12 +78,7 @@
   function tilt() { // a crooked angle between 1.5 and 4.5 degrees, either side
     return ((Math.random() < 0.5 ? -1 : 1) * (1.5 + Math.random() * 3)).toFixed(1) + 'deg';
   }
-  function retilt(p) {
-    var old = parseFloat(p.style.getPropertyValue('--tilt')) || 0, t;
-    do { t = tilt(); } while ((parseFloat(t) > 0) === (old > 0) && Math.random() < 0.8);
-    p.style.setProperty('--tilt', t);
-    p.style.setProperty('--ty', (Math.random() * 10 - 5).toFixed(0) + 'px');
-  }
+
 
   /* ---------- 1. Read the dictionary ------------------------------------ */
   function load() {
@@ -209,6 +204,7 @@
     if (open && open.pill === p) { hide(); return; }
     hide(true);
     pause();
+    unmagnet();
     open = { id: id, pill: p };
     p.classList.add('is-open');
     // light up every copy of the pills it works with
@@ -268,18 +264,53 @@
     var p = e.target.closest('.stream__pill');
     if (p) show(p);
   });
-  // Hover (no popup open): the pill jumps to a new crooked angle.
-  stage.addEventListener('pointerover', function (e) {
-    if (e.pointerType !== 'mouse') return;
-    var p = e.target.closest('.stream__pill');
-    if (p && !open && (!e.relatedTarget || !p.contains(e.relatedTarget))) retilt(p);
+  /* Magnet: the mouse pushes nearby pills away and tilts them, more the
+     closer they are. Runs every frame while the mouse is over the stream,
+     because the pills keep sliding under a still mouse. The pill right
+     under the mouse stays put (only a small tilt), so it can be clicked. */
+  var mouse = null, raf = 0, R = 150, PUSH = 26, TURN = 12;
+  function setM(p, x, y, r) {
+    p._m = [x, y];
+    p.style.setProperty('--mx', x.toFixed(1) + 'px');
+    p.style.setProperty('--my', y.toFixed(1) + 'px');
+    p.style.setProperty('--mr', r.toFixed(1) + 'deg');
+  }
+  function magnet() {
+    raf = 0;
+    if (!mouse || open) return;
+    Array.prototype.forEach.call(stage.querySelectorAll('.stream__pill'), function (p) {
+      var b = p.getBoundingClientRect(), m = p._m || [0, 0];
+      var cx = b.left + b.width / 2 - m[0], cy = b.top + b.height / 2 - m[1];
+      var dx = cx - mouse.x, dy = cy - mouse.y;
+      // distance from the mouse to the pill's edge, not its centre
+      var ex = Math.max(Math.abs(dx) - b.width / 2, 0), ey = Math.max(Math.abs(dy) - b.height / 2, 0);
+      var d = Math.sqrt(ex * ex + ey * ey);
+      if (d >= R) { if (p._m && (p._m[0] || p._m[1] || p._mr)) { setM(p, 0, 0, 0); p._mr = 0; } return; }
+      var k = (1 - d / R); k *= k;
+      var len = Math.sqrt(dx * dx + dy * dy) || 1;
+      var side = dx >= 0 ? 1 : -1;
+      if (!d) { setM(p, 0, 0, side * 4); p._mr = 1; return; } // under the mouse
+      setM(p, dx / len * PUSH * k, dy / len * PUSH * k, side * TURN * k);
+      p._mr = 1;
+    });
+    raf = requestAnimationFrame(magnet);
+  }
+  function unmagnet() {
+    mouse = null;
+    cancelAnimationFrame(raf); raf = 0;
+    Array.prototype.forEach.call(stage.querySelectorAll('.stream__pill'), function (p) { if (p._mr) { setM(p, 0, 0, 0); p._mr = 0; } });
+  }
+  stage.addEventListener('pointermove', function (e) {
+    if (e.pointerType !== 'mouse' || phone()) return;
+    mouse = { x: e.clientX, y: e.clientY };
+    if (!raf && !open) raf = requestAnimationFrame(magnet);
   });
   // Pointer over the stream: it slows down so a pill is easy to catch.
   stage.addEventListener('pointerenter', function (e) {
     if (e.pointerType !== 'mouse') return;
     hovering = true; if (!open) rate(0.35);
   });
-  stage.addEventListener('pointerleave', function () { hovering = false; if (!open) rate(1); });
+  stage.addEventListener('pointerleave', function () { hovering = false; unmagnet(); if (!open) rate(1); });
 
   [pop, panel].forEach(function (box) {
     box.addEventListener('click', function (e) { if (e.target.closest('.stream__close')) hide(); });
