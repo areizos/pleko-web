@@ -2689,6 +2689,9 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
 .byline__who img { width: 2.5rem; height: 2.5rem; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-accent); background: var(--color-accent-soft); }
 .byline__name { display: inline-block; transform-origin: left center; font-weight: 600; font-size: 0.95rem; transition: color 0.2s ease; }
 .byline__pill { font-size: 0.8rem; line-height: 1; padding: 0.4rem 0.75rem; border-radius: 999px; background: var(--color-accent-soft); color: var(--color-primary-hover); }
+.byline--lg { margin: 0.5rem 0 0.25rem; }
+.byline--lg .byline__who img { width: 4.5rem; height: 4.5rem; }
+.byline--lg .byline__name { font-size: 1.05rem; }
 .byline__who:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 4px; }
 @media (prefers-reduced-motion: no-preference) {
   /* drop-shadow (not box-shadow) so Safari draws the shadow round, not as a grey square */

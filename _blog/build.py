@@ -22,7 +22,7 @@ L = {
         blog="/blog/", label="Blog", index_title="Blog de pleko: automatización e IA sin humo",
         index_desc="Lo que voy aprendiendo al llevar la automatización y la IA al trabajo real: ideas, experimentos y herramientas, contados de la forma más clara que sé.",
         index_h1="Pensando en voz alta.", all_tags="Todos", latest="Último texto", filter_label="Filtrar por tema",
-        index_lead="Lo que voy aprendiendo al llevar la IA al trabajo real: ideas, experimentos y herramientas. Sin humo y sin intentar venderte nada.",
+        index_lead="Un lugar donde comparto lo que pienso, las ideas que pruebo y los problemas que resuelvo en el mundo real, en este nuevo y loco mundo de la IA que se nos viene encima.",
         read="Leer", back="← Todos los textos", by="Alexandros Reïzos", about="/sobre-mi/",
         cta_label="Hablemos", cta_h="¿Quieres aplicar esto en tu trabajo?",
         cta_p="Reserva una llamada gratuita de 20 minutos y vemos por dónde empezar.",
@@ -33,7 +33,7 @@ L = {
         blog="/en/blog/", label="Blog", index_title="The pleko blog: automation and AI without the hype",
         index_desc="What I'm learning as I bring automation and AI into real work: ideas, experiments and tools, explained as clearly as I can.",
         index_h1="Thinking out loud.", all_tags="All", latest="Latest post", filter_label="Filter by topic",
-        index_lead="What I'm learning as I bring AI into real work: ideas, experiments and tools. No hype, and no trying to sell you anything.",
+        index_lead="A place where I share what I think, the ideas I try and the problems I solve in the real world, in this new and crazy AI world that is upon us.",
         read="Read", back="← All posts", by="Alexandros Reïzos", about="/en/about/",
         cta_label="Let's talk", cta_h="Want to put this to work?",
         cta_p="Book a free 20-minute call and we'll see where to start.",
@@ -217,6 +217,7 @@ def main():
       <div class="wrap">
         <div class="section-head">
           <p class="section-label">{cfg["label"]}</p>
+          <div class="byline byline--lg"><a class="byline__who" href="{cfg["about"]}"><img src="/alex-avatar.jpg" width="72" height="72" alt="" /><span class="byline__name">{cfg["by"]}</span></a></div>
           <h1 class="h2">{cfg["index_h1"]}</h1>
           <p class="lead">{cfg["index_lead"]}</p>
         </div>
