@@ -299,7 +299,8 @@
         if (window.Tally && typeof window.Tally.openPopup === 'function') {
           window.Tally.openPopup(link.getAttribute('data-tally-form'), {
             layout: 'modal',
-            width: 640
+            width: 640,
+            hiddenFields: utm
           });
         } else {
           window.location.href = link.href;
@@ -483,18 +484,150 @@
     } catch (e) {}
   })();
 
-  /* ---------- Count key clicks in Umami (cookie-free stats) -------------- */
+  /* ---------- Where a visitor came from (UTM tags), cookie-free -----------
+     Links under /v/ send people here with utm_source / utm_medium /
+     utm_campaign. They are kept in sessionStorage (gone when the tab
+     closes), copied into any hidden form field with the same name, passed
+     on to the booking calendar and questionnaire, and then removed from the
+     address bar. Umami has already read the full address by the time the
+     page has loaded, so it still sees them. */
+  var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'];
+  var utm = {};
+  var hadUtm = false;
+  try {
+    var q = new URLSearchParams(window.location.search);
+    UTM_KEYS.forEach(function (k) {
+      var v = q.get(k);
+      if (v) { sessionStorage.setItem(k, v.slice(0, 100)); hadUtm = true; }
+    });
+    UTM_KEYS.forEach(function (k) {
+      var v = sessionStorage.getItem(k);
+      if (v) utm[k] = v;
+    });
+  } catch (e) {}
+  var hasStoredUtm = Object.keys(utm).length > 0;
+
+  function fillUtmInputs() {
+    UTM_KEYS.forEach(function (k) {
+      if (!utm[k]) return;
+      document.querySelectorAll('input[name="' + k + '"]').forEach(function (input) { input.value = utm[k]; });
+    });
+  }
+  function tagLink(a) {
+    var host = '';
+    try { host = new URL(a.href).hostname; } catch (e) { return; }
+    if (!/(^|\.)(cal\.com|tally\.so|typeform\.com)$/.test(host)) return;
+    var url = new URL(a.href);
+    UTM_KEYS.forEach(function (k) { if (utm[k] && !url.searchParams.has(k)) url.searchParams.set(k, utm[k]); });
+    a.href = url.toString();
+  }
+  if (hasStoredUtm) {
+    fillUtmInputs();
+    document.querySelectorAll('a[href]').forEach(tagLink);
+    // Cal.com buttons: the booking card reads data-cal-config when it opens
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('[data-cal-link]');
+      if (!btn) return;
+      try {
+        var cfg = JSON.parse(btn.getAttribute('data-cal-config') || '{}');
+        UTM_KEYS.forEach(function (k) { if (utm[k]) cfg[k] = utm[k]; });
+        btn.setAttribute('data-cal-config', JSON.stringify(cfg));
+      } catch (err) {}
+    }, true);
+  }
+  if (hadUtm) {
+    window.addEventListener('load', function () {
+      // Keep any other query values; drop only the three UTM tags. The
+      // original History method is used on purpose: Umami hooks the page's
+      // own replaceState and would count a second page view.
+      var p = new URLSearchParams(window.location.search);
+      UTM_KEYS.forEach(function (k) { p.delete(k); });
+      var rest = p.toString();
+      try {
+        History.prototype.replaceState.call(window.history, window.history.state, '', window.location.pathname + (rest ? '?' + rest : '') + window.location.hash);
+      } catch (err) {}
+    });
+  }
+
+  /* ---------- Umami events (cookie-free stats) ---------------------------
+     Every key click is sent with a "location" (the part of the page it was
+     in). Event names: click-diagnostico, click-contacto, click-whatsapp,
+     toggle-language, expand-faq, click-founder-bio. */
+  function umTrack(name, data) {
+    if (typeof window.umami === 'undefined' || !window.umami.track) return null;
+    data = data || {};
+    data.lang = root.lang;
+    return window.umami.track(name, data);
+  }
+  function placeOf(el) {
+    var own = el.closest('[data-umami-event-location]');
+    if (own) return own.getAttribute('data-umami-event-location');
+    if (el.closest('.site-header')) return 'header';
+    if (el.closest('.site-footer')) return 'footer';
+    if (el.closest('.corner-card, .pcard')) return 'corner-card';
+    if (el.closest('.hero, .subpage-hero')) return 'hero';
+    if (el.closest('.case-study, [id^="caso"], [id^="case"]')) return 'case-study';
+    if (el.closest('#servicios, #services, .services')) return 'services';
+    if (el.closest('.contact')) return 'contact';
+    if (el.closest('.faq')) return 'faq';
+    if (el.closest('.pains')) return 'diagnostic';
+    return 'page';
+  }
+
   document.addEventListener('click', function (e) {
-    if (!window.umami || !e.target.closest) return;
-    var el = e.target.closest('a, button');
+    if (!e.target.closest) return;
+    var el = e.target.closest('a, button, summary');
     if (!el) return;
     var href = el.getAttribute('href') || '';
-    var name = el.hasAttribute('data-cal-link') ? 'Calendario' :
-      el.hasAttribute('data-tally-form') ? 'Cuestionario' :
-      href.indexOf('wa.me/') !== -1 ? 'WhatsApp' :
-      href.indexOf('mailto:') === 0 ? 'Email' : '';
-    if (name) window.umami.track(name, { lang: document.documentElement.lang });
+
+    if (el.tagName === 'SUMMARY') {
+      var item = el.parentElement;
+      if (item && item.classList.contains('faq__item') && !item.open) {
+        umTrack('expand-faq', { question: el.textContent.trim().slice(0, 80) });
+      }
+      return;
+    }
+    if (href.indexOf('/v/areizos') === 0) { umTrack('click-founder-bio', { location: placeOf(el) }); return; }
+
+    if (el.closest('.lang-toggle') && el.tagName === 'A' && !el.hasAttribute('aria-current')) {
+      var plain = !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button);
+      var sent = umTrack('toggle-language', { to: en ? 'es' : 'en' });
+      if (plain && sent && sent.then) {
+        // Same-tab navigation can cancel a request that is still in flight, so wait briefly.
+        e.preventDefault();
+        var target = el.href, go = false;
+        var leave = function () { if (!go) { go = true; window.location.href = target; } };
+        sent.then(leave, leave);
+        window.setTimeout(leave, 500);
+      }
+      return;
+    }
+
+    var name = el.hasAttribute('data-tally-form') ? 'click-diagnostico' :
+      href.indexOf('wa.me/') !== -1 ? 'click-whatsapp' :
+      (el.hasAttribute('data-cal-link') || href.indexOf('mailto:') === 0 || href.indexOf('#reserva') !== -1 || href.indexOf('#book') !== -1) ? 'click-contacto' : '';
+    if (name) umTrack(name, { location: placeOf(el) });
   });
+
+  /* Scroll depth: 50 % and 90 % of the page, each once per page load */
+  (function () {
+    var marks = [50, 90], done = {}, waiting = false;
+    function check() {
+      waiting = false;
+      if (typeof window.umami === 'undefined') return;
+      var total = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+      var pct = (window.scrollY + window.innerHeight) / total * 100;
+      marks.forEach(function (m) {
+        if (pct >= m && !done[m]) {
+          done[m] = true;
+          window.umami.track('scroll-depth', { depth: m + '%' });
+        }
+      });
+    }
+    window.addEventListener('scroll', function () {
+      if (!waiting) { waiting = true; window.requestAnimationFrame(check); }
+    }, { passive: true });
+  })();
 
   /* ---------- Language switch keeps your place ---------------------------
      Switching ES ↔ EN while reading a section lands on the same section in
