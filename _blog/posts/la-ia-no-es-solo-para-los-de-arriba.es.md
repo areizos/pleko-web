@@ -3,7 +3,7 @@ lang: es
 slug: la-ia-no-es-solo-para-los-de-arriba
 pair: ai-isnt-just-for-the-people-at-the-top
 title: La IA no es solo para los de arriba
-subtitle: Primer texto: por qué creo que esta es la mayor oportunidad que hemos tenido en años, y por qué también es tuya
+subtitle: Por qué creo que esta es la mayor oportunidad que hemos tenido en años, y por qué también es tuya
 date: 2026-10-13
 tags: Opinión, IA y trabajo
 ---

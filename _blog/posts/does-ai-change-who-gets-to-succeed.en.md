@@ -3,7 +3,7 @@ lang: en
 slug: does-ai-change-who-gets-to-succeed
 pair: cambia-la-ia-quien-tiene-exito
 title: Does AI change who gets to succeed?
-subtitle: Post 2: the name I promised you, and why I think the rules of who does well are being rewritten
+subtitle: The name I promised you, and why I think the rules of who does well are being rewritten
 date: 2026-10-21
 tags: Opinion, AI and work
 ---

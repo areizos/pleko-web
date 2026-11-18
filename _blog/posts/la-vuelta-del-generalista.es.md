@@ -3,7 +3,7 @@ lang: es
 slug: la-vuelta-del-generalista
 pair: the-generalists-comeback
 title: La vuelta del generalista
-subtitle: Tercer texto: por qué saber un poco de muchas cosas pasó a ser un lastre, y por qué la IA te ayuda y te esconde a la vez
+subtitle: Por qué saber un poco de muchas cosas pasó a ser un lastre, y por qué la IA te ayuda y te esconde a la vez
 date: 2026-11-05
 tags: Opinión, IA y trabajo
 ---
@@ -99,6 +99,6 @@ Pero empiezo a pensar que el problema no era ser generalista. El problema era in
 
 La IA no arregla eso por sí sola. Da a gente como yo más maneras de convertir la amplitud en trabajo visible: algo que construir, probar, enseñar y mejorar. Si eres generalista y estás leyendo esto, no creo que la respuesta sea esperar a que se abra la puerta. La prueba que necesitas es algo que funciona, no una palabra mejor para definir lo que eres.
 
-Ahí es más o menos donde acabé. No con un currículum mejor, sino con otro recipiente para el trabajo. Dejé de intentar pasar por la puerta y monté pleko. Cómo pasó, y por qué esta forma encaja con lo que de verdad se me da bien, es el siguiente texto.
+Ahí es más o menos donde acabé. No con un currículum mejor, sino con otro recipiente para el trabajo. Dejé de intentar pasar por la puerta y monté pleko. Cómo pasó, y por qué esta forma encaja con lo que de verdad se me da bien, es [el siguiente texto](/blog/por-que-monte-pleko/).
 
 Puede que la vuelta del generalista ya esté pasando. Simplemente no está pasando en la puerta.

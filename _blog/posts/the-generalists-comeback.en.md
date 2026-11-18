@@ -3,7 +3,7 @@ lang: en
 slug: the-generalists-comeback
 pair: la-vuelta-del-generalista
 title: The generalist's comeback
-subtitle: Post 3: why knowing a little about a lot became a liability, and why AI both helps and hides you
+subtitle: Why knowing a little about a lot became a liability, and why AI both helps and hides you
 date: 2026-11-05
 tags: Opinion, AI and work
 ---
@@ -99,6 +99,6 @@ But I am beginning to think the problem was not being a generalist. The problem 
 
 AI doesn't fix that on its own. It gives people like me more ways to turn breadth into visible work: something to build, test, show and improve. If you are a generalist reading this, I don't think the answer is to wait for the gate to open. The evidence you need is a thing that works, not a better word for what you are.
 
-That is roughly where I ended up. Not with a better CV, but with a different container for the work. I stopped trying to get through the door and built pleko instead. How that happened, and why this shape fits what I am actually good at, is the next post.
+That is roughly where I ended up. Not with a better CV, but with a different container for the work. I stopped trying to get through the door and built pleko instead. How that happened, and why this shape fits what I am actually good at, is [the next post](/en/blog/why-i-built-pleko/).
 
 The generalist's comeback may already be happening. It just isn't happening at the door.

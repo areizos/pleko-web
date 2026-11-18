@@ -3,14 +3,14 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://pleko.es/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/" />
   </url>
   <url>
     <loc>https://pleko.es/en/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/" />
@@ -157,70 +157,84 @@
   </url>
   <url>
     <loc>https://pleko.es/blog/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/" />
   </url>
   <url>
     <loc>https://pleko.es/en/blog/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/" />
   </url>
   <url>
+    <loc>https://pleko.es/blog/por-que-monte-pleko/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/por-que-monte-pleko/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/why-i-built-pleko/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/por-que-monte-pleko/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/blog/why-i-built-pleko/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/por-que-monte-pleko/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/why-i-built-pleko/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/por-que-monte-pleko/" />
+  </url>
+  <url>
     <loc>https://pleko.es/blog/la-vuelta-del-generalista/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/la-vuelta-del-generalista/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/the-generalists-comeback/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/la-vuelta-del-generalista/" />
   </url>
   <url>
     <loc>https://pleko.es/en/blog/the-generalists-comeback/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/la-vuelta-del-generalista/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/the-generalists-comeback/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/la-vuelta-del-generalista/" />
   </url>
   <url>
     <loc>https://pleko.es/blog/cambia-la-ia-quien-tiene-exito/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/cambia-la-ia-quien-tiene-exito/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/does-ai-change-who-gets-to-succeed/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/cambia-la-ia-quien-tiene-exito/" />
   </url>
   <url>
     <loc>https://pleko.es/en/blog/does-ai-change-who-gets-to-succeed/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/cambia-la-ia-quien-tiene-exito/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/does-ai-change-who-gets-to-succeed/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/cambia-la-ia-quien-tiene-exito/" />
   </url>
   <url>
     <loc>https://pleko.es/blog/la-ia-no-es-solo-para-los-de-arriba/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/la-ia-no-es-solo-para-los-de-arriba/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/ai-isnt-just-for-the-people-at-the-top/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/la-ia-no-es-solo-para-los-de-arriba/" />
   </url>
   <url>
     <loc>https://pleko.es/en/blog/ai-isnt-just-for-the-people-at-the-top/</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/la-ia-no-es-solo-para-los-de-arriba/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/ai-isnt-just-for-the-people-at-the-top/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/la-ia-no-es-solo-para-los-de-arriba/" />
   </url>
   <url>
     <loc>https://pleko.es/sobre-mi/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/sobre-mi/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/about/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/sobre-mi/" />
   </url>
   <url>
     <loc>https://pleko.es/en/about/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/sobre-mi/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/about/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/sobre-mi/" />

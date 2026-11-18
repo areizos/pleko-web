@@ -3,7 +3,7 @@ lang: es
 slug: cambia-la-ia-quien-tiene-exito
 pair: does-ai-change-who-gets-to-succeed
 title: ¿Cambia la IA quién tiene éxito?
-subtitle: Segundo texto: el nombre que te prometí, y por qué creo que se están reescribiendo las reglas de quién triunfa
+subtitle: El nombre que te prometí, y por qué creo que se están reescribiendo las reglas de quién triunfa
 date: 2026-10-21
 tags: Opinión, IA y trabajo
 ---

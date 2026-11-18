@@ -3,7 +3,7 @@ lang: en
 slug: ai-isnt-just-for-the-people-at-the-top
 pair: la-ia-no-es-solo-para-los-de-arriba
 title: AI isn't just for the people at the top
-subtitle: First post: why I think this is the biggest opportunity we've had in years, and why it's yours too
+subtitle: Why I think this is the biggest opportunity we've had in years, and why it's yours too
 date: 2026-10-13
 tags: Opinion, AI and work
 ---
