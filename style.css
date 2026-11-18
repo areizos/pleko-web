@@ -2700,8 +2700,8 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
 }
 .post__body { max-width: 38rem; }
 .post__body p,
-.post__body li { font-family: var(--font-display); font-weight: 400; font-size: 1.12rem; line-height: 1.7; color: var(--color-text); }
-.post__body p { margin: 0 0 1.3em; }
+.post__body li { font-family: var(--font-display); font-weight: 400; font-size: 1.12rem; line-height: 1.62; color: var(--color-text); }
+.post__body p { margin: 0 0 1em; }
 .post__body h2 {
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 2.6vw, 1.75rem);
