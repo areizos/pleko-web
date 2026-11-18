@@ -164,15 +164,22 @@
         { duration: row.dur, iterations: Infinity }
       );
       row.anim.currentTime = Math.random() * row.dur;
+      row.anim.playbackRate = cur;
       if (open) row.anim.pause();
     });
   }
 
+  // Speed changes glide over ~0.4 s instead of jumping (a jump reads as a stutter).
+  var cur = 1, ramp = 0;
   function rate(r) {
-    rows.forEach(function (row) {
-      if (!row.anim) return;
-      if (row.anim.updatePlaybackRate) row.anim.updatePlaybackRate(r); else row.anim.playbackRate = r;
-    });
+    cancelAnimationFrame(ramp);
+    var from = cur, t0 = performance.now();
+    (function step(now) {
+      var k = Math.min((now - t0) / 400, 1);
+      cur = from + (r - from) * k * (2 - k);
+      rows.forEach(function (row) { if (row.anim) row.anim.playbackRate = cur; });
+      if (k < 1) ramp = requestAnimationFrame(step);
+    })(t0);
   }
   function pause() { rows.forEach(function (row) { if (row.anim) row.anim.pause(); }); }
   function resume() {
@@ -308,17 +315,28 @@
     cancelAnimationFrame(raf); raf = 0;
     Array.prototype.forEach.call(stage.querySelectorAll('.stream__pill'), function (p) { if (p._mr) { setM(p, 0, 0, 0); p._mr = 0; } });
   }
+  /* Only a real mouse move counts. While the page scrolls, the pills slide
+     under a still mouse and browsers send fake "moves": ignoring those (and
+     letting the pills settle) is what keeps scrolling smooth. */
+  var scrolling = false, scrollT = 0;
+  window.addEventListener('scroll', function () {
+    scrolling = true;
+    clearTimeout(scrollT);
+    scrollT = setTimeout(function () { scrolling = false; }, 250);
+    if (mouse) unmagnet();
+  }, { passive: true });
   stage.addEventListener('pointermove', function (e) {
-    if (e.pointerType !== 'mouse' || phone()) return;
+    if (e.pointerType !== 'mouse' || phone() || scrolling) return;
+    if (mouse && e.clientX === mouse.x && e.clientY === mouse.y) return; // same spot: not a real move
     mouse = { x: e.clientX, y: e.clientY };
+    // Mouse over the stream: it eases down so a pill is easy to catch.
+    if (!hovering) { hovering = true; if (!open) rate(0.35); }
     if (!raf && !open) raf = requestAnimationFrame(magnet);
   });
-  // Pointer over the stream: it slows down so a pill is easy to catch.
-  stage.addEventListener('pointerenter', function (e) {
-    if (e.pointerType !== 'mouse') return;
-    hovering = true; if (!open) rate(0.35);
+  stage.addEventListener('pointerleave', function () {
+    unmagnet();
+    if (hovering) { hovering = false; if (!open) rate(1); }
   });
-  stage.addEventListener('pointerleave', function () { hovering = false; unmagnet(); if (!open) rate(1); });
 
   [pop, panel].forEach(function (box) {
     box.addEventListener('click', function (e) { if (e.target.closest('.stream__close')) hide(); });
