@@ -59,6 +59,7 @@
     'chatbot': ['llm', 'rag', 'system-prompt'],
     'fuente-unica': ['crm', 'base-datos', 'integracion'],
     'inyeccion-prompts': ['agente', 'prompt', 'human-in-the-loop'],
+    'guardrails': ['inyeccion-prompts', 'human-in-the-loop', 'minimo-privilegio'],
     'transcripcion': ['llm', 'extraccion'],
     'parsing': ['json', 'extraccion', 'ocr'],
     'grounding': ['rag', 'alucinacion'],
