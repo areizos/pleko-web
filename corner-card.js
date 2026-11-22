@@ -171,8 +171,19 @@
     });
   }
 
+  // The cookie notice (consent.js) comes first: wait until it's answered
+  var waitingConsent = false;
+  function consentPending() { return !!(window.plekoConsent && window.plekoConsent.pending()); }
+
   function open() {
     wanted = true;
+    if (consentPending()) {
+      if (!waitingConsent) {
+        waitingConsent = true;
+        document.addEventListener('pleko:consent', function () { setTimeout(open, 1500); });
+      }
+      return;
+    }
     if (shown || contactVisible) return;
     shown = true;
     set('shown', 1);
