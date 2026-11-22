@@ -1,12 +1,12 @@
-/* pleko "thread": one teal line with square bends runs down the left of the page, draws itself as you scroll,
-   and lands on an orange node at each section (a small pop, a soft ring and a brief orange glow on the leg that
-   just arrived). Decorative only: aria-hidden, no clicks, and it is simply drawn in full for reduced-motion users.
+/* pleko "thread": one teal line with square bends runs down the left of the page with an orange node at each
+   section. Static since 2026-11-22 (Alex found the scroll-drawn tip and popping nodes distracting): drawn in full,
+   nothing moves on scroll. Decorative only: aria-hidden, no clicks.
    Needs <main id="top">. Sections without an h2 (and hero sections) get no node. */
 (function () {
   var main = document.getElementById('top');
   if (!main || !document.createElementNS) return;
   var NS = 'http://www.w3.org/2000/svg';
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = true; /* always static: no scroll-following */
 
   var css = document.createElement('style');
   css.textContent =
@@ -16,13 +16,7 @@
     '.pk-thread .leg{stroke:#cc5500;stroke-width:3;opacity:0}' +
     '.pk-thread .node{fill:#cc5500;stroke:var(--color-background,#fcf9f8);stroke-width:3;opacity:0;transform-box:fill-box;transform-origin:center}' +
     '.pk-thread .ring{fill:none;stroke:#cc5500;stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center}' +
-    '.pk-thread .on.node{opacity:1;animation:pk-pop .5s cubic-bezier(.2,.8,.3,1.3)}' +
-    '.pk-thread .on.ring{animation:pk-ring .9s ease-out}' +
-    '.pk-thread .on.leg{animation:pk-glow 1.5s ease-out}' +
-    '@keyframes pk-pop{0%{transform:scale(.3);opacity:0}100%{transform:scale(1);opacity:1}}' +
-    '@keyframes pk-ring{0%{transform:scale(1);opacity:.55}100%{transform:scale(3);opacity:0}}' +
-    '@keyframes pk-glow{0%{opacity:.95}100%{opacity:0}}' +
-    '@media (prefers-reduced-motion:reduce){.pk-thread .on.node{animation:none}.pk-thread .on.ring,.pk-thread .on.leg{animation:none;opacity:0}}';
+    '.pk-thread .on.node{opacity:1}';
   document.head.appendChild(css);
 
   var svg = document.createElementNS(NS, 'svg');
@@ -91,7 +85,6 @@
 
   var t;
   function later() { clearTimeout(t); t = setTimeout(build, 150); }
-  window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', later);
   window.addEventListener('load', later);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(later);
