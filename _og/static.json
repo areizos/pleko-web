@@ -1,8 +1,100 @@
 [
- {"out": "og/home-es.png", "layout": "home", "bg": "puntos", "style": "angular", "seed": 8, "title": "Doma el caos digital.", "lead": "Automatización e IA para personas y empresas. Primero desenredo el proceso, luego lo automatizo."},
- {"out": "og/home-en.png", "layout": "home", "bg": "puntos", "style": "angular", "seed": 8, "title": "Tame your digital chaos.", "lead": "Automation and AI for people and businesses. First I untangle the process, then I automate it."},
- {"out": "og/blog-es.png", "layout": "blog", "bg": "noche", "label": "Blog", "title": "Pensando en voz alta.", "lead": "Lo que pienso sobre la IA, lo que pruebo y lo que resuelvo."},
- {"out": "og/blog-en.png", "layout": "blog", "bg": "noche", "label": "Blog", "title": "Thinking out loud.", "lead": "What I think about AI, what I try and what I solve."},
- {"out": "og/servicios-es.png", "layout": "services", "bg": "menta", "style": "top", "seed": 5, "label": "Servicios", "title": "Presupuestos claros, sin sorpresas.", "rows": [["Diagnóstico Operativo", "Sesión y hoja de ruta"], ["Primer Hilo", "Un flujo en menos de una semana"], ["Tu Negocio Conectado", "Ventas, citas y facturas, unidas"]]},
- {"out": "og/services-en.png", "layout": "services", "bg": "menta", "style": "top", "seed": 5, "label": "Services", "title": "Clear quotes, no surprises.", "rows": [["Operational Diagnosis", "Session and roadmap"], ["First Thread", "One workflow in under a week"], ["Your Connected Business", "Everything joined up"]]}
+ {
+  "out": "og/home-es.png",
+  "layout": "home",
+  "bg": "puntos",
+  "style": "angular",
+  "seed": 8,
+  "title": "Doma el caos digital.",
+  "lead": "Automatización e IA para personas y empresas. Primero desenredo el proceso, luego lo automatizo."
+ },
+ {
+  "out": "og/home-en.png",
+  "layout": "home",
+  "bg": "puntos",
+  "style": "angular",
+  "seed": 8,
+  "title": "Tame your digital chaos.",
+  "lead": "Automation and AI for people and businesses. First I untangle the process, then I automate it."
+ },
+ {
+  "out": "og/blog-es.png",
+  "layout": "blog",
+  "bg": "noche",
+  "label": "Blog",
+  "title": "Pensando en voz alta.",
+  "lead": "Lo que pienso sobre la IA, lo que pruebo y lo que resuelvo."
+ },
+ {
+  "out": "og/blog-en.png",
+  "layout": "blog",
+  "bg": "noche",
+  "label": "Blog",
+  "title": "Thinking out loud.",
+  "lead": "What I think about AI, what I try and what I solve."
+ },
+ {
+  "out": "og/servicios-es.png",
+  "layout": "services",
+  "bg": "menta",
+  "style": "top",
+  "seed": 5,
+  "label": "Servicios",
+  "title": "Presupuestos claros, sin sorpresas.",
+  "rows": [
+   [
+    "Diagnóstico Operativo",
+    "Sesión y hoja de ruta"
+   ],
+   [
+    "Primer Hilo",
+    "Un flujo en menos de una semana"
+   ],
+   [
+    "Tu Negocio Conectado",
+    "Ventas, citas y facturas, unidas"
+   ]
+  ]
+ },
+ {
+  "out": "og/services-en.png",
+  "layout": "services",
+  "bg": "menta",
+  "style": "top",
+  "seed": 5,
+  "label": "Services",
+  "title": "Clear quotes, no surprises.",
+  "rows": [
+   [
+    "Operational Diagnosis",
+    "Session and roadmap"
+   ],
+   [
+    "First Thread",
+    "One workflow in under a week"
+   ],
+   [
+    "Your Connected Business",
+    "Everything joined up"
+   ]
+  ]
+ },
+ {
+  "out": "og/sesiones-1-a-1-es.png",
+  "layout": "home",
+  "bg": "salvia",
+  "style": "bottom",
+  "seed": 11,
+  "title": "Aprende a trabajar con IA.",
+  "lead": "Sesiones 1 a 1 para profesionales, conmigo a tu lado y con tus propios casos."
+ },
+ {
+  "out": "og/one-to-one-sessions-en.png",
+  "layout": "home",
+  "bg": "salvia",
+  "style": "bottom",
+  "seed": 11,
+  "title": "Learn to work with AI.",
+  "lead": "One-to-one sessions for professionals, with me beside you and your own cases."
+ }
 ]

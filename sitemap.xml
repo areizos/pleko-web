@@ -44,6 +44,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/formacion-ia/" />
   </url>
   <url>
+    <loc>https://pleko.es/sesiones-1-a-1/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/sesiones-1-a-1/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/one-to-one-sessions/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/sesiones-1-a-1/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/one-to-one-sessions/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/sesiones-1-a-1/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/one-to-one-sessions/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/sesiones-1-a-1/" />
+  </url>
+  <url>
     <loc>https://pleko.es/orden-herramientas-ia/</loc>
     <lastmod>2026-10-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/orden-herramientas-ia/" />
