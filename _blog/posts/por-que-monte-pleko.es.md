@@ -11,7 +11,7 @@ tags: Opinión, IA y trabajo
 
 Me ha costado definir qué es pleko exactamente, convertirlo en una explicación breve y convincente, y venderlo sin que suene como otra palabra de moda sobre IA.
 
-Así que aquí está, bien contada. pleko es una persona que averigua qué está enredado en tu negocio, construye la solución, la deja segura y te enseña a llevarla.
+Así que aquí está, bien contada. pleko es una persona que averigua qué se ha complicado en tu negocio, construye la solución, la deja segura y te enseña a llevarla.
 
 ## No empezó con un plan de negocio
 
@@ -53,11 +53,11 @@ Un ejemplo real, con los detalles cambiados lo suficiente para que el cliente si
 
 La pregunta interesante no era «¿puede la IA responder estas preguntas?». Era: qué respuestas ya existen y están aprobadas, quién firma una nueva, qué pasa cuando nadie sabe la respuesta y qué debería negarse a contestar el sistema. Pasamos más tiempo en esas cuatro preguntas que en el modelo.
 
-Eso es lo que significa «primero desenredamos». Primero se desenreda, luego se automatiza. A veces el problema ni siquiera está en la herramienta.
+Eso es lo que significa «primero simplificar»: primero se simplifica, luego se automatiza. A veces el problema ni siquiera está en la herramienta.
 
 ## Las tres promesas y la habilidad que hay detrás de cada una
 
-**Primero desenredamos.** La habilidad es hacer las preguntas en el orden correcto y estar dispuesto a descubrir que el problema no está donde el cliente cree. Muchos de los proyectos que me plantean resultan ser un problema de proceso, no de herramienta, y a veces la respuesta honesta es que una hoja de cálculo y una reunión semanal harían más que una automatización.
+**Primero simplificar.** La habilidad es hacer las preguntas en el orden correcto y estar dispuesto a descubrir que el problema no está donde el cliente cree. Muchos de los proyectos que me plantean resultan ser un problema de proceso, no de herramienta, y a veces la respuesta honesta es que una hoja de cálculo y una reunión semanal harían más que una automatización.
 
 **Todo es tuyo.** Tus cuentas, tus datos, tus documentos, tus herramientas. No quiero construir algo que deje al cliente cautivo, cobrándole por mantener un sistema que solo yo entiendo. Si más adelante quiere ampliarlo y necesita mi ayuda, estupendo. Pero tiene que ser suyo para usarlo, y entenderlo lo bastante como para saber qué necesita. Para que eso sea real hay que saber cómo encajan las piezas y dónde se puede perder la propiedad sin que nadie lo note.
 
@@ -77,6 +77,6 @@ Los clientes no tienen que decidir si soy de marketing, de operaciones o alguien
 
 Me gustaría decir que esto fue un plan. Se pareció más a una serie de experimentos que fueron funcionando, hasta que la forma se vio lo bastante clara como para ponerle nombre. pleko es ese nombre.
 
-En el próximo texto quiero hablar de lo que pasa antes de las herramientas: cómo reconocer un proceso enredado y encontrar el problema que merece la pena resolver. A veces ni siquiera nos damos cuenta de que está enredado: llevamos tanto tiempo conviviendo con él que damos por hecho que las cosas tienen que ser así.
+En el próximo texto quiero hablar de lo que pasa antes de las herramientas: cómo reconocer un proceso que se ha complicado y encontrar el problema que merece la pena resolver. A veces ni siquiera nos damos cuenta de que se ha complicado: llevamos tanto tiempo conviviendo con él que damos por hecho que las cosas tienen que ser así.
 
 Si llevas años siendo la persona que conecta cosas en lugar de la que posee una sola, me gustaría saber qué hiciste con eso. Ponte en contacto y cuéntamelo.

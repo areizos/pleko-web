@@ -38,8 +38,8 @@
     call: {
       es: {
         label: 'Reservar una llamada',
-        title: 'Antes de automatizar, desenredar.',
-        body: 'Cuéntame tu proceso más enredado en 20 minutos y te digo por dónde empezaría yo.',
+        title: 'Antes de automatizar, simplificar.',
+        body: 'Cuéntame en 20 minutos qué proceso te quita más tiempo y te digo por dónde empezaría yo.',
         button: 'Reservar llamada gratis',
         second: 'o escríbeme por WhatsApp',
         secondHref: 'https://wa.me/34656310631?text=' + encodeURIComponent('Hola Alex, vengo de pleko.es. '),
@@ -47,8 +47,8 @@
       },
       en: {
         label: 'Book a call',
-        title: 'Untangle first, then automate.',
-        body: "Tell me about your most tangled process in 20 minutes and I'll tell you where I'd start.",
+        title: 'Simplify first, then automate.',
+        body: "Tell me in 20 minutes which process takes up most of your time and I'll tell you where I'd start.",
         button: 'Book a free call',
         second: 'or message me on WhatsApp',
         secondHref: 'https://wa.me/34656310631?text=' + encodeURIComponent('Hi Alex, I found you on pleko.es. '),

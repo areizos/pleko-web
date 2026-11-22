@@ -11,7 +11,7 @@ tags: Opinion, AI and work
 
 I have struggled to define what pleko actually is, to turn it into a short pitch, and to explain it without making it sound like another AI buzzword.
 
-So here it is. pleko is one person who works out what is tangled in your business, builds the fix, makes it safe and teaches you to run it.
+So here it is. pleko is one person who works out what has got complicated in your business, builds the fix, makes it safe and teaches you to run it.
 
 ## It didn't start with a business plan
 
@@ -53,11 +53,11 @@ A real example, with the details changed enough that the client stays anonymous.
 
 The interesting question was not "can AI answer these questions?" It was: which answers already exist and are approved, who signs off on a new one, what happens when nobody knows, and what the system should refuse to answer. We spent more time on those four questions than on the model.
 
-That is what untangling first means: untangle, then automate. Sometimes the problem is not the tool at all.
+That is what simplifying first means: simplify, then automate. Sometimes the problem is not the tool at all.
 
 ## The three promises, and the skill behind each
 
-**Untangle first.** The skill is asking questions in the right order, and being willing to find that the problem is not where the client thinks it is. Many of the projects I am asked about turn out to be a process problem, not a tool problem, and the honest answer is sometimes that a spreadsheet and a weekly meeting would do more than an automation.
+**Simplify first.** The skill is asking questions in the right order, and being willing to find that the problem is not where the client thinks it is. Many of the projects I am asked about turn out to be a process problem, not a tool problem, and the honest answer is sometimes that a spreadsheet and a weekly meeting would do more than an automation.
 
 **It's yours.** Your accounts, your data, your documents, your tools. I do not want to build something that holds a client captive, charging them to maintain a system only I understand. If they want help expanding it later, great. But it should be theirs to use, and they should understand it well enough to say what they need. Making that real takes knowing how the pieces fit together and where ownership can quietly get lost.
 
@@ -77,6 +77,6 @@ Clients do not need to decide whether I am a marketer, an operations person or a
 
 I would like to tell you this was a plan. It was closer to a series of experiments that kept working, until the shape became clear enough to name. pleko is that name.
 
-In the next post, I want to look at what happens before the tools: how to spot a tangled process and find the problem worth solving. Sometimes we don't even notice a process is tangled: we've lived with it for so long that we assume that's just how things have to be.
+In the next post, I want to look at what happens before the tools: how to spot a process that has got too complicated and find the problem worth solving. Sometimes we don't even notice a process has got complicated: we've lived with it for so long that we assume that's just how things have to be.
 
 If you have spent years being the person who connects things rather than the person who owns one thing, I would like to hear what you did with it. Write to me and tell me.

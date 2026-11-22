@@ -182,7 +182,9 @@ ${c.layout !== "blog" ? threads(c.seed, bg.threads, dark, c.style || "flow", c.l
 <script>
 const t=document.getElementById("t");
 const h=document.querySelector(".t-home");
-if(h){h.style.whiteSpace="nowrap";h.style.alignSelf="flex-start";let s=74;while(h.offsetWidth>700&&s>50){s-=2;h.style.fontSize=s+"px";}}
+if(h){h.style.whiteSpace="nowrap";h.style.alignSelf="flex-start";let s=74;while(h.offsetWidth>700&&s>50){s-=2;h.style.fontSize=s+"px";}
+  // long titles: wrap onto two balanced lines instead of shrinking past 50px
+  if(h.offsetWidth>700){h.style.whiteSpace="normal";h.style.textWrap="balance";h.style.maxWidth="700px";h.style.fontSize="60px";h.style.marginTop="40px";}}
 if(t){let s=80;while(t.offsetHeight>300&&s>48){s-=2;t.style.fontSize=s+"px";}}
 </script></body></html>`;
 }
