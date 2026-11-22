@@ -421,6 +421,12 @@ section {
   flex-wrap: wrap;
 }
 
+.hero__cta-note {
+  margin: -0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
 .hero__trust {
   display: flex;
   flex-wrap: wrap;
