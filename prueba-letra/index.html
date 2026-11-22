@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fcf9f8" />
+  <title>Prueba de letra a mano | pleko</title>
+  <meta name="description" content="Prueba interna de estilos de letra a mano." />
+  <meta name="robots" content="noindex" />
+  
+  <!-- Open Graph: controls how this page looks when shared on LinkedIn, Slack, etc. -->
+  <meta property="og:title" content="Prueba de letra a mano" />
+  <meta property="og:description" content="Prueba de letra a mano" />
+  <meta property="og:image" content="https://pleko.es/og/servicios-es.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="pleko: Doma el caos digital. Automatización e IA para personas y empresas." />
+  <meta property="og:url" content="https://pleko.es/sesiones-1-a-1/" />
+  <meta property="og:site_name" content="pleko.es" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons: the pleko "p" mark (teal p with a burnt orange dot on a cream tile) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+
+  <!-- Language versions of this page, so search engines pair them up. -->
+
+  <!-- Fonts (Inter + Literata) are served from pleko.es itself: see /fonts/ and the
+       @font-face rules at the top of style.css. The two used above the fold load first. -->
+  <link rel="preload" href="/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <link rel="stylesheet" href="/style.css?v=57" />
+  <!-- Structured data: breadcrumb and service for search engines. -->
+  
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
+
+  <style>
+@font-face{font-family:"hand-reenie";src:url("/fonts/hand-reenie-beanie.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"hand-covered";src:url("/fonts/hand-covered-by-your-grace.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"hand-marker";src:url("/fonts/hand-permanent-marker.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"hand-rock";src:url("/fonts/hand-rock-salt.woff2") format("woff2");font-display:swap}
+@font-face{font-family:"hand-jah";src:url("/fonts/hand-just-another-hand.woff2") format("woff2");font-display:swap}
+.hp-grid{display:grid;gap:1.75rem;margin-top:1.5rem}
+.hp-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:1.25rem;padding:1.5rem;display:grid;gap:1rem;background-image:url("/paper.png")}
+.hp-item h2{margin:0;font-size:1.15rem} .hp-item p.hp-meta{margin:0;color:var(--color-text-muted);font-size:.95rem}
+.hp-panels{display:grid;gap:1rem} @media(min-width:900px){.hp-panels{grid-template-columns:1.6fr 1fr}}
+.hp-paper{background:var(--color-background);background-image:url("/paper.png");border:1px solid var(--color-border);border-radius:1rem;padding:1.25rem 1.5rem;display:grid;gap:.6rem}
+.hp-dark{background:var(--color-primary);border-radius:1rem;padding:1.25rem 1.5rem;display:grid;gap:.4rem;align-content:center}
+.hp-t{margin:0;color:var(--color-primary);line-height:1.05} .hp-t:nth-child(1){transform:rotate(-3deg)} .hp-t:nth-child(2){transform:rotate(-1.5deg);margin-left:1.2rem} .hp-t:nth-child(3){transform:rotate(-2.5deg)}
+.hp-m{margin:0;color:var(--color-accent);line-height:1.05;transform:rotate(-2deg)}
+.hp-badge{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--color-label)}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#top">Saltar al contenido</a>
+
+  <!-- ============ MENU BAR ============
+       Sticks to the top of the window while scrolling (position: sticky in style.css). -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a href="/" class="brand" aria-label="pleko, inicio">
+        <img src="/pleko-logo.svg?v=2" alt="pleko" class="brand__logo" width="314" height="116" />
+      </a>
+      <nav class="menu" aria-label="Menú">
+        <a href="/#servicios">Servicios</a>
+        <a href="/#como-trabajo">Cómo trabajo</a>
+        <a href="/#sobre-mi">Sobre mí</a>
+        <a href="/preguntas-frecuentes/">Preguntas</a>
+        <details class="menu-more">
+          <summary>Recursos</summary>
+          <div class="menu-more__panel">
+            <a href="/blog/">Blog</a>
+            <a href="/diccionario-ia/">Diccionario de IA</a>
+            <a href="/ia-con-cabeza/">IA con cabeza</a>
+          </div>
+        </details>
+      </nav>
+      <a href="/#reserva" class="btn btn--primary header-cta" tabindex="-1" aria-hidden="true">Reservar llamada</a>
+      <div class="lang-toggle" aria-label="Idioma">
+        <a href="/sesiones-1-a-1/" aria-current="page">ES</a>
+        <a href="/en/one-to-one-sessions/">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="subpage-hero">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="section-label">Prueba interna</p>
+          <h1 class="h2">Cinco estilos de letra a mano.</h1>
+          <p class="lead">Las mismas frases en cada letra: teal sobre papel y menta sobre teal oscuro (como en la tarjeta del precio). Todas se alojan en pleko.es, sin Google Fonts. Dime el número del estilo que te gusta.</p>
+        </div>
+      </div>
+    </section>
+    <section class="subpage-block">
+      <div class="wrap">
+        <div class="hp-grid">
+        <div class="hp-item">
+          <div><span class="hp-badge">Estilo 1</span><h2>Reenie Beanie <span class="hp-badge">· licencia OFL-1.1</span></h2><p class="hp-meta">Biro scribble: thin, quick, a bit nervous. (Current choice on the 1-to-1 page.)</p></div>
+          <div class="hp-panels">
+            <div class="hp-paper">
+              <p class="hp-t" style='font-family:"hand-reenie",cursive;font-size:2.8rem;-webkit-text-stroke:.6px currentColor'>tú y yo, en directo</p>
+              <p class="hp-t" style='font-family:"hand-reenie",cursive;font-size:2.8rem;-webkit-text-stroke:.6px currentColor'>elige lo que te sirva</p>
+              <p class="hp-t" style='font-family:"hand-reenie",cursive;font-size:2.8rem;-webkit-text-stroke:.6px currentColor'>con tus casos, no con ejemplos de manual</p>
+              <p class="hp-t" style='font-family:"hand-reenie",cursive;font-size:2.8rem;-webkit-text-stroke:.6px currentColor'>you and me, live · pick what helps you</p>
+            </div>
+            <div class="hp-dark"><p class="hp-m" style='font-family:"hand-reenie",cursive;font-size:2.8rem;-webkit-text-stroke:.6px currentColor'>claro, sin sorpresas</p><p class="hp-m" style='font-family:"hand-reenie",cursive;font-size:2.8rem;-webkit-text-stroke:.6px currentColor'>clear, no surprises</p></div>
+          </div>
+        </div>
+        <div class="hp-item">
+          <div><span class="hp-badge">Estilo 2</span><h2>Covered By Your Grace <span class="hp-badge">· licencia OFL-1.1</span></h2><p class="hp-meta">Loose marker: rounded, casual, like a note on the fridge.</p></div>
+          <div class="hp-panels">
+            <div class="hp-paper">
+              <p class="hp-t" style='font-family:"hand-covered",cursive;font-size:2.3rem;-webkit-text-stroke:0 currentColor'>tú y yo, en directo</p>
+              <p class="hp-t" style='font-family:"hand-covered",cursive;font-size:2.3rem;-webkit-text-stroke:0 currentColor'>elige lo que te sirva</p>
+              <p class="hp-t" style='font-family:"hand-covered",cursive;font-size:2.3rem;-webkit-text-stroke:0 currentColor'>con tus casos, no con ejemplos de manual</p>
+              <p class="hp-t" style='font-family:"hand-covered",cursive;font-size:2.3rem;-webkit-text-stroke:0 currentColor'>you and me, live · pick what helps you</p>
+            </div>
+            <div class="hp-dark"><p class="hp-m" style='font-family:"hand-covered",cursive;font-size:2.3rem;-webkit-text-stroke:0 currentColor'>claro, sin sorpresas</p><p class="hp-m" style='font-family:"hand-covered",cursive;font-size:2.3rem;-webkit-text-stroke:0 currentColor'>clear, no surprises</p></div>
+          </div>
+        </div>
+        <div class="hp-item">
+          <div><span class="hp-badge">Estilo 3</span><h2>Permanent Marker <span class="hp-badge">· licencia Apache-2.0</span></h2><p class="hp-meta">Chunky felt-tip: bold, confident, readable from far away.</p></div>
+          <div class="hp-panels">
+            <div class="hp-paper">
+              <p class="hp-t" style='font-family:"hand-marker",cursive;font-size:1.65rem;-webkit-text-stroke:0 currentColor'>tú y yo, en directo</p>
+              <p class="hp-t" style='font-family:"hand-marker",cursive;font-size:1.65rem;-webkit-text-stroke:0 currentColor'>elige lo que te sirva</p>
+              <p class="hp-t" style='font-family:"hand-marker",cursive;font-size:1.65rem;-webkit-text-stroke:0 currentColor'>con tus casos, no con ejemplos de manual</p>
+              <p class="hp-t" style='font-family:"hand-marker",cursive;font-size:1.65rem;-webkit-text-stroke:0 currentColor'>you and me, live · pick what helps you</p>
+            </div>
+            <div class="hp-dark"><p class="hp-m" style='font-family:"hand-marker",cursive;font-size:1.65rem;-webkit-text-stroke:0 currentColor'>claro, sin sorpresas</p><p class="hp-m" style='font-family:"hand-marker",cursive;font-size:1.65rem;-webkit-text-stroke:0 currentColor'>clear, no surprises</p></div>
+          </div>
+        </div>
+        <div class="hp-item">
+          <div><span class="hp-badge">Estilo 4</span><h2>Rock Salt <span class="hp-badge">· licencia Apache-2.0</span></h2><p class="hp-meta">Slanted rush: very scruffy, wide, leans right. The most rebellious.</p></div>
+          <div class="hp-panels">
+            <div class="hp-paper">
+              <p class="hp-t" style='font-family:"hand-rock",cursive;font-size:1.45rem;-webkit-text-stroke:0 currentColor'>tú y yo, en directo</p>
+              <p class="hp-t" style='font-family:"hand-rock",cursive;font-size:1.45rem;-webkit-text-stroke:0 currentColor'>elige lo que te sirva</p>
+              <p class="hp-t" style='font-family:"hand-rock",cursive;font-size:1.45rem;-webkit-text-stroke:0 currentColor'>con tus casos, no con ejemplos de manual</p>
+              <p class="hp-t" style='font-family:"hand-rock",cursive;font-size:1.45rem;-webkit-text-stroke:0 currentColor'>you and me, live · pick what helps you</p>
+            </div>
+            <div class="hp-dark"><p class="hp-m" style='font-family:"hand-rock",cursive;font-size:1.45rem;-webkit-text-stroke:0 currentColor'>claro, sin sorpresas</p><p class="hp-m" style='font-family:"hand-rock",cursive;font-size:1.45rem;-webkit-text-stroke:0 currentColor'>clear, no surprises</p></div>
+          </div>
+        </div>
+        <div class="hp-item">
+          <div><span class="hp-badge">Estilo 5</span><h2>Just Another Hand <span class="hp-badge">· licencia Apache-2.0</span></h2><p class="hp-meta">Tall and narrow biro: quick engineer-notebook scrawl.</p></div>
+          <div class="hp-panels">
+            <div class="hp-paper">
+              <p class="hp-t" style='font-family:"hand-jah",cursive;font-size:3rem;-webkit-text-stroke:.5px currentColor'>tú y yo, en directo</p>
+              <p class="hp-t" style='font-family:"hand-jah",cursive;font-size:3rem;-webkit-text-stroke:.5px currentColor'>elige lo que te sirva</p>
+              <p class="hp-t" style='font-family:"hand-jah",cursive;font-size:3rem;-webkit-text-stroke:.5px currentColor'>con tus casos, no con ejemplos de manual</p>
+              <p class="hp-t" style='font-family:"hand-jah",cursive;font-size:3rem;-webkit-text-stroke:.5px currentColor'>you and me, live · pick what helps you</p>
+            </div>
+            <div class="hp-dark"><p class="hp-m" style='font-family:"hand-jah",cursive;font-size:3rem;-webkit-text-stroke:.5px currentColor'>claro, sin sorpresas</p><p class="hp-m" style='font-family:"hand-jah",cursive;font-size:3rem;-webkit-text-stroke:.5px currentColor'>clear, no surprises</p></div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <span>&copy; <span id="year"></span> pleko</span>
+      <nav class="footer-links" aria-label="Enlaces">
+        <a href="/preguntas-frecuentes/">Preguntas frecuentes</a>
+        <a href="/servicios/">Servicios y tarifas</a>
+        <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/blog/">Blog</a>
+        <a href="/privacidad/">Privacidad</a>
+        <a href="/aviso-legal/">Aviso legal</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Small touch of JS: keep the copyright year correct without editing it by hand.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!--
+    Cal.com embed — this is Cal.com's own standard snippet (copied as-is from
+    their embed instructions, not something hand-written), it just loads
+    their booking widget script. Any element with data-cal-link (the
+    booking button in the contact section) opens the calendar in a pop-up,
+    themed with pleko's teal.
+  -->
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    // Started by site.js once the page has loaded, or as soon as someone
+    // heads for the booking button, so it doesn't slow the first paint.
+    window.plekoLoadCal = function () {
+      window.plekoLoadCal = function () {}; // only once
+      Cal("init", { origin: "https://cal.com" });
+      Cal("ui", {
+        styles: { branding: { brandColor: "#006565" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    };
+  </script>
+    <script src="/site.js?v=14" defer></script>
+  <script src="/corner-card.js?v=3" defer></script>
+
+</body>
+</html>
