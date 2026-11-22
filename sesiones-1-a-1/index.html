@@ -65,6 +65,7 @@
     .sx-hero__art svg { display: block; width: 100%; height: auto; max-width: 28rem; margin: 0 auto; }
     @media (min-width: 900px) { .sx-hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 3.5rem; } }
     .sx-groups { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    .sx-groups .sx-glead { margin: -.2rem 0 1rem; color: var(--color-text); opacity: .85; font-style: italic; }
     .sx-groups .checklist { grid-template-columns: 1fr; gap: .7rem; max-width: none; }
     .sx-groups .checklist li { font-size: 1rem; }
     @media (min-width: 900px) {
@@ -205,22 +206,22 @@
           <div class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></div>
             <h3>Freelancers y autónomos</h3>
-            <p>Presupuestos y propuestas, seguimiento de contactos, respuestas a clientes, facturas y cobros, un resumen mensual de tu dinero y buen texto para tu web y tus redes. Además, conectamos tus herramientas para que se hablen entre sí.</p>
+            <p>Tu negocio eres tú y el día no da para todo. Trabajamos presupuestos y propuestas, el seguimiento de contactos, las respuestas a clientes, facturas y cobros, y un resumen mensual de tu dinero. También buen texto para tu web y tus redes, y tus herramientas conectadas para que se hablen entre sí.</p>
           </div>
           <div class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 21h14"/><path d="M5 7h14"/><path d="M5 7l-3 7a3 3 0 0 0 6 0z"/><path d="M19 7l-3 7a3 3 0 0 0 6 0z"/></svg></div>
             <h3>Abogados, asesores fiscales y gestores</h3>
-            <p>Contratos y documentos largos: resumir, comparar cláusulas y saber qué preguntar. Investigación con fuentes que puedas comprobar, una base de conocimiento propia y claridad sobre qué datos de clientes nunca deben entrar en una herramienta de IA.</p>
+            <p>Mucho documento y poco tiempo. Vemos cómo resumir contratos largos, comparar cláusulas y saber qué preguntar, investigar con fuentes que puedas comprobar y montar tu propia base de conocimiento. Y dejamos claro qué datos de clientes nunca deben entrar en una herramienta de IA.</p>
           </div>
           <div class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4"/><path d="M8 20h8"/><path d="M7 12l3-3 3 2 4-4"/></svg></div>
             <h3>Consultores y perfiles públicos</h3>
-            <p>Presentaciones e informes bien estructurados, investigación y resúmenes de documentos largos, preparación de reuniones y notas con puntos de acción al terminar. Y tus herramientas conectadas para que nada se pierda entre una y otra.</p>
+            <p>Tu trabajo es explicar bien y llegar preparado. Presentaciones e informes bien estructurados, investigación y resúmenes de documentos largos, preparación de reuniones y notas con puntos de acción al terminar. Y tus herramientas conectadas para que nada se pierda entre una y otra.</p>
           </div>
           <div class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></svg></div>
             <h3>Salud, terapia y formación</h3>
-            <p>Notas de reuniones, orden en tu correo, archivos y agenda, textos para tu comunicación y, sobre todo, cuidado con los datos de tus clientes o alumnos.</p>
+            <p>Tu tiempo es para las personas, no para el papeleo. Notas de reuniones, orden en tu correo, archivos y agenda, textos para tu comunicación y, sobre todo, mucho cuidado con los datos de tus clientes o alumnos.</p>
           </div>
         </div>
       </div>
@@ -240,6 +241,7 @@
           <div class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.500 6.500 0 0 1 13 0"/><circle cx="17" cy="9" r="2.500"/><path d="M17.500 14.500a5 5 0 0 1 4 5"/></svg></div>
             <h3>Clientes y ventas</h3>
+            <p class="sx-glead">Para que ningún cliente espere más de la cuenta y tú no pierdas las tardes redactando.</p>
             <ul class="checklist">
               <li>Presupuestos y propuestas: plantillas reutilizables y primeros borradores con IA que tú revisas y envías.</li>
               <li>Seguimiento de contactos: correos y secuencias cortas con tu voz, y una forma sencilla de ver quién espera qué.</li>
@@ -251,6 +253,7 @@
           <div class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6.500 9v.01M17.500 15v.01"/></svg></div>
             <h3>Dinero y administración</h3>
+            <p class="sx-glead">Para saber qué entra, qué sale y qué toca cada mes, sin perseguir papeles.</p>
             <ul class="checklist">
               <li>Facturación: plantillas limpias, facturas de proveedores pasadas a una hoja de cálculo y recordatorios de pago amables.</li>
               <li>Un resumen mensual de tu dinero y una lista trimestral de lo que tienes que tener a mano (organización, no asesoría fiscal).</li>
@@ -261,6 +264,7 @@
           <div class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11a2.100 2.100 0 0 0-3-3L5 16z"/><path d="M14 7l3 3"/></svg></div>
             <h3>Contenido y presencia</h3>
+            <p class="sx-glead">Para que lo que publicas suene a ti y te lleve menos tiempo.</p>
             <ul class="checklist">
               <li>Publicaciones, newsletter y LinkedIn con tu voz, sin que suene a IA.</li>
               <li>Presentaciones e informes: estructura, diapositivas, notas del orador y visuales más claros.</li>
@@ -270,6 +274,7 @@
           <div class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.500A1.500 1.500 0 0 1 5.500 3H20v15H5.500A1.500 1.500 0 0 0 4 19.500z"/><path d="M4 19.500A1.500 1.500 0 0 0 5.500 21H20v-3"/></svg></div>
             <h3>Conocimiento e investigación</h3>
+            <p class="sx-glead">Para encontrar rápido lo que sabes y comprobar lo que lees.</p>
             <ul class="checklist">
               <li>Investigación con fuentes comprobables y resúmenes de PDF e informes largos.</li>
               <li>Una base de conocimiento personal: notas, plantillas e instrucciones en un solo sitio donde buscar.</li>
@@ -279,6 +284,7 @@
           <div class="card">
             <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.500-3.200 7.800-8 9-4.800-1.200-8-4.500-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
             <h3>Herramientas y seguridad</h3>
+            <p class="sx-glead">Para usar la IA con criterio y con tus datos protegidos.</p>
             <ul class="checklist">
               <li>Elegir y configurar las herramientas de IA adecuadas para ti: cuenta, ajustes, qué pagar y qué no.</li>
               <li>Tu propia biblioteca de instrucciones reutilizables, para no empezar de cero cada vez.</li>
@@ -294,7 +300,7 @@
         <div class="sx-notion__text">
           <p class="section-label">Notion</p>
           <h2 class="h3-display">Notion, a tu medida</h2>
-          <p>Mucha gente ha oído hablar de Notion y no sabe por dónde empezar. Lo montamos juntos para tu caso: un sitio donde ver tus clientes, tareas, presupuestos y facturas, y aprender a usarlo sin perderte.</p>
+          <p>Mucha gente ha oído hablar de Notion y no sabe por dónde empezar. Lo montamos juntos para tu caso: un sitio donde llevar tu negocio, tus clientes y posibles clientes, tus proyectos, presupuestos y facturas, tus ideas y notas de reuniones, y aprender a usarlo sin perderte.</p>
         </div>
         <div class="sx-notion__art"><svg viewBox="0 -22 520 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="180" y="100" width="160" height="100" rx="16" fill="#8ff6d0" stroke="#006565" stroke-width="3"/><rect x="214" y="118" width="92" height="64" rx="8" fill="#fff" stroke="#006565" stroke-width="2.5"/><rect x="226" y="132" width="40" height="8" rx="4.0" fill="#006565" opacity="0.8" stroke="none"/><rect x="226" y="150" width="64" height="6" rx="3.0" fill="#006565" opacity="0.35" stroke="none"/><rect x="226" y="164" width="50" height="6" rx="3.0" fill="#006565" opacity="0.35" stroke="none"/><text x="260" y="236" font-family="'Covered By Your Grace',cursive" font-size="30" fill="#006565" stroke="none" text-anchor="middle" transform="rotate(-2 260 236)">tu Notion</text><path d="M180 150H110V76" stroke="#006565" stroke-width="3"/><path d="M340 150H410V76" stroke="#006565" stroke-width="3"/><path d="M260 100V60H260" stroke="#006565" stroke-width="3"/><path d="M260 200V240" stroke="#006565" stroke-width="3"/><rect x="65" y="10" width="90" height="66" rx="12" fill="#fff" stroke="#006565" stroke-width="2.5"/><path d="M81 30L110 52L139 30" stroke="#006565" stroke-width="2.5"/><rect x="81" y="28" width="58" height="32" rx="5" stroke="#006565" stroke-width="2.5" fill="none"/><rect x="365" y="10" width="90" height="66" rx="12" fill="#fff" stroke="#006565" stroke-width="2.5"/><rect x="383" y="26" width="54" height="38" rx="6" stroke="#006565" stroke-width="2.5" fill="none"/><path d="M383 38H437" stroke="#006565" stroke-width="2.5"/><rect x="215" y="-6" width="90" height="66" rx="12" fill="#fff" stroke="#006565" stroke-width="2.5"/><path d="M239 6H281V50L273 44L265 50L257 44L249 50L239 44Z" stroke="#006565" stroke-width="2.5" fill="none"/><path d="M249 20H271M249 30H267" stroke="#006565" stroke-width="2.5"/><circle cx="110" cy="150" r="6" fill="#fff" stroke="#006565" stroke-width="3"/><circle cx="410" cy="150" r="6" fill="#fff" stroke="#006565" stroke-width="3"/><circle cx="110" cy="76" r="6" fill="#CC5500" stroke="#fcf9f8" stroke-width="3"/><circle cx="410" cy="76" r="6" fill="#CC5500" stroke="#fcf9f8" stroke-width="3"/></svg></div>
       </div>
@@ -309,12 +315,12 @@
           <li class="step step--1">
             <span class="chip">01</span>
             <h3>Preparo</h3>
-            <p>Antes de empezar preparo la sesión con lo que me cuentes: tu día a día, tus herramientas y lo que más te frena.</p>
+            <p>Antes de empezar preparo la sesión con lo que me cuentes: tu día a día, tus herramientas y lo que más te frena. Así no perdemos la primera hora explicando lo básico.</p>
           </li>
           <li class="step step--2">
             <span class="chip">02</span>
             <h3>Dos sesiones de 2 horas</h3>
-            <p>Trabajamos en tus casos reales, en directo, por videollamada, y dejamos configurado lo que te sirva.</p>
+            <p>Trabajamos en tus casos reales, en directo, por videollamada, y dejamos configurado lo que te sirva. Tú decides qué quieres resolver primero; yo te enseño el camino para que puedas repetirlo solo.</p>
           </li>
           <li class="step step--3">
             <span class="chip">03</span>
