@@ -4,31 +4,35 @@
    A small card in the lower right that invites a booking. Plain
    JavaScript, no libraries, no cookies. It remembers only for this visit
    (sessionStorage, cleared when the tab closes):
-     - how many seconds you've spent on the site and how many pages you've
-       opened, so it shows after SHOW_AFTER_SECONDS or on SHOW_ON_PAGE;
+     - how many seconds you've spent on the site, so it shows only after
+       SHOW_AFTER_SECONDS AND once you've scrolled past SCROLL_SHARE of
+       the page you're on (whichever comes later);
      - that it has already been shown, closed or used, so it shows once.
    After it is closed or used it also stays away for REMEMBER_DAYS on
    later visits (one date in localStorage, not a cookie).
-   It never shows on legal pages, the demos or the 404 page, and it stays
+   It never shows on legal pages, the demos, the 404 page, the pages with
+   prices (services, 1-to-1 sessions) or anywhere in the blog, and it stays
    away while any booking button or block of the page is on screen.
 
    Test links (they only change your own browser):
-     ?tarjeta=ya     show it now, skipping the wait
+     ?tarjeta=ya     show it now, skipping the wait (works on hidden pages too)
      ?tarjeta=reset  forget this visit and the 2 weeks, as if new
    ========================================================================= */
 (function () {
   'use strict';
 
   var SHOW_AFTER_SECONDS = 45;
-  var SHOW_ON_PAGE = 3;          // the 3rd page opened in the visit
-  var PAGE_DELAY_SECONDS = 4;    // even then, never the moment a page opens
+  var SCROLL_SHARE = 0.5;        // and past the halfway point of this page
   var VARIANT = 'call';          // later: 'pdf'
   var REMEMBER_DAYS = 14;        // after closing or using it, away this long
 
   var SKIP_PATHS = [
     '/privacidad/', '/aviso-legal/', '/en/privacy/', '/en/legal-notice/',
-    '/pruebalo/', '/en/try-it/'
+    '/pruebalo/', '/en/try-it/',
+    '/servicios/', '/en/services/',
+    '/sesiones-1-a-1/', '/en/one-to-one-sessions/'
   ];
+  var SKIP_PREFIXES = ['/blog/', '/en/blog/'];   // the blog index and every post
 
   var VARIANTS = {
     call: {
@@ -85,6 +89,7 @@
   // Pages where it never appears
   var path = location.pathname;
   var off = SKIP_PATHS.indexOf(path) !== -1 ||
+    SKIP_PREFIXES.some(function (p) { return path.indexOf(p) === 0; }) ||
     document.querySelector('meta[name="pleko-card"][content="off"]') ||
     /404/.test(document.title);
   if (off && test !== 'ya') return;
@@ -224,10 +229,22 @@
     return;
   }
 
-  var pages = parseInt(get('pages'), 10) || 0;
-  if (pages >= SHOW_ON_PAGE) {
-    setTimeout(open, PAGE_DELAY_SECONDS * 1000);
+  // Both must be true: enough seconds on the site AND past halfway down this page
+  var timeOk = false, scrollOk = false;
+  function maybeOpen() { if (timeOk && scrollOk) open(); }
+
+  function onScroll() {
+    var doc = document.documentElement;
+    var seen = (window.scrollY || doc.scrollTop) + window.innerHeight;
+    if (seen >= doc.scrollHeight * SCROLL_SHARE) {
+      scrollOk = true;
+      window.removeEventListener('scroll', onScroll);
+      maybeOpen();
+    }
   }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();                                     // a short page may already be half in view
+  window.addEventListener('load', function () { if (!scrollOk) onScroll(); });
 
   // Seconds on the site, counted only while the tab is in front
   var seconds = parseInt(get('seconds'), 10) || 0;
@@ -237,7 +254,8 @@
     set('seconds', seconds);
     if (seconds >= SHOW_AFTER_SECONDS) {
       clearInterval(timer);
-      open();
+      timeOk = true;
+      maybeOpen();
     }
   }, 1000);
 })();
