@@ -28,7 +28,7 @@ L = {
         read="Leer", back="← Todos los textos", by="Alexandros Reïzos", about="/sobre-mi/",
         cta_label="Hablemos", cta_h="¿Quieres aplicar esto en tu trabajo?",
         cta_p="Reserva una llamada gratuita de 20 minutos y vemos por dónde empezar.",
-        cta_btn="Reserva una llamada", months=["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
+        cta_btn="No hace falta saber de IA", idx_cta_btn="Cuéntame qué te quita tiempo", months=["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"],
         mins="min de lectura", locale="es_ES"),
     "en": dict(
         shell="en/ai-with-judgement/index.html", shell_path="/en/ai-with-judgement/", other_shell_path="/ia-con-cabeza/",
@@ -39,7 +39,7 @@ L = {
         read="Read", back="← All posts", by="Alexandros Reïzos", about="/en/about/",
         cta_label="Let's talk", cta_h="Want to put this to work?",
         cta_p="Book a free 20-minute call and we'll see where to start.",
-        cta_btn="Book a call", months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        cta_btn="You don't need to know AI", idx_cta_btn="Tell me what eats your time", months=["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         mins="min read", locale="en_GB"),
 }
 
@@ -270,6 +270,17 @@ def main():
         <ul class="post-list">
 {cards}
         </ul>
+      </div>
+    </section>
+    <section id="{"reserva" if lang == "es" else "book"}" class="contact contact--compact">
+      <div class="wrap contact__inner">
+        <div class="contact__copy">
+          <p class="section-label">{cfg["cta_label"]}</p>
+          <p class="contact__subtext">{"Llamada gratuita de 20&nbsp;minutos." if lang == "es" else "Free 20&#8209;minute call."}</p>
+          <div class="contact__links">
+            <button type="button" class="btn btn--mint" data-cal-link="pleko" data-cal-config='{{"layout":"month_view"}}'>{cfg["idx_cta_btn"]}</button>
+          </div>
+        </div>
       </div>
     </section>'''
         ld = {"@context": "https://schema.org", "@graph": [crumbs(lang, [("pleko", home[lang]), (cfg["label"], cfg["blog"])]),
