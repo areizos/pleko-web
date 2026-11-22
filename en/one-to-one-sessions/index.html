@@ -56,6 +56,32 @@
   }
   </script>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
+
+  <style>
+    /* Page-only styles for the 1-to-1 sessions page (kept here so style.css and its cache number stay untouched) */
+    .sx-dots { background-image: radial-gradient(circle, rgba(0,114,87,.20) 1.4px, transparent 1.6px), url("/paper.png"); background-size: 24px 24px, auto; padding-bottom: clamp(2rem, 4vw, 3.5rem); }
+    .sx-hero { display: grid; gap: 2rem; align-items: center; }
+    .sx-hero .section-head { max-width: none; }
+    .sx-hero__art svg { display: block; width: 100%; height: auto; max-width: 28rem; margin: 0 auto; }
+    @media (min-width: 900px) { .sx-hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 3.5rem; } }
+    .sx-groups { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    .sx-groups .checklist { grid-template-columns: 1fr; gap: .7rem; max-width: none; }
+    .sx-groups .checklist li { font-size: 1rem; }
+    @media (min-width: 900px) {
+      .sx-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sx-groups .card:last-child { grid-column: 1 / -1; }
+      .sx-groups .card:last-child .checklist { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem 2rem; }
+    }
+    .sx-duo { display: grid; gap: 1.5rem; }
+    @media (min-width: 900px) { .sx-duo { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .sx-price { background: var(--color-primary); color: #fff; border-radius: 1.25rem; padding: 2rem; display: flex; flex-direction: column; gap: .6rem; }
+    .sx-price .section-label { color: var(--color-accent); margin: 0; }
+    .sx-price__amount { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.2rem); line-height: 1.05; margin: .25rem 0 0; color: #fff; }
+    .sx-price__amount small { font-family: var(--font-sans); font-size: 1rem; opacity: .85; }
+    .sx-price h3 { margin: 0; font-size: 1.2rem; color: #fff; }
+    .sx-price p { margin: 0; color: #e6f6f1; }
+    .sx-price p.sx-price__amount { color: #fff; }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#top">Skip to content</a>
@@ -91,12 +117,52 @@
 
   <main id="top">
 
-    <section class="subpage-hero">
-      <div class="wrap">
+    <section class="subpage-hero sx-dots">
+      <div class="wrap sx-hero">
         <div class="section-head">
           <p class="section-label">One-to-one sessions</p>
           <h1 class="h2">Learn to work with AI, with me beside you.</h1>
           <p class="lead">I work with you, live, to improve how you work and bring in the AI tools that fit your day. It isn’t a course or a custom project: it’s my time with you, on your own cases and your own accounts. You leave knowing how to use what we set up.</p>
+        </div>
+        <div class="sx-hero__art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 430" aria-hidden="true" focusable="false">
+  <ellipse cx="260" cy="412" rx="170" ry="9" fill="#006565" opacity=".08"/>
+  <path d="M222 338h76l14 62H208z" fill="#e1f5ee" stroke="#006565" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="168" y="396" width="184" height="14" rx="7" fill="#fcf9f8" stroke="#006565" stroke-width="3"/>
+  <rect x="14" y="14" width="492" height="330" rx="24" fill="#fcf9f8" stroke="#006565" stroke-width="3.5"/>
+  <rect x="34" y="34" width="452" height="260" rx="10" fill="#ffffff" stroke="#bdc9c8" stroke-width="2"/>
+  <path d="M14 304h492" stroke="#006565" stroke-width="3.5"/>
+  <circle cx="260" cy="324" r="6" fill="#8ff6d0" stroke="#006565" stroke-width="2.5"/>
+  <!-- window bar dots -->
+  <circle cx="54" cy="52" r="4" fill="#bdc9c8"/><circle cx="68" cy="52" r="4" fill="#bdc9c8"/><circle cx="82" cy="52" r="4" fill="#CC5500"/>
+  <!-- window A: notes -->
+  <rect x="54" y="74" width="170" height="92" rx="10" fill="#e1f5ee" stroke="#006565" stroke-width="2.5"/>
+  <rect x="70" y="92" width="64" height="8" rx="4" fill="#006565"/>
+  <rect x="70" y="112" width="136" height="6" rx="3" fill="#006565" opacity=".35"/>
+  <rect x="70" y="128" width="116" height="6" rx="3" fill="#006565" opacity=".35"/>
+  <rect x="70" y="144" width="86" height="6" rx="3" fill="#006565" opacity=".35"/>
+  <!-- window B: checks -->
+  <rect x="296" y="74" width="170" height="92" rx="10" fill="#ffffff" stroke="#006565" stroke-width="2.5"/>
+  <path d="M312 96l6 6 11-12" fill="none" stroke="#006565" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="340" y="94" width="96" height="7" rx="3.5" fill="#006565" opacity=".35"/>
+  <path d="M312 122l6 6 11-12" fill="none" stroke="#006565" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="340" y="120" width="76" height="7" rx="3.5" fill="#006565" opacity=".35"/>
+  <rect x="312" y="144" width="14" height="14" rx="3" fill="none" stroke="#006565" stroke-width="2.5"/>
+  <rect x="340" y="146" width="86" height="7" rx="3.5" fill="#006565" opacity=".35"/>
+  <!-- window C: result -->
+  <rect x="170" y="208" width="180" height="70" rx="10" fill="#8ff6d0" stroke="#006565" stroke-width="2.5"/>
+  <rect x="190" y="226" width="80" height="8" rx="4" fill="#006565"/>
+  <rect x="190" y="246" width="140" height="6" rx="3" fill="#006565" opacity=".4"/>
+  <rect x="190" y="260" width="104" height="6" rx="3" fill="#006565" opacity=".4"/>
+  <!-- threads: square, 90 degree -->
+  <path d="M139 166V188H260V208" fill="none" stroke="#006565" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M381 166V188H260" fill="none" stroke="#006565" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="139" cy="166" r="6" fill="#fcf9f8" stroke="#006565" stroke-width="3"/>
+  <circle cx="381" cy="166" r="6" fill="#fcf9f8" stroke="#006565" stroke-width="3"/>
+  <circle cx="260" cy="188" r="6" fill="#006565"/>
+  <circle cx="260" cy="208" r="4.5" fill="#CC5500"/>
+</svg>
+
         </div>
       </div>
     </section>
@@ -107,22 +173,22 @@
         </div>
         <div class="cards cards--four">
           <div class="card">
-            <span class="chip">Self-employed</span>
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></div>
             <h3>Freelancers and self-employed</h3>
             <p>Quotes and proposals, following up with contacts, replying to clients, invoices and payments, a monthly money overview and good text for your website and social media. We also connect your tools so they talk to each other.</p>
           </div>
           <div class="card">
-            <span class="chip">Firms</span>
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18"/><path d="M5 21h14"/><path d="M5 7h14"/><path d="M5 7l-3 7a3 3 0 0 0 6 0z"/><path d="M19 7l-3 7a3 3 0 0 0 6 0z"/></svg></div>
             <h3>Lawyers, tax advisors and accountants</h3>
             <p>Long documents and contracts: summarise, compare clauses and know what to ask. Research with sources you can check, your own knowledge base, and clarity on which client data must never go into an AI tool.</p>
           </div>
           <div class="card">
-            <span class="chip">Consulting</span>
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4"/><path d="M8 20h8"/><path d="M7 12l3-3 3 2 4-4"/></svg></div>
             <h3>Consultants and public-facing professionals</h3>
             <p>Well-structured presentations and reports, research and summaries of long documents, preparing for meetings and notes with action points at the end. And your tools connected so nothing gets lost between them.</p>
           </div>
           <div class="card">
-            <span class="chip">Health and training</span>
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.600-7 10-7 10z"/></svg></div>
             <h3>Health, therapy and training</h3>
             <p>Meeting notes, order in your email, files and calendar, text for your communication and, above all, care with your clients’ or students’ data.</p>
           </div>
@@ -134,54 +200,57 @@
         <div class="section-head section-head--sub">
           <h2 class="h3-display">What we can work on</h2>
         </div>
-        <div class="section-head section-head--sub">
-          <h3 class="h3-display">Clients and sales</h3>
+        <div class="sx-groups">
+          <div class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.500 6.500 0 0 1 13 0"/><circle cx="17" cy="9" r="2.500"/><path d="M17.500 14.500a5 5 0 0 1 4 5"/></svg></div>
+            <h3>Clients and sales</h3>
+            <ul class="checklist">
+              <li>Quotes and proposals: reusable templates and first drafts with AI that you review and send.</li>
+              <li>Following up with contacts: emails and short sequences in your voice, and a simple way to see who is waiting for what.</li>
+              <li>Replying to client emails and WhatsApp in your tone, faster.</li>
+              <li>Preparing for a call: researching the person or company in ten minutes.</li>
+              <li>Meeting notes: summaries and action points ready to send.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6.500 9v.01M17.500 15v.01"/></svg></div>
+            <h3>Money and admin</h3>
+            <ul class="checklist">
+              <li>Invoicing: clean templates, supplier invoices read into a spreadsheet and polite payment reminders.</li>
+              <li>A monthly money overview and a quarterly checklist of what to have ready (organisation, not tax advice).</li>
+              <li>Contracts and long documents: summarise, compare clauses and spot what to ask. A person or lawyer always signs.</li>
+              <li>Order in your email, files and calendar: labels, folders and search that works.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4-1 11-11a2.100 2.100 0 0 0-3-3L5 16z"/><path d="M14 7l3 3"/></svg></div>
+            <h3>Content and presence</h3>
+            <ul class="checklist">
+              <li>Posts, newsletter and LinkedIn in your voice, without sounding like AI.</li>
+              <li>Presentations and reports: structure, slides, speaker notes and clearer visuals.</li>
+              <li>Website text, Google Business Profile and basic SEO.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.500A1.500 1.500 0 0 1 5.500 3H20v15H5.500A1.500 1.500 0 0 0 4 19.500z"/><path d="M4 19.500A1.500 1.500 0 0 0 5.500 21H20v-3"/></svg></div>
+            <h3>Knowledge and research</h3>
+            <ul class="checklist">
+              <li>Research with sources you can check, and summaries of long PDFs and reports.</li>
+              <li>A personal knowledge base: your notes, templates and instructions in one searchable place.</li>
+              <li>Translation and tone adaptation between Spanish, English and other languages.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.500-3.200 7.800-8 9-4.800-1.200-8-4.500-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3>Tools and safety</h3>
+            <ul class="checklist">
+              <li>Choosing and setting up the right AI tools for you: account, settings, what to pay for and what not.</li>
+              <li>Your own library of reusable instructions, so you don’t start from zero each time.</li>
+              <li>Your tools connected: your email, calendar, notes and invoices talking to each other. We set it up together, step by step, and you understand how it works.</li>
+              <li>Privacy: what never goes into an AI tool, client confidentiality and what the tools do with your data.</li>
+            </ul>
+          </div>
         </div>
-        <ul class="checklist">
-          <li>Quotes and proposals: reusable templates and first drafts with AI that you review and send.</li>
-          <li>Following up with contacts: emails and short sequences in your voice, and a simple way to see who is waiting for what.</li>
-          <li>Replying to client emails and WhatsApp in your tone, faster.</li>
-          <li>Preparing for a call: researching the person or company in ten minutes.</li>
-          <li>Meeting notes: summaries and action points ready to send.</li>
-        </ul>
-
-        <div class="section-head section-head--sub" style="margin-top:2.25rem">
-          <h3 class="h3-display">Money and admin</h3>
-        </div>
-        <ul class="checklist">
-          <li>Invoicing: clean templates, supplier invoices read into a spreadsheet and polite payment reminders.</li>
-          <li>A monthly money overview and a quarterly checklist of what to have ready (organisation, not tax advice).</li>
-          <li>Contracts and long documents: summarise, compare clauses and spot what to ask. A person or lawyer always signs.</li>
-          <li>Order in your email, files and calendar: labels, folders and search that works.</li>
-        </ul>
-
-        <div class="section-head section-head--sub" style="margin-top:2.25rem">
-          <h3 class="h3-display">Content and presence</h3>
-        </div>
-        <ul class="checklist">
-          <li>Posts, newsletter and LinkedIn in your voice, without sounding like AI.</li>
-          <li>Presentations and reports: structure, slides, speaker notes and clearer visuals.</li>
-          <li>Website text, Google Business Profile and basic SEO.</li>
-        </ul>
-
-        <div class="section-head section-head--sub" style="margin-top:2.25rem">
-          <h3 class="h3-display">Knowledge and research</h3>
-        </div>
-        <ul class="checklist">
-          <li>Research with sources you can check, and summaries of long PDFs and reports.</li>
-          <li>A personal knowledge base: your notes, templates and instructions in one searchable place.</li>
-          <li>Translation and tone adaptation between Spanish, English and other languages.</li>
-        </ul>
-
-        <div class="section-head section-head--sub" style="margin-top:2.25rem">
-          <h3 class="h3-display">Tools and safety</h3>
-        </div>
-        <ul class="checklist">
-          <li>Choosing and setting up the right AI tools for you: account, settings, what to pay for and what not.</li>
-          <li>Your own library of reusable instructions, so you don’t start from zero each time.</li>
-          <li>Your tools connected: your email, calendar, notes and invoices talking to each other. We set it up together, step by step, and you understand how it works.</li>
-          <li>Privacy: what never goes into an AI tool, client confidentiality and what the tools do with your data.</li>
-        </ul>
       </div>
     </section>
     <section class="subpage-block subpage-block--alt">
@@ -219,19 +288,19 @@
     </section>
     <section class="subpage-block subpage-block--alt">
       <div class="wrap">
-        <div class="section-head section-head--sub">
-          <h2 class="h3-display">Privacy</h2>
-          <p>Before we start we agree what information can be used and what can’t. Your clients’ data doesn’t go into any AI tool unless we’ve checked it together.</p>
+        <div class="sx-duo">
+          <div class="card">
+            <div class="card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+            <h3>Privacy</h3>
+            <p>Before we start we agree what information can be used and what can’t. Your clients’ data doesn’t go into any AI tool unless we’ve checked it together.</p>
+          </div>
+          <div class="sx-price">
+            <p class="section-label">Price</p>
+            <p class="sx-price__amount">€750 <small>+ VAT</small></p>
+            <h3>5-hour pack</h3>
+            <p>Two 2-hour sessions and a 1-hour follow-up within the next 30 days. A clear quote before we start.</p>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="subpage-block">
-      <div class="wrap">
-        <aside class="callout">
-          <p class="section-label">Price</p>
-          <h2 class="h3-display">5-hour pack · €750 + VAT</h2>
-          <p>Two 2-hour sessions and a 1-hour follow-up within the next 30 days. A clear quote before we start.</p>
-        </aside>
       </div>
     </section>
 
