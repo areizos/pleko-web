@@ -102,12 +102,6 @@
     @media (min-width: 900px) { .sx-hand--quote { margin-left: 41%; margin-top: -.4rem; } }
     .sx-hand--pick { display: inline-block; margin-left: .8rem; font-size: 2.1rem; font-weight: 400; vertical-align: .15em; transform: rotate(-3deg); }
     .sx-price .sx-hand--price { color: var(--color-accent); font-size: 2.5rem; transform: rotate(-2deg); margin-top: .1rem; }
-    .sx-thread { position: absolute; left: 0; top: 0; pointer-events: none; z-index: 2; overflow: visible; }
-    .sx-thread path { fill: none; stroke: var(--color-primary); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-    .sx-thread .node { fill: var(--color-background); stroke: var(--color-primary); stroke-width: 2.5; opacity: 0; transition: opacity .35s; }
-    .sx-thread .stub { stroke: var(--color-primary); stroke-width: 2.5; stroke-linecap: round; opacity: 0; transition: opacity .35s; }
-    .sx-thread .dot { fill: var(--color-signal); opacity: 0; transition: opacity .35s; }
-    .sx-thread .on { opacity: 1; }
     @media (max-width: 640px) { .sx-hero__art .sx-scrawl-arrow { right: auto; left: 22%; width: 3.6rem; } .sx-hand--art { right: 0; } .sx-hand { font-size: 1.9rem; } .sx-hand--pick { display: block; margin: .3rem 0 0; } }
 
   </style>
@@ -427,71 +421,6 @@
   </script>
     <script src="/site.js?v=14" defer></script>
   <script src="/corner-card.js?v=4" defer></script>
-
-  <script>
-  /* One thread down the page: square bends, a node and a small orange dot at each section, drawn as you scroll. */
-  (function () {
-    var main = document.getElementById('top');
-    if (!main || !document.createElementNS) return;
-    var NS = 'http://www.w3.org/2000/svg';
-    var svg = document.createElementNS(NS, 'svg');
-    svg.setAttribute('class', 'sx-thread');
-    svg.setAttribute('aria-hidden', 'true');
-    main.style.position = 'relative';
-    main.appendChild(svg);
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var path, len = 0, y0 = 0, y1 = 1, marks = [];
-    function el(n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; }
-    function build() {
-      while (svg.firstChild) svg.removeChild(svg.firstChild);
-      marks = [];
-      var mr = main.getBoundingClientRect(), top = window.scrollY + mr.top;
-      var W = main.clientWidth, H = main.scrollHeight;
-      svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-      var first = main.querySelector('.subpage-hero .section-head').getBoundingClientRect();
-      var x = Math.max(9, first.left - mr.left - 24);
-      var heads = [].slice.call(main.querySelectorAll('.subpage-block h2.h3-display'));
-      var contact = main.querySelector('.contact');
-      var ys = heads.map(function (h) { var r = h.getBoundingClientRect(); return { y: window.scrollY + r.top - top + 14, left: r.left - mr.left }; });
-      if (contact) ys.push({ y: window.scrollY + contact.getBoundingClientRect().top - top, left: x + 14, end: true });
-      y0 = 40; y1 = ys[ys.length - 1].y;
-      var d = 'M' + x + ' ' + y0;
-      ys.forEach(function (p, i) {
-        var tx = (i % 2) ? x : x + 9;
-        var prev = i ? ys[i - 1].y : y0;
-        var mid = Math.round((prev + p.y) / 2);
-        d += ' V' + mid + ' H' + tx + ' V' + p.y;
-        marks.push({ x: tx, y: p.y, left: p.left, end: p.end });
-      });
-      path = el('path', { d: d });
-      len = path.getTotalLength();
-      path.style.strokeDasharray = len;
-      marks.forEach(function (m) {
-        var sx = Math.min(m.left - 12, m.x + 34);
-        m.stub = m.end ? null : el('line', { 'class': 'stub', x1: m.x, y1: m.y, x2: sx, y2: m.y });
-        m.dot = el('circle', { 'class': 'dot', cx: m.end ? m.x : sx, cy: m.y, r: 3.6 });
-        m.node = el('circle', { 'class': 'node', cx: m.x, cy: m.y, r: 5.5 });
-      });
-      update();
-    }
-    function update() {
-      if (!path) return;
-      var mr = main.getBoundingClientRect(), top = window.scrollY + mr.top;
-      var drawn = reduce ? y1 : (window.scrollY + window.innerHeight * 0.65 - top);
-      var p = Math.max(0, Math.min(1, (drawn - y0) / (y1 - y0)));
-      path.style.strokeDashoffset = len * (1 - p);
-      marks.forEach(function (m) {
-        var on = drawn >= m.y;
-        [m.stub, m.dot, m.node].forEach(function (e) { if (e) e.classList.toggle('on', on); });
-      });
-    }
-    var t;
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(build, 120); });
-    window.addEventListener('load', build);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
-    build();
-  })();
-  </script>
+  <script src="/thread.js?v=1" defer></script>
 </body>
 </html>
