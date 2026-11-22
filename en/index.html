@@ -124,6 +124,15 @@
 
   <link rel="stylesheet" href="../style.css?v=58" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
+  <style>
+    /* Homepage extra: handwriting font for the small drawing next to "Cómo trabajo", and its layout */
+    @font-face { font-family: "Covered By Your Grace"; src: url("/fonts/hand-covered-by-your-grace.woff2") format("woff2"); font-display: swap; }
+    .pk-split { display: grid; gap: 1.5rem; align-items: center; }
+    .pk-split .section-head { margin-bottom: 0; }
+    .pk-art svg { display: block; width: 100%; max-width: 26rem; height: auto; margin: 0 auto; }
+    @media (min-width: 900px) { .pk-split { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 3rem; } }
+    .process .pk-split { margin-bottom: 2.5rem; }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#top">Skip to content</a>
@@ -391,9 +400,12 @@
     <!-- ============ 03 HOW I WORK + AI WITH JUDGEMENT + SHORT BIO ============ -->
     <section id="how-i-work" class="process">
       <div class="wrap">
-        <div class="section-head">
+        <div class="pk-split">
+          <div class="section-head">
           <p class="section-label">03 — How I work and why pleko</p>
           <h2 class="h2">From the first call to workflows that work, and keep working.</h2>
+        </div>
+          <div class="pk-art"><svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M24 150.0 C59 87 83 95 34 134 C34 134 162 198 139 106 C139 106 105 114 50 87 C50 87 56 218 148 199 C148 199 144 101 70 170 C70 170 134 207 156 84" stroke="#006565" stroke-width="2.6"/><path d="M30 150.0 C95 132 49 201 31 150 C31 150 156 91 108 166 C108 166 36 133 128 143 C128 143 132 102 63 96 C63 96 101 209 113 188 C113 188 84 184 44 121" stroke="#006565" stroke-width="2.6"/><circle cx="190" cy="150" r="7" fill="#fff" stroke="#006565" stroke-width="3"/><path d="M197 150H250V110H330" stroke="#006565" stroke-width="3"/><path d="M250 150V190H330" stroke="#006565" stroke-width="3"/><path d="M250 150H330" stroke="#006565" stroke-width="3"/><rect x="330" y="92" width="120" height="36" rx="9" fill="#e1f5ee" stroke="#006565" stroke-width="2.5"/><rect x="344" y="106" width="60" height="6" rx="3.0" fill="#006565" opacity="0.5" stroke="none"/><rect x="330" y="132" width="120" height="36" rx="9" fill="#e1f5ee" stroke="#006565" stroke-width="2.5"/><rect x="344" y="146" width="80" height="6" rx="3.0" fill="#006565" opacity="0.5" stroke="none"/><rect x="330" y="172" width="120" height="36" rx="9" fill="#8ff6d0" stroke="#006565" stroke-width="2.5"/><rect x="344" y="186" width="50" height="6" rx="3.0" fill="#006565" opacity="0.6" stroke="none"/><circle cx="330" cy="110" r="5" fill="#fff" stroke="#006565" stroke-width="3"/><circle cx="330" cy="150" r="5" fill="#fff" stroke="#006565" stroke-width="3"/><circle cx="330" cy="190" r="5" fill="#fff" stroke="#006565" stroke-width="3"/><path d="M450 190H480" stroke="#006565" stroke-width="3"/><circle cx="480" cy="190" r="7" fill="#CC5500" stroke="#fcf9f8" stroke-width="3"/><text x="40" y="270" font-family="'Covered By Your Grace',cursive" font-size="28" fill="#006565" stroke="none" text-anchor="start" transform="rotate(-4 40 270)">before: tangled</text><text x="300" y="262" font-family="'Covered By Your Grace',cursive" font-size="28" fill="#006565" stroke="none" text-anchor="start" transform="rotate(-3 300 262)">after: clear</text></svg></div>
         </div>
         <ol class="steps">
           <li class="step step--1">

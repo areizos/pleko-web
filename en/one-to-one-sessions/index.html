@@ -81,6 +81,12 @@
     .sx-price h3 { margin: 0; font-size: 1.2rem; color: #fff; }
     .sx-price p { margin: 0; color: #e6f6f1; }
     .sx-price p.sx-price__amount { color: #fff; }
+    .sx-notion { display: grid; gap: 1.5rem; align-items: center; }
+    .sx-notion__text p { margin: 0 0 .9rem; max-width: 34rem; color: var(--color-text); line-height: 1.6; }
+    .sx-notion__art svg { display: block; width: 100%; max-width: 26rem; height: auto; margin: 0 auto; }
+    @media (min-width: 900px) { .sx-notion { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 3.5rem; } }
+    .sx-how-art { margin: 0 0 2rem; } .sx-how-art svg { display: block; width: 100%; max-width: 34rem; height: auto; }
+
     @font-face { font-family: "Covered By Your Grace"; src: url("/fonts/hand-covered-by-your-grace.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
     .sx-hand { font-family: "Covered By Your Grace", "Segoe Print", "Bradley Hand", cursive; font-size: 2.3rem; line-height: 1; color: var(--color-primary); margin: 0; transform: rotate(-3deg); transform-origin: left center; }
     .sx-mark { position: relative; display: inline-block; white-space: nowrap; }
@@ -283,11 +289,22 @@
         </div>
       </div>
     </section>
+    <section class="subpage-block">
+      <div class="wrap sx-notion">
+        <div class="sx-notion__text">
+          <p class="section-label">Notion</p>
+          <h2 class="h3-display">Notion, set up for you</h2>
+          <p>Lots of people have heard of Notion and don’t know where to start. We set it up together for your case: one place to see your clients, tasks, quotes and invoices, and learn to use it without getting lost.</p>
+        </div>
+        <div class="sx-notion__art"><svg viewBox="0 -22 520 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="180" y="100" width="160" height="100" rx="16" fill="#8ff6d0" stroke="#006565" stroke-width="3"/><rect x="214" y="118" width="92" height="64" rx="8" fill="#fff" stroke="#006565" stroke-width="2.5"/><rect x="226" y="132" width="40" height="8" rx="4.0" fill="#006565" opacity="0.8" stroke="none"/><rect x="226" y="150" width="64" height="6" rx="3.0" fill="#006565" opacity="0.35" stroke="none"/><rect x="226" y="164" width="50" height="6" rx="3.0" fill="#006565" opacity="0.35" stroke="none"/><text x="260" y="236" font-family="'Covered By Your Grace',cursive" font-size="30" fill="#006565" stroke="none" text-anchor="middle" transform="rotate(-2 260 236)">your Notion</text><path d="M180 150H110V76" stroke="#006565" stroke-width="3"/><path d="M340 150H410V76" stroke="#006565" stroke-width="3"/><path d="M260 100V60H260" stroke="#006565" stroke-width="3"/><path d="M260 200V240" stroke="#006565" stroke-width="3"/><rect x="65" y="10" width="90" height="66" rx="12" fill="#fff" stroke="#006565" stroke-width="2.5"/><path d="M81 30L110 52L139 30" stroke="#006565" stroke-width="2.5"/><rect x="81" y="28" width="58" height="32" rx="5" stroke="#006565" stroke-width="2.5" fill="none"/><rect x="365" y="10" width="90" height="66" rx="12" fill="#fff" stroke="#006565" stroke-width="2.5"/><rect x="383" y="26" width="54" height="38" rx="6" stroke="#006565" stroke-width="2.5" fill="none"/><path d="M383 38H437" stroke="#006565" stroke-width="2.5"/><rect x="215" y="-6" width="90" height="66" rx="12" fill="#fff" stroke="#006565" stroke-width="2.5"/><path d="M239 6H281V50L273 44L265 50L257 44L249 50L239 44Z" stroke="#006565" stroke-width="2.5" fill="none"/><path d="M249 20H271M249 30H267" stroke="#006565" stroke-width="2.5"/><circle cx="110" cy="150" r="6" fill="#fff" stroke="#006565" stroke-width="3"/><circle cx="410" cy="150" r="6" fill="#fff" stroke="#006565" stroke-width="3"/><circle cx="110" cy="76" r="6" fill="#CC5500" stroke="#fcf9f8" stroke-width="3"/><circle cx="410" cy="76" r="6" fill="#CC5500" stroke="#fcf9f8" stroke-width="3"/></svg></div>
+      </div>
+    </section>
     <section class="subpage-block subpage-block--alt">
       <div class="wrap">
         <div class="section-head section-head--sub">
           <h2 class="h3-display">How the 5 hours work</h2>
         </div>
+        <div class="sx-how-art"><svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="30" y="100" width="150" height="70" rx="12" fill="#8ff6d0" stroke="#006565" stroke-width="2.5"/><rect x="200" y="100" width="150" height="70" rx="12" fill="#8ff6d0" stroke="#006565" stroke-width="2.5"/><rect x="370" y="100" width="100" height="70" rx="12" fill="#fff" stroke="#006565" stroke-width="2.5"/><text x="105" y="148" font-family="'Covered By Your Grace',cursive" font-size="44" fill="#006565" stroke="none" text-anchor="middle" transform="rotate(-3 105 148)">2 h</text><text x="275" y="148" font-family="'Covered By Your Grace',cursive" font-size="44" fill="#006565" stroke="none" text-anchor="middle" transform="rotate(-3 275 148)">2 h</text><text x="420" y="148" font-family="'Covered By Your Grace',cursive" font-size="44" fill="#006565" stroke="none" text-anchor="middle" transform="rotate(-3 420 148)">1 h</text><path d="M180 135H200" stroke="#006565" stroke-width="3"/><path d="M350 135H370" stroke="#006565" stroke-width="3"/><circle cx="190" cy="135" r="5" fill="#fff" stroke="#006565" stroke-width="3"/><circle cx="360" cy="135" r="5" fill="#fff" stroke="#006565" stroke-width="3"/><path d="M105 170V215H105" stroke="#006565" stroke-width="3"/><text x="105" y="250" font-family="'Covered By Your Grace',cursive" font-size="28" fill="#006565" stroke="none" text-anchor="middle" transform="rotate(-3 105 250)">session 1</text><text x="275" y="250" font-family="'Covered By Your Grace',cursive" font-size="28" fill="#006565" stroke="none" text-anchor="middle" transform="rotate(-3 275 250)">session 2</text><text x="420" y="250" font-family="'Covered By Your Grace',cursive" font-size="26" fill="#006565" stroke="none" text-anchor="middle" transform="rotate(-3 420 250)">follow-up</text><path d="M105 170V196" stroke="#006565" stroke-width="3"/><path d="M275 170V196" stroke="#006565" stroke-width="3"/><path d="M420 170V196" stroke="#006565" stroke-width="3"/><circle cx="105" cy="196" r="6" fill="#CC5500" stroke="#fcf9f8" stroke-width="3"/><circle cx="275" cy="196" r="6" fill="#CC5500" stroke="#fcf9f8" stroke-width="3"/><circle cx="420" cy="196" r="6" fill="#CC5500" stroke="#fcf9f8" stroke-width="3"/><text x="30" y="64" font-family="'Covered By Your Grace',cursive" font-size="30" fill="#006565" stroke="none" text-anchor="start" transform="rotate(-2 30 64)">5 hours in total</text><path d="M30 78H190" stroke="#006565" stroke-width="2.5"/></svg></div>
         <ol class="steps">
           <li class="step step--1">
             <span class="chip">01</span>
