@@ -2406,6 +2406,15 @@ a[target="_blank"]:not(.btn):not(.floating__btn):not(.latest-post):not(.contact_
   color: var(--color-text-muted);
   font-size: 0.95rem;
 }
+.subpage-note button.btn--ghost {
+  font: inherit;
+  font-weight: 600;
+  border: 0;
+  background: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .subpage-note a,
 .callout a,
 .subpage-text a,
