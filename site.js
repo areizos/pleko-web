@@ -603,7 +603,7 @@
       return;
     }
 
-    var name = el.hasAttribute('data-tally-form') ? 'click-diagnostico' :
+    var name = (el.hasAttribute('data-tally-form') || href.indexOf('buy.stripe.com/') !== -1) ? 'click-diagnostico' :
       href.indexOf('wa.me/') !== -1 ? 'click-whatsapp' :
       (el.hasAttribute('data-cal-link') || href.indexOf('mailto:') === 0 || href.indexOf('#reserva') !== -1 || href.indexOf('#book') !== -1) ? 'click-contacto' : '';
     if (name) umTrack(name, { location: placeOf(el) });
