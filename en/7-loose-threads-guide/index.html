@@ -61,6 +61,7 @@
     .gd-radio input, .gd-consent input { width: 1.2rem; height: 1.2rem; accent-color: var(--color-primary); flex: none; }
     .gd-consent { display: flex; gap: .7rem; align-items: flex-start; font-size: .95rem; line-height: 1.45; cursor: pointer; }
     .gd-consent input { margin-top: .15rem; }
+    .gd-req { color: #CC5500; font-weight: 700; text-decoration: none; }
     .gd-small { margin: 0; font-size: .9rem; color: #4d5d5b; }
     .gd-err { margin: 0; padding: .7rem .9rem; border-radius: .6rem; background: #fdecea; color: #7a1f14; display: none; }
     .gd-err.is-on { display: block; }
@@ -133,7 +134,7 @@
               <label class="gd-radio"><input type="radio" name="SEGMENTO" value="1" required /> Self-employed</label>
               <label class="gd-radio"><input type="radio" name="SEGMENTO" value="2" required /> I have a team</label>
             </fieldset>
-            <label class="gd-consent"><input type="checkbox" name="consent" value="yes" required /> <span>I'd like to receive the guide and, now and then, new posts from pleko.es by email. I can unsubscribe at any time with one click. How I look after your data is in the <a href="/en/privacy/">privacy policy</a>.</span></label>
+            <label class="gd-consent"><input type="checkbox" name="consent" value="yes" required /> <span><abbr class="gd-req" title="Required">*</abbr> I'd like to receive the guide and, now and then, new posts from pleko.es by email. I can unsubscribe at any time with one click. How I look after your data is in the <a href="/en/privacy/">privacy policy</a>.</span></label>
             <div class="gd-hp" aria-hidden="true"><input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" /></div>
             <input type="hidden" name="locale" value="en" />
             <p class="gd-err" id="guide-err" role="alert">I couldn&#x27;t send it. Please try again or write to alex@pleko.es.</p>

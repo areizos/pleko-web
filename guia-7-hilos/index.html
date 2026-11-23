@@ -61,6 +61,7 @@
     .gd-radio input, .gd-consent input { width: 1.2rem; height: 1.2rem; accent-color: var(--color-primary); flex: none; }
     .gd-consent { display: flex; gap: .7rem; align-items: flex-start; font-size: .95rem; line-height: 1.45; cursor: pointer; }
     .gd-consent input { margin-top: .15rem; }
+    .gd-req { color: #CC5500; font-weight: 700; text-decoration: none; }
     .gd-small { margin: 0; font-size: .9rem; color: #4d5d5b; }
     .gd-err { margin: 0; padding: .7rem .9rem; border-radius: .6rem; background: #fdecea; color: #7a1f14; display: none; }
     .gd-err.is-on { display: block; }
@@ -133,7 +134,7 @@
               <label class="gd-radio"><input type="radio" name="SEGMENTO" value="1" required /> Soy autónomo/a</label>
               <label class="gd-radio"><input type="radio" name="SEGMENTO" value="2" required /> Tengo un equipo</label>
             </fieldset>
-            <label class="gd-consent"><input type="checkbox" name="consent" value="yes" required /> <span>Quiero recibir la guía y, de vez en cuando, artículos nuevos de pleko.es por email. Puedo darme de baja cuando quiera con un clic. Cómo cuido tus datos está en la <a href="/privacidad/">política de privacidad</a>.</span></label>
+            <label class="gd-consent"><input type="checkbox" name="consent" value="yes" required /> <span><abbr class="gd-req" title="Obligatorio">*</abbr> Quiero recibir la guía y, de vez en cuando, artículos nuevos de pleko.es por email. Puedo darme de baja cuando quiera con un clic. Cómo cuido tus datos está en la <a href="/privacidad/">política de privacidad</a>.</span></label>
             <div class="gd-hp" aria-hidden="true"><input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" /></div>
             <input type="hidden" name="locale" value="es" />
             <p class="gd-err" id="guide-err" role="alert">No he podido enviarlo. Inténtalo de nuevo o escríbeme a alex@pleko.es.</p>
