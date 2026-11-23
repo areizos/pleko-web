@@ -267,4 +267,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/services/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/servicios/" />
   </url>
+  <url>
+    <loc>https://pleko.es/guia-7-hilos/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/guia-7-hilos/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/7-loose-threads-guide/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/guia-7-hilos/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/7-loose-threads-guide/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/guia-7-hilos/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/7-loose-threads-guide/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/guia-7-hilos/" />
+  </url>
 </urlset>

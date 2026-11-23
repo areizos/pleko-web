@@ -552,7 +552,7 @@
   /* ---------- Umami events (cookie-free stats) ---------------------------
      Every key click is sent with a "location" (the part of the page it was
      in). Event names: click-diagnostico, click-contacto, click-whatsapp,
-     toggle-language, expand-faq, click-founder-bio. */
+     toggle-language, expand-faq, click-founder-bio, click-guia, download-guia (the signup-guia event is sent by the guide form page itself). */
   function umTrack(name, data) {
     if (typeof window.umami === 'undefined' || !window.umami.track) return null;
     data = data || {};
@@ -562,6 +562,8 @@
   function placeOf(el) {
     var own = el.closest('[data-umami-event-location]');
     if (own) return own.getAttribute('data-umami-event-location');
+    var own2 = el.closest('[data-location]');
+    if (own2) return own2.getAttribute('data-location');
     if (el.closest('.site-header')) return 'header';
     if (el.closest('.site-footer')) return 'footer';
     if (el.closest('.corner-card, .pcard')) return 'corner-card';
@@ -587,6 +589,11 @@
       }
       return;
     }
+    if (href.indexOf('/guia-7-hilos/') === 0 || href.indexOf('/en/7-loose-threads-guide/') === 0) {
+      // links to the guide sign-up page (e.g. the box inside a blog post)
+      if (href.indexOf('/revisa-tu-email') < 0 && href.indexOf('/gracias') < 0 && href.indexOf('/thanks') < 0 && href.indexOf('/check-your-inbox') < 0) { umTrack('click-guia', { location: placeOf(el) }); return; }
+    }
+    if (href.indexOf('/descargas/') === 0) { umTrack('download-guia', { location: placeOf(el), file: href.split('?')[0].split('/').pop() }); return; }
     if (href.indexOf('/v/areizos') === 0) { umTrack('click-founder-bio', { location: placeOf(el) }); return; }
 
     if (el.closest('.lang-toggle') && el.tagName === 'A' && !el.hasAttribute('aria-current')) {

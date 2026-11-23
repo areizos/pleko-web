@@ -32,7 +32,7 @@
     '/servicios/', '/en/services/',
     '/sesiones-1-a-1/', '/en/one-to-one-sessions/'
   ];
-  var SKIP_PREFIXES = ['/blog/', '/en/blog/'];   // the blog index and every post
+  var SKIP_PREFIXES = ['/blog/', '/en/blog/', '/guia-7-hilos/', '/en/7-loose-threads-guide/'];   // the blog index and every post
 
   var VARIANTS = {
     call: {
