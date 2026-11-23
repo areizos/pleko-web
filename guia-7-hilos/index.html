@@ -38,7 +38,7 @@
   <link rel="preload" href="/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-    <link rel="stylesheet" href="/style.css?v=58" />
+    <link rel="stylesheet" href="/style.css?v=60" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
 
     <style>
@@ -119,7 +119,7 @@
           <p class="gd-plain">Con palabras claras y las herramientas que ya usas. Siempre revisa una persona lo importante.</p>
         </div>
         <div>
-          <form class="gd-form" id="guide-form" method="POST" action="https://f258b9a9.sibforms.com/serve/MUIFAEmxSa9o_9aDnvyLKJg9i2-LRw6sbm1eG5kCVP3Je0dN1MWyoILg1YFEkKaz1wo64nEX_8LG-MBTCSIMB6ebUQgn2U_jq4eoMtDo64MGRb059csfJt6RH6deTJQzcIRVOoeOVWbaKz9BNbTi7-YMsxCHySKhXixnBVXJK9OVRcVT5bTXjkk1HpGF-ODwNzxOZJmIASkKMwuSIg==" data-next="/guia-7-hilos/revisa-tu-email/" novalidate>
+          <form class="gd-form" id="guide-form" method="POST" action="https://f258b9a9.sibforms.com/serve/MUIFAEmxSa9o_9aDnvyLKJg9i2-LRw6sbm1eG5kCVP3Je0dN1MWyoILg1YFEkKaz1wo64nEX_8LG-MBTCSIMB6ebUQgn2U_jq4eoMtDo64MGRb059csfJt6RH6deTJQzcIRVOoeOVWbaKz9BNbTi7-YMsxCHySKhXixnBVXJK9OVRcVT5bTXjkk1HpGF-ODwNzxOZJmIASkKMwuSIg==" data-next="/guia-7-hilos/revisa-tu-email/">
             <div>
               <label class="gd-lbl" for="gd-email">Email</label>
               <input type="email" id="gd-email" name="EMAIL" autocomplete="email" required />
@@ -168,7 +168,7 @@
       var btn = document.getElementById('guide-btn'), err = document.getElementById('guide-err'), busy = false;
       f.addEventListener('submit', function (e) {
         err.classList.remove('is-on');
-        if (!f.checkValidity()) { return; }
+        if (!f.checkValidity()) { e.preventDefault(); f.reportValidity(); return; }
         if (busy || !window.fetch) { return; }
         e.preventDefault(); busy = true;
         var label = btn.textContent; btn.textContent = btn.getAttribute('data-sending'); btn.disabled = true;
