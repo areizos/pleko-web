@@ -30,6 +30,7 @@
     '/privacidad/', '/aviso-legal/', '/en/privacy/', '/en/legal-notice/',
     '/pruebalo/', '/en/try-it/',
     '/servicios/', '/en/services/',
+    '/servicios/diagnostico-operativo/', '/en/services/operational-diagnosis/',
     '/sesiones-1-a-1/', '/en/one-to-one-sessions/'
   ];
   var SKIP_PREFIXES = ['/blog/', '/en/blog/', '/guia-7-hilos/', '/en/7-loose-threads-guide/'];   // the blog index and every post
