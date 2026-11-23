@@ -38,7 +38,7 @@
   <link rel="preload" href="/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="/style.css?v=58" />
+  <link rel="stylesheet" href="/style.css?v=60" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
 
     <style>
@@ -119,7 +119,7 @@
           <p class="gd-plain">Plain words, with the tools you already use. A person checks what matters, always.</p>
         </div>
         <div>
-          <form class="gd-form" id="guide-form" method="POST" action="https://f258b9a9.sibforms.com/serve/MUIFAGCl9IkteJfeWLw6WETxfW93x6PtaZgRnHRqnxj_ue0nr0ibhDpsfNodwLHZJedwRQdiHDqyE1jvfFmRM-BOj7V8vS4b3kQjHz8Pgbjb7FWjGgJVJHo4ro5s39n1YlEUAmpOrQg6A8Qtda28ftZp-jF_OR2yCPtpsl0QSX1eazibLRxzApT7NWj7vWm9eXS_aTp_uWVO17f0hg==" data-next="/en/7-loose-threads-guide/check-your-inbox/" novalidate>
+          <form class="gd-form" id="guide-form" method="POST" action="https://f258b9a9.sibforms.com/serve/MUIFAGCl9IkteJfeWLw6WETxfW93x6PtaZgRnHRqnxj_ue0nr0ibhDpsfNodwLHZJedwRQdiHDqyE1jvfFmRM-BOj7V8vS4b3kQjHz8Pgbjb7FWjGgJVJHo4ro5s39n1YlEUAmpOrQg6A8Qtda28ftZp-jF_OR2yCPtpsl0QSX1eazibLRxzApT7NWj7vWm9eXS_aTp_uWVO17f0hg==" data-next="/en/7-loose-threads-guide/check-your-inbox/">
             <div>
               <label class="gd-lbl" for="gd-email">Email</label>
               <input type="email" id="gd-email" name="EMAIL" autocomplete="email" required />
@@ -168,7 +168,7 @@
       var btn = document.getElementById('guide-btn'), err = document.getElementById('guide-err'), busy = false;
       f.addEventListener('submit', function (e) {
         err.classList.remove('is-on');
-        if (!f.checkValidity()) { return; }
+        if (!f.checkValidity()) { e.preventDefault(); f.reportValidity(); return; }
         if (busy || !window.fetch) { return; }
         e.preventDefault(); busy = true;
         var label = btn.textContent; btn.textContent = btn.getAttribute('data-sending'); btn.disabled = true;
