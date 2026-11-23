@@ -96,5 +96,21 @@
   "seed": 11,
   "title": "Learn to work with AI.",
   "lead": "One-to-one sessions for professionals, with me beside you and your own cases."
+ },
+ {
+  "out": "og/guia-7-hilos-es.png",
+  "layout": "blog",
+  "bg": "noche",
+  "label": "Guía gratuita",
+  "title": "Los 7 hilos que frenan a tu negocio.",
+  "lead": "Siete tareas del día a día que pueden funcionar solas, y por dónde empezar."
+ },
+ {
+  "out": "og/7-loose-threads-guide-en.png",
+  "layout": "blog",
+  "bg": "noche",
+  "label": "Free guide",
+  "title": "The 7 loose threads holding your business back.",
+  "lead": "Seven everyday jobs that can run on their own, and where to start."
  }
 ]

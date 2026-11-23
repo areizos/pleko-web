@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fcf9f8" />
+  <title>The 7 loose threads holding your business back | pleko</title>
+  <meta name="description" content="A free 5-page guide: seven everyday jobs that can run on their own, and where to start." />
+  <link rel="canonical" href="https://pleko.es/en/7-loose-threads-guide/" />
+
+  <!-- Open Graph: controls how this page looks when shared on LinkedIn, Slack, etc. -->
+  <meta property="og:title" content="The 7 loose threads holding your business back | pleko" />
+  <meta property="og:description" content="A free 5-page guide: seven everyday jobs that can run on their own, and where to start." />
+  <meta property="og:image" content="https://pleko.es/og/7-loose-threads-guide-en.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="pleko: free guide &quot;The 7 loose threads holding your business back&quot;." />
+  <meta property="og:url" content="https://pleko.es/en/7-loose-threads-guide/" />
+  <meta property="og:site_name" content="pleko.es" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="es_ES" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons: the pleko "p" mark (teal p with a burnt orange dot on a cream tile) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png?v=3" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+
+  <!-- Language versions of this page, so search engines pair them up. -->
+  <link rel="alternate" hreflang="es" href="https://pleko.es/guia-7-hilos/" />
+  <link rel="alternate" hreflang="en" href="https://pleko.es/en/7-loose-threads-guide/" />
+  <link rel="alternate" hreflang="x-default" href="https://pleko.es/guia-7-hilos/" />
+
+  <!-- Fonts (Inter + Literata) are served from pleko.es itself: see /fonts/ and the
+       @font-face rules at the top of style.css. The two used above the fold load first. -->
+  <link rel="preload" href="/fonts/literata-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="/style.css?v=58" />
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
+
+    <style>
+    /* Page-only styles for the guide sign-up pages */
+    .gd-dots { background-image: radial-gradient(circle, rgba(0,114,87,.20) 1.4px, transparent 1.6px), url("/paper.png"); background-size: 24px 24px, auto; padding-bottom: clamp(2rem, 4vw, 3.5rem); }
+    .gd-grid { display: grid; gap: 2rem; align-items: start; }
+    @media (min-width: 900px) { .gd-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 3.5rem; } }
+    .gd-sub { margin: .2rem 0 1rem; font-family: var(--font-display); font-style: italic; font-size: clamp(1.25rem, 2.4vw, 1.6rem); color: var(--color-primary); }
+    .gd-list { margin: 1rem 0 0; padding: 0; list-style: none; counter-reset: gd; display: grid; gap: .6rem; }
+    .gd-list li { counter-increment: gd; position: relative; padding-left: 2.2rem; line-height: 1.45; }
+    .gd-list li::before { content: counter(gd); position: absolute; left: 0; top: .05rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: #e1f5ee; color: var(--color-primary); font-weight: 700; font-size: .85rem; display: grid; place-items: center; }
+    .gd-plain { margin: 1.1rem 0 0; color: var(--color-text); opacity: .85; }
+    .gd-form { background: #fff; border: 1px solid #d5e4e1; border-radius: 1.25rem; padding: 1.6rem; display: grid; gap: 1rem; }
+    .gd-form label.gd-lbl { display: block; font-weight: 600; margin-bottom: .3rem; }
+    .gd-form input[type="email"], .gd-form input[type="text"] { width: 100%; min-height: 48px; padding: .55rem .9rem; border: 1.5px solid #b7c9c6; border-radius: .6rem; font: inherit; background: #fcf9f8; }
+    .gd-form input:focus-visible { outline: 3px solid #8ff6d0; outline-offset: 1px; border-color: var(--color-primary); }
+    .gd-form fieldset { border: 0; margin: 0; padding: 0; }
+    .gd-form legend { font-weight: 600; padding: 0; margin-bottom: .4rem; }
+    .gd-radio { display: flex; align-items: center; gap: .6rem; min-height: 44px; cursor: pointer; }
+    .gd-radio input, .gd-consent input { width: 1.2rem; height: 1.2rem; accent-color: var(--color-primary); flex: none; }
+    .gd-consent { display: flex; gap: .7rem; align-items: flex-start; font-size: .95rem; line-height: 1.45; cursor: pointer; }
+    .gd-consent input { margin-top: .15rem; }
+    .gd-small { margin: 0; font-size: .9rem; color: #4d5d5b; }
+    .gd-err { margin: 0; padding: .7rem .9rem; border-radius: .6rem; background: #fdecea; color: #7a1f14; display: none; }
+    .gd-err.is-on { display: block; }
+    .gd-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .gd-author { display: flex; gap: .9rem; align-items: center; margin-top: 1.4rem; }
+    .gd-author img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex: none; }
+    .gd-author p { margin: 0; font-size: .98rem; }
+    .gd-center { max-width: 38rem; }
+    .gd-soft { margin-top: 1.2rem; }
+    .gd-center .lead { margin-top: 1rem; }
+    .gd-soft button.btn { justify-content: flex-start; text-align: left; padding-left: 0; }
+    .gd-form button.btn, .gd-soft button.btn { border: 0; cursor: pointer; font-family: inherit; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <!-- ============ MENU BAR ============
+       Sticks to the top of the window while scrolling (position: sticky in style.css). -->
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a href="/en/" class="brand" aria-label="pleko, home">
+        <img src="/pleko-logo.svg?v=2" alt="pleko" class="brand__logo" width="314" height="116" />
+      </a>
+      <nav class="menu" aria-label="Menu">
+        <a href="/en/#services">Services</a>
+        <a href="/en/#how-i-work">How I work</a>
+        <a href="/en/#about">About</a>
+        <a href="/en/faq/">FAQ</a>
+        <details class="menu-more">
+          <summary>Resources</summary>
+          <div class="menu-more__panel">
+            <a href="/en/blog/">Blog</a>
+            <a href="/en/ai-glossary/">AI glossary</a>
+            <a href="/en/ai-with-judgement/">AI with judgement</a>
+          </div>
+        </details>
+      </nav>
+      <a href="/en/#book" class="btn btn--primary header-cta" tabindex="-1" aria-hidden="true">Book a call</a>
+      <div class="lang-toggle" aria-label="Language">
+        <a href="/guia-7-hilos/">ES</a>
+        <a href="/en/7-loose-threads-guide/" aria-current="page">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="subpage-hero gd-dots">
+      <div class="wrap gd-grid">
+        <div class="section-head">
+          <p class="section-label">Free guide, 5 pages</p>
+          <h1 class="h2">The 7 loose threads holding your business back</h1>
+          <p class="gd-sub">and how to tame them without changing software.</p>
+          <p class="lead">Most people don&#x27;t know what could run on its own. It happens to me too. This guide shows seven everyday jobs that usually can, and where I&#x27;d start.</p>
+          <ol class="gd-list" aria-label="What&#x27;s inside"><li>New client and invoice, without typing the data twice</li><li>Supplier invoices that read themselves</li><li>Every enquiry answered and logged</li><li>Quotes that don&#x27;t go cold</li><li>First drafts in your voice</li><li>Meetings that end in tasks, not loose notes</li><li>The Monday report, done before your coffee</li></ol>
+          <p class="gd-plain">Plain words, with the tools you already use. A person checks what matters, always.</p>
+        </div>
+        <div>
+          <form class="gd-form" id="guide-form" method="POST" action="https://f258b9a9.sibforms.com/serve/MUIFAGCl9IkteJfeWLw6WETxfW93x6PtaZgRnHRqnxj_ue0nr0ibhDpsfNodwLHZJedwRQdiHDqyE1jvfFmRM-BOj7V8vS4b3kQjHz8Pgbjb7FWjGgJVJHo4ro5s39n1YlEUAmpOrQg6A8Qtda28ftZp-jF_OR2yCPtpsl0QSX1eazibLRxzApT7NWj7vWm9eXS_aTp_uWVO17f0hg==" data-next="/en/7-loose-threads-guide/check-your-inbox/" novalidate>
+            <div>
+              <label class="gd-lbl" for="gd-email">Email</label>
+              <input type="email" id="gd-email" name="EMAIL" autocomplete="email" required />
+            </div>
+            <div>
+              <label class="gd-lbl" for="gd-name">First name (optional)</label>
+              <input type="text" id="gd-name" name="FIRSTNAME" autocomplete="given-name" maxlength="200" />
+            </div>
+            <fieldset>
+              <legend>Are you self-employed, or do you have a team?</legend>
+              <label class="gd-radio"><input type="radio" name="SEGMENTO" value="1" required /> Self-employed</label>
+              <label class="gd-radio"><input type="radio" name="SEGMENTO" value="2" required /> I have a team</label>
+            </fieldset>
+            <label class="gd-consent"><input type="checkbox" name="consent" value="yes" required /> <span>I'd like to receive the guide and, now and then, new posts from pleko.es by email. I can unsubscribe at any time with one click. How I look after your data is in the <a href="/en/privacy/">privacy policy</a>.</span></label>
+            <div class="gd-hp" aria-hidden="true"><input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" /></div>
+            <input type="hidden" name="locale" value="en" />
+            <p class="gd-err" id="guide-err" role="alert">I couldn&#x27;t send it. Please try again or write to alex@pleko.es.</p>
+            <button type="submit" class="btn btn--primary" id="guide-btn" data-sending="Sending…">Send me the guide</button>
+            <p class="gd-small">You&#x27;ll get one email to confirm your address, then the guide. No spam, and I never pass your details on.</p>
+          </form>
+          <div class="gd-author"><img src="/alex-avatar.jpg" alt="Alex" width="56" height="56" /><p>I&#x27;m Alex. I automate and simplify repetitive work for self-employed people and small businesses.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <span>&copy; <span id="year"></span> pleko</span>
+      <nav class="footer-links" aria-label="Links">
+        <a href="/en/faq/">FAQ</a>
+        <a href="/en/services/">Services and pricing</a>
+        <a href="https://www.linkedin.com/in/areizos/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/en/blog/">Blog</a>
+        <a href="/en/privacy/">Privacy</a>
+        <a href="/en/legal-notice/">Legal notice</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Guide form: sends the data to Brevo in the background, then moves on to the "check your inbox" page.
+    // If that fails for any reason, the browser sends the form the normal way instead.
+    (function () {
+      var f = document.getElementById('guide-form'); if (!f) return;
+      var btn = document.getElementById('guide-btn'), err = document.getElementById('guide-err'), busy = false;
+      f.addEventListener('submit', function (e) {
+        err.classList.remove('is-on');
+        if (!f.checkValidity()) { return; }
+        if (busy || !window.fetch) { return; }
+        e.preventDefault(); busy = true;
+        var label = btn.textContent; btn.textContent = btn.getAttribute('data-sending'); btn.disabled = true;
+        var fail = function () { busy = false; btn.disabled = false; btn.textContent = label; err.classList.add('is-on'); };
+        fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
+          .then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
+          .then(function (j) {
+            if (j && j.success === false) { fail(); return; }
+            try { if (window.umami && window.umami.track) window.umami.track('signup-guia', { lang: 'en' }); } catch (x) {}
+            setTimeout(function () { window.location.href = f.getAttribute('data-next'); }, 200);
+          })
+          .catch(fail);
+      });
+    })();
+  </script>
+
+  <script>
+    // Small touch of JS: keep the copyright year correct without editing it by hand.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!--
+    Cal.com embed — this is Cal.com's own standard snippet (copied as-is from
+    their embed instructions, not something hand-written), it just loads
+    their booking widget script. Any element with data-cal-link (the
+    booking button in the contact section) opens the calendar in a pop-up,
+    themed with pleko's teal.
+  -->
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    // Started by site.js once the page has loaded, or as soon as someone
+    // heads for the booking button, so it doesn't slow the first paint.
+    window.plekoLoadCal = function () {
+      window.plekoLoadCal = function () {}; // only once
+      Cal("init", { origin: "https://cal.com" });
+      Cal("ui", {
+        styles: { branding: { brandColor: "#006565" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    };
+  </script>
+    <script src="/site.js?v=15" defer></script>
+  <script src="/corner-card.js?v=6" defer></script>
+</body>
+</html>
