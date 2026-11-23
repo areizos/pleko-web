@@ -95,6 +95,9 @@ def markdown(md):
             continue
         if lines[0].startswith("## "):
             out.append(f"<h2>{inline(lines[0][3:])}</h2>")
+        elif lines[0].startswith(">> "):
+            label, url = [x.strip() for x in lines[0][3:].split("|", 1)]
+            out.append(f'<p class="post__box" style="margin:1.75rem 0 2rem"><a class="btn btn--primary" style="color:#fff;text-decoration:none" href="{url}" data-location="blog-post">{html.escape(label)} <span class="arrow" aria-hidden="true">→</span></a></p>')
         elif lines[0] == "---":
             out.append("<hr />")
         elif all(l.startswith("- ") for l in lines):

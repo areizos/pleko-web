@@ -198,6 +198,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/por-que-monte-pleko/" />
   </url>
   <url>
+    <loc>https://pleko.es/blog/los-7-hilos-que-frenan-a-tu-negocio/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/los-7-hilos-que-frenan-a-tu-negocio/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/the-7-loose-threads-holding-your-business-back/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/los-7-hilos-que-frenan-a-tu-negocio/" />
+  </url>
+  <url>
+    <loc>https://pleko.es/en/blog/the-7-loose-threads-holding-your-business-back/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/los-7-hilos-que-frenan-a-tu-negocio/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://pleko.es/en/blog/the-7-loose-threads-holding-your-business-back/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://pleko.es/blog/los-7-hilos-que-frenan-a-tu-negocio/" />
+  </url>
+  <url>
     <loc>https://pleko.es/blog/la-vuelta-del-generalista/</loc>
     <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://pleko.es/blog/la-vuelta-del-generalista/" />

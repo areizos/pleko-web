@@ -77,6 +77,6 @@ Los clientes no tienen que decidir si soy de marketing, de operaciones o alguien
 
 Me gustaría decir que esto fue un plan. Se pareció más a una serie de experimentos que fueron funcionando, hasta que la forma se vio lo bastante clara como para ponerle nombre. pleko es ese nombre.
 
-En el próximo texto quiero hablar de lo que pasa antes de las herramientas: cómo reconocer un proceso que se ha complicado y encontrar el problema que merece la pena resolver. A veces ni siquiera nos damos cuenta de que se ha complicado: llevamos tanto tiempo conviviendo con él que damos por hecho que las cosas tienen que ser así.
+En [el próximo texto](/blog/los-7-hilos-que-frenan-a-tu-negocio/) quiero hablar de lo que pasa antes de las herramientas: cómo reconocer un proceso que se ha complicado y encontrar el problema que merece la pena resolver. A veces ni siquiera nos damos cuenta de que se ha complicado: llevamos tanto tiempo conviviendo con él que damos por hecho que las cosas tienen que ser así.
 
 Si llevas años siendo la persona que conecta cosas en lugar de la que posee una sola, me gustaría saber qué hiciste con eso. Ponte en contacto y cuéntamelo.

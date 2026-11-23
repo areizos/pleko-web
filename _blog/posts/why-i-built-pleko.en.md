@@ -77,6 +77,6 @@ Clients do not need to decide whether I am a marketer, an operations person or a
 
 I would like to tell you this was a plan. It was closer to a series of experiments that kept working, until the shape became clear enough to name. pleko is that name.
 
-In the next post, I want to look at what happens before the tools: how to spot a process that has got too complicated and find the problem worth solving. Sometimes we don't even notice a process has got complicated: we've lived with it for so long that we assume that's just how things have to be.
+In [the next post](/en/blog/the-7-loose-threads-holding-your-business-back/), I want to look at what happens before the tools: how to spot a process that has got too complicated and find the problem worth solving. Sometimes we don't even notice a process has got complicated: we've lived with it for so long that we assume that's just how things have to be.
 
 If you have spent years being the person who connects things rather than the person who owns one thing, I would like to hear what you did with it. Write to me and tell me.
