@@ -107,13 +107,22 @@
         start: APPEAR + idx * GAP
       };
     });
+    // Start size: each ball is as tall as the whole heading block (all lines together).
+    var H = box.height;
+    lines.forEach(function (L) {
+      var fs = F, x = 0, y = 0, dir = L.left ? Math.PI : 0, lo = 0, hi = 0, step = L.w / N;
+      for (var i = 0; i < N; i++) { dir += L.kap[i]; x += step * Math.cos(dir); y += step * Math.sin(dir); lo = Math.min(lo, y); hi = Math.max(hi, y); }
+      var ballH = Math.max(hi - lo, 1);
+      L.fs0 = Math.max(0.7 * F, Math.min(1.6 * F, F * H / ballH));
+      L.cy = H / 2;
+    });
     el.classList.add('is-yarn');
     return { el: el, svg: svg, lines: lines, F: F, total: APPEAR + (lines.length - 1) * GAP + DUR };
   }
 
   function draw(L, F, r) {
     var g = ease(clamp(r));
-    var fs = F * (SHRINK + (1 - SHRINK) * g);
+    var fs = L.fs0 + (F - L.fs0) * g;
     var step = L.w * (fs / F) / N;
     var dir = L.left ? Math.PI : 0, x = L.ax, y = L.ay, pts = [x, y], piv = -1, i;
     for (i = 0; i < N; i++) {
@@ -128,7 +137,12 @@
       var px = pts[2 * piv], py = pts[2 * piv + 1], cx = 0, cy = 0, c = 0;
       for (i = piv + 1; i <= N; i++) { cx += pts[2 * i]; cy += pts[2 * i + 1]; c++; }
       cx = cx / c - px; cy = cy / c - py;
-      var beta = (L.down ? Math.PI / 2 : -Math.PI / 2) - Math.atan2(cy, cx);
+      var dist = Math.sqrt(cx * cx + cy * cy) || 1, sx = L.left ? -1 : 1;
+      var dy = L.cy - py, a0 = Math.abs(dy) >= dist ? (dy > 0 ? Math.PI / 2 : -Math.PI / 2) : Math.atan2(dy, sx * Math.sqrt(dist * dist - dy * dy));
+      var a1 = L.down ? Math.PI / 2 : -Math.PI / 2;           // settles on top of its line (or under it)
+      var da = a1 - a0; while (da > Math.PI) da -= 2 * Math.PI; while (da < -Math.PI) da += 2 * Math.PI;
+      var aim = a0 + da * ease(clamp((r - 0.35) / 0.65));
+      var beta = aim - Math.atan2(cy, cx);
       while (beta > Math.PI) beta -= 2 * Math.PI; while (beta < -Math.PI) beta += 2 * Math.PI;
       beta *= Math.min(1, (N - piv) / 12);
       for (i = piv + 1; i <= N; i++) {
@@ -188,8 +202,9 @@
         st.lines.forEach(function (L) { draw(L, st.F, (t - L.start) / DUR); });
       };               // used by the preview page's "Ver otra vez" button
       window.addEventListener('resize', function () { if (st && st.raf) finish(st); });
-      if (!('IntersectionObserver' in window)) return;   // no observer: the plain text stays
-      el.classList.add('is-waiting');
+      var pre = document.documentElement.classList;
+      if (!('IntersectionObserver' in window)) { pre.remove('pk-pre'); return; }   // no observer: the plain text stays
+      el.classList.add('is-waiting'); pre.remove('pk-pre');
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (!e.isIntersecting) return;

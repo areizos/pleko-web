@@ -125,7 +125,19 @@
   <link rel="stylesheet" href="../style.css?v=61" />
   <link rel="stylesheet" href="/card-popup/card-popup.css?v=4" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="1256b5eb-6801-4aba-b1ee-9b3b61d7affc"></script>
+  <script>
+    /* Hides the heading words from the first paint so they do not flash before the ball animation; ovillo.js lifts this (and a 3 s safety net does too). */
+    (function(){try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){var d=document.documentElement;d.classList.add('pk-pre');setTimeout(function(){d.classList.remove('pk-pre')},3000)}}catch(e){}})();
+  </script>
   <style>
+    /* Ovillo heading: the title starts as two balls of text and unrolls (ovillo.js). Plays on every load. */
+    .pk-yarn{position:relative}
+    .pk-yarn__line{display:block;width:max-content;max-width:100%;white-space:nowrap}
+    .hero__title.pk-yarn{font-size:clamp(2rem,9.2vw,3.75rem)}
+    @media (min-width:1100px){.hero__title.pk-yarn{font-size:clamp(2.6rem,4.2vw,3.75rem)}}
+    .pk-yarn__svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;fill:currentColor;pointer-events:none}
+    .pk-pre .pk-yarn__line,.pk-yarn.is-waiting .pk-yarn__line,.pk-yarn.is-yarn .pk-yarn__line{visibility:hidden}
+    .pk-yarn.is-done .pk-yarn__svg{display:none}
     /* Homepage extra: handwriting font for the small drawing next to "Cómo trabajo", and its layout */
     @font-face { font-family: "Covered By Your Grace"; src: url("/fonts/hand-covered-by-your-grace.woff2") format("woff2"); font-display: swap; }
     /* Static hero (2026-11-22): on phones show only the screen */
@@ -177,9 +189,7 @@
       <div class="wrap hero__inner">
         <div class="hero__copy">
           <p class="eyebrow">I automate and simplify your repetitive work</p>
-          <h1 class="hero__title">
-            Automation and AI in <span class="hero__accent">Barcelona</span>.
-          </h1>
+          <h1 class="hero__title pk-yarn"><span class="pk-yarn__line">Automation</span> <span class="pk-yarn__line" data-dir="left" data-ball="below">and AI in <span class="hero__accent">Barcelona</span>.</span></h1>
           <p class="hero__tagline">
             Your day disappears into copying data, chasing emails and jumping from one tool to another. I connect what you already use so invoices log themselves and your clients get answers on time. The system does the repetitive work; you make the calls that matter.
           </p>
@@ -612,6 +622,7 @@
       });
     };
   </script>
+  <script src="/ovillo.js?v=3" defer></script>
   <script src="/site.js?v=15" defer></script>
   <script src="/corner-card.js?v=9" defer></script>
   <script src="/card-popup/card-popup.js?v=5" defer></script>
