@@ -79,6 +79,12 @@
     .av-title { font-weight: 600; color: var(--color-primary); }
     @media (max-width: 40rem) { .av-who__sep, .av-title { display: none; } }
     @media (max-width: 40rem) { .av-sectors { display: grid; grid-template-columns: 1fr 1fr; } .av-sectors button { padding: .5rem .6rem; font-size: .9rem; } }
+    .av .av-pill { flex: none; margin-left: .6rem; }
+    .av .av-pill p { margin: 0; padding: .15rem .55rem; border-radius: 999px; font-size: .78rem; font-weight: 600; white-space: nowrap; line-height: 1.5; }
+    .av .av-pill--ok p { background: #d9f7ec; color: #00504f; }
+    .av .av-pill--warn p { background: #fbe7b5; color: #6e4a00; }
+    .av .av-pill--same p { background: #eef1f0; color: #5b6b6a; }
+    .av .a2ui-image-mediumFeature { width: 100%; max-width: 26rem; height: auto; margin: .25rem 0; }
     .av__what { max-width: 40rem; margin: 2rem auto 0; font-size: .9rem; color: var(--color-text-muted); }
     @media (prefers-reduced-motion: reduce) { .av-screen { transition: none; } .av-tap { animation: none; display: none; } }
     @media (max-width: 40rem) { .av-tab { padding: .6rem .6rem .6rem 1rem; border-radius: 1.6rem; } .av-tab__inner { border-radius: 1rem; height: 80vh; } .av-tab__cam { left: .3rem; } }
@@ -172,7 +178,7 @@
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/pruebalo/aventura/a2ui.js?v=1" defer></script>
-  <script src="/pruebalo/aventura/aventura.js?v=4" defer></script>
+  <script src="/pruebalo/aventura/aventura.js?v=5" defer></script>
   <script src="/site.js?v=15" defer></script>
 </body>
 </html>

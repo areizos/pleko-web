@@ -59,6 +59,17 @@
     }
   });
 
+  // Colour the comparison pills (see stats() below).
+  function paint() {
+    var els = chat.querySelectorAll('a2ui-basic-text:not(.av-pill)');
+    for (var i = 0; i < els.length; i++) {
+      var t = els[i].textContent;
+      var tone = t.indexOf('\u200C') > -1 ? 'warn' : t.indexOf('\u200B') > -1 ? 'ok' : t.indexOf('\u200D') > -1 ? 'same' : '';
+      if (tone) els[i].classList.add('av-pill', 'av-pill--' + tone);
+    }
+  }
+  if (window.MutationObserver) new MutationObserver(paint).observe(chat, { childList: true, subtree: true });
+
   // A small ripple where the visitor taps, like a finger on a screen.
   chat.addEventListener('pointerdown', function (e) {
     var r = chat.getBoundingClientRect();
@@ -165,14 +176,158 @@
     return id;
   }
 
-  // Every item screen ends the same way: say yes, or leave it for later.
+  // ---------- charts and comparisons (sample data) ----------
+  // Charts are small SVG pictures sent as A2UI Image components, the way an
+  // agent would send a chart it drew. Colours: teal = now, grey-green =
+  // before, amber = needs attention.
+  var C = { teal: '#006565', mid: '#4FA89A', soft: '#B9CFCC', warn: '#D99A00', ink: '#1d2b2b', mute: '#5b6b6a' };
+  var FONT = 'font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif"';
+  function esc(x) { return String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function svgUrl(svg) { return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); }
+
+  // Bars over time. The last bar is "now" (teal), or amber when warn is set.
+  function barsSvg(title, cats) {
+    var W = 360, H = 176, top = 40, bottom = 26, n = cats.length, slot = (W - 20) / n, bw = Math.min(44, slot * .55);
+    var max = Math.max.apply(null, cats.map(function (c) { return c.v; })) * 1.12;
+    var out = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" ' + FONT + '>' +
+      '<text x="10" y="18" font-size="13" font-weight="600" fill="' + C.teal + '">' + esc(title) + '</text>' +
+      '<line x1="10" x2="' + (W - 10) + '" y1="' + (H - bottom) + '" y2="' + (H - bottom) + '" stroke="#dfe7e6"/>';
+    cats.forEach(function (c, i) {
+      var h = (H - top - bottom) * c.v / max, x = 10 + slot * i + (slot - bw) / 2, y = H - bottom - h;
+      var fill = c.warn ? C.warn : (i === n - 1 ? C.teal : C.soft);
+      out += '<rect x="' + x + '" y="' + y + '" width="' + bw + '" height="' + h + '" rx="4" fill="' + fill + '"/>' +
+        '<text x="' + (x + bw / 2) + '" y="' + (y - 6) + '" font-size="12" text-anchor="middle" fill="' + C.ink + '"' + (i === n - 1 ? ' font-weight="600"' : '') + '>' + esc(c.t || c.v) + '</text>' +
+        '<text x="' + (x + bw / 2) + '" y="' + (H - 8) + '" font-size="11" text-anchor="middle" fill="' + C.mute + '">' + esc(c.l) + '</text>';
+    });
+    return out + '</svg>';
+  }
+
+  // Donut with a legend on the right. A segment with warn is amber.
+  function donutSvg(title, segs, centre) {
+    var W = 360, H = 176, cx = 82, cy = 102, r = 48, sw = 20, L = 2 * Math.PI * r;
+    var total = segs.reduce(function (a, s) { return a + s.v; }, 0), acc = 0, pal = [C.teal, C.mid, C.soft];
+    var out = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" ' + FONT + '>' +
+      '<text x="10" y="18" font-size="13" font-weight="600" fill="' + C.teal + '">' + esc(title) + '</text>';
+    segs.forEach(function (sg, i) {
+      var len = L * sg.v / total, col = sg.warn ? C.warn : pal[i % pal.length];
+      out += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="' + col + '" stroke-width="' + sw + '" stroke-dasharray="' + Math.max(len - 2, 0) + ' ' + (L - Math.max(len - 2, 0)) + '" stroke-dashoffset="' + (-acc) + '" transform="rotate(-90 ' + cx + ' ' + cy + ')"/>';
+      acc += len;
+      var ly = 52 + i * 26;
+      out += '<rect x="168" y="' + (ly - 10) + '" width="12" height="12" rx="3" fill="' + col + '"/>' +
+        '<text x="188" y="' + ly + '" font-size="12" fill="' + C.ink + '">' + esc(sg.l) + ' <tspan font-weight="600">' + esc(sg.t || sg.v) + '</tspan></text>';
+    });
+    out += '<text x="' + cx + '" y="' + (cy + 5) + '" font-size="15" font-weight="600" text-anchor="middle" fill="' + C.ink + '">' + esc(centre || total) + '</text>';
+    return out + '</svg>';
+  }
+
+  function chart(id, c) {
+    var svg = c.type === 'donut' ? donutSvg(c.title, c.data, c.centre) : barsSvg(c.title, c.data);
+    return [{ id: id, component: 'Image', url: svgUrl(svg), description: c.title, variant: 'mediumFeature', fit: 'contain' }];
+  }
+
+  // Comparison rows: label · value · small coloured pill (▲ 12 %).
+  // The pill's colour is marked with an invisible character, which paint()
+  // below turns into a class (A2UI text has no colour of its own).
+  var TONE = { ok: '​', warn: '‌', same: '‍' };
+  function stats(id, title, rows) {
+    var comps = [T(id + 'h', title, 'caption')], ids = [id + 'h'];
+    rows.forEach(function (r, i) {
+      var k = id + i, kids = [k + 'l', k + 'v'];
+      comps.push(T(k + 'l', r[0], 'caption'), Object.assign(T(k + 'v', '**' + r[1] + '**'), {}));
+      if (r[2]) { comps.push(T(k + 'p', r[2] + (TONE[r[3]] || TONE.same))); kids.push(k + 'p'); }
+      comps.push(Col(k + 'lc', [k + 'l'], { weight: 1 }));
+      comps.push(Row(k, [k + 'lc'].concat(kids.slice(1)), { align: 'center' }));
+      ids.push(k);
+    });
+    comps.push(Col(id + 'col', ids), Card(id, id + 'col'));
+    return comps;
+  }
+
+  // The context block for an item: an optional chart and the comparisons.
+  function context(id, c) {
+    if (!c) return [];
+    var comps = [], ids = [];
+    if (c.chart) { comps = comps.concat(chart(id + 'g', c.chart)); ids.push(id + 'g'); }
+    if (c.rows) { comps = comps.concat(stats(id + 's', c.title, c.rows)); ids.push(id + 's'); }
+    comps.push(Col(id, ids));
+    return comps;
+  }
+
+  // Every item screen ends the same way: how things are going, then say yes
+  // or leave it for later.
   function decide(item, yesLabel, ctx) {
+    var c = (CTX[sector] || {})[item];
     return flat([
+      context('ctx', c),
       Btn('yes', yesLabel, 'aprobar', 'primary', Object.assign({ item: item }, ctx || {})),
       Btn('later', 'Ahora no', 'bandeja', 'borderless'),
-      [Row('decide', ['yes', 'later'], { align: 'center' })]
+      [Row('btnrow', ['yes', 'later'], { align: 'center' }),
+       Col('decide', c ? ['ctx', 'btnrow'] : ['btnrow'])]
     ]);
   }
+
+  // ---------- sample figures for every item ----------
+  // ok = good news (mint pill), warn = needs attention (amber), same = no change.
+  var CTX = {
+    autonomos: {
+      consulta: { title: 'Tus consultas · últimos 7 días vs los 7 anteriores', rows: [
+        ['Consultas nuevas', '6', '▲ 50 %', 'ok'],
+        ['Tiempo medio de respuesta', '3 h', '▼ 40 %', 'ok'],
+        ['Sin contestar desde hace 2 días', '1', 'Atención', 'warn']] },
+      notas: { title: 'Tus notas · esta semana vs la pasada', rows: [
+        ['Notas dictadas', '9', '▲ 3', 'ok'],
+        ['Tareas de notas anteriores sin hacer', '2', 'Atención', 'warn']] },
+      factura: { title: 'Noviembre vs octubre', chart: { type: 'donut', title: 'Facturado en noviembre', centre: '3.840 €',
+          data: [{ l: 'Cobrado', v: 2690, t: '2.690 €' }, { l: 'Pendiente', v: 670, t: '670 €' }, { l: 'Vencido', v: 480, t: '480 €', warn: true }] },
+        rows: [['Facturado', '3.840 €', '▲ 18 %', 'ok'], ['Días medios de cobro', '21', '▼ 5 días', 'ok'], ['Factura vencida hace 12 días', '480 €', 'Reclamar', 'warn']] },
+      cita: { title: 'Esta semana vs la pasada', chart: { type: 'bars', title: 'Llamadas con clientes por semana',
+          data: [{ l: 'Sem. 44', v: 2 }, { l: 'Sem. 45', v: 3 }, { l: 'Sem. 46', v: 3 }, { l: 'Esta', v: 4 }] },
+        rows: [['Llamadas', '4', '▲ 1', 'ok'], ['De llamada a proyecto', '1 de cada 3', 'Igual', 'same'], ['Huecos libres mañana', '1', 'Agenda llena', 'warn']] }
+    },
+    asesorias: {
+      docs: { title: 'Este trimestre vs el anterior', chart: { type: 'donut', title: 'Clientes con la documentación completa', centre: '41',
+          data: [{ l: 'Completa', v: 38 }, { l: 'Incompleta', v: 3, warn: true }] },
+        rows: [['Clientes con todo entregado', '93 %', '▲ 5 pts', 'ok'], ['Días hasta el plazo', '6', 'Atención', 'warn']] },
+      facturas: { title: 'Noviembre vs octubre', chart: { type: 'bars', title: 'Facturas leídas por la IA cada mes',
+          data: [{ l: 'Ago', v: 290 }, { l: 'Sep', v: 338 }, { l: 'Oct', v: 337 }, { l: 'Nov', v: 412 }] },
+        rows: [['Facturas leídas', '412', '▲ 22 %', 'ok'], ['Leídas sin corregir nada', '97 %', '▲ 2 pts', 'ok'], ['Con un IVA que no cuadra', '1', 'Revisar', 'warn']] },
+      consulta: { title: 'Hoy vs el martes pasado', rows: [
+        ['Emails de clientes', '27', '▲ 35 %', 'warn'],
+        ['Contestados con un borrador listo', '21 de 27', '▲ 9', 'ok'],
+        ['Con datos personales ocultados', '6', 'Igual', 'same']] },
+      alta: { title: 'Noviembre vs octubre', rows: [
+        ['Altas de clientes', '5', '▲ 2', 'ok'],
+        ['Tiempo medio de alta', '1 día', '▼ 3 días', 'ok'],
+        ['Falta el certificado censal', '1', 'Pedir', 'warn']] }
+    },
+    agencias: {
+      alta: { title: 'Este cliente vs el anterior', rows: [
+        ['Tiempo hasta empezar a trabajar', '1 día', '▼ 4 días', 'ok'],
+        ['Tareas creadas solas', '18', '▲ 18', 'ok'],
+        ['Accesos recibidos', '2 de 3', 'Falta Meta', 'warn']] },
+      post: { title: 'Este mes vs el anterior', chart: { type: 'bars', title: 'Interacción media de este cliente (%)',
+          data: [{ l: 'LinkedIn', v: 4.1, t: '4,1 %' }, { l: 'Instagram', v: 5.3, t: '5,3 %' }, { l: 'Newsletter', v: 3.1, t: '3,1 %', warn: true }] },
+        rows: [['LinkedIn', '4,1 %', '▲ 0,6 pts', 'ok'], ['Instagram', '5,3 %', '▲ 1,1 pts', 'ok'], ['Newsletter (apertura)', '31 %', '▼ 4 pts', 'warn']] },
+      ia: { title: 'Este mes vs el anterior', rows: [
+        ['Preguntas del equipo sobre IA', '7', '▲ 3', 'ok'],
+        ['Normas de uso escritas', '4 de 5', 'Falta una', 'warn']] }
+    },
+    inmobiliarias: {
+      contactos: { title: 'Últimos 7 días vs los 7 anteriores', chart: { type: 'donut', title: 'Contactos por origen', centre: '23',
+          data: [{ l: 'Idealista', v: 11 }, { l: 'Tu web', v: 7 }, { l: 'Fotocasa', v: 5, warn: true }] },
+        rows: [['Contactos', '23', '▲ 28 %', 'ok'], ['Contestados en menos de 1 hora', '91 %', '▲ 30 pts', 'ok'], ['Desde Fotocasa', '5', '▼ 30 %', 'warn']] },
+      visita: { title: 'Esta semana vs la pasada', chart: { type: 'bars', title: 'Visitas por semana',
+          data: [{ l: 'Sem. 44', v: 6 }, { l: 'Sem. 45', v: 7 }, { l: 'Sem. 46', v: 7 }, { l: 'Esta', v: 9 }] },
+        rows: [['Visitas', '9', '▲ 2', 'ok'], ['Ático: visitas sin oferta', '3', 'Revisar precio', 'warn']] },
+      anuncio: { title: 'Noviembre vs octubre', rows: [
+        ['Anuncios activos', '14', '▲ 2', 'ok'],
+        ['Días medios hasta reservar', '38', '▼ 6 días', 'ok'],
+        ['Sin fotos nuevas en 60 días', '2', 'Atención', 'warn']] },
+      seguimiento: { title: 'Este mes vs el anterior', chart: { type: 'donut', title: 'Visitas de noviembre', centre: '21',
+          data: [{ l: 'Con respuesta', v: 17 }, { l: 'Sin respuesta', v: 4, warn: true }] },
+        rows: [['Visitas con seguimiento', '85 %', '▲ 20 pts', 'ok'], ['Sin respuesta tras 7 días', '4', 'Escribir', 'warn']] }
+    }
+  };
 
   // ---------- the four inboxes ----------
   // Each item: what the inbox shows, the screen it opens, and what the
@@ -203,10 +358,11 @@
               [T('h', 'Ibas en el coche y dictaste lo que se te pasaba por la cabeza. Escríbelo aquí como si lo dijeras en voz alta, o deja el ejemplo.'),
                { id: 'texto', component: 'TextField', label: 'Tu nota de voz (en texto)', variant: 'longText', value: { '@path': '/texto' } },
                T('priv', 'El texto pasa por mi servidor de automatizaciones y por un modelo de IA de OpenAI para leerlo. Yo no lo guardo. No escribas datos personales reales.', 'caption')],
+              context('ctx', CTX.autonomos.notas),
               Btn('go', 'Ordénalo', 'notas-enviar', 'primary', { texto: { '@path': '/texto' } }),
               Btn('later', 'Ahora no', 'bandeja', 'borderless'),
               [Row('btns', ['go', 'later'], { align: 'center' }),
-               Col('root', ['h', 'texto', 'btns', 'priv'])]
+               Col('root', ['h', 'texto', 'priv', 'ctx', 'btns'])]
             ]), { badge: 'live', data: { texto: 'Vale, a ver: mañana llamar a Marta por lo del logotipo, comprar tinta para la impresora, mandarle a Jordi las fotos del proyecto antes del viernes y pedir cita con la gestora el martes a las diez.' } });
           } },
         { id: 'factura', icon: 'payment', head: 'Factura lista para enviar', sub: 'Proyecto terminado para Estudio Ejemplo',
@@ -303,10 +459,16 @@
           hecho: 'Informe enviado al cliente, con tu comentario arriba.',
           open: function () {
             return show(flat([
-              [T('h', 'El informe se ha montado solo con los datos del mes. Datos de ejemplo:')],
-              table('web', [['Visitas', '4.180'], ['Contactos desde la web', '37'], ['Página más vista', 'Ofertas de temporada']]),
-              table('redes', [['Publicaciones', '12'], ['Interacciones', '1.240'], ['Mejor post', 'Detrás del mostrador']]),
-              table('ads', [['Inversión', '600 €'], ['Clics', '910'], ['Coste por contacto', '16 €']]),
+              [T('h', 'El informe se ha montado solo con los datos del mes. Noviembre comparado con octubre, datos de ejemplo:')],
+              context('web', { title: 'Web · noviembre vs octubre',
+                chart: { type: 'bars', title: 'Visitas por semana', data: [{ l: 'Sem. 44', v: 880, t: '880' }, { l: 'Sem. 45', v: 990, t: '990' }, { l: 'Sem. 46', v: 1090, t: '1.090' }, { l: 'Sem. 47', v: 1220, t: '1.220' }] },
+                rows: [['Visitas', '4.180', '▲ 12 %', 'ok'], ['Contactos desde la web', '37', '▲ 8 %', 'ok'], ['Conversión', '0,9 %', '▼ 0,1 pts', 'warn']] }),
+              context('redes', { title: 'Redes · noviembre vs octubre',
+                chart: { type: 'donut', title: 'Interacciones por red', centre: '1.240', data: [{ l: 'Instagram', v: 720 }, { l: 'LinkedIn', v: 310 }, { l: 'Facebook', v: 210 }] },
+                rows: [['Interacciones', '1.240', '▲ 15 %', 'ok'], ['Seguidores nuevos', '86', '▲ 4 %', 'ok'], ['Alcance', '9.800', '▼ 18 %', 'warn']] }),
+              context('ads', { title: 'Anuncios · noviembre vs octubre',
+                chart: { type: 'bars', title: 'Coste por contacto (€)', data: [{ l: 'Ago', v: 12, t: '12 €' }, { l: 'Sep', v: 13, t: '13 €' }, { l: 'Oct', v: 13, t: '13 €' }, { l: 'Nov', v: 16, t: '16 €', warn: true }] },
+                rows: [['Inversión', '600 €', 'Igual', 'same'], ['Clics', '910', '▲ 6 %', 'ok'], ['Coste por contacto', '16 €', '▲ 23 %', 'warn']] }),
               [{ id: 'tabs', component: 'Tabs', tabs: [{ title: 'Web', child: 'web' }, { title: 'Redes', child: 'redes' }, { title: 'Anuncios', child: 'ads' }] },
                T('c', 'Tú solo añades la lectura: qué ha pasado y qué haremos en diciembre.', 'caption')],
               decide('informe', 'Enviar al cliente'),
