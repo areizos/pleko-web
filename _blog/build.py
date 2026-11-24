@@ -281,7 +281,7 @@ def main():
           <p class="section-label">{cfg["cta_label"]}</p>
           <p class="contact__subtext">{"Llamada gratuita de 20&nbsp;minutos." if lang == "es" else "Free 20&#8209;minute call."}</p>
           <div class="contact__links">
-            <button type="button" class="btn btn--mint" data-cal-link="pleko" data-cal-config='{{"layout":"month_view"}}'>{cfg["idx_cta_btn"]}</button>
+            <button type="button" class="btn btn--mint" data-cal-link="{"pleko/llamada-gratuita" if lang == "es" else "pleko/20min"}" data-cal-config='{{"layout":"month_view"}}'>{cfg["idx_cta_btn"]}</button>
           </div>
         </div>
       </div>

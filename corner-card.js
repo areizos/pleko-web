@@ -154,7 +154,7 @@
         '<p class="pcard__title">' + t.title + '</p></div>' +
       '<p class="pcard__body">' + t.body + '</p>' +
       '<div class="pcard__acts">' +
-        '<button type="button" class="pcard__btn" data-cal-link="pleko" data-cal-config=\'{"layout":"month_view"}\'>' +
+        '<button type="button" class="pcard__btn" data-cal-link="' + (lang === 'en' ? 'pleko/20min' : 'pleko/llamada-gratuita') + '" data-cal-config=\'{"layout":"month_view"}\'>' +
           t.button + ' <span class="arrow" aria-hidden="true">→</span></button>' +
         '<a class="pcard__second" href="' + t.secondHref + '" target="_blank" rel="noopener">' + t.second + '</a>' +
       '</div>';
