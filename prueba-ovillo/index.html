@@ -57,9 +57,11 @@
     .process .pk-split { margin-bottom: 2.5rem; }
   </style>
   <style>
-    /* Ovillo tagline (preview) */
-    .pk-yarn{position:relative;margin:3rem auto 3.5rem;text-align:center;font-family:var(--font-display);font-weight:600;color:var(--color-primary);font-size:clamp(1.55rem,6.4vw,3.1rem);line-height:1.25;letter-spacing:-.01em}
-    .pk-yarn__line{display:block;width:max-content;margin:0 auto;white-space:nowrap}
+    /* Ovillo heading (preview): the heading starts as two balls of text that unroll */
+    .pk-yarn{position:relative}
+    .pk-yarn__line{display:block;width:max-content;max-width:100%;white-space:nowrap}
+    .hero__title.pk-yarn{font-size:clamp(2rem,9.2vw,3.75rem)}
+    @media (min-width:1100px){.hero__title.pk-yarn{font-size:clamp(2.6rem,4.2vw,3.75rem)}}
     .pk-yarn__svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;fill:currentColor;pointer-events:none}
     .pk-yarn.is-waiting .pk-yarn__line,.pk-yarn.is-yarn .pk-yarn__line{visibility:hidden}
     .pk-yarn.is-done .pk-yarn__svg{display:none}
@@ -105,9 +107,7 @@
       <div class="wrap hero__inner">
         <div class="hero__copy">
           <p class="eyebrow">Automatizo y simplifico tu trabajo repetitivo</p>
-          <h1 class="hero__title">
-            Automatización e IA en <span class="hero__accent">Barcelona</span>.
-          </h1>
+          <h1 class="hero__title pk-yarn"><span class="pk-yarn__line">Automatización</span> <span class="pk-yarn__line" data-dir="left">e IA en <span class="hero__accent">Barcelona</span>.</span></h1>
           <p class="hero__tagline">
             Tu día se te va en copiar datos, perseguir correos y saltar de una herramienta a otra. Conecto lo que ya usas para que las facturas se registren solas y tus clientes tengan respuesta a tiempo. Lo repetitivo lo hace el sistema; lo importante lo decides tú.
           </p>
@@ -351,8 +351,6 @@
             <p>Todo queda documentado, con materiales de formación para que tú o tu equipo sepáis usar los flujos.</p>
           </li>
         </ol>
-        <!-- PREVIEW: ovillo tagline -->
-        <p class="pk-yarn" aria-label="Primero simplifico, luego automatizo."><span class="pk-yarn__line">Primero simplifico,</span> <span class="pk-yarn__line" data-dir="left">luego automatizo.</span></p>
         <!-- Three promises: what makes pleko different, in Alex's own lines -->
         <div class="promises">
           <p class="section-label">Tres promesas</p>
@@ -545,7 +543,7 @@
   <script src="/site.js?v=15" defer></script>
   <script src="/corner-card.js?v=9" defer></script>
   <script src="/pills-stream.js?v=6" defer></script>
-  <script src="/ovillo.js?v=1" defer></script>
-  <button type="button" class="pk-test" onclick="var y=document.querySelector('.pk-yarn');y.scrollIntoView({block:'center'});setTimeout(function(){y.__yarnReplay&&y.__yarnReplay()},400)">Ver otra vez</button>
+  <script src="/ovillo.js?v=2" defer></script>
+  <button type="button" class="pk-test" onclick="var y=document.querySelector('.pk-yarn');window.scrollTo(0,0);setTimeout(function(){y.__yarnReplay&&y.__yarnReplay()},300)">Ver otra vez</button>
 </body>
 </html>

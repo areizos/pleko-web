@@ -1,16 +1,17 @@
 /* =========================================================================
-   pleko.es: "ovillo" tagline. A line of text starts rolled up like a ball
+   pleko.es: "ovillo" heading. A line of text starts rolled up like a ball
    of yarn and unrolls into a readable line, once, when it scrolls into view.
    ---------------------------------------------------------------------
    Markup (the plain text is the fallback and what screen readers read):
-     <p class="pk-yarn" aria-label="Primero simplifico, luego automatizo.">
-       <span class="pk-yarn__line">Primero simplifico,</span>
-       <span class="pk-yarn__line" data-dir="left">luego automatizo.</span>
-     </p>
+     <h1 class="pk-yarn">
+       <span class="pk-yarn__line">Automatización</span>
+       <span class="pk-yarn__line" data-dir="left">e IA en <span>Barcelona</span>.</span>
+     </h1>
    Each line is its own ball. data-dir="left" makes that ball roll from the
    right-hand end towards the left; the default rolls left to right.
+   The ball sits on top of its line; data-ball="below" hangs it underneath.
    No libraries. Plays once, never loops. With "reduce motion" switched on
-   (or no JavaScript) the finished tagline is simply shown.
+   (or no JavaScript) the finished text is simply shown.
    ========================================================================= */
 (function () {
   'use strict';
@@ -59,7 +60,7 @@
     return k;
   }
 
-  // timing in ms, from the moment the tagline is on screen
+  // timing in ms, from the moment the heading is on screen
   var APPEAR = 350, DUR = 1500, GAP = 550, SPREAD = 2.6, SHRINK = 0.5, TURNS = 1.5;
 
   function setup(el) {
@@ -77,22 +78,33 @@
     var bb = probe.getBBox(); svg.removeChild(probe);
 
     var box = el.getBoundingClientRect();
+    var ls = (parseFloat(cs.letterSpacing) || 0) / F;            // letter spacing, in em
+    // copy a line's words into SVG, keeping coloured or italic words (like "Barcelona") as they are
+    function fill(node, sp) {
+      [].forEach.call(sp.childNodes, function (c) {
+        if (c.nodeType === 3) { node.appendChild(document.createTextNode(c.textContent)); return; }
+        if (c.nodeType !== 1) return;
+        var k = window.getComputedStyle(c);
+        var t = $s('tspan', { fill: k.color }); t.style.fontStyle = k.fontStyle; t.style.fontWeight = k.fontWeight;
+        t.textContent = c.textContent; node.appendChild(t);
+      });
+    }
     var lines = spans.map(function (sp, idx) {
       var r = sp.getBoundingClientRect();
       var id = 'pk-yarn-' + (++uid);
       var path = $s('path', { id: id, fill: 'none' });
-      var tp = $s('textPath', { href: '#' + id }); tp.textContent = sp.textContent;
-      var te = $s('text', { 'font-size': F }); te.appendChild(tp);
+      var tp = $s('textPath', { href: '#' + id }); fill(tp, sp);
+      var te = $s('text', { 'font-size': F }); te.style.letterSpacing = ls + 'em'; te.appendChild(tp);
       svg.appendChild(path); svg.appendChild(te);
-      var m = $s('text', { 'font-size': F }); m.textContent = sp.textContent; svg.appendChild(m);
+      var m = $s('text', { 'font-size': F }); m.style.letterSpacing = ls + 'em'; fill(m, sp); svg.appendChild(m);
       var w = m.getComputedTextLength(); svg.removeChild(m);
-      var left = sp.getAttribute('data-dir') === 'left';
+      var left = sp.getAttribute('data-dir') === 'left', down = sp.getAttribute('data-ball') === 'below';
       var base = r.top - box.top + (r.height - bb.height) / 2 - bb.y;
       return {
-        path: path, text: te, w: w, left: left, kap: windings(1.3 + idx * 2.1, left ? Math.PI : 0, idx > 0 && idx === spans.length - 1),
+        path: path, text: te, w: w, left: left, down: down,
+        kap: windings(1.3 + idx * 2.1, left ? Math.PI : 0, down),
         ax: left ? r.right - box.left : r.left - box.left, ay: base,
-        start: APPEAR + idx * GAP,
-        down: idx > 0 && idx === spans.length - 1   // the last line's ball hangs below it, clear of the line above
+        start: APPEAR + idx * GAP
       };
     });
     el.classList.add('is-yarn');
