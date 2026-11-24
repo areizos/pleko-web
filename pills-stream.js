@@ -70,7 +70,9 @@
     'backup': ['sandbox', 'base-datos'],
     'registro': ['rgpd', 'human-in-the-loop', 'workflow'],
     'a2ui': ['agente', 'mcp', 'json', 'react'],
-    'react': ['a2ui', 'github', 'api']
+    'react': ['a2ui', 'github', 'css'],
+    'css': ['react', 'markdown'],
+    'swift': ['python', 'github']
   };
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
