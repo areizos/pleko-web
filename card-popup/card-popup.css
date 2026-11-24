@@ -8,7 +8,7 @@
 .cp-x:hover{background:#e1f5ee}
 .cp-x:focus-visible,.cp-dialog a:focus-visible,.cp-dialog button:focus-visible{outline:3px solid #8ff6d0;outline-offset:2px}
 .cp-label{margin:0}
-.cp-h{margin:.5rem 2rem 0;font-family:var(--font-display,"Literata",Georgia,serif);font-weight:600;font-size:clamp(1.35rem,3.6vw,1.8rem);line-height:1.15;color:#1b1c1c}
+.cp-h{margin:.4rem 2rem 0;font-family:var(--font-display,"Literata",Georgia,serif);font-weight:600;font-size:clamp(1.35rem,3.6vw,1.8rem);line-height:1.15;color:#1b1c1c}
 .cp-sub{margin:.55rem 0 0;font-family:var(--font-display,"Literata",Georgia,serif);font-style:italic;font-size:clamp(1rem,2.4vw,1.15rem);color:#006565}
 .cp-scene{perspective:1100px;display:flex;justify-content:center;padding:.6rem 0 calc(24*var(--u,3.5px));--u:clamp(2.4px,calc((100svh - 430px)/113),4.2px)}
 .cp-card{position:relative;width:calc(61*var(--u));height:calc(91*var(--u));transform-style:preserve-3d;will-change:transform}

@@ -28,26 +28,16 @@
   var UTM = '?utm_source=business_card&utm_medium=print&utm_campaign=networking';
   var T = {
     es: {
-      label: 'Vienes de mi tarjeta',
       h: 'Sí, las tarjetas de papel siguen funcionando. Acabas de demostrarlo.',
-      sub: 'Lo analógico abre la puerta; lo digital hace el resto. Así trabajo yo también.',
-      wq: '¿Has tenido que girar la tarjeta para leerla?', wa: 'Así se siente un proceso confuso. Aquí lo simplifico.',
       ringA: 'Primero simplifico · luego automatizo ', ringB: 'Menos tareas repetitivas · más tiempo para tu negocio ',
       tag: 'Automatización e IA', replay: 'Ver otra vez', close: 'Cerrar',
-      wapp: 'Escríbeme por WhatsApp', wappHref: 'https://wa.me/34656310631?text=Hola%20Alex%2C%20me%20pas%C3%B3%20tu%20tarjeta%3A%20',
-      call: 'Reserva una llamada gratuita de 20 min', cal: 'pleko/llamada-gratuita',
-      other: 'English', otherHref: '/en/' + UTM, aria: 'Tarjeta de visita de pleko, parte de atrás', dialog: 'Vienes de mi tarjeta'
+      other: 'English', otherHref: '/en/' + UTM, aria: 'Tarjeta de visita de pleko, parte de atrás'
     },
     en: {
-      label: 'You came from my card',
-      h: 'Yes, paper business cards still work. You’ve just proved it.',
-      sub: 'Analogue opens the door; digital does the rest. That’s how I work too.',
-      wq: 'Did you have to turn the card round to read it?', wa: 'That’s what a confusing process feels like. Here, I simplify it.',
+      h: 'Yes, paper business cards still work. You\u2019ve just proved it.',
       ringA: 'First I simplify · then I automate ', ringB: 'Fewer repetitive tasks · more time for your business ',
       tag: 'Automation and AI', replay: 'Watch again', close: 'Close',
-      wapp: 'Message me on WhatsApp', wappHref: 'https://wa.me/34656310631?text=Hi%20Alex%2C%20I%20got%20your%20card%20from%3A%20',
-      call: 'Book a free 20-min call', cal: 'pleko/free-call',
-      other: 'Español', otherHref: '/' + UTM, aria: 'pleko business card, back', dialog: 'You came from my card'
+      other: 'Español', otherHref: '/' + UTM, aria: 'pleko business card, back'
     }
   }[lang];
 
@@ -61,9 +51,8 @@
     '<div class="cp-dialog">' +
     '<button type="button" class="cp-x" aria-label="' + T.close + '">&times;</button>' +
     '<div class="cp-head">' +
-    '<p class="section-label cp-label">' + T.label + '</p>' +
     '<h2 class="cp-h" id="cp-h">' + T.h + '</h2>' +
-    '<p class="cp-sub">' + T.sub + '</p></div>' +
+    '</div>' +
     '<div class="cp-visual"><div class="cp-scene"><div class="cp-card" role="img" aria-label="' + T.aria + '">' +
       '<div class="cp-face cp-back">' +
         '<div class="cp-name">Alexandros Re<span class="cp-i">ï</span>zos</div>' +
@@ -79,12 +68,7 @@
       '<div class="cp-face cp-front"><img src="/pleko-logo.svg?v=2" alt="" width="314" height="116"><span class="cp-tag">' + T.tag + '</span></div>' +
     '</div></div>' +
     '<button type="button" class="cp-replay">' + T.replay + '</button></div>' +
-    '<div class="cp-rest"><p class="cp-wink"><strong>' + T.wq + '</strong>' + T.wa + '</p>' +
-    '<div class="cp-actions">' +
-      '<a class="btn btn--primary" href="' + T.wappHref + '" target="_blank" rel="noopener" data-umami-event-location="card-popup">' + T.wapp + '</a>' +
-      '<button type="button" class="btn btn--ghost" data-cal-link="' + T.cal + '" data-cal-config=\'{"layout":"month_view"}\' data-umami-event-location="card-popup">' + T.call + ' <span class="arrow">→</span></button>' +
-    '</div>' +
-    '<p class="cp-lang"><a href="' + T.otherHref + '" hreflang="' + (lang === 'es' ? 'en' : 'es') + '" lang="' + (lang === 'es' ? 'en' : 'es') + '">' + T.other + '</a></p></div>' +
+    '<div class="cp-rest"><p class="cp-lang"><a href="' + T.otherHref + '" hreflang="' + (lang === 'es' ? 'en' : 'es') + '" lang="' + (lang === 'es' ? 'en' : 'es') + '">' + T.other + '</a></p></div>' +
     '</div></div>';
 
   var host = document.createElement('div');
@@ -121,10 +105,6 @@
   document.addEventListener('keydown', onKey, true);
   overlay.querySelector('.cp-x').addEventListener('click', close);
   overlay.addEventListener('mousedown', function (e) { if (e.target === overlay) close(); });
-  overlay.querySelector('.cp-actions').addEventListener('click', function (e) {
-    var b = e.target.closest && e.target.closest('[data-cal-link]');
-    if (b) { if (typeof window.plekoLoadCal === 'function') window.plekoLoadCal(); setTimeout(close, 60); }
-  });
   requestAnimationFrame(function () { overlay.classList.add('is-on'); dlg.focus({ preventScroll: true }); });
 
   // ---------- animation ----------
