@@ -24,22 +24,24 @@
   if (!testing && seenUntil > Date.now() && !inTab) return;
   try { localStorage.setItem(KEY, String(Date.now() + DAYS * 864e5)); sessionStorage.setItem(KEY, '1'); } catch (e) {}
 
-  var lang = (document.documentElement.lang || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
   var UTM = '?utm_source=business_card&utm_medium=print&utm_campaign=networking';
+  var lang = (document.documentElement.lang || 'es').slice(0, 2) === 'en' ? 'en' : 'es';
   var T = {
     es: {
       h: 'Sí, las tarjetas de papel siguen funcionando. Acabas de demostrarlo.',
       wide: ['Sí, las tarjetas de papel siguen funcionando.', 'Acabas de demostrarlo.'],
       narrow: ['Sí, las tarjetas de papel', 'siguen funcionando.', 'Acabas de demostrarlo.'],
       tag: 'Automatización e IA', replay: 'Ver otra vez', close: 'Cerrar',
-      other: 'English', otherHref: '/en/' + UTM, aria: 'Tarjeta de visita de pleko, parte de atrás'
+      other: 'EN', otherHref: '/en/' + UTM, otherLabel: 'English',
+      aria: 'Tarjeta de visita de pleko, parte de atrás'
     },
     en: {
       h: 'Yes, paper business cards still work. You\u2019ve just proved it.',
       wide: ['Yes, paper business cards still work.', 'You\u2019ve just proved it.'],
       narrow: ['Yes, paper business cards', 'still work.', 'You\u2019ve just proved it.'],
       tag: 'Automation and AI', replay: 'Watch again', close: 'Close',
-      other: 'Español', otherHref: '/' + UTM, aria: 'pleko business card, back'
+      other: 'ES', otherHref: '/' + UTM, otherLabel: 'Español',
+      aria: 'pleko business card, back'
     }
   }[lang];
 
@@ -66,8 +68,9 @@
     '</div>' +
     '<svg class="cp-ring cp-over" viewBox="0 0 400 400" aria-hidden="true" focusable="false"></svg>' +
     '</div></div>' +
-    '<button type="button" class="cp-replay">' + T.replay + '</button></div>' +
-    '<div class="cp-rest"><p class="cp-lang"><a href="' + T.otherHref + '" hreflang="' + (lang === 'es' ? 'en' : 'es') + '" lang="' + (lang === 'es' ? 'en' : 'es') + '">' + T.other + '</a></p></div>' +
+    '<div class="cp-tools"><a class="cp-lang" href="' + T.otherHref + '" hreflang="' + (lang === 'es' ? 'en' : 'es') + '" lang="' + (lang === 'es' ? 'en' : 'es') + '" aria-label="' + T.otherLabel + '">' + T.other + '</a>' +
+      '<button type="button" class="cp-replay" aria-label="' + T.replay + '" title="' + T.replay + '">' +
+      '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 1 1-2.6-5.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>' +
     '</div></div>';
 
   var host = document.createElement('div');
@@ -85,7 +88,7 @@
 
   // ---------- close ----------
   function close() {
-    cancelAnimationFrame(raf);
+    cancelAnimationFrame(raf); clearTimeout(autoTimer);
     overlay.classList.remove('is-on');
     document.body.classList.remove('cp-lock');
     document.removeEventListener('keydown', onKey, true);
@@ -168,9 +171,13 @@
     var maxW = Math.max.apply(null, lines.map(function (h) { return h.w; }));
     S = Math.min(F / (BASE * k), 0.94 * (scene.clientWidth || 300) / (maxW * k));
     var Fpx = BASE * k * S;                                       // actual size of the final lines
+    // one blank line between the two sentences: the second sentence is the last line
+    var off = [], pos = 0;
+    lines.forEach(function (h, i) { if (i > 0) pos += (i === NP - 1 ? 2.6 : 1.3); off.push(pos); });
+    var mid = pos / 2;
     lines.forEach(function (h, i) {
       h.ax = 200 - h.w * S / 2;                                   // centred on the card
-      h.ay = 200 + (Fpx / k) * (0.32 + 1.3 * (i - (NP - 1) / 2)); // baselines around the card's middle
+      h.ay = 200 + (Fpx / k) * (0.32 + off[i] - mid);             // baselines around the card's middle
       h.fl = h.w * S / N;
     });
   }
@@ -197,14 +204,21 @@
     over.style.transform = turn + pop;                            // the text layer turns with the card
     for (var i = 0; i < NP; i++) drawLine(lines[i], clamp((t - START[i]) / DUR));
   }
+  // The pop-up leaves by itself AUTO_MS after the text has finished, unless the visitor
+  // points at it, touches it or tabs into it.
+  var AUTO_MS = 5000, autoTimer = 0, engaged = false;
+  function arm() { clearTimeout(autoTimer); if (!engaged) autoTimer = setTimeout(close, AUTO_MS); }
+  ['mouseenter', 'touchstart', 'keydown', 'pointerdown'].forEach(function (ev) {
+    dlg.addEventListener(ev, function () { engaged = true; clearTimeout(autoTimer); }, { passive: true });
+  });
   function frame(now) {
     var t = now - t0;
     render(Math.min(t, TEND));
-    if (t < TEND) raf = requestAnimationFrame(frame);
+    if (t < TEND) raf = requestAnimationFrame(frame); else arm();
   }
   function play() {
     cancelAnimationFrame(raf);
-    if (reduce) { render(TEND); return; }
+    if (reduce) { render(TEND); arm(); return; }
     render(0);
     t0 = performance.now() + 350;
     raf = requestAnimationFrame(function tick(now) { if (now < t0) { raf = requestAnimationFrame(tick); return; } frame(now); });
