@@ -56,7 +56,7 @@
     '<div class="cp-visual"><div class="cp-scene"><div class="cp-card" role="img" aria-label="' + T.aria + '">' +
       '<div class="cp-face cp-back">' +
         '<div class="cp-name">Alexandros Re<span class="cp-i">ï</span>zos</div>' +
-        '<img class="cp-qr" src="/card-popup/qr.svg" alt="" width="290" height="290">' +
+        '<img class="cp-qr" src="/card-popup/qr.svg?v=2" alt="" width="290" height="290">' +
         '<svg class="cp-ring" viewBox="0 0 400 400" aria-hidden="true" focusable="false">' +
           '<path id="cp-ref" d="' + RING + '" fill="none"/>' + parts(function (i) {
             return '<path id="cp-p' + i + '" fill="none"/><text id="cp-m' + i + '" style="visibility:hidden"></text>' +
