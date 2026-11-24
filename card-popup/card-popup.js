@@ -29,39 +29,39 @@
   var T = {
     es: {
       h: 'Sí, las tarjetas de papel siguen funcionando. Acabas de demostrarlo.',
-      ringA: 'Primero simplifico · luego automatizo ', ringB: 'Menos tareas repetitivas · más tiempo para tu negocio ',
+      parts: ['Sí, las tarjetas de papel', 'siguen funcionando.', 'Acabas de demostrarlo.'],
       tag: 'Automatización e IA', replay: 'Ver otra vez', close: 'Cerrar',
       other: 'English', otherHref: '/en/' + UTM, aria: 'Tarjeta de visita de pleko, parte de atrás'
     },
     en: {
       h: 'Yes, paper business cards still work. You\u2019ve just proved it.',
-      ringA: 'First I simplify · then I automate ', ringB: 'Fewer repetitive tasks · more time for your business ',
+      parts: ['Yes, paper business cards', 'still work.', 'You\u2019ve just proved it.'],
       tag: 'Automation and AI', replay: 'Watch again', close: 'Close',
       other: 'Español', otherHref: '/' + UTM, aria: 'pleko business card, back'
     }
   }[lang];
 
   var RING = 'M90,360 L310,360 A50,50 0 0 0 360,310 L360,90 A50,50 0 0 0 310,40 L90,40 A50,50 0 0 0 40,90 L40,310 A50,50 0 0 0 90,360 Z';
-  var BASE = 21.17, N = 110;
+  var BASE = 30, N = 90, NP = 3;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function parts(f) { var s = '', i; for (i = 0; i < NP; i++) s += f(i); return s; }
   var html =
     '<div class="cp-overlay" role="dialog" aria-modal="true" aria-labelledby="cp-h">' +
     '<div class="cp-dialog">' +
     '<button type="button" class="cp-x" aria-label="' + T.close + '">&times;</button>' +
     '<div class="cp-head">' +
-    '<h2 class="cp-h" id="cp-h">' + T.h + '</h2>' +
+    '<h2 class="sr-only" id="cp-h">' + T.h + '</h2>' +
     '</div>' +
     '<div class="cp-visual"><div class="cp-scene"><div class="cp-card" role="img" aria-label="' + T.aria + '">' +
       '<div class="cp-face cp-back">' +
         '<div class="cp-name">Alexandros Re<span class="cp-i">ï</span>zos</div>' +
         '<img class="cp-qr" src="/card-popup/qr.svg" alt="" width="290" height="290">' +
         '<svg class="cp-ring" viewBox="0 0 400 400" aria-hidden="true" focusable="false">' +
-          '<path id="cp-ref" d="' + RING + '" fill="none"/><path id="cp-pa" fill="none"/><path id="cp-pb" fill="none"/>' +
-          '<text id="cp-ma" style="visibility:hidden"></text><text id="cp-mb" style="visibility:hidden"></text>' +
-          '<text id="cp-ta"><textPath href="#cp-pa" id="cp-tpa"></textPath></text>' +
-          '<text id="cp-tb"><textPath href="#cp-pb" id="cp-tpb"></textPath></text>' +
+          '<path id="cp-ref" d="' + RING + '" fill="none"/>' + parts(function (i) {
+            return '<path id="cp-p' + i + '" fill="none"/><text id="cp-m' + i + '" style="visibility:hidden"></text>' +
+                   '<text id="cp-t' + i + '"><textPath href="#cp-p' + i + '" id="cp-tp' + i + '"></textPath></text>';
+          }) +
         '</svg>' +
         '<div class="cp-contact"><span>alex@pleko.es</span><span>BCN</span><span>656 310 631</span></div>' +
       '</div>' +
@@ -113,50 +113,47 @@
   var lerp = function (a, b, t) { return a + (b - a) * t; };
   var ref = $('cp-ref');
   var halves = null, S = 1, raf = 0, t0 = 0, curT = 0;
-  var TEND = 3400;
+  var START = [1000, 1450, 1900], DUR = 1500, TEND = START[NP - 1] + DUR;
+  var C0 = [0, 101, 101], C1 = [27, 28, 28];   // teal on the card -> near-black headline
 
-  function setText(tp, text) {
-    var tail = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
-    tail.setAttribute('class', 'cp-tail'); tail.textContent = '·';
-    // the trailing "·" of the ring text lives in a tspan so it can fade out when the line is straight
-    tp.textContent = text.replace(/\s*·?\s*$/, '') + ' ';
-    tp.appendChild(tail);
-  }
   function build() {
-    var ma = $('cp-ma'), mb = $('cp-mb');
-    [ma, mb].forEach(function (m) { m.setAttribute('font-size', BASE); });
-    ma.textContent = T.ringA.replace(/\s*·?\s*$/, '') + ' ·'; mb.textContent = T.ringB.replace(/\s*·?\s*$/, '') + ' ·';
-    var wa = ma.getComputedTextLength(), wb = mb.getComputedTextLength();
-    var L = ref.getTotalLength(), lenA = L * wa / (wa + wb), lenB = L - lenA;
-    setText($('cp-tpa'), T.ringA); setText($('cp-tpb'), T.ringB);
-    halves = [mk(0, lenA, wa, 'a', 0), mk(lenA, lenB, wb, 'b', 1)];
+    var ws = [], total = 0, i;
+    for (i = 0; i < NP; i++) {
+      var m = $('cp-m' + i); m.setAttribute('font-size', BASE); m.textContent = T.parts[i];
+      ws.push(m.getComputedTextLength()); total += ws[i];
+      $('cp-tp' + i).textContent = T.parts[i];
+    }
+    var L = ref.getTotalLength(), s0 = 0;
+    halves = [];
+    for (i = 0; i < NP; i++) {
+      var len = L * ws[i] / total;
+      halves.push(mk(s0, len, ws[i], i)); s0 += len;
+    }
     layout();
   }
-  function mk(s0, len, w, id, idx) {
-    var pts = [], i;
-    for (i = 0; i <= N; i++) { var p = ref.getPointAtLength(Math.min(s0 + len * i / N, ref.getTotalLength())); pts.push(p); }
+  function mk(s0, len, w, idx) {
+    var pts = [], i, Lr = ref.getTotalLength();
+    for (i = 0; i <= N; i++) pts.push(ref.getPointAtLength(Math.min(s0 + len * i / N, Lr)));
     var ch = [], th = [], prev = null;
     for (i = 0; i < N; i++) {
       var dx = pts[i + 1].x - pts[i].x, dy = pts[i + 1].y - pts[i].y;
       var a = Math.atan2(dy, dx);
       if (prev !== null) { while (a - prev > Math.PI) a -= 2 * Math.PI; while (a - prev < -Math.PI) a += 2 * Math.PI; }
-      else if (idx === 0) { a = 0; }
-      else { while (a > 0) a -= 2 * Math.PI; if (a < -Math.PI * 1.5) a += 2 * Math.PI; }
+      else { while (a > 0) a -= 2 * Math.PI; while (a <= -2 * Math.PI) a += 2 * Math.PI; }
       th.push(a); prev = a; ch.push(Math.sqrt(dx * dx + dy * dy));
     }
-    return { len: len, w: w, p0: pts[0], ch: ch, th: th, path: $('cp-p' + id), text: $('cp-t' + id), tp: $('cp-tp' + id), n: $('cp-tp' + id).textContent.length, tail: null, ax: 0, ay: 0, fl: 0 };
+    return { len: len, w: w, p0: pts[0], ch: ch, th: th, path: $('cp-p' + idx), text: $('cp-t' + idx), n: T.parts[idx].length, ax: 0, ay: 0, fl: 0, idx: idx };
   }
   function layout() {
     if (!halves) return;
-    var k = (card.offsetWidth * 40 / 61) / 400 || 1;
-    var stageW = scene.clientWidth || 300;
-    var longest = Math.max(halves[0].len, halves[1].len);
-    S = Math.max(1, Math.min(2.1, 0.95 * stageW / (longest * k)));
-    var yA = 745, yB = yA + BASE * S * 1.7;
+    var k = (card.offsetWidth * 40 / 61) / 400 || 1;           // pixels per drawing unit
+    var F = parseFloat(window.getComputedStyle(scene).fontSize) || 22;   // final text size in px
+    S = F / (BASE * k);
+    var cardTop = -255;                                          // card's upper edge, in ring units (the card is taller than the ring)
     halves.forEach(function (h, i) {
-      h.ax = 200 - h.len * S / 2; h.ay = i === 0 ? yA : yB; h.fl = h.len * S / N;
-      h.tail = h.tp.querySelector('.cp-tail');
+      h.ax = 200 - h.w * S / 2; h.ay = cardTop - (F / k) * (0.55 + 1.3 * (NP - 1 - i)); h.fl = h.w * S / N;
     });
+    scene.style.paddingTop = Math.ceil(F * (0.55 + 1.3 * (NP - 1) + 1.05)) + 'px';
   }
   function drawHalf(h, r) {
     var g = ease(r), x = lerp(h.p0.x, h.ax, g), y = lerp(h.p0.y, h.ay, g), total = 0, d = 'M' + x.toFixed(2) + ',' + y.toFixed(2);
@@ -167,18 +164,16 @@
       d += 'L' + x.toFixed(2) + ',' + y.toFixed(2);
     }
     var fs = BASE * (1 + (S - 1) * g);
-    var nat = h.w * fs / BASE;
     h.path.setAttribute('d', d);
     h.text.setAttribute('font-size', fs.toFixed(2));
-    h.text.setAttribute('letter-spacing', ((total - nat) / h.n).toFixed(3));
-    if (h.tail) h.tail.setAttribute('fill-opacity', (1 - clamp((r - 0.85) / 0.15)).toFixed(2));
+    h.text.setAttribute('letter-spacing', ((total - h.w * fs / BASE) / h.n).toFixed(3));
+    h.text.style.fill = 'rgb(' + [0, 1, 2].map(function (c) { return Math.round(lerp(C0[c], C1[c], g)); }).join(',') + ')';
   }
   function render(t) {
     curT = t;
     var a = ease(clamp(t / 2200)), bump = Math.sin(Math.PI * clamp(t / 2200));
     card.style.transform = 'rotateY(' + (a * 360).toFixed(2) + 'deg) scale(' + (1 + 0.06 * bump).toFixed(3) + ')';
-    drawHalf(halves[0], clamp((t - 1100) / 1700));
-    drawHalf(halves[1], clamp((t - 1600) / 1700));
+    for (var i = 0; i < NP; i++) drawHalf(halves[i], clamp((t - START[i]) / DUR));
   }
   function frame(now) {
     var t = now - t0;
@@ -196,6 +191,6 @@
   window.addEventListener('resize', function () { layout(); if (halves) render(curT); });
   window.__cpSeek = function (t) { cancelAnimationFrame(raf); render(t); };   // used by tests only
 
-  var fontsReady = (document.fonts && document.fonts.load) ? document.fonts.load('500 21px Inter').catch(function () {}) : Promise.resolve();
+  var fontsReady = (document.fonts && document.fonts.load) ? document.fonts.load('500 30px Inter').catch(function () {}) : Promise.resolve();
   fontsReady.then(function () { build(); play(); });
 })();
