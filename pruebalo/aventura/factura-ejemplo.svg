@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-labelledby="t">
+  <title id="t">Factura de ejemplo de un proveedor ficticio: material de oficina, total 145,20 euros</title>
+  <rect width="420" height="300" fill="#f6f3f2"/>
+  <g transform="rotate(-3 210 150)">
+    <path d="M78 22 L344 18 L350 282 L84 288 L80 200 L74 196 Z" fill="#fffdf8" stroke="#bdc9c8" stroke-width="1.5"/>
+    <path d="M80 200 L120 214 L84 288" fill="none" stroke="#e3e8e7" stroke-width="1"/>
+    <g font-family="ui-monospace, Menlo, monospace" fill="#1b1c1c">
+      <text x="100" y="52" font-size="15" font-weight="700">SUMINISTROS EJEMPLO S.L.</text>
+      <text x="100" y="70" font-size="10" fill="#3e4949">NIF B00000000 · Barcelona</text>
+      <text x="100" y="98" font-size="12" font-weight="700">FACTURA 2026-0418</text>
+      <text x="250" y="98" font-size="11">18/11/2026</text>
+      <line x1="100" y1="110" x2="330" y2="110" stroke="#6e7979" stroke-dasharray="3 3"/>
+      <text x="100" y="132" font-size="11">Material de oficina</text>
+      <text x="290" y="132" font-size="11">120,00</text>
+      <text x="100" y="152" font-size="11" fill="#3e4949">(papel, tinta, sobres)</text>
+      <line x1="100" y1="168" x2="330" y2="168" stroke="#6e7979" stroke-dasharray="3 3"/>
+      <text x="190" y="190" font-size="11">Base</text><text x="290" y="190" font-size="11">120,00</text>
+      <text x="190" y="208" font-size="11">IVA 21%</text><text x="296" y="208" font-size="11">25,20</text>
+      <text x="190" y="234" font-size="13" font-weight="700">TOTAL</text><text x="272" y="234" font-size="13" font-weight="700">145,20 €</text>
+    </g>
+    <circle cx="318" cy="258" r="4" fill="#cc5500"/>
+    <path d="M110 250 C 140 240, 170 262, 200 248" fill="none" stroke="#006565" stroke-width="1.5" opacity=".5"/>
+  </g>
+</svg>

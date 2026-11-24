@@ -1,0 +1,13 @@
+{
+  "name": "pleko-a2ui-bundle",
+  "private": true,
+  "description": "Builds pruebalo/aventura/a2ui.js: Google's A2UI renderer (Apache 2.0) bundled into one file for the hidden A2UI demo page.",
+  "scripts": {
+    "build": "esbuild entry.js --bundle --minify --format=iife --target=es2020 --legal-comments=eof --outfile=../pruebalo/aventura/a2ui.js"
+  },
+  "devDependencies": {
+    "@a2ui/lit": "0.16.0",
+    "@a2ui/markdown-it": "0.2.4",
+    "esbuild": "0.28.2"
+  }
+}
