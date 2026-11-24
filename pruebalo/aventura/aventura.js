@@ -24,42 +24,43 @@
   var pendingMeta = {};
   var processor = new A.MessageProcessor([A.basicCatalog], onAction);
 
+  // One phone screen: each new A2UI surface replaces the previous one in place.
+  var badge = document.getElementById('av-badge');
+  var current = null;
+
   processor.onSurfaceCreated(function (surface) {
     var meta = pendingMeta[surface.id] || { badge: 'sim' };
-    var turn = document.createElement('div');
-    turn.className = 'av-turn av-turn--agent';
-    turn.innerHTML =
-      '<div class="av-meta"><span class="av-who">Asistente</span>' +
-      (meta.badge === 'live'
-        ? '<span class="demo__badge demo__badge--live">En directo</span>'
-        : '<span class="demo__badge demo__badge--sim">Simulación</span>') +
-      '</div>';
+    if (badge) {
+      badge.className = 'demo__badge ' + (meta.badge === 'live' ? 'demo__badge--live' : 'demo__badge--sim');
+      badge.textContent = meta.badge === 'live' ? 'En directo' : 'Simulación';
+    }
     var el = document.createElement('a2ui-surface');
     el.surface = surface;
-    turn.appendChild(el);
-    retirePrevious();
-    chat.appendChild(turn);
-    setTimeout(function () { turn.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
+    el.className = 'av-screen av-screen--in';
+    var old = current;
+    current = { el: el, id: surface.id };
+    chat.innerHTML = '';
+    chat.appendChild(el);
+    chat.scrollTop = 0;
+    setTimeout(function () { el.classList.remove('av-screen--in'); }, 20);
+    if (old) {
+      // Tell the renderer the old screen is gone, so nothing is left behind.
+      setTimeout(function () {
+        try { processor.processMessages([{ version: '1.0', deleteSurface: { surfaceId: old.id } }]); } catch (e) {}
+      }, 0);
+    }
   });
 
-  function retirePrevious() {
-    var turns = chat.querySelectorAll('.av-turn--agent:not(.av-turn--past)');
-    for (var i = 0; i < turns.length; i++) {
-      turns[i].classList.add('av-turn--past');
-      turns[i].setAttribute('inert', '');
-    }
-  }
-
-  function youSaid(text) {
-    if (!text) return;
-    var p = document.createElement('div');
-    p.className = 'av-turn av-turn--you';
-    p.innerHTML = '<span class="av-who">Tú</span>';
-    var t = document.createElement('p');
-    t.textContent = text;
-    p.appendChild(t);
-    chat.appendChild(p);
-  }
+  // A small ripple where the visitor taps, like a finger on a phone.
+  chat.addEventListener('pointerdown', function (e) {
+    var r = chat.getBoundingClientRect();
+    var dot = document.createElement('span');
+    dot.className = 'av-tap';
+    dot.style.left = (e.clientX - r.left) + 'px';
+    dot.style.top = (e.clientY - r.top + chat.scrollTop) + 'px';
+    chat.appendChild(dot);
+    setTimeout(function () { dot.remove(); }, 600);
+  });
 
   function track(escena) {
     try { if (window.umami) window.umami.track('aventura', { escena: escena }); } catch (e) {}
@@ -336,7 +337,6 @@
   // ---------- what each button does ----------
   function onAction(a) {
     var ctx = a.context || {};
-    youSaid(ctx.eco);
     if (a.name === 'contacto') {
       try { if (window.umami) window.umami.track('click-contacto', { location: 'aventura' }); } catch (e) {}
       window.location.href = '/#reserva';
@@ -356,7 +356,5 @@
     if (go) { go(ctx); track(a.name); }
   }
 
-  var start = document.getElementById('av-start');
-  if (start) start.remove();
   ESCENAS.inicio();
 })();
