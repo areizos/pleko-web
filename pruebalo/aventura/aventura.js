@@ -27,6 +27,7 @@
   // One phone screen: each new A2UI surface replaces the previous one in place.
   var badge = document.getElementById('av-badge');
   var current = null;
+  var nextScene = 'inicio';
 
   processor.onSurfaceCreated(function (surface) {
     var meta = pendingMeta[surface.id] || { badge: 'sim' };
@@ -37,6 +38,7 @@
     var el = document.createElement('a2ui-surface');
     el.surface = surface;
     el.className = 'av-screen av-screen--in';
+    if (restart) restart.disabled = (nextScene === 'inicio');
     var old = current;
     current = { el: el, id: surface.id };
     chat.innerHTML = '';
@@ -49,6 +51,14 @@
         try { processor.processMessages([{ version: '1.0', deleteSurface: { surfaceId: old.id } }]); } catch (e) {}
       }, 0);
     }
+  });
+
+  // "Volver al lunes" lives in the tablet's bottom bar, always in the same place.
+  var restart = document.getElementById('av-restart');
+  if (restart) restart.addEventListener('click', function () { nextScene = 'inicio'; ESCENAS.inicio(); track('inicio'); });
+  var hire = document.getElementById('av-hire');
+  if (hire) hire.addEventListener('click', function () {
+    try { if (window.umami) window.umami.track('click-contacto', { location: 'aventura' }); } catch (e) {}
   });
 
   // A small ripple where the visitor taps, like a finger on a phone.
@@ -132,11 +142,12 @@
 
   var FOOT = function (p) {
     return flat([
-      Btn(p + 'v', 'Volver al lunes', 'inicio', 'borderless'),
-      Btn(p + 'h', 'Quiero algo así', 'contacto', 'default'),
-      [Row(p, [p + 'v', p + 'h'], { justify: 'spaceBetween', align: 'center' })]
+      Btn(p + 'h', 'Quiero algo así para mi negocio', 'contacto', 'default'),
+      [Row(p, [p + 'h'], { justify: 'start', align: 'center' })]
     ]);
   };
+
+  function wide() { return chat.clientWidth >= 640; }
 
   // ---------- the story ----------
   var ESCENAS = {
@@ -145,7 +156,7 @@
         return flat([
           line(k + 'l', icon, title, sub),
           Btn(k + 'b', label, action, 'primary'),
-          [Col(k + 'c', [k + 'l', k + 'b']), { id: k, component: 'Card', child: k + 'c' }]
+          [Col(k + 'c', [k + 'l', k + 'b'], { justify: 'spaceBetween' }), { id: k, component: 'Card', child: k + 'c', weight: 1 }]
         ]);
       }
       return show(flat([
@@ -154,7 +165,8 @@
         opcion('o2', 'edit', 'Tus notas de voz del coche', 'Tres cosas mezcladas en un audio de un minuto', 'Ordenar mis notas', 'escena-notas'),
         opcion('o3', 'photo', 'Una factura de papel encima de la mesa', 'Hay que pasarla a la hoja de gastos', 'Pasar la factura', 'escena-factura'),
         [T('nota', 'En cada pantalla verás si es una simulación o si funciona en directo.', 'caption'),
-         Col('root', ['h', 'o1', 'o2', 'o3', 'nota'])]
+         wide() ? Row('opts', ['o1', 'o2', 'o3'], { align: 'stretch' }) : Col('opts', ['o1', 'o2', 'o3']),
+         Col('root', ['h', 'opts', 'nota'])]
       ]));
     },
 
@@ -210,8 +222,7 @@
          { id: 'texto', component: 'TextField', label: 'Tu nota de voz (en texto)', variant: 'longText', value: { '@path': '/texto' } },
          T('priv', 'El texto pasa por mi servidor de automatizaciones y por un modelo de IA de OpenAI para leerlo. Yo no lo guardo. No escribas datos personales reales.', 'caption')],
         Btn('go', 'Ordénalo', 'notas-enviar', 'primary', { texto: { '@path': '/texto' } }),
-        Btn('v', 'Volver al lunes', 'inicio', 'borderless'),
-        [Row('btns', ['go', 'v'], { align: 'center' }),
+        [Row('btns', ['go'], { align: 'center' }),
          Col('root', ['h', 'texto', 'btns', 'priv'])]
       ]), { badge: 'live', data: { texto: 'Vale, a ver: mañana llamar a Marta por lo del presupuesto, comprar tinta para la impresora, mandarle a Jordi las fotos del local antes del viernes y pedir cita con la gestora el martes a las diez.' } });
     },
@@ -231,9 +242,9 @@
         [{ id: 'img', component: 'Image', url: '/pruebalo/aventura/factura-ejemplo.svg', description: 'Factura de ejemplo de un proveedor ficticio', variant: 'mediumFeature', fit: 'contain' },
          T('p', 'Lo normal: abrir la hoja de gastos y teclear proveedor, fecha, base, IVA y total. Y equivocarte en un número.')],
         Btn('go', 'Léela por mí', 'factura-leida', 'primary'),
-        Btn('v', 'Volver al lunes', 'inicio', 'borderless'),
-        [Row('btns', ['go', 'v'], { align: 'center' }),
-         Col('root', ['img', 'p', 'btns'])]
+        [Row('btns', ['go'], { align: 'center' }),
+         Col('txt', ['p', 'btns'], { justify: 'center', weight: 1 }),
+         wide() ? Row('root', ['img', 'txt'], { align: 'center' }) : Col('root', ['img', 'txt'])]
       ]));
     },
 
@@ -337,6 +348,7 @@
   // ---------- what each button does ----------
   function onAction(a) {
     var ctx = a.context || {};
+    nextScene = a.name;
     if (a.name === 'contacto') {
       try { if (window.umami) window.umami.track('click-contacto', { location: 'aventura' }); } catch (e) {}
       window.location.href = '/#reserva';

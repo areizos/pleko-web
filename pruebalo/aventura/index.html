@@ -45,18 +45,27 @@
       --a2ui-textfield-color-border-focus: var(--color-primary);
       font-family: var(--font-sans);
     }
-    /* The demo lives inside one phone screen: taps swap the screen in place. */
-    .av-phone { position: relative; width: min(23rem, 100%); margin: 0 auto; background: #0b3d3d; border-radius: 2.6rem; padding: .7rem; box-shadow: 0 1.5rem 3rem -1.5rem rgba(11, 61, 61, .45); }
-    .av-phone__inner { background: var(--color-background); border-radius: 2rem; overflow: hidden; display: flex; flex-direction: column; height: min(44rem, 78vh); min-height: 32rem; }
-    .av-phone__bar { display: flex; align-items: center; justify-content: space-between; padding: .7rem 1.4rem .2rem; font-size: .8rem; font-weight: 600; color: var(--color-text); }
-    .av-phone__notch { width: 5.5rem; height: 1.3rem; background: #0b3d3d; border-radius: 1rem; }
-    .av-phone__head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .6rem 1.1rem .7rem; border-bottom: 1px solid var(--color-border); }
-    .av-who { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; color: var(--color-label); }
-    .av-phone__screen { position: relative; flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 1rem 1rem 1.25rem; -webkit-overflow-scrolling: touch; }
-    .av-phone__home { width: 7rem; height: .3rem; border-radius: 1rem; background: var(--color-outline-variant); margin: .5rem auto .6rem; flex: none; }
+    /* The demo lives inside one tablet screen, held sideways: taps swap the screen in place. */
+    .av-tab { position: relative; width: 100%; max-width: 68rem; margin: 0 auto; background: #0b3d3d; border-radius: 2.2rem; padding: 1.1rem; box-shadow: 0 2rem 4rem -2rem rgba(11, 61, 61, .5); }
+    .av-tab__cam { position: absolute; left: .45rem; top: 50%; width: .4rem; height: .4rem; margin-top: -.2rem; border-radius: 50%; background: var(--color-signal); }
+    .av-tab__inner { background: var(--color-background); border-radius: 1.3rem; overflow: hidden; display: flex; flex-direction: column; height: clamp(32rem, 72vh, 44rem); }
+    .av-tab__bar { display: flex; align-items: center; justify-content: space-between; padding: .55rem 1.4rem; font-size: .8rem; font-weight: 600; color: var(--color-text-muted); }
+    .av-tab__bar b { color: var(--color-text); font-weight: 600; }
+    .av-tab__head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .5rem 1.4rem .75rem; border-bottom: 1px solid var(--color-border); }
+    .av-who { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .04em; text-transform: uppercase; color: var(--color-label); }
+    .av-who::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: var(--color-signal); }
+    .av-tab__screen { position: relative; flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: clamp(1rem, 2.5vw, 2rem) clamp(1rem, 3vw, 2.5rem); -webkit-overflow-scrolling: touch; }
+    .av-tab__screen > a2ui-surface { max-width: 56rem; margin: 0 auto; }
+    .av-tab__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .55rem 1rem; border-top: 1px solid var(--color-border); background: var(--color-surface); }
+    .av-restart { display: inline-flex; align-items: center; gap: .45rem; min-height: 40px; padding: .35rem .9rem; border: 1px solid var(--color-border); border-radius: 999px; background: #fff; color: var(--color-primary); font: 500 .9rem var(--font-sans); cursor: pointer; }
+    .av-restart:hover:not(:disabled) { border-color: var(--color-primary); }
+    .av-restart:disabled { opacity: .45; cursor: default; }
+    .av-restart svg { width: 1rem; height: 1rem; fill: currentColor; }
+    .av-tab__brand { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em; text-transform: uppercase; color: var(--color-label); }
+    .av-tab__brand i { display: inline-block; width: .35rem; height: .35rem; border-radius: 50%; background: var(--color-signal); margin-left: .15rem; vertical-align: .1rem; }
     .av-screen { display: block; transition: opacity .25s ease, transform .25s ease; }
     .av-screen--in { opacity: 0; transform: translateX(1.25rem); }
-    .av-tap { position: absolute; width: 2.6rem; height: 2.6rem; margin: -1.3rem 0 0 -1.3rem; border-radius: 50%; background: rgba(0, 101, 101, .22); pointer-events: none; animation: av-tap .55s ease-out forwards; }
+    .av-tap { position: absolute; width: 2.6rem; height: 2.6rem; margin: -1.3rem 0 0 -1.3rem; border-radius: 50%; background: rgba(204, 85, 0, .28); pointer-events: none; animation: av-tap .55s ease-out forwards; }
     @keyframes av-tap { from { transform: scale(.3); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
     .av .a2ui-card, .av a2ui-card { --a2ui-color-surface: #fff; }
     .av a2ui-surface { display: block; }
@@ -65,7 +74,7 @@
     .av textarea { min-height: 8rem; font-family: var(--font-sans); font-size: 1rem; line-height: 1.5; }
     .av__what { max-width: 40rem; margin: 2rem auto 0; font-size: .9rem; color: var(--color-text-muted); }
     @media (prefers-reduced-motion: reduce) { .av-screen { transition: none; } .av-tap { animation: none; display: none; } }
-    @media (max-width: 30rem) { .av-phone { padding: .45rem; border-radius: 2.1rem; } .av-phone__inner { border-radius: 1.7rem; height: 80vh; } }
+    @media (max-width: 40rem) { .av-tab { padding: .6rem .6rem .6rem 1rem; border-radius: 1.6rem; } .av-tab__inner { border-radius: 1rem; height: 80vh; } .av-tab__cam { left: .3rem; } }
   </style>
 </head>
 <body>
@@ -114,15 +123,19 @@
 
     <section class="subpage-block">
       <div class="wrap av">
-        <div class="av-phone">
-          <div class="av-phone__inner">
-            <div class="av-phone__bar" aria-hidden="true"><span>9:14</span><span class="av-phone__notch"></span><span>5G</span></div>
-            <div class="av-phone__head"><span class="av-who">Asistente</span><span id="av-badge" class="demo__badge demo__badge--sim">Simulación</span></div>
-            <div class="av-phone__screen" id="av-chat" aria-live="polite">
+        <div class="av-tab">
+          <span class="av-tab__cam" aria-hidden="true"></span>
+          <div class="av-tab__inner">
+            <div class="av-tab__bar" aria-hidden="true"><b>Lunes 9:14</b><span>Wi-Fi · 82 %</span></div>
+            <div class="av-tab__head"><span class="av-who">Asistente</span><span id="av-badge" class="demo__badge demo__badge--sim">Simulación</span></div>
+            <div class="av-tab__screen" id="av-chat" aria-live="polite">
               <p>Cargando la historia…</p>
               <noscript><p>Esta demo necesita JavaScript.</p></noscript>
             </div>
-            <div class="av-phone__home" aria-hidden="true"></div>
+            <div class="av-tab__foot">
+              <button type="button" class="av-restart" id="av-restart" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>Volver al lunes</button>
+              <span class="av-tab__brand">pleko<i></i> demo</span>
+            </div>
           </div>
         </div>
         <p class="av__what">Cómo está hecho: cada pantalla es una descripción en <a href="https://a2ui.org/" target="_blank" rel="noopener">A2UI</a>, un formato abierto de Google para que un asistente de IA envíe pantallas en lugar de solo texto. La página las dibuja con los colores de pleko. Las notas de voz pasan de verdad por una automatización con IA; el resto es una simulación con datos de ejemplo.</p>
@@ -146,7 +159,7 @@
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/pruebalo/aventura/a2ui.js?v=1" defer></script>
-  <script src="/pruebalo/aventura/aventura.js?v=2" defer></script>
+  <script src="/pruebalo/aventura/aventura.js?v=3" defer></script>
   <script src="/site.js?v=15" defer></script>
 </body>
 </html>
