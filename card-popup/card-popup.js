@@ -29,20 +29,22 @@
   var T = {
     es: {
       h: 'Sí, las tarjetas de papel siguen funcionando. Acabas de demostrarlo.',
-      parts: ['Sí, las tarjetas de papel', 'siguen funcionando.', 'Acabas de demostrarlo.'],
+      wide: ['Sí, las tarjetas de papel siguen funcionando.', 'Acabas de demostrarlo.'],
+      narrow: ['Sí, las tarjetas de papel', 'siguen funcionando.', 'Acabas de demostrarlo.'],
       tag: 'Automatización e IA', replay: 'Ver otra vez', close: 'Cerrar',
       other: 'English', otherHref: '/en/' + UTM, aria: 'Tarjeta de visita de pleko, parte de atrás'
     },
     en: {
       h: 'Yes, paper business cards still work. You\u2019ve just proved it.',
-      parts: ['Yes, paper business cards', 'still work.', 'You\u2019ve just proved it.'],
+      wide: ['Yes, paper business cards still work.', 'You\u2019ve just proved it.'],
+      narrow: ['Yes, paper business cards', 'still work.', 'You\u2019ve just proved it.'],
       tag: 'Automation and AI', replay: 'Watch again', close: 'Close',
       other: 'Español', otherHref: '/' + UTM, aria: 'pleko business card, back'
     }
   }[lang];
 
   var RING = 'M90,360 L310,360 A50,50 0 0 0 360,310 L360,90 A50,50 0 0 0 310,40 L90,40 A50,50 0 0 0 40,90 L40,310 A50,50 0 0 0 90,360 Z';
-  var BASE = 30, N = 90, NP = 3;
+  var BASE = 30, N = 90, NP = 3;   // NP is set again once the layout (2 or 3 lines) is chosen
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function parts(f) { var s = '', i; for (i = 0; i < NP; i++) s += f(i); return s; }
@@ -53,19 +55,17 @@
     '<div class="cp-head">' +
     '<h2 class="sr-only" id="cp-h">' + T.h + '</h2>' +
     '</div>' +
-    '<div class="cp-visual"><div class="cp-scene"><div class="cp-card" role="img" aria-label="' + T.aria + '">' +
+    '<div class="cp-visual"><div class="cp-scene"><div class="cp-stage">' +
+    '<div class="cp-card" role="img" aria-label="' + T.aria + '">' +
       '<div class="cp-face cp-back">' +
         '<div class="cp-name">Alexandros Re<span class="cp-i">ï</span>zos</div>' +
         '<img class="cp-qr" src="/card-popup/qr.svg?v=2" alt="" width="290" height="290">' +
-        '<svg class="cp-ring" viewBox="0 0 400 400" aria-hidden="true" focusable="false">' +
-          '<path id="cp-ref" d="' + RING + '" fill="none"/>' + parts(function (i) {
-            return '<path id="cp-p' + i + '" fill="none"/><text id="cp-m' + i + '" style="visibility:hidden"></text>' +
-                   '<text id="cp-t' + i + '"><textPath href="#cp-p' + i + '" id="cp-tp' + i + '"></textPath></text>';
-          }) +
-        '</svg>' +
+        '<svg class="cp-ring cp-ring--card" viewBox="0 0 400 400" aria-hidden="true" focusable="false"></svg>' +
         '<div class="cp-contact"><span>alex@pleko.es</span><span>BCN</span><span>656 310 631</span></div>' +
       '</div>' +
       '<div class="cp-face cp-front"><img src="/pleko-logo.svg?v=2" alt="" width="314" height="116"><span class="cp-tag">' + T.tag + '</span></div>' +
+    '</div>' +
+    '<svg class="cp-ring cp-over" viewBox="0 0 400 400" aria-hidden="true" focusable="false"></svg>' +
     '</div></div>' +
     '<button type="button" class="cp-replay">' + T.replay + '</button></div>' +
     '<div class="cp-rest"><p class="cp-lang"><a href="' + T.otherHref + '" hreflang="' + (lang === 'es' ? 'en' : 'es') + '" lang="' + (lang === 'es' ? 'en' : 'es') + '">' + T.other + '</a></p></div>' +
@@ -81,7 +81,8 @@
   dlg.setAttribute('tabindex', '-1');
   var card = overlay.querySelector('.cp-card');
   var scene = overlay.querySelector('.cp-scene');
-  var ring = overlay.querySelector('.cp-ring');
+  var cardRing = overlay.querySelector('.cp-ring--card');
+  var over = overlay.querySelector('.cp-over');
   var $ = function (id) { return document.getElementById(id); };
 
   // ---------- close ----------
@@ -108,30 +109,58 @@
   requestAnimationFrame(function () { overlay.classList.add('is-on'); dlg.focus({ preventScroll: true }); });
 
   // ---------- animation ----------
+  // 1) the card turns once (text on the card, in 3D); 2) at the end of the turn the same text
+  // is handed to a flat layer over the card, which unwinds into straight lines while the card
+  // moves back and fades away; 3) only the lines are left, in the middle.
   var ease = function (x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
   var clamp = function (x) { return x < 0 ? 0 : x > 1 ? 1 : x; };
   var lerp = function (a, b, t) { return a + (b - a) * t; };
-  var ref = $('cp-ref');
-  var halves = null, S = 1, raf = 0, t0 = 0, curT = 0;
-  var START = [1000, 1450, 1900], DUR = 1500, TEND = START[NP - 1] + DUR;
-  var C0 = [0, 101, 101], C1 = [27, 28, 28];   // teal on the card -> near-black headline
+  var NS = 'http://www.w3.org/2000/svg';
+  var ref = null, lines = null, S = 1, raf = 0, t0 = 0, curT = 0, mode = '';
+  var SPIN = 1800, FADE = 1200, START = [SPIN, SPIN + 350, SPIN + 700], DUR = 1400, TEND = 3900;
+  var $s = function (tag, attrs) { var n = document.createElementNS(NS, tag), k; for (k in attrs) n.setAttribute(k, attrs[k]); return n; };
 
-  function build() {
-    var ws = [], total = 0, i;
-    for (i = 0; i < NP; i++) {
-      var m = $('cp-m' + i); m.setAttribute('font-size', BASE); m.textContent = T.parts[i];
-      ws.push(m.getComputedTextLength()); total += ws[i];
-      $('cp-tp' + i).textContent = T.parts[i];
-    }
-    var L = ref.getTotalLength(), s0 = 0;
-    halves = [];
-    for (i = 0; i < NP; i++) {
-      var len = L * ws[i] / total;
-      halves.push(mk(s0, len, ws[i], i)); s0 += len;
-    }
-    layout();
+  function measure(str) {
+    var m = $s('text', { 'font-size': BASE, style: 'visibility:hidden' });
+    m.textContent = str; over.appendChild(m);
+    var w = m.getComputedTextLength(); over.removeChild(m); return w;
   }
-  function mk(s0, len, w, idx) {
+  function build() {
+    over.innerHTML = ''; cardRing.innerHTML = '';
+    ref = $s('path', { d: RING, fill: 'none' }); over.appendChild(ref);
+    // two lines when they fit comfortably, three on narrow screens
+    var sceneW = scene.clientWidth || 300;
+    var wideW = Math.max(measure(T.wide[0]), measure(T.wide[1]));
+    var fitF = 0.94 * sceneW / (wideW / BASE);
+    var txt = fitF >= 21 ? T.wide : T.narrow;
+    NP = txt.length;
+    TEND = Math.max(SPIN + FADE, START[NP - 1] + DUR) + 100;
+    var ws = txt.map(measure), total = ws.reduce(function (x, y) { return x + y; }, 0);
+    var L = ref.getTotalLength(), s0 = 0;
+    lines = txt.map(function (str, i) {
+      var len = L * ws[i] / total;
+      var path = $s('path', { id: 'cp-p' + i, fill: 'none' });
+      var tp = $s('textPath', { href: '#cp-p' + i }); tp.textContent = str;
+      var te = $s('text'); te.appendChild(tp);
+      over.appendChild(path); over.appendChild(te);
+      var cpath = $s('path', { id: 'cc-p' + i, fill: 'none' });
+      var ctp = $s('textPath', { href: '#cc-p' + i }); ctp.textContent = str;
+      var cte = $s('text'); cte.appendChild(ctp);
+      cardRing.appendChild(cpath); cardRing.appendChild(cte);
+      var h = mk(s0, len, ws[i], i, str.length);
+      h.path = path; h.text = te; h.cpath = cpath; h.ctext = cte; s0 += len;
+      return h;
+    });
+    layout();
+    render(0);
+    // the card carries a frozen copy of the ring text (the unwound state starts exactly from it)
+    lines.forEach(function (h) {
+      h.cpath.setAttribute('d', h.path.getAttribute('d'));
+      h.ctext.setAttribute('font-size', h.text.getAttribute('font-size'));
+      h.ctext.setAttribute('letter-spacing', h.text.getAttribute('letter-spacing'));
+    });
+  }
+  function mk(s0, len, w, idx, n) {
     var pts = [], i, Lr = ref.getTotalLength();
     for (i = 0; i <= N; i++) pts.push(ref.getPointAtLength(Math.min(s0 + len * i / N, Lr)));
     var ch = [], th = [], prev = null;
@@ -142,20 +171,22 @@
       else { while (a > 0) a -= 2 * Math.PI; while (a <= -2 * Math.PI) a += 2 * Math.PI; }
       th.push(a); prev = a; ch.push(Math.sqrt(dx * dx + dy * dy));
     }
-    return { len: len, w: w, p0: pts[0], ch: ch, th: th, path: $('cp-p' + idx), text: $('cp-t' + idx), n: T.parts[idx].length, ax: 0, ay: 0, fl: 0, idx: idx };
+    return { len: len, w: w, p0: pts[0], ch: ch, th: th, n: n, ax: 0, ay: 0, fl: 0, idx: idx };
   }
   function layout() {
-    if (!halves) return;
-    var k = (card.offsetWidth * 40 / 61) / 400 || 1;           // pixels per drawing unit
-    var F = parseFloat(window.getComputedStyle(scene).fontSize) || 22;   // final text size in px
-    S = F / (BASE * k);
-    var cardTop = -255;                                          // card's upper edge, in ring units (the card is taller than the ring)
-    halves.forEach(function (h, i) {
-      h.ax = 200 - h.w * S / 2; h.ay = cardTop - (F / k) * (0.55 + 1.3 * (NP - 1 - i)); h.fl = h.w * S / N;
+    if (!lines) return;
+    var k = (card.offsetWidth * 40 / 61) / 400 || 1;            // pixels per drawing unit
+    var F = parseFloat(window.getComputedStyle(scene).fontSize) || 24;   // largest text size in px
+    var maxW = Math.max.apply(null, lines.map(function (h) { return h.w; }));
+    S = Math.min(F / (BASE * k), 0.94 * (scene.clientWidth || 300) / (maxW * k));
+    var Fpx = BASE * k * S;                                       // actual size of the final lines
+    lines.forEach(function (h, i) {
+      h.ax = 200 - h.w * S / 2;                                   // centred on the card
+      h.ay = 200 + (Fpx / k) * (0.32 + 1.3 * (i - (NP - 1) / 2)); // baselines around the card's middle
+      h.fl = h.w * S / N;
     });
-    scene.style.paddingTop = Math.ceil(F * (0.55 + 1.3 * (NP - 1) + 1.05)) + 'px';
   }
-  function drawHalf(h, r) {
+  function drawLine(h, r) {
     var g = ease(r), x = lerp(h.p0.x, h.ax, g), y = lerp(h.p0.y, h.ay, g), total = 0, d = 'M' + x.toFixed(2) + ',' + y.toFixed(2);
     for (var i = 0; i < N; i++) {
       var u = ease(clamp(r * 1.6 - 0.6 * (i / (N - 1))));
@@ -167,13 +198,17 @@
     h.path.setAttribute('d', d);
     h.text.setAttribute('font-size', fs.toFixed(2));
     h.text.setAttribute('letter-spacing', ((total - h.w * fs / BASE) / h.n).toFixed(3));
-    h.text.style.fill = 'rgb(' + [0, 1, 2].map(function (c) { return Math.round(lerp(C0[c], C1[c], g)); }).join(',') + ')';
   }
   function render(t) {
     curT = t;
-    var a = ease(clamp(t / 2200)), bump = Math.sin(Math.PI * clamp(t / 2200));
-    card.style.transform = 'rotateY(' + (a * 360).toFixed(2) + 'deg) scale(' + (1 + 0.06 * bump).toFixed(3) + ')';
-    for (var i = 0; i < NP; i++) drawHalf(halves[i], clamp((t - START[i]) / DUR));
+    var a = ease(clamp(t / SPIN)), bump = Math.sin(Math.PI * clamp(t / SPIN));
+    var f = ease(clamp((t - SPIN) / FADE));                       // card moves back and fades
+    card.style.transform = 'rotateY(' + (a * 360).toFixed(2) + 'deg) translateZ(' + (-f * 420).toFixed(1) + 'px) scale(' + (1 + 0.06 * bump).toFixed(3) + ')';
+    card.style.opacity = (1 - f).toFixed(3);
+    var swapped = t >= SPIN;
+    over.style.visibility = swapped ? 'visible' : 'hidden';
+    cardRing.style.visibility = swapped ? 'hidden' : 'visible';
+    for (var i = 0; i < NP; i++) drawLine(lines[i], clamp((t - START[i]) / DUR));
   }
   function frame(now) {
     var t = now - t0;
@@ -191,6 +226,6 @@
   window.addEventListener('resize', function () { layout(); if (halves) render(curT); });
   window.__cpSeek = function (t) { cancelAnimationFrame(raf); render(t); };   // used by tests only
 
-  var fontsReady = (document.fonts && document.fonts.load) ? document.fonts.load('500 30px Inter').catch(function () {}) : Promise.resolve();
+  var fontsReady = (document.fonts && document.fonts.load) ? document.fonts.load('600 30px Literata').catch(function () {}) : Promise.resolve();
   fontsReady.then(function () { build(); play(); });
 })();
