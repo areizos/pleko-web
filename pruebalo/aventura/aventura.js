@@ -554,13 +554,13 @@
             ]), { data: { hora: ['12:00'] } });
           } },
         { id: 'anuncio', icon: 'edit', head: 'Texto del anuncio de un piso nuevo', sub: 'A partir de tus notas de la visita',
-          hecho: 'Texto guardado como borrador en el portal, listo para publicar.',
+          hecho: 'Texto guardado, listo para pegarlo en el portal.',
           open: function () {
             return show(flat([
               [T('h', 'Tus notas: **3 hab., 2 baños, reformado, mucha luz, balcón, cerca del metro, 4.º con ascensor.**'),
                T('p', 'El texto del anuncio, preparado. Cámbialo si quieres:')],
               draft('borrador', 'Texto del anuncio'),
-              decide('anuncio', 'Guardar en el portal'),
+              decide('anuncio', 'Guardar el texto'),
               [Col('root', ['h', 'p', 'borrador', 'decide'])]
             ]), { data: { borrador: 'Piso reformado de 3 habitaciones y 2 baños, en una cuarta planta con ascensor. Mucha luz natural durante todo el día y un balcón para el café de la mañana. A pocos minutos del metro. Listo para entrar a vivir.' } });
           } },
@@ -578,6 +578,173 @@
     }
   };
 
+  // ---------- "Detrás de esta pantalla": the panel next to the tablet ----------
+  // For each screen: where it comes from, what happens on its own, where it
+  // goes, and what you decide. Tool names are examples of what people in
+  // Spain already use; the point is that nothing here is a new app.
+  var IA = 'ChatGPT o Claude', AQUI = 'Esta bandeja';
+  function P(t, lead, de, deT, hecho, hechoT, a, aT, tu) {
+    return { t: t, lead: lead, flow: [['De dónde viene', de, deT], ['Qué se hace solo', hecho, hechoT], ['Adónde va', a, aT]], tu: tu };
+  }
+  var PANEL = {
+    autonomos: {
+      _inbox: P('Tus herramientas de siempre, en una sola bandeja',
+        'Lo que antes estaba repartido entre el correo, WhatsApp y tus notas llega aquí ya preparado. No es un programa nuevo: son tus herramientas, conectadas.',
+        ['Gmail', 'WhatsApp', 'Formulario de tu web'], 'Cada cosa entra por donde ya entraba.',
+        [IA], 'Lee, ordena y prepara cada cosa.',
+        [AQUI], 'Solo te llega lo que necesita tu decisión.',
+        'Nada sale sin tu sí.'),
+      consulta: P('Una consulta, respondida en tu tono',
+        'La respuesta sale de tu propia cuenta de correo. El cliente no nota ninguna herramienta nueva.',
+        ['Tally', 'Gmail'], 'Alguien rellena el formulario de tu web y llega a tu correo.',
+        [IA], 'Escribe la respuesta como escribes tú, con tus servicios y tu enlace para una llamada.',
+        ['Gmail', 'WhatsApp Business'], 'Se envía desde tu cuenta, como si la hubieras escrito tú.',
+        'Lees el borrador, cambias lo que quieras y lo envías.'),
+      notas: P('De una nota de voz a tareas',
+        'Este paso funciona de verdad: escribe tu nota y mira cómo la IA la separa en acciones.',
+        ['WhatsApp'], 'Te mandas un audio, como ya haces cuando vas con prisa.',
+        ['Transcripción', IA], 'Lo pasa a texto y lo separa en tareas, citas, correos y compras.',
+        ['Notion', 'Trello', 'Google Calendar', 'Gmail'], 'Cada cosa va a su sitio: tareas, agenda y borradores.',
+        'Revisas la lista antes de guardar nada.'),
+      factura: P('Proyecto terminado, factura hecha',
+        'El gráfico sale de tus cobros reales en tu programa de facturación, no de una hoja aparte.',
+        ['Trello'], 'Mueves la tarjeta del proyecto a «Terminado».',
+        ['Holded'], 'Se crea la factura con los datos del cliente, el IVA y la retención.',
+        ['Gmail'], 'Se envía con un email de agradecimiento. Si a los 30 días no está pagada, te aviso.',
+        'Revisas los importes y das el sí.'),
+      cita: P('Una llamada que se organiza sola',
+        'Tu agenda, tu enlace de videollamada y tu WhatsApp, trabajando juntos.',
+        ['Cal.com'], 'El cliente reservó la llamada desde tu web.',
+        ['Google Calendar', 'Google Meet'], 'La cita y el enlace de la videollamada se crean solos.',
+        ['WhatsApp Business', 'Gmail'], 'El cliente recibe el enlace y un recordatorio una hora antes.',
+        'Decides si se envía.')
+    },
+    asesorias: {
+      _inbox: P('El trimestre, sin perseguir a nadie',
+        'Emails, fotos de tickets y documentos que faltan: aquí te llega solo lo que necesita a una persona del despacho.',
+        ['Outlook', 'Gmail', 'WhatsApp', 'Google Drive'], 'Lo que ya os llega cada día.',
+        [IA, 'Google Sheets'], 'Lee, clasifica y prepara cada respuesta.',
+        [AQUI], 'Solo lo que necesita vuestra revisión.',
+        'Ningún dato sale sin que una persona lo vea.'),
+      docs: P('Quién ha entregado y quién no',
+        'El gráfico se actualiza solo a partir de las carpetas de cada cliente.',
+        ['Google Drive'], 'Se revisa la carpeta de cada cliente y se ve qué falta del trimestre.',
+        ['Google Sheets'], 'Se lleva la cuenta de quién lo tiene todo. De ahí sale el gráfico.',
+        ['Gmail', 'WhatsApp Business'], 'Cada cliente recibe su lista y un enlace para subir lo que falta.',
+        'Eliges a quién se lo recuerdas.'),
+      facturas: P('Facturas leídas, no tecleadas',
+        'La IA lee muy bien, pero no es infalible. Por eso marca lo que no cuadra y una persona lo revisa.',
+        ['Gmail', 'WhatsApp'], 'Las facturas llegan por email o en foto.',
+        [IA], 'Lee proveedor, fecha, base e IVA, y marca lo que no cuadra.',
+        ['Google Sheets', 'Holded'], 'Los datos van a la contabilidad, con la imagen adjunta.',
+        'Una persona revisa antes de guardar.'),
+      consulta: P('Respuestas rápidas, datos protegidos',
+        'Antes de que la IA vea nada, el DNI y las cuentas se ocultan.',
+        ['Outlook', 'Gmail'], 'El email del cliente entra como siempre.',
+        ['Filtro de datos personales', IA], 'Primero se ocultan los datos; después se prepara la respuesta.',
+        ['Outlook', 'Gmail'], 'La respuesta sale desde el correo del despacho.',
+        'Revisas y envías.'),
+      alta: P('Un cliente nuevo, ya dado de alta',
+        'Del formulario a la carpeta, sin copiar y pegar.',
+        ['Tally'], 'El cliente rellena el formulario de vuestra web.',
+        ['Google Drive', 'Notion'], 'Se crean su carpeta y su ficha.',
+        ['Gmail'], 'Le llega la bienvenida con la lista de documentos.',
+        'Compruebas la ficha y das el sí.')
+    },
+    agencias: {
+      _inbox: P('Menos copiar números, más criterio',
+        'Los datos están en cinco sitios distintos. Aquí llegan juntos, comparados y listos para que tu equipo los lea.',
+        ['Google Analytics', 'Meta Business Suite', 'Google Ads', 'Slack'], 'Las plataformas que ya usáis.',
+        ['Google Sheets', IA], 'Recoge, compara y prepara.',
+        [AQUI], 'Solo lo que necesita una decisión.',
+        'La IA propone; una persona del equipo decide.'),
+      informe: P('El informe que se monta solo',
+        'Cada gráfico sale de las cuentas reales del cliente, comparado con el mes anterior. Lo que baja se marca en ámbar.',
+        ['Google Analytics', 'Meta Business Suite', 'Google Ads'], 'Los datos del mes se recogen solos de cada plataforma.',
+        ['Google Sheets'], 'Se comparan con el mes anterior y se marca lo que necesita atención.',
+        ['Google Slides', 'Gmail'], 'El informe se monta con vuestra plantilla y se envía al cliente.',
+        'Tú añades la lectura y das el sí.'),
+      alta: P('Cliente firmado, todo preparado',
+        'Lo que antes era una mañana de configurar cosas, listo antes del primer café.',
+        ['Gmail'], 'Llega el contrato firmado.',
+        ['Google Drive', 'Trello', 'Asana', 'Slack'], 'Carpeta, tablero con las tareas del primer mes y canal del equipo.',
+        ['Gmail'], 'Al cliente le llega la bienvenida y una sola petición de accesos.',
+        'Revisas y das la bienvenida.'),
+      post: P('Una idea, tres canales',
+        'La IA hace el primer borrador. El estilo y la decisión final siguen siendo de tu equipo.',
+        ['Notion'], 'La idea está en vuestro calendario de contenidos.',
+        [IA, 'Canva'], 'Tres versiones del texto, una por canal, y la imagen con vuestra plantilla.',
+        ['Meta Business Suite', 'LinkedIn'], 'Se programan en cada red.',
+        'Una persona del equipo elige y retoca.'),
+      ia: P('Normas claras para usar la IA',
+        'Con unas normas escritas, nadie tiene que preguntar dos veces.',
+        ['Slack'], 'Alguien del equipo pregunta en el canal.',
+        ['Notion'], 'Se busca si ya hay una norma escrita.',
+        ['Slack', 'Notion'], 'La respuesta vuelve al canal y la norma queda en la guía del equipo.',
+        'Tú decides la norma.')
+    },
+    inmobiliarias: {
+      _inbox: P('Todos los contactos, en un solo sitio',
+        'Cada portal avisa por su lado. Aquí llegan juntos y con la respuesta preparada, aunque estés enseñando un piso.',
+        ['Idealista', 'Fotocasa', 'WhatsApp', 'Tu web'], 'Por donde ya te llegan.',
+        [IA, 'Google Sheets'], 'Prepara cada respuesta y lo apunta todo.',
+        [AQUI], 'Solo lo que necesita tu sí.',
+        'Nada sale sin tu sí.'),
+      contactos: P('Tres contactos, tres respuestas',
+        'Contestar rápido marca la diferencia. Aquí la respuesta ya está escrita con los datos del anuncio.',
+        ['Idealista', 'Fotocasa', 'Tu web'], 'Cada portal te avisa por email de un contacto nuevo.',
+        [IA], 'Responde su pregunta con los datos del anuncio y propone dos horas de visita.',
+        ['Gmail', 'WhatsApp Business', 'Google Sheets'], 'La respuesta sale y el contacto queda apuntado en tu lista.',
+        'Revisas y envías las tres.'),
+      visita: P('Visitas sin ir y venir de mensajes',
+        'Tu agenda decide qué horas se ofrecen; nadie tiene que mirarla a mano.',
+        ['Google Calendar'], 'Se miran tus huecos libres.',
+        ['WhatsApp Business'], 'Se confirma la hora con el interesado.',
+        ['Google Calendar', 'WhatsApp Business'], 'Cita en tu agenda y recordatorio el día antes, para los dos.',
+        'Eliges la hora y confirmas.'),
+      anuncio: P('De tus notas a un anuncio',
+        'Tus notas de la visita, convertidas en un texto que vende sin inventar nada.',
+        ['WhatsApp', 'Notas del móvil'], 'Tus notas de la visita, escritas o dictadas.',
+        [IA], 'Las convierte en el texto del anuncio.',
+        ['Google Docs'], 'Queda listo para pegarlo en el portal.',
+        'Lo lees, lo cambias si quieres y lo guardas.'),
+      seguimiento: P('Ningún interesado se queda sin respuesta',
+        'El seguimiento a los 7 días es lo primero que se olvida. Aquí no.',
+        ['Google Sheets'], 'Tu lista de visitas, con la fecha de cada una.',
+        [IA], 'A los 7 días sin noticias, prepara un mensaje personal.',
+        ['WhatsApp Business'], 'El mensaje sale desde tu número.',
+        'Decides si se envía.')
+    }
+  };
+  var PANEL_VACIA = { t: 'Así podría ser tu semana', lead: 'Cada conexión se monta a medida, con las herramientas que ya usas, empezando por lo que más tiempo te quita. Primero simplifico, luego automatizo.', tu: 'Tú sigues decidiendo; lo repetitivo ya viene hecho.' };
+
+  var side = document.getElementById('av-side');
+  var sideKey = '';
+  function h(x) { return String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+  function chips(list) {
+    return '<span class="av-chips">' + list.map(function (c) {
+      var cls = c === IA ? ' av-chip--ia' : c === AQUI ? ' av-chip--here' : '';
+      return '<span class="av-chip' + cls + '">' + h(c) + '</span>';
+    }).join('') + '</span>';
+  }
+  function panel(key) {
+    if (!side) return;
+    var p = key === '_vacia' ? PANEL_VACIA : (PANEL[sector] || {})[key];
+    if (!p || sector + key === sideKey) return;
+    sideKey = sector + key;
+    var html = '<p class="av-side__label">Detrás de esta pantalla</p><h2 class="av-side__title">' + h(p.t) + '</h2>' +
+      '<p class="av-side__lead">' + h(p.lead) + '</p>';
+    if (p.flow) {
+      html += '<ol class="av-flow">' + p.flow.map(function (f, i) {
+        return '<li data-n="' + (i + 1) + '"><span class="av-flow__k">' + h(f[0]) + '</span>' + chips(f[1]) + '<p class="av-flow__t">' + h(f[2]) + '</p></li>';
+      }).join('') + '</ol>';
+    }
+    html += '<p class="av-side__you">' + h(p.tu) + '</p>' +
+      '<p class="av-side__foot">Las conexiones las monto yo, con las herramientas que ya tienes. La IA puede ser ChatGPT o Claude.</p>';
+    side.classList.add('is-changing');
+    setTimeout(function () { side.innerHTML = html; side.classList.remove('is-changing'); }, 160);
+  }
+
   // ---------- inbox state ----------
   var sector = 'autonomos';
   var done = {};
@@ -591,6 +758,7 @@
     var S = SECTORES[sector];
     var left = pending().length;
     if (!left) return vacia();
+    panel('_inbox');
     var comps = [], ids = [];
     if (toast) { comps = comps.concat(line('toast', 'check', toast)); ids.push('toast'); toast = ''; }
     comps.push(T('h', '**' + S.tema + '.** ' + S.intro));
@@ -626,6 +794,7 @@
        Col('root', ['card', 'p', 'btns'])]
     ]);
     track('vacia');
+    panel('_vacia');
     return show(comps);
   }
 
@@ -695,7 +864,7 @@
   function onAction(a) {
     var ctx = a.context || {};
     switch (a.name) {
-      case 'abrir': { var it = find(ctx.item); if (it) { it.open(); track('abrir-' + it.id); } return; }
+      case 'abrir': { var it = find(ctx.item); if (it) { panel(it.id); it.open(); track('abrir-' + it.id); } return; }
       case 'aprobar': return approve(ctx.item);
       case 'bandeja': return bandeja();
       case 'notas-aprobar': return approve('notas');

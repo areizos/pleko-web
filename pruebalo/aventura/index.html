@@ -85,6 +85,43 @@
     .av .av-pill--warn p { background: #fbe7b5; color: #6e4a00; }
     .av .av-pill--same p { background: #eef1f0; color: #5b6b6a; }
     .av .a2ui-image-mediumFeature { width: 100%; max-width: 26rem; height: auto; margin: .25rem 0; }
+    /* Two halves on a laptop: tablet left, "Detrás de esta pantalla" right. */
+    .av-layout { display: grid; gap: 2.5rem; align-items: start; }
+    .av-left { min-width: 0; }
+    @media (min-width: 64rem) {
+      .av-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; }
+      .av-sectors { justify-content: flex-start; }
+      .av-side { margin-top: 4.25rem; }
+    }
+    .av-side { max-width: 36rem; }
+    .av-side__label { display: inline-flex; align-items: center; gap: .5rem; margin: 0 0 .5rem; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--color-label); }
+    .av-side__label::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: var(--color-signal); }
+    .av-side__title { margin: 0 0 .6rem; font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.2; }
+    .av-side__lead { margin: 0 0 1.5rem; color: var(--color-text-muted); }
+    .av-flow { list-style: none; margin: 0 0 1.5rem; padding: 0; }
+    .av-flow li { position: relative; padding: 0 0 1.25rem 2.25rem; }
+    .av-flow li::before { content: attr(data-n); position: absolute; left: 0; top: 0; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--color-primary); color: #fff; font: 600 .78rem/1.5rem var(--font-sans); text-align: center; }
+    .av-flow li:not(:last-child)::after { content: ""; position: absolute; left: .72rem; top: 1.7rem; bottom: .2rem; width: 2px; background: repeating-linear-gradient(to bottom, var(--color-border) 0 4px, transparent 4px 8px); }
+    .av-flow__k { display: block; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: var(--color-label); margin-bottom: .35rem; }
+    .av-chips { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .4rem; }
+    .av-chip { display: inline-block; padding: .2rem .65rem; border: 1px solid var(--color-border); border-radius: 999px; background: #fff; font-size: .85rem; font-weight: 500; color: var(--color-text); }
+    .av-chip--ia { background: #d9f7ec; border-color: #b6ead7; color: #00504f; }
+    .av-chip--here { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+    .av-flow__t { margin: 0; font-size: .95rem; color: var(--color-text-muted); }
+    .av-side__you { display: flex; gap: .6rem; align-items: flex-start; margin: 0 0 1rem; padding: .8rem 1rem; border-left: 3px solid var(--color-signal); background: var(--color-surface); border-radius: 0 .6rem .6rem 0; font-weight: 500; }
+    .av-side__foot { margin: 0; font-size: .9rem; color: var(--color-text-muted); }
+    .av-side__live { min-height: 1px; }
+    #av-side { transition: opacity .25s ease; }
+    #av-side.is-changing { opacity: 0; }
+    .av-faq { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--color-border); }
+    .av-faq__h { margin: 0 0 .5rem; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: var(--color-label); }
+    .av-faq details { border-bottom: 1px solid var(--color-border); }
+    .av-faq summary { cursor: pointer; padding: .7rem 0; font-weight: 500; color: var(--color-primary); list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+    .av-faq summary::-webkit-details-marker { display: none; }
+    .av-faq summary::after { content: "+"; color: var(--color-signal); font-weight: 600; }
+    .av-faq details[open] summary::after { content: "−"; }
+    .av-faq details p { margin: 0 0 .9rem; font-size: .95rem; color: var(--color-text-muted); }
+    .av-faq__more { display: inline-block; margin-top: 1rem; font-weight: 500; color: var(--color-primary); text-decoration: none; }
     .av__what { max-width: 40rem; margin: 2rem auto 0; font-size: .9rem; color: var(--color-text-muted); }
     @media (prefers-reduced-motion: reduce) { .av-screen { transition: none; } .av-tap { animation: none; display: none; } }
     @media (max-width: 40rem) { .av-tab { padding: .6rem .6rem .6rem 1rem; border-radius: 1.6rem; } .av-tab__inner { border-radius: 1rem; height: 80vh; } .av-tab__cam { left: .3rem; } }
@@ -136,6 +173,8 @@
 
     <section class="subpage-block">
       <div class="wrap av">
+        <div class="av-layout">
+        <div class="av-left">
         <div class="av-sectors" role="group" aria-label="Elige tu tipo de negocio">
           <button type="button" data-av-sector="autonomos" aria-pressed="true">Autónomos</button>
           <button type="button" data-av-sector="asesorias" aria-pressed="false">Asesorías</button>
@@ -156,6 +195,24 @@
               <span class="av-tab__brand">pleko<i></i> demo</span>
             </div>
           </div>
+        </div>
+        </div>
+        <aside class="av-side">
+          <div id="av-side" aria-live="polite">
+            <p class="av-side__label">Detrás de esta pantalla</p>
+            <h2 class="av-side__title">Tus herramientas de siempre, conectadas</h2>
+          </div>
+          <div class="av-faq">
+            <p class="av-faq__h">Dudas que suelen salir</p>
+            <details><summary>¿Es una aplicación nueva que tengo que aprender?</summary><p>No. Conecto las herramientas que ya usas: tu correo, WhatsApp, Drive, Notion. Lo que casi siempre añado es una pieza que las une, como n8n o Make. Y lo que aquí ves como bandeja te puede llegar donde ya miras cada día: el correo, WhatsApp o una página de Notion.</p></details>
+            <details><summary>¿Tengo que pagar algo cada mes para que funcione?</summary><p>Normalmente sí, pero a la vista: la pieza que conecta tus herramientas y el uso de la IA tienen un coste mensual que depende de cuánto se use. Antes de empezar te digo qué añado, por qué y cuánto cuesta.</p></details>
+            <details><summary>¿Cuánto cuesta montarlo?</summary><p>Depende de qué conectemos. Siempre con presupuesto claro antes de empezar. <a href="/servicios/tarifas/">Ver servicios y tarifas</a></p></details>
+            <details><summary>¿Y si la IA se equivoca?</summary><p>Puede pasar, por eso lo diseño para que nada importante llegue a un cliente sin que una persona lo revise. La IA prepara el borrador; tú decides.</p></details>
+            <details><summary>¿Qué pasa con mis datos?</summary><p>Todo queda en tus cuentas, documentado y tuyo. Trabajo con los permisos mínimos necesarios y cumplo el RGPD. Si hace falta, los datos personales se ocultan antes de pasar por la IA.</p></details>
+            <details><summary>¿Y si algo se rompe?</summary><p>Puede pasar: las herramientas cambian. Por eso cada flujo avisa si algo no sale como debe, y todo queda documentado. Según lo que montemos, te propongo un plan de soporte.</p></details>
+            <a class="av-faq__more" href="/preguntas-frecuentes/">Más preguntas frecuentes <span aria-hidden="true">→</span></a>
+          </div>
+        </aside>
         </div>
         <p class="av__what">Cómo está hecho: cada pantalla es una descripción en <a href="https://a2ui.org/" target="_blank" rel="noopener">A2UI</a>, un formato abierto de Google para que un asistente de IA envíe pantallas en lugar de solo texto. La página las dibuja con los colores de pleko. En la bandeja de autónomos, las notas de voz pasan de verdad por una automatización con IA; el resto es una simulación con datos de ejemplo.</p>
       </div>
@@ -178,7 +235,7 @@
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/pruebalo/aventura/a2ui.js?v=1" defer></script>
-  <script src="/pruebalo/aventura/aventura.js?v=5" defer></script>
+  <script src="/pruebalo/aventura/aventura.js?v=6" defer></script>
   <script src="/site.js?v=15" defer></script>
 </body>
 </html>
