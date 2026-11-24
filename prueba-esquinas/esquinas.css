@@ -1,0 +1,28 @@
+/* PREVIEW ONLY: tighter corners, paper edges, no scroll fades.
+   Loaded after style.css on /prueba-esquinas/ only. */
+
+/* 1. Tighter corners */
+:root { --radius-md: 6px; --radius-lg: 8px; --radius-xl: 12px; }
+.card, .promise, .pain, .tools__row, .name-note, .calc, .latest-post, .ncard, .mock,
+.chat, .reminder, .detect__marked, .detect__anon, .piezas__trace li { border-radius: 8px; }
+.diagnostic--box, .tier, .flow-card, .triad__item, .demo__box, .hero__visual { border-radius: 12px; }
+.piezas__piece, .demo input[type="number"], .demo textarea, .week__slot { border-radius: 6px; }
+.chat__msg { border-radius: 10px; }
+.header-cta.btn, .floating__btn { border-radius: 6px; }
+.pcard { border-radius: 8px !important; }
+.pcard__btn { border-radius: 6px !important; }
+
+/* 2. Paper edges instead of floating shadows */
+.name-note, .calc, .latest-post, .ncard, .mock, .pcard { box-shadow: none !important; }
+.pain:hover, .card:hover, .promise:hover, .latest-post:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--color-primary);
+}
+
+/* 3. One big moment: content is simply there, no fade-and-rise on scroll */
+.js-reveal .reveal, .js-reveal .reveal.is-in {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
