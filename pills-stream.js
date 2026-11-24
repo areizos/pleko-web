@@ -68,7 +68,8 @@
     'anonimizacion': ['rgpd', 'llm'],
     'few-shot': ['prompt', 'clasificacion'],
     'backup': ['sandbox', 'base-datos'],
-    'registro': ['rgpd', 'human-in-the-loop', 'workflow']
+    'registro': ['rgpd', 'human-in-the-loop', 'workflow'],
+    'a2ui': ['agente', 'mcp', 'json']
   };
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
