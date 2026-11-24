@@ -23,7 +23,7 @@
 .cp-i::before{content:"ï";position:absolute;left:0;top:0;color:#006565;clip-path:inset(calc(100% - 62%) -50% 0 -50%)}
 .cp-i::after{content:"ï";position:absolute;left:0;top:0;color:#cc5500;clip-path:inset(0 -50% 62% -50%)}
 .cp-qr{position:absolute;width:calc(29*var(--u));height:calc(29*var(--u));left:calc(50% - 14.5*var(--u));top:calc(50% - 14.5*var(--u))}
-.cp-over{pointer-events:none}
+.cp-over{pointer-events:none;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .cp-ring{position:absolute;width:calc(40*var(--u));height:calc(40*var(--u));left:calc(50% - 20*var(--u));top:calc(50% - 20*var(--u));overflow:visible}
 .cp-ring text{font-family:Literata,Georgia,serif;font-weight:600;fill:#006565}
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

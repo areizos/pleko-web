@@ -60,7 +60,6 @@
       '<div class="cp-face cp-back">' +
         '<div class="cp-name">Alexandros Re<span class="cp-i">ï</span>zos</div>' +
         '<img class="cp-qr" src="/card-popup/qr.svg?v=2" alt="" width="290" height="290">' +
-        '<svg class="cp-ring cp-ring--card" viewBox="0 0 400 400" aria-hidden="true" focusable="false"></svg>' +
         '<div class="cp-contact"><span>alex@pleko.es</span><span>BCN</span><span>656 310 631</span></div>' +
       '</div>' +
       '<div class="cp-face cp-front"><img src="/pleko-logo.svg?v=2" alt="" width="314" height="116"><span class="cp-tag">' + T.tag + '</span></div>' +
@@ -81,7 +80,6 @@
   dlg.setAttribute('tabindex', '-1');
   var card = overlay.querySelector('.cp-card');
   var scene = overlay.querySelector('.cp-scene');
-  var cardRing = overlay.querySelector('.cp-ring--card');
   var over = overlay.querySelector('.cp-over');
   var $ = function (id) { return document.getElementById(id); };
 
@@ -109,15 +107,15 @@
   requestAnimationFrame(function () { overlay.classList.add('is-on'); dlg.focus({ preventScroll: true }); });
 
   // ---------- animation ----------
-  // 1) the card turns once (text on the card, in 3D); 2) at the end of the turn the same text
-  // is handed to a flat layer over the card, which unwinds into straight lines while the card
-  // moves back and fades away; 3) only the lines are left, in the middle.
+  // The text lives on its own layer over the card and turns with it. Before the turn has
+  // finished the text starts to unwind into straight lines; the card moves back and fades
+  // away; at the end only the lines are left, in the middle.
   var ease = function (x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
   var clamp = function (x) { return x < 0 ? 0 : x > 1 ? 1 : x; };
   var lerp = function (a, b, t) { return a + (b - a) * t; };
   var NS = 'http://www.w3.org/2000/svg';
   var ref = null, lines = null, S = 1, raf = 0, t0 = 0, curT = 0, mode = '';
-  var SPIN = 1800, FADE = 1200, START = [SPIN, SPIN + 350, SPIN + 700], DUR = 1400, TEND = 3900;
+  var SPIN = 1500, FADE = 1000, FADE0 = 1300, START = [1000, 1300, 1600], DUR = 1100, TEND = 2500;
   var $s = function (tag, attrs) { var n = document.createElementNS(NS, tag), k; for (k in attrs) n.setAttribute(k, attrs[k]); return n; };
 
   function measure(str) {
@@ -126,7 +124,7 @@
     var w = m.getComputedTextLength(); over.removeChild(m); return w;
   }
   function build() {
-    over.innerHTML = ''; cardRing.innerHTML = '';
+    over.innerHTML = '';
     ref = $s('path', { d: RING, fill: 'none' }); over.appendChild(ref);
     // two lines when they fit comfortably, three on narrow screens
     var sceneW = scene.clientWidth || 300;
@@ -134,7 +132,7 @@
     var fitF = 0.94 * sceneW / (wideW / BASE);
     var txt = fitF >= 21 ? T.wide : T.narrow;
     NP = txt.length;
-    TEND = Math.max(SPIN + FADE, START[NP - 1] + DUR) + 100;
+    TEND = Math.max(FADE0 + FADE, START[NP - 1] + DUR) + 100;
     var ws = txt.map(measure), total = ws.reduce(function (x, y) { return x + y; }, 0);
     var L = ref.getTotalLength(), s0 = 0;
     lines = txt.map(function (str, i) {
@@ -143,22 +141,12 @@
       var tp = $s('textPath', { href: '#cp-p' + i }); tp.textContent = str;
       var te = $s('text'); te.appendChild(tp);
       over.appendChild(path); over.appendChild(te);
-      var cpath = $s('path', { id: 'cc-p' + i, fill: 'none' });
-      var ctp = $s('textPath', { href: '#cc-p' + i }); ctp.textContent = str;
-      var cte = $s('text'); cte.appendChild(ctp);
-      cardRing.appendChild(cpath); cardRing.appendChild(cte);
       var h = mk(s0, len, ws[i], i, str.length);
-      h.path = path; h.text = te; h.cpath = cpath; h.ctext = cte; s0 += len;
+      h.path = path; h.text = te; s0 += len;
       return h;
     });
     layout();
     render(0);
-    // the card carries a frozen copy of the ring text (the unwound state starts exactly from it)
-    lines.forEach(function (h) {
-      h.cpath.setAttribute('d', h.path.getAttribute('d'));
-      h.ctext.setAttribute('font-size', h.text.getAttribute('font-size'));
-      h.ctext.setAttribute('letter-spacing', h.text.getAttribute('letter-spacing'));
-    });
   }
   function mk(s0, len, w, idx, n) {
     var pts = [], i, Lr = ref.getTotalLength();
@@ -202,12 +190,11 @@
   function render(t) {
     curT = t;
     var a = ease(clamp(t / SPIN)), bump = Math.sin(Math.PI * clamp(t / SPIN));
-    var f = ease(clamp((t - SPIN) / FADE));                       // card moves back and fades
-    card.style.transform = 'rotateY(' + (a * 360).toFixed(2) + 'deg) translateZ(' + (-f * 420).toFixed(1) + 'px) scale(' + (1 + 0.06 * bump).toFixed(3) + ')';
+    var f = ease(clamp((t - FADE0) / FADE));                      // card moves back and fades
+    var turn = 'rotateY(' + (a * 360).toFixed(2) + 'deg)', pop = ' scale(' + (1 + 0.06 * bump).toFixed(3) + ')';
+    card.style.transform = turn + ' translateZ(' + (-f * 420).toFixed(1) + 'px)' + pop;
     card.style.opacity = (1 - f).toFixed(3);
-    var swapped = t >= SPIN;
-    over.style.visibility = swapped ? 'visible' : 'hidden';
-    cardRing.style.visibility = swapped ? 'hidden' : 'visible';
+    over.style.transform = turn + pop;                            // the text layer turns with the card
     for (var i = 0; i < NP; i++) drawLine(lines[i], clamp((t - START[i]) / DUR));
   }
   function frame(now) {
