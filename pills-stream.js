@@ -69,7 +69,8 @@
     'few-shot': ['prompt', 'clasificacion'],
     'backup': ['sandbox', 'base-datos'],
     'registro': ['rgpd', 'human-in-the-loop', 'workflow'],
-    'a2ui': ['agente', 'mcp', 'json']
+    'a2ui': ['agente', 'mcp', 'json', 'react'],
+    'react': ['a2ui', 'github', 'api']
   };
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
